@@ -10,6 +10,7 @@
 	marginparwidth=2.5cm,%
 	marginparsep=0.3cm,%
 	includehead]{geometry}
+\usepackage{makeidx}
 	
 \hypersetup{%
 	pdftitle = {Titel des Dokuments},%
@@ -17,6 +18,7 @@
 	pdfauthor = {Name des Autors}%
 }
 
+\makeidx
 
 \begin{document}
 \title{endliche Sprache -> unendliche Sprache -> endliche Sprache}
@@ -26,6 +28,11 @@
 \maketitle
 \tableofcontents
 
+\include{intro}
+\include{defs}
+\include{main}
 
+\include{bibliography}
+\printindex
 
 \end{document}
