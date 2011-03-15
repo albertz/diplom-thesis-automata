@@ -50,13 +50,13 @@ Die Sprache $L^\omega(\A)$ ist definiert als die Menge aller unendlichen Wörter
 Man bezeichnet einen Automaten $\A$ als Büchi Automat, wenn man von der Büchi-Akzeptanz ausgeht.
 
 \subsection{Muller Automat}
-Ein Muller Automat $\A$ ist ein endlicher, deterministischer Automat mit Muller Akzeptanzbedingung und einer Menge $\T \in 2^Q$, genannt die Tabelle des Automaten (anstatt der Menge $F$). Dabei wird ein Wort $w \in \Sigma^\omega$ akzeptiert genau dann, wenn es einen entsprechenden Pfad $p$ gibt mit $\Inf(p) \in \T$, wobei $Inf(p)$ die Menge der unendlich oft besuchten Zustände ist.
+Ein Muller Automat $\A$ ist ein endlicher, deterministischer Automat mit Muller Akzeptanzbedingung und einer Menge $\T \in 2^Q$, genannt die Tabelle des Automaten (anstatt der Menge $F$). Dabei wird ein Wort $w \in \Sigma^\omega$ akzeptiert genau dann, wenn es einen entsprechenden Pfad $p$ gibt mit $\Inf(p) \in \T$, wobei $\Inf(p)$ die Menge der unendlich oft besuchten Zustände ist.
 
 Wir schreiben $\A = (Q, \Sigma, E, i, \T)$.
 
 \subsection{Rabin Automat}
 Ein Rabin Automat ist ein Tuple $\A = (Q, \Sigma, E, i, \R)$, wobei $(Q,\Sigma,E)$ ein deterministischer Automat ist, $i$ ist der Startzustand und $\R = \{(L_j, U_j) | j \in J\}$ ist eine Familie von Paren von Zustandsmengen. Ein Pfad $p$ ist erfolgreich, wenn er in $i$ beginnt und wenn es einen Index $j \ in J$ gibt, so dass $p$ unendlich oft $U_j$ besucht und nur endlich oft $L_j$. Ist der Automat endlich, so ist dies äquivalent mit
-$\Inf(p) \cap L_j = \emptyset \ \text{und} \ \Inf(p) \cap U_j \noteq \emptyset$.
+$\Inf(p) \cap L_j = \emptyset \ \text{und} \ \Inf(p) \cap U_j \neq \emptyset$.
 
 \subsection{Staiger Wagner Klasse zu $\K$}
 
@@ -83,7 +83,7 @@ b') von einer Stelle an alle Prefixe in $K$
 
 c) Kleene-Closure
 
-alle der Form $\union_{i=1}^n U_i \dot V_i^\omega$, $U_i, V_i \in \K$
+alle der Form $\cup_{i=1}^n U_i \dot V_i^\omega$, $U_i, V_i \in \K$
 
 d) $\K$ nicht suffix sensitiv
 
