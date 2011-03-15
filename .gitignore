@@ -4,3 +4,6 @@
 *.dvi
 index.ps
 *.out
+
+# http://mactex-wiki.tug.org/wiki/index.php?title=SyncTeX
+*.synctex.gz
