@@ -27,7 +27,15 @@
 
 \newcommand{\defword}[1]{{\bf #1}}
 
-\newcommand{\SetS}[1]{\bigl\{ #1 \bigr\}}
-\newcommand{\SetC}[2]{\bigl\{ #1 \bigm| #2 \bigr\}}
+\NewDocumentCommand\Set{mg}{%
+    \IfNoValueTF{#2}{%
+        \ensuremath{\bigl\{ #1 \bigr\}}%
+    }{%
+        \ensuremath{\bigl\{ #1 \bigm| #2 \bigr\}}%
+    }%
+}
+
+%\newcommand{\SetS}[1]{\bigl\{ #1 \bigr\}}
+%\newcommand{\SetC}[2]{\bigl\{ #1 \bigm| #2 \bigr\}}
 %\DeclarePairedDelimiterX\SetC[2]{\lbrace}{\rbrace}{ #1 \,\delimsize|\, #2 }
 

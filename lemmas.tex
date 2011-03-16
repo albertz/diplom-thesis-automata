@@ -34,15 +34,15 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 \begin{align*}
 & \lim(\emptyset) = \ext(\emptyset), \ \lim(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) = \ext(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) \ \ \text{(see above)} \\
 & \begin{aligned}
-\lim( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* ) ) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
-& = \SetC{ \alpha \in \Sigma^\omega }{ \forall n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
+\lim( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* ) ) & = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
+& = \Set{ \alpha \in \Sigma^\omega }{ \forall n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
 & = \neg \ext( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* )
 \end{aligned} \\
 & \begin{aligned}
-\lim(A \cup B) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cup B } = \lim(A) \cup \lim(B) \\
-\lim(A \cap B) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cap B } \\
+\lim(A \cup B) & = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cup B } = \lim(A) \cup \lim(B) \\
+\lim(A \cap B) & = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cap B } \\
 \intertext{and because $A,B$ are piece-wise testable}
-& = \SetC{ \alpha \in \Sigma^\omega }{ \exists n : \forall m > n \colon \alpha[0,m] \in A \cap B } = \lim(A) \cap \lim(B)
+& = \Set{ \alpha \in \Sigma^\omega }{ \exists n : \forall m > n \colon \alpha[0,m] \in A \cap B } = \lim(A) \cap \lim(B)
 \end{aligned}
 \end{align*}
 
@@ -56,7 +56,10 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 \end{thm}
 
 \begin{proof}
-
+The statement ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times'' can be expressed by a sentence of the form
+\[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \phi(\overline{x_1}, \dotsb, \overline{x_n}) \]
+where each $\overline{x_i}$ is a $|\sigma|$-tuple of variables and the formula $\phi$ states:
+...
 \end{proof}
 
 
