@@ -1,3 +1,4 @@
+%!TEX root =  index.tex
 \section{Lemmas}
 
 \subsection{piece-wise testable}
@@ -8,5 +9,42 @@
 
 \begin{proof}
 
-And the proof comes here.
+$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$
+\\
+
+$\subseteq$: It is sufficient to show $\ext(\Lang^* (\PT)) \subseteq \BC \lim \Lang^* (\PT)$.
+
+By complete induction:
+\begin{align*}
+& \ext(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) = \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^\omega = \lim(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) \\
+& \ext( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* )) = \Sigma^\omega = \lim( \Sigma^* ) \\
+& \ext( \emptyset ) = \emptyset = \lim(\emptyset)
+\end{align*}
+
+It is sufficient to show negation only for such ground terms because we can always push the negation down.
+\begin{align*}
+& \ext(A \cup B) = \ext(A) \cup \ext(B) \\
+& \ext(A \cap B) = \ext(A) \cap \ext(B)
+\end{align*}
+
+This makes the induction complete.
+\\
+
+$\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \Lang^* (\PT)$.
+
+\begin{align*}
+& \lim(\emptyset) = \ext(\emptyset), \lim(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) = \ext(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) && \text{(see above)}
+\end{align*}
+\begin{alignat*}{2}
+\lim( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* ) ) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* \} \\
+& = & \{ \alpha \in \Sigma^\omega | \forall n: \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* \} \\
+& = & \neg \ext( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* )
+\end{alignat*}
+\begin{align*}
+& \lim(A \cup B) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha[0,n] \in A \cup B \} & = \lim(A) \cup \lim(B) \\
+& \lim(A \cap B) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha[0,n] \in A \cap B \} & \\
+\intertext{and because $A,B$ are piece-wise testable}
+& & = & \{ \alpha \in \Sigma^\omega | \exists n : \forall m > n: \alpha[0,m] \in A \cap B \} & = \lim(A) \cap \lim(B) &
+\end{align*}
+
 \end{proof}
