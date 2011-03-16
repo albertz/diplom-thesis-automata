@@ -1,39 +1,38 @@
+%!TEX root =  index.tex
+
 % Quelle: Automata, Semigroups, Logic and Games - Pin, Perrin
 
-\section{Automat}
+\section{Automaton}
 
-Ein \defword{Automat} $\A$ auf dem Alphabet $\Sigma$ ist gegeben durch eine Menge $Q$ von Zuständen und einer Teilmenge $E \subset Q \times A \times Q$ von Transitionen. Außerdem ist in der Regel eine Teilmenge $I \subset Q$ von Startzuständen und eine Teilmenge $F \subset Q$ von Endzuständen gegeben.
+An \defword{automaton} $\A$ on the alphabet $\Sigma$ is given by a set $Q$ of states and a subset $E \subset Q \times A \times Q$ of transitions. In most cases you also have a subset $I \subset Q$ of initial states and a subset $F \subset Q$ of final states.
 
-Wir schreiben dafür: $\A = (Q, \Sigma, E, I, F)$.
+We write:
+\[ \A = (Q, \Sigma, E, I, F). \]
 
-Der Automat ist endlich genau dann, wenn $Q$ und $\Sigma$ endlich sind.
+The automaton is \defword{finite} iff $Q$ and $\Sigma$ are finite.
 
-Der Automat ist deterministisch, wenn $E$ eine Menge von Funktionen $Q \times A \rightarrow \Q$ und wenn $|I| = 1$ sind.
+The automaton is \defword{deterministic} iff $E$ is a set of functions $Q \times A \rightarrow \Q$ and there is only a single initial state.
 
-\subsection{Pfad}
-Zwei Transitionen $(p,a,q), (p',a',q') \in E$ sind aufeinanderfolgend, wenn $q=p'$.
+\subsection{Path}
+Two transitions $(p,a,q), (p',a',q') \in E$ are \defword{consecutive} iff $q=p'$.
 
-Ein Pfad in dem Automat $\A$ ist eine Folge von aufeinanderfolgenden Transitionen, geschrieben als:
-$q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \dots$
+A \defword{path} in the automaton $\A$ is a sequence of consecutive transitions, written as:
+\[ q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \dots \]
 
-\subsection{Akzeptanz von endlichen Wörtern}
+\subsection{Acceptence of finite words}
 
-Ein Automat $\A = (Q, \Sigma, E, I, F)$ \defword{akzeptiert} ein endliches Wort $w = (a_0,a_1,...,a_n) \in \Sigma^*$ genau dann, wenn es einen Pfad $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \dots \rightarrow^{a_n} q_{n+1}$ gibt mit $q_0 \in I$ und $q_{n+1} \in F$.
+An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{accepts} a finite word $w = (a_0,a_1,...,a_n) \in \Sigma^*$ iff there is a path $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \dots \rightarrow^{a_n} q_{n+1}$ with $q_0 \in I$ und $q_{n+1} \in F$.
 
-Die Sprache $L^*(\A)$ ist definiert als die Menge aller Wörter, die von $\A$ akzeptiert werden.
+The language $L^*(\A)$ is defined as set of all words which are accepted by $\A$.
 
-\section{$*$-Sprachklassen}
-Die $*$-Sprachklasse ist die Menge aller Sprachen von Wörtern $w \in \Sigma^*$, also die Menge von Sprachen von endlichen Wörtern.
+\section{$*$-languages}
+The $*$-languages are all languages of words $w \in \Sigma^*$, i.e. the set of languages of finite words.
 
-\subsection{reguläre Sprachen}
-Eine Sprache ist genau dann regulär, wenn sie von einem endlichen Automat erkannt wird.
+\subsection{regular languages}
+A languages is \defword{regular} iff an automaton accepts it.
 
 \subsection{piece-wise testable}
-
-
 \subsection{$k$-locally testable}
-
-
 \subsection{dot-depth-$n$}
 \subsection{starfree}
 \subsection{locally modulo testable}
@@ -41,26 +40,27 @@ Eine Sprache ist genau dann regulär, wenn sie von einem endlichen Automat erkan
 \subsection{endlich / co-endlich}
 \subsection{endwise testable}
 
-\section{$\omega$-Sprachklassen}
-\subsection{Büchi Automat}
-Ein Automat $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-akzeptiert} ein Wort $w = (a_0,a_1,a_2,...) \in \Sigma^\omega$ genau dann, wenn es einen unendlichen Pfad $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \rightarrow^{a_2} q_3 ...$ gibt mit $q_0 \in I$ und $\{ q_i | q_i \in F \}$ unendlich, also der unendlich oft einen Zustand $F$ erreicht.
+\section{$\omega$-languages}
+\subsection{Büchi automaton}
+An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-accepts} a word $\alpha = (a_0,a_1,a_2,...) \in \Sigma^\omega$ iff there is an infinite path $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \rightarrow^{a_2} q_3 ...$ with $q_0 \in I$ and $\{ q_i | q_i \in F \}$ infinite, i.e. which reaches a state in $F$ infinitely often.
 
-Die Sprache $L^\omega(\A)$ ist definiert als die Menge aller unendlichen Wörter, die von $\A$ Büchi-akzeptiert werden.
+The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$.
 
-Man bezeichnet einen Automaten $\A$ als Büchi Automat, wenn man von der Büchi-Akzeptanz ausgeht.
+An automaton $\A$ is a Büchi automaton iff you use the Büchi-acceptence.
 
-\subsection{Muller Automat}
-Ein Muller Automat $\A$ ist ein endlicher, deterministischer Automat mit Muller Akzeptanzbedingung und einer Menge $\T \in 2^Q$, genannt die Tabelle des Automaten (anstatt der Menge $F$). Dabei wird ein Wort $w \in \Sigma^\omega$ akzeptiert genau dann, wenn es einen entsprechenden Pfad $p$ gibt mit $\Inf(p) \in \T$, wobei $\Inf(p)$ die Menge der unendlich oft besuchten Zustände ist.
+\subsection{Muller automaton}
+A Muller automaton $\A$ is a finite, deterministic automaton with \defword{Muller acceptence} and a set $\T \in 2^Q$, called the \defword{table} of the automaton (instead of the set $F$). A word $w \in \Sigma^\omega$ is accepted iff there is a path $p$ with $\Inf(p) \in \T$, where $\Inf(p)$ is the set of infinitely often reached states of the path $p$.
 
-Wir schreiben $\A = (Q, \Sigma, E, i, \T)$.
+We write:
+\[ \A = (Q, \Sigma, E, i, \T) . \]
 
-\subsection{Rabin Automat}
-Ein Rabin Automat ist ein Tuple $\A = (Q, \Sigma, E, i, \R)$, wobei $(Q,\Sigma,E)$ ein deterministischer Automat ist, $i$ ist der Startzustand und $\R = \{(L_j, U_j) | j \in J\}$ ist eine Familie von Paren von Zustandsmengen. Ein Pfad $p$ ist erfolgreich, wenn er in $i$ beginnt und wenn es einen Index $j \ in J$ gibt, so dass $p$ unendlich oft $U_j$ besucht und nur endlich oft $L_j$. Ist der Automat endlich, so ist dies äquivalent mit
-\[ \Inf(p) \cap L_j = \emptyset \ \text{und} \ \Inf(p) \cap U_j \neq \emptyset . \]
+\subsection{Rabin automaton}
+A Rabin automaton is a tuple $\A = (Q, \Sigma, E, i, \R)$, where $(Q,\Sigma,E)$ is a deterministic automaton, $i$ is the initial state and $\R = \{(L_j, U_j) | j \in J\}$ is a family of pairs of state-sets. A path $p$ is successfull iff it starts in $i$ and there is an index $j \ in J$ such that $p$ reaches $U_j$ infinitely often and $L_j$ only finitely often. If the automaton is finite, this is equivalent to
+\[ \Inf(p) \cap L_j = \emptyset \ \text{and} \ \Inf(p) \cap U_j \neq \emptyset . \]
 
-\subsection{Staiger Wagner Klasse zu $\K$}
+\subsection{Staiger Wagner class of $\K$}
 
-\section{Operationen: von $*$-Sprache $K$ zu $\omega$-Sprache $L_\omega (K)$}
+\section{Operations: $*$-language $K$ to $\omega$-language $L_\omega (K)$}
 \subsection{...}
 a)
 * alle Sprachen $K \dot \Sigma^\omega = \ext(K)$, $K \in \K$
