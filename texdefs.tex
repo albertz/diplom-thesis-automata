@@ -1,3 +1,7 @@
+% some useful stuff:
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+% http://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
+
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 
@@ -9,11 +13,13 @@
 \newcommand{\T}{\mathcal{T}}
 \newcommand{\R}{\mathcal{R}}
 
-\def\PT{\mathrm{piece-wise testable}}
+\newcommand{\PT}{\textup{\textrm{piece-wise testable}}}
 
-\def\ext{\operatorname{ext}}
-\def\Inf{\operatorname{Inf}}
-\def\BC{\operatorname{BC}}
+% got some help here: http://tex.stackexchange.com/questions/13554/define-something-like-lim-but-for-another-name
+
+\newcommand{\ext}{\operatorname{ext}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\BC}{\operatorname{BC}}
 
 \newcommand{\defword}[1]{{\bf #1}}
 
