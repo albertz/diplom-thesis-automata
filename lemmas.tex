@@ -31,20 +31,32 @@ This makes the induction complete.
 \\
 
 $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \Lang^* (\PT)$.
-
 \begin{align*}
-& \lim(\emptyset) = \ext(\emptyset), \lim(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) = \ext(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) && \text{(see above)}
-\end{align*}
-\begin{alignat*}{2}
-\lim( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* ) ) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* \} \\
-& = & \{ \alpha \in \Sigma^\omega | \forall n: \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* \} \\
-& = & \neg \ext( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* )
-\end{alignat*}
-\begin{align*}
-& \lim(A \cup B) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha[0,n] \in A \cup B \} & = \lim(A) \cup \lim(B) \\
-& \lim(A \cap B) & = & \{ \alpha \in \Sigma^\omega | \exists^\omega n : \alpha[0,n] \in A \cap B \} & \\
+& \lim(\emptyset) = \ext(\emptyset), \ \lim(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) = \ext(\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*) \ \ \text{(see above)} \\
+& \begin{aligned}
+\lim( \neg ( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* ) ) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
+& = \SetC{ \alpha \in \Sigma^\omega }{ \forall n \colon \alpha [0,n] \notin \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* } \\
+& = \neg \ext( \Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^* )
+\end{aligned} \\
+& \begin{aligned}
+\lim(A \cup B) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cup B } = \lim(A) \cup \lim(B) \\
+\lim(A \cap B) & = \SetC{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in A \cap B } \\
 \intertext{and because $A,B$ are piece-wise testable}
-& & = & \{ \alpha \in \Sigma^\omega | \exists n : \forall m > n: \alpha[0,m] \in A \cap B \} & = \lim(A) \cap \lim(B) &
+& = \SetC{ \alpha \in \Sigma^\omega }{ \exists n : \forall m > n \colon \alpha[0,m] \in A \cap B } = \lim(A) \cap \lim(B)
+\end{aligned}
 \end{align*}
 
 \end{proof}
+
+
+\subsection{extension of FO[+1]}
+
+\begin{thm}
+\[ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) \]
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+
