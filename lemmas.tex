@@ -3,6 +3,7 @@
 
 \subsection{piece-wise testable}
 
+\label{thm.PT}
 \begin{thm}
 \[ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) \]
 \end{thm}
@@ -160,4 +161,29 @@ But we also have
 \[ \lim(\Sigma^*) = (\Sigma^* w)^\omega \notin \BC \ext \Lang^* (\LT) . \]
 \end{proof}
 
+
+\subsection{positive \PT}
+
+\label{thm.ext.lim.posPT}
+\begin{thm}
+\[ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) \]
+\end{thm}
+
+\begin{proof}
+$\subseteq$: Exactly like the proof for PT except that we leave out the negated part.
+$\supseteq$: Also like the proof for PT.
+\end{proof}
+
+
+\subsection{pos-PT and PT}
+
+\begin{thm}
+\[ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) \]
+\end{thm}
+
+\begin{proof}
+In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{PT})$ we actually proved $\BC \lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{pos-PT})$. Similiarly we also proved $\BC \ext \Lang^* (\mathtext{PT}) \subseteq \BC \lim \Lang^* (\mathtext{pos-PT})$.
+
+With \ref{thm.ext.lim.posPT} and \ref{thm.PT} we get the claimed equality.
+\end{proof}
 
