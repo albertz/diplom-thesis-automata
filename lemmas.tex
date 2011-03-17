@@ -49,17 +49,34 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 \end{proof}
 
 
-\subsection{extension of FO[+1]}
+\subsection{extension of $\Lang^*(\mathrm{FO[+1]})$}
 
 \begin{thm}
 \[ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) \]
 \end{thm}
 
 \begin{proof}
-The statement ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times'' can be expressed by a sentence of the form
-\[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \phi(\overline{x_1}, \dotsb, \overline{x_n}) \]
-where each $\overline{x_i}$ is a $|\sigma|$-tuple of variables and the formula $\phi$ states:
-...
+From \ref{LangAutLogic}{Theorem 4.8}, we know that each formular in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
+\[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \varphi(\overline{x_1}, \dotsb, \overline{x_n}) \]
+where each $\overline{x_i}$ is a $\abs{\sigma}$-tuple of variables and the formula $\varphi$ states:
+\[
+\bigwedge_{i,j \in \underline{n},\atop { i \neq j,\atop k,l \in \underline{\abs{\sigma}}}} x_{i,k} \neq x_{j,l}
+\wedge \bigwedge_{i \in \underline{n},\atop k \in \underline{\abs{\sigma}-1}} x_{i,k+1} = x_{i,k} + 1
+\wedge \bigwedge_{i \in \underline{n},\atop k \in \underline{\abs{\sigma}}} Q_{\sigma_k} x_{i,k}
+\]
+For $\psi$, we have:
+\[ \alpha \models \psi \Leftrightarrow \exists n \colon \alpha[0,n] \models \psi \ \ \text{for all } \alpha \in \Sigma^\omega , \]
+i.e.
+\[ L^\omega(\psi) = \ext L^*(\psi) . \]
+Any formular in FO[+1] can be expressed as a boolean combination of $\psi$-like formular. With
+\begin{align*}
+& L^\omega(\neg \psi) = \neg L^\omega(\psi) \\
+& L^\omega(\psi_1 \wedge \psi_2) = L^\omega(\psi_1) \cap L^\omega(\psi_2) \\
+& L^\omega(\psi_1 \vee \psi_2) = L^\omega(\psi_1) \cup L^\omega(\psi_2)
+\end{align*}
+we get:
+\[ \Lang^\omega(\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}). \]
+
 \end{proof}
 
 
