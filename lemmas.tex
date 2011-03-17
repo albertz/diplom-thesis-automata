@@ -116,6 +116,26 @@ where $\varphi(y)$ stands for $\varphi$ with all variables bounded by $y$.
 I.e.
 \[ \lim \Lang^* (\mathrm{FO[<]}) \subseteq \Lang^\omega (\mathrm{FO[<]}) , \]
 and thus also
-\[ \lim \BC \Lang^* (\mathrm{FO[<]}) \subseteq \Lang^\omega (\mathrm{FO[<]}) . \]
+\[ \BC \lim \Lang^* (\mathrm{FO[<]}) \subseteq \Lang^\omega (\mathrm{FO[<]}) . \]
 Thus we have prooved the equality.
+\end{proof}
+
+
+\subsection{$\BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} )$}
+
+\begin{thm}
+\[ \BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} ) \]
+\end{thm}
+
+\begin{proof}
+$\subseteq$: $L \subset \Sigma^\omega \text{ starfree } \ \Rightarrow\ L \Sigma^\omega \in \lim( \Lang^*( \mathrm{FO[<]} ) )$
+\end{proof}
+\begin{proof}
+$\neq$:
+\begin{align*}
+& L := (\Sigma^* a)^\omega \\
+\Rightarrow \ & L = \lim( (\Sigma^* a)^* ) \\
+\Rightarrow \ & L = L^\omega(\exists^\omega x : Q_a x)
+\end{align*}
+And we have $L \notin \BC \ext \Lang^* (\mathrm{FO[<]})$.
 \end{proof}
