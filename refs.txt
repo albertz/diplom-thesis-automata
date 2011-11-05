@@ -1,0 +1,17 @@
+BC: boolean combinations
+
+Staigner Wagner:
+  ...
+  genannt: T1.1, a
+
+Muller-erkennbar:
+  ...
+  genannt: T1.1, b'
+
+Kleene-Closure:
+  ...
+  genannt: T1.1, c
+
+Mc Naughton:
+  ...
+  genannt: T1.2, Satz c=>b
