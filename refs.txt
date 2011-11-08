@@ -15,3 +15,6 @@ Kleene-Closure:
 Mc Naughton:
   ...
   genannt: T1.2, Satz c=>b
+
+NB: non-deterministic Büchi (Automaton)
+  genannt: T51
