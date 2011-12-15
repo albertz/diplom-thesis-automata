@@ -18,3 +18,7 @@ Mc Naughton:
 
 NB: non-deterministic Büchi (Automaton)
   genannt: T51
+
+Path: irrtümlich für Run
+
+You: irrtümlich für We
