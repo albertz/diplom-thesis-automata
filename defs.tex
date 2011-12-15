@@ -4,7 +4,7 @@
 
 \section{Automaton}
 
-An \defword{automaton} $\A$ on the alphabet $\Sigma$ is given by a set $Q$ of states and a subset $E \subset Q \times A \times Q$ of transitions. In most cases you also have a subset $I \subset Q$ of initial states and a subset $F \subset Q$ of final states.
+An \defword{automaton} $\A$ on the alphabet $\Sigma$ is given by a set $Q$ of states and a subset $E \subset Q \times A \times Q$ of transitions. In most cases we also have a subset $I \subset Q$ of initial states and a subset $F \subset Q$ of final states.
 
 We write:
 \[ \A = (Q, \Sigma, E, I, F). \]
@@ -46,7 +46,7 @@ An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-accepts} a word $\alpha
 
 The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$.
 
-An automaton $\A$ is a Büchi automaton iff you use the Büchi-acceptence.
+An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
 
 \subsection{Muller automaton}
 A Muller automaton $\A$ is a finite, deterministic automaton with \defword{Muller acceptence} and a set $\T \in 2^Q$, called the \defword{table} of the automaton (instead of the set $F$). A word $w \in \Sigma^\omega$ is accepted iff there is a run $p$ with $\Inf(p) \in \T$, where $\Inf(p)$ is the set of infinitely often reached states of the run $p$.
