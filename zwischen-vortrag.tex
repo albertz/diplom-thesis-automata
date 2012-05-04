@@ -31,10 +31,15 @@
 %	[pausesections]
 %}
 
-\begin{frame}{test}
+\begin{frame}[<+->]{Introduction}
+\begin{itemize}
+\item regular $*$-languages
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Diagram}
 \begin{tikzpicture}
-\pgftransformscale{.6}
+\pgftransformscale{.55}
 
 % http://www.texample.net/tikz/examples/complexity-classes/
 
@@ -45,9 +50,29 @@
 %% Horizontal bar
 \draw[very thick] (10,0) -- (-10,0);
 
-% NP
-\draw[dotted] (-4,0) parabola bend (2,6) (4.5,0);
-\node[rotate=-45] at (3,3.5) {NPTIME};
+% whole omega
+\draw (-9.5,0) parabola bend (0,12) (9.5,0);
+%\node[rotate=-45] at (3,3.5) {NPTIME};
+
+% lim
+\draw (-9,0) parabola bend (-3,8) (9,0);
+\node[rotate=20] at (-3,7) {lim};
+
+% dual-lim
+\draw (-9,0) parabola bend (3,8) (9,0);
+\node[rotate=-20] at (3,7) {dual-lim};
+
+% BC ext
+\draw (-7,0) parabola bend (0,5) (7,0);
+\node at (0,4.5) {BC ext};
+
+% ext
+\draw (-6,0) parabola bend (-2,4) (6,0);
+\node[rotate=20] at (-2,3.5) {ext};
+
+% dual-ext
+\draw (-6,0) parabola bend (2,4) (6,0);
+\node[rotate=-20] at (2,3.5) {dual-ext};
 
 \end{tikzpicture}
 
