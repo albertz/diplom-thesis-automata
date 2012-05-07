@@ -12,7 +12,7 @@
 \subject{a structure theory for Omega-languages}
 \keywords{Omega, language}
 
-\title[Kurzform]{a structure theory for $\Omega$-languages}
+\title[Kurzform]{a structure theory for $\omega$-languages}
 %\subtitle[Kurzform]{Untertitel}
 \author[A. Zeyer]{Albert Zeyer}
 \institute[i7 RWTH]{Lehrstuhl für Informatik 7}
@@ -33,7 +33,9 @@
 
 \begin{frame}[<+->]{Introduction}
 \begin{itemize}
-\item regular $*$-languages
+\item consider regular $*$-languages
+\item look at $* \rightarrow \omega$ language operators like lim, ext, BC of them, etc.
+\item compare the resulting $\omega$-languages
 \end{itemize}
 \end{frame}
 
@@ -50,9 +52,9 @@
 %% Horizontal bar
 \draw[very thick] (10,0) -- (-10,0);
 
-% whole omega
-\draw (-9.5,0) parabola bend (0,12) (9.5,0);
-%\node[rotate=-45] at (3,3.5) {NPTIME};
+% BC lim
+\draw (-9.5,0) parabola bend (0,11) (9.5,0);
+\node at (0,9) {BC lim};
 
 % lim
 \draw (-9,0) parabola bend (-3,8) (9,0);
@@ -63,8 +65,8 @@
 \node[rotate=-20] at (3,7) {dual-lim};
 
 % BC ext
-\draw (-7,0) parabola bend (0,5) (7,0);
-\node at (0,4.5) {BC ext};
+\draw (-6.5,0) parabola bend (0,6) (6.5,0);
+\node at (0,5) {BC ext};
 
 % ext
 \draw (-6,0) parabola bend (-2,4) (6,0);
@@ -76,6 +78,20 @@
 
 \end{tikzpicture}
 
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item instead of regular $*$-languages, look at other $*$-language classes
+\item does it result in the same relations as in the diagram? are the enclosures strict?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item instead of regular $*$-languages, look at other $*$-language classes
+\item does it result in the same relations as in the diagram? are the enclosures strict?
+\end{itemize}
 \end{frame}
 
 \end{document}
