@@ -8,11 +8,25 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{tikz}
 
+%\usepackage[mathletters]{ucs}
+%\usepackage[ps2pdf,a4paper,colorlinks]{hyperref}
+%\usepackage[fleqn]{amsmath}
+%\usepackage{amsthm}
+%\usepackage{amstext}
+
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xparse}
+\usepackage[display]{texpower}
+\usepackage{fixseminar}
+
+\include{texdefs}
+
 % for PDF
 \subject{a structure theory for Omega-languages}
 \keywords{Omega, language}
 
-\title[Kurzform]{a structure theory for $\omega$-languages}
+\title[Kurzform]{Language Operations and a Structure Theory of $\omega$-Languages}
 %\subtitle[Kurzform]{Untertitel}
 \author[A. Zeyer]{Albert Zeyer}
 \institute[i7 RWTH]{Lehrstuhl für Informatik 7}
@@ -34,7 +48,16 @@
 \begin{frame}[<+->]{Introduction}
 \begin{itemize}
 \item consider regular $*$-languages
-\item look at $* \rightarrow \omega$ language operators like lim, ext, BC of them, etc.
+
+\item look at $\Lang^* \rightarrow \Lang^\omega$ language operators like lim, ext, BC of them, etc.
+\begin{enumerate}
+\item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
+\item $\overline{\ext}(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
+\item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
+\item $\overline{\lim}(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$
+\item Kleene-Closure of $\K$: $\bigcup_{i=1}^n U_i \cdot V_i^\omega$, $U_i, V_i \in \K$
+\end{enumerate}
+
 \item compare the resulting $\omega$-languages
 \end{itemize}
 \end{frame}
@@ -89,7 +112,7 @@
 
 \begin{frame}
 \begin{itemize}
-\item instead of regular $*$-languages, look at other $*$-language classes
+\item instead of regular $*$-languages, look at other $*$-language classes, e.g. FO$[<]$ (starfree), FO[+1], \PT, positive \PT, ...
 \item does it result in the same relations as in the diagram? are the enclosures strict?
 \end{itemize}
 \end{frame}
