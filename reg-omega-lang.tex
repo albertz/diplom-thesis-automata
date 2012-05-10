@@ -1,0 +1,31 @@
+\section{regular $\omega$-languages}
+
+The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
+\[ \Lang^\omega(reg) := \Set{ \cup_i U_i \cdot V_i^\omega }{ U_i, V_i \in \Lang^*(reg) } \]
+
+A different, very common description is in terms of automata.
+
+An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-accepts} a word $\alpha = (a_0,a_1,a_2,...) \in \Sigma^\omega$ iff there is an infinite run $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \rightarrow^{a_2} q_3 ...$ with $q_0 \in I$ and $\{ q_i | q_i \in F \}$ infinite, i.e. which reaches a state in $F$ infinitely often.
+
+The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$.
+
+An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
+
+The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\Lang^\omega(reg)$. (S218,R101) Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
+
+There are some different forms of $\omega$-automata, e.g. the Rabin automata and the Muller automata. We see that the class of languages accepted by non-deterministic Büchi automata is equal to deterministic Rabin automata and deterministic Muller automata. (S407)
+
+We also see that this is equal to boolean combinations of languages accepted by deterministic Büchi automata. Under this regard, an operator of interest is $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$. We see that $\lim(\Lang^\omega)$ is equal to the languages accepted by deterministic Büchi automata. (S407) Thus:
+\[  \BC \lim \Lang^*(reg) = \Lang^\omega(reg) \]
+
+Some other descriptions:
+$\Lang^\omega(reg) = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Lang^*(reg) }$ (S218,S411,R107)
+$\Lang^\omega(reg) = \Set{A \subset \Sigma^\omega}{A \text{definable in} L_2(\Sigma)}$
+
+We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Lang^*(reg)$. Let $L,A,B \in \Lang$.
+\begin{itemize}
+\item E1: $L \cdot \Sigma^* \in \Lang$ (not suffix sensitive)
+\item E2a: $A \cup B \in \Lang$
+\item E2b: $A \cap B \in \Lang$
+\item E3: $- L \in \Lang$ (closed under complementation) (S303.E3, S218, R101)
+\end{itemize}
