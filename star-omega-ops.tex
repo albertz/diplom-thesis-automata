@@ -2,7 +2,7 @@
 
 \subsection{ language operators}
 
-We already introduced $\lim$. We can define a family of language operators, partly also derived from the study of $\Lang^\omega(reg)$. Some of these operators operate on a single language and not on the class. We get a canonical language-class-operator from these. Let $\Lang$ be a $*$-language class. Let $L \in \Lang$.
+We already introduced $\lim$. We can define a family of language operators, partly also derived from the study of $\Lang^\omega(reg)$. Some of these operators operate on a single language and not on the class. Let $\Lang$ be a $*$-language class. Let $L \in \Lang$.
 
 \begin{enumerate}
 \item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
@@ -11,11 +11,11 @@ We already introduced $\lim$. We can define a family of language operators, part
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
 \item $\overline{\lim}(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$
 \item $\BC \lim$
-\item Kleene-Closure of $\Lang$: $\bigcup_{i=1}^n U_i \cdot V_i^\omega$, $U_i, V_i \in \Lang$
-\item $\bigcup_{i=1}^n U_i \cdot \lim V_i$, $U_i, V_i \in \K$
+\item Kleene-Closure of $\Lang$: $\Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$
+\item $\Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \K}$
 \end{enumerate}
 
-(E.g., $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$.)
+From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$.
 
 \subsection{$\Lang^*(reg)$}
 
