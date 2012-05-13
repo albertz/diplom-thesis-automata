@@ -80,14 +80,17 @@ Proof: S405 / Staigner-Wagner-recognizable
 Proof: $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. With E3, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
 \item P6b: $\lim \Lang \cap \dlim \Lang \subsetneqq \dlim \Lang$ \newline
 Proof: Analog to P6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
-\item P7: $\lim \Lang \neq \dlim \Lang$
+\item P7: $\lim \Lang \neq \dlim \Lang$ \newline
 Proof: Follows directly from P6a and P6b.
 \item P8: $\lim \Lang \cup \dlim \Lang \subsetneqq \BC \lim \Lang$ \newline
-Proof: (S408, S409, ...)
+%(S408, S409)
+Proof: $\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma*b)^\omega$. Then $\tilde{L}_8 \notin \lim \cup \dlim \Lang$ but $\tilde{L}_8 \in \BC \lim \Lang$. (R101, prop, p.38)
 \item P9: $\BC \lim \Lang = \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$ \newline
-Proof: (S402, S407, ...)
+%(S402, S407)
+Proof: This is explained already in chapter \ref{reg-omega-lang}. 
 \item P10: $\BC \lim \Lang = \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang}$ \newline
-Proof: (S403, S411, ...)
+%(S403, S411) (R107, Theorem 3.1)
+Proof: This is explained already in chapter \ref{reg-omega-lang}. 
 \end{itemize}
 
 \subsection{Questions}
