@@ -81,8 +81,12 @@ $\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde
 \item P10: TODO
 \end{itemize}
 
-\subsection{FO[+1]} S213,215,S103,S17
+\subsection{FO[+1]}
+%def: S17
+%S213: BC ext class
+%215: BC lim class
 
+%S103:
 \begin{thm}
 \[ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) \]
 \end{thm}
@@ -111,10 +115,12 @@ we get:
 
 \end{proof}
 
-
 \subsection{FO[]}
-\subsection{piece-wise testable} S212,S101,S52
+\subsection{piece-wise testable}
+%S52: overview
+%S212: BC lim class
 
+%S101:
 \label{thm.PT}
 \begin{thm}
 \[ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) \]
@@ -163,8 +169,11 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 
 
 
-\subsection{positive piece-wise testable} S214,S101,S53
+\subsection{positive piece-wise testable}
+%S53: overview
+%S214: BC lim class
 
+%S101:
 \label{thm.ext.lim.posPT}
 \begin{thm}
 \[ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) \]
@@ -176,7 +185,8 @@ $\supseteq$: Also like the proof for PT.
 \end{proof}
 
 
-\subsection{locally testable} S16
+\subsection{locally testable}
+%S16: def
 
 \begin{thm}
 \[ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT)  \]
@@ -196,13 +206,31 @@ But we also have
 \end{proof}
 
 
-\subsection{endwise testable} S104,S20
+\subsection{endwise testable}
+%S20: def
+%S104:
+\begin{itemize}
+\item $\BC \ext \Lang^*(endwise) \neq \BC \lim \Lang^*(endwise)$ because $\Sigma^*a \in \Lang^*(endwise)$.
+\item $\ext(a\Sigma^* a) = a \Sigma^* a \Sigma^\omega \notin \BC \lim \Lang^*(endwise)$
+\end{itemize}
+
 \subsection{local}
 \subsection{finite / co-finite}
-\subsection{dot-depth-$n$} S21
+%S105:
+\begin{itemize}
+\item $\lim \Lang^*(finite) = \Set{\emptyset}$
+\item $\ext \Lang^*(finite) = \Lang^*(finite) \cdot \Sigma^\omega$
+\item $\lim \Lang^*(co-finite) = \Set{\Sigma^\omega}$
+\item $\ext \Lang^*(co-finite) = \Set{\Sigma^\omega}$
+\end{itemize}
+
+\subsection{dot-depth-$n$}
+%S21: def
 \subsection{$L$-trivial}
-\subsection{$R$-trivial} S23
-\subsection{locally modulo testable} S24
+\subsection{$R$-trivial}
+%S23: def
+\subsection{locally modulo testable}
+%S24: def
 
 %\subsection{$k$-locally testable}
 
