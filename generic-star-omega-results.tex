@@ -1,11 +1,22 @@
-\section{Generic results}
+\section{General results}
+\label{general-results}
 
 %S401, S303: TODO
 
 Let $\Lang$ be a $*$-language class.
-\\
 
-We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$.
+\subsection{general}
+Let $L \in \Lang$.
+\begin{itemize}
+\item $\ext L = L \cdot \Sigma^\omega$
+\item $\ext L = \lim (L \cdot \Sigma^*)$
+\item $- \lim(-L) = \dlim L$
+\end{itemize}
+
+\
+
+%S302.1:
+We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In \ref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
 
 \subsection{$\ext \subset \lim$}
 \label{gen:S302a}
@@ -24,4 +35,13 @@ From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negatio
 % S303, S101a:
 E1 ($\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang$)
 $\Rightarrow \ext(\Lang) \subseteq \lim(\Lang)$
+
+\subsection{union, intersection}
+%S303:
+\begin{itemize}
+\item
+E2a (closed under union) $\Rightarrow \bigcup \ext \Lang \subseteq \ext \Lang$.
+\item
+E2b (closed under intersection) $\Rightarrow \bigcap \ext \Lang \subseteq \ext \Lang$.
+\end{itemize}
 
