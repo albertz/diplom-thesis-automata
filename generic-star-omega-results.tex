@@ -45,6 +45,24 @@ E2a (closed under union) $\Rightarrow \bigcup \ext \Lang \subseteq \ext \Lang$.
 E2b (closed under intersection) $\Rightarrow \bigcap \ext \Lang \subseteq \ext \Lang$.
 \end{itemize}
 
+\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
+If there is $L_\Sigma \in \Lang_\Sigma$ with $L_\Sigma \in \ext \Lang_\Sigma, L_\Sigma \not\in \dext \Lang_\Sigma$ and E3 (closed under negation) holds for $\Lang$:
+\begin{itemize}
+\item[$\Rightarrow$] $-L_\Sigma \in \dext \Lang_\Sigma, -L_\Sigma \not\in \ext \Lang_\Sigma$
+\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \ext \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
+$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \ext \cup \dext \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
+\end{itemize}
+Thus, $\ext \cup \dext \Lang \subsetneqq \BC \ext \Lang$.
+
+Similarily, if there is $L_\Sigma \in \lim \Lang_\Sigma, L_\Sigma \not\in \dlim \Lang_\Sigma$ and E3 holds for $\Lang$:
+\begin{itemize}
+\item[$\Rightarrow$] $-L_\Sigma \in \dlim \Lang_\Sigma, -L_\Sigma \not\in \lim \Lang_\Sigma$
+\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \lim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
+$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \lim \cup \dlim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
+\end{itemize}
+Thus, $\lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang$.
+
+
 \subsection{$\BC \lim = \lim \cap \dlim$}
 \label{gen:staigner-wagner}
 %S402: TODO...
