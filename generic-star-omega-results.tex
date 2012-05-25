@@ -1,11 +1,27 @@
 \section{Generic results}
 
-S401, S302/S303
+%S401, S303: TODO
 
 Let $\Lang$ be a $*$-language class.
+\\
+
+We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$.
+
+\subsection{$\ext \subset \lim$}
+\label{gen:S302a}
+
+%S302:
+From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in \Lang} \subseteq \Set{-\lim L}{L \in \Lang}$. Thus, it also follows $\BC \ext \Lang \subseteq \BC \lim \Lang$.
+
+\subsection{$\dext \subset \dlim$}
+
+%S302:
+From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$. 
 
 \subsection{non suffix sensitive}
 \label{gen:non-suffix-sens}
 
-$\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang
-\Rightarrow \ext(\Lang^*) \subset \lim(\Lang^*)$
+% S303, S101a:
+E1 ($\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang$)
+$\Rightarrow \ext(\Lang) \subseteq \lim(\Lang)$
+
