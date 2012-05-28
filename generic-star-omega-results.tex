@@ -6,35 +6,38 @@
 Let $\Lang$ be a $*$-language class.
 
 \subsection{general}
+\label{gen:general}
 Let $L \in \Lang$.
-\begin{itemize}
+\begin{enumerate}
 \item $\ext L = L \cdot \Sigma^\omega$
-\item $\ext L = \lim (L \cdot \Sigma^*)$
+\item $\ext L = \lim L \cdot \Sigma^*$ %S303
+\item $\ext L = \dlim L \cdot \Sigma^*$ %S303, S305.4
 \item $- \lim(-L) = \dlim L$
-\end{itemize}
+\end{enumerate}
 
 \
 
 %S302.1:
 We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In \ref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
 
-\subsection{$\ext \subset \lim$}
+\subsection{non suffix sensitive}
+\label{gen:non-suffix-sens}
+
+% S303, S101a:
+If E1 ($\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang$, i.e. $\Lang$ is non suffix sensitive) holds for $\Lang$: For $L \in \Lang$, we have $\ext L = \lim L \Sigma^* = \dlim L \Sigma^*$ and thus
+\[ \ext \Lang \subseteq \lim \Lang \cup \dlim \Lang . \]
+
+\subsection{$\BC \ext \subseteq \BC \lim$}
 \label{gen:S302a}
 
 %S302:
-From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in \Lang} \subseteq \Set{-\lim L}{L \in \Lang}$. Thus, it also follows $\BC \ext \Lang \subseteq \BC \lim \Lang$.
+From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in \Lang} \subseteq \Set{-\lim L}{L \in \Lang}$. Thus, it also follows
+\[ \BC \ext \Lang \subseteq \BC \lim \Lang . \]
 
 \subsection{$\dext \subset \dlim$}
 
 %S302:
 From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$. 
-
-\subsection{non suffix sensitive}
-\label{gen:non-suffix-sens}
-
-% S303, S101a:
-E1 ($\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang$)
-$\Rightarrow \ext(\Lang) \subseteq \lim(\Lang)$
 
 \subsection{union, intersection}
 %S303:
