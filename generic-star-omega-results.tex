@@ -230,7 +230,7 @@ Powerset construction: The initial state is $\Set{1,2}$. Then we have:
 \end{itemize}
 This gives the $*$-language $\Set{a,b}^*$ and we cannot formulate $UV^\omega$ in any way from there.
 
-In the construction, when we got the $a$ from $\Set{1,2}$, we knew that we have been deterministically in $1$, i.e. in $U$. We loose this information. To keep it, we introduce another state flag which exactly says wether we have determined that we have been in $U$. Thus, we construct an automaton with the states $\Power(Q) \times \B_{\text{det. been in $U$}}$.
+In the construction, when we got the $a$ from $\Set{1,2}$, we knew that we have been deterministically in $1$, i.e. in $U$. We loose this information. To keep it, we introduce another state flag which exactly says wether we have determined that we have been in $U$. Thus, we construct an automaton with the states $\Power(Q) \times \B_{\text{det. been in $U$}}$, where $Q$ are the states from $\A$.
 
 For the example, we get the initial state $(\Set{1,2},1)$. Then we have:
 \begin{itemize}
@@ -271,3 +271,8 @@ If we have $L_E \in \Lang$, it follows
 \[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang} \subseteq \BC \lim \Lang . \]
 
 Open question: Is $L_E \in \Lang$?
+
+\
+
+We also need to show $\BC \lim \Lang \subseteq \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$.
+
