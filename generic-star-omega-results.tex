@@ -91,7 +91,7 @@ A Staiger-Wagner automaton (weak Muller automaton) is of the same form $\A = (Q,
 
 We see (R101,Th.63+64,p.44) that the class of Staigner-Wagner-recognized languages is exactly the class $\BC \ext \Lang^*(reg)$ and also $\lim \cap \dlim \Lang^*(reg)$.
 
-We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata.
+We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata (where some of the ideas are loosely based on (R101,Th.63+64,p.44)).
 
 %S305:
 First, we show $\lim \cap \dlim \Lang \subseteq \BC \ext \Lang$.
@@ -122,7 +122,7 @@ Then we have
 \end{align*}
 
 %S305.2:
-$S$ will be visited: Let $S$ exactly be the finite states. This interpreted as an E-automaton $\A^E$ is exactly the condition.
+$S$ will be visited: Let $S$ exactly be the finite states. This interpreted as an E-automaton $\A^E_S$ is exactly the condition.
 
 Only the allowed states will be visited but nothing followed after $S$: Mark $S$ and all states on all paths to $S$ as finite states. This as an A-automaton $\A^A_S$ is exactly the condition.
 
@@ -135,6 +135,32 @@ Then we have
 \end{align*}
 
 Thus, $\tilde L \in \BC \ext \Lang^*(reg)$.
+
+%TODO...
+Open question at this point: Is $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$? With E4, this is obviously the case. However, E4 is too strong.
+
+%S305.3:
+Now let us show $\BC \ext \Lang \subseteq \lim \Lang$.
+
+With E1, we get $\ext \Lang \subseteq \lim \Lang$ and $\ext \Lang \subseteq \dlim \Lang$. I.e. $\ext \Lang \subseteq \lim \cap \dlim \Lang$. Let us show that $\lim \cap \dlim \Lang$ is closed under BC.
+
+Let $\tilde L_a,L_b \in \lim \cap \dlim \Lang$, i.e. $\exists L_{a1}, L_{a2}, L_{b1}, L_{b2} \in \Lang \colon \tilde L_a = \lim L_{a1} = \dlim L_{a2}, \tilde L_b = \lim L_{b1} = \dlim L_{b2}$. Let us show 1. $-\tilde L_a \in \lim \cap \dlim \Lang$, 2. $\tilde L_a \cup \tilde L_b \in \lim \cap \dlim \Lang$.
+\begin{enumerate}
+\item $-\tilde L_a = -\lim L_{a1} = \dlim -L_{a1}$, $-\tilde L_b = -\dlim L_{a2} = \lim -L_{a2}$. With E3 (closed under negation), we get $-\tilde L_a \in \lim \cap \dlim \Lang$.
+
+\item
+$\tilde L_a \cup \tilde L_b = \lim L_{a1} \cup \lim L_{b1} = \lim L_{a1} \cup L_{b1}$ (\ref{gen:general}). Thus, with E2a, we have $\tilde L_a \cup \tilde L_b \in \lim \Lang$.
+
+The $\dlim\Lang$ case is harder.
+%S305.5: language theoretical proof: TODO
+%S305.6:
+Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{B"uchi}}(\A_a) = L^\omega_{\text{co-B"uchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{B"uchi}}(\A_b) = L^\omega_{\text{co-B"uchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$. Then we have $L^\omega_{\text{B"uchi}}(\Ax) = L^\omega_{\text{co-B"uchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
+
+Thus, $\tilde L_a \cup \tilde L_b \in \dlim \Lang^*(reg)$.
+
+Open question: Is $L^*(\Ax) \in \Lang$?
+
+\end{enumerate}
 
 %S406.1: TODO...
 %S402: TODO...
