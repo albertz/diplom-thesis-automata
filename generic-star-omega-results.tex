@@ -96,22 +96,45 @@ We are now formulating a more general and direct proof for the $\BC \ext \Lang =
 %S305:
 First, we show $\lim \cap \dlim \Lang \subseteq \BC \ext \Lang$.
 
-Let $\tilde L \in \lim \cap \dlim \Lang$, i.e. there are deterministic automaton $\A$ and $\overline \A$ so that $L^\omega_{\text{B"uchi}}(\A) = L^\omega_{\text{co-B"uchi}}(\overline \A) = \tilde L$. Let $Q,\overline Q$ be the states of $\A,\overline \A$. Now look at the product automaton $\A \times \overline \A$ with states $Q \times \overline Q$ and final states $F \times \overline F \subseteq Q \times \overline Q$.
+Let $\tilde L \in \lim \cap \dlim \Lang$, i.e. there are deterministic automaton $\A$ and $\overline \A$ so that $L^\omega_{\text{B"uchi}}(\A) = L^\omega_{\text{co-B"uchi}}(\overline \A) = \tilde L$. Let $Q,\overline Q$ be the states of $\A,\overline \A$. Now look at the product automaton $\A \times \overline \A =: \Ax$ with states $Q \times \overline Q$ and final states $F \times \overline F \subseteq Q \times \overline Q$. $\Ax$ is also deterministic.
 
-Let $(q,\overline q) \in Q \times \overline F$. If $\overline q$ is not part of a loop in $\A$, we can just take it away from $\overline F$ and get the same $\omega$-language (no matter if Büchi or co-Büchi). Thus assume that all $\overline q \in \overline F$ are part of a loop.
+%Let $(q,\overline q) \in Q \times \overline F$. If $\overline q$ is not part of a loop in $\A$, we can just take it away from $\overline F$ and get the same $\omega$-language (no matter if Büchi or co-Büchi). Thus assume that all $\overline q \in \overline F$ are part of a loop.
 
-Let $\alpha \in \tilde L$. Then $\rho(\alpha)$ has infinity many occurences in $F$ and there is some $N$ so that $\overline \rho(\alpha)[N,\infty)$ is only in $\overline F$. Let $\beta \not\in \tilde L$. Then there is some $N$ so that $\rho(\alpha)[N,\infty)$ is only in $Q-F$.
+%Let $\alpha \in \tilde L$. Then $\rho(\alpha)$ has infinity many occurences in $F$ and there is some $N$ so that $\overline \rho(\alpha)[N,\infty)$ is only in $\overline F$. Let $\beta \not\in \tilde L$. Then there is some $N$ so that $\rho(\alpha)[N,\infty)$ is only in $Q-F$.
 
-In $\A \times \overline \A$, we have
+%S305.1
+In $\Ax$, we have
 \begin{align*}
 & \alpha \in \tilde L \\
 \Leftrightarrow \ & \forall N \colon \exists n \ge N \colon \overx{\rho}(\alpha)[n] \in F \times \overline Q \\
 \Leftrightarrow \ & \exists N \colon \forall n \ge N \colon \overx{\rho}(\alpha)[n] \in Q \times \overline F
 \end{align*}
 
-Look at strongly connected component (SCC) $S$ in $\A \times \overline \A =: \Ax$. We have $S \cap F \times \overline Q \neq \emptyset$, iff $S$ accepts. It follows $S \cap Q \times \overline F = S$.
+Look at strongly connected component (SCC) $S$ in $\Ax$. We have $S \cap F \times \overline Q \neq \emptyset$, iff $S$ accepts. It follows that all states in $S$ are finite states in $\overline \A$, i.e. $S \cap Q \times \overline F = S$.
 
 Single $\overx{q} \in \overx{Q}$ which are not part of a SCC can be ignored. For the acceptance of infinte words, only SCCs are relevant. For $S$, define $S_+ := \Set{\overx{q} \in \overx{Q}-S}{\overx{q} \text{ can be visited after } S}$.
+
+Then we have
+\begin{align*}
+\tilde L = \bigcup_{\text{SCC } S} & S \text{ will be visited} \ \wedge \\
+& \text{all states of } S \text{ will be visited forever after some step} \ \wedge \\
+& S_+ \text{ will not be visited} .
+\end{align*}
+
+%S305.2:
+$S$ will be visited: Let $S$ exactly be the finite states. This interpreted as an E-automaton $\A^E$ is exactly the condition.
+
+Only the allowed states will be visited but nothing followed after $S$: Mark $S$ and all states on all paths to $S$ as finite states. This as an A-automaton $\A^A_S$ is exactly the condition.
+
+A similar negated condition might be simpler: Let $S_+$ be exactly the finite states. Interpret this as an E-automaton $\A^E_{S_+}$.
+
+Then we have
+\begin{align*}
+\tilde L & = \bigcup_{\text{SCC } S} L^\omega_E (\A^E_S) \cap L^\omega_A (\A^A_S) \\
+& = \bigcup_{\text{SCC } S} L^\omega_E (\A^E_S) \cap -L^\omega_E (\A^E_{S_+}) .
+\end{align*}
+
+Thus, $\tilde L \in \BC \ext \Lang^*(reg)$.
 
 %S406.1: TODO...
 %S402: TODO...
