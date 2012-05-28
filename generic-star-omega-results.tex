@@ -22,7 +22,7 @@ Proof:
 \Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \cup B \\
 \Leftrightarrow \ & \alpha \in \lim A \cup B
 \end{align*}
-\item $\dlim A \cup \dlim B \subsetneqq \dlim A \cup B$ \newline %S305.4
+\item $\dlim A \cup \dlim B \subseteq \dlim A \cup B$ \newline %S305.4
 Proof:
 \begin{align*}
 & \alpha \in \dlim A \cup \dlim B \\
@@ -30,7 +30,7 @@ Proof:
 \exists N \colon \forall n \ge N \colon \alpha[0,n] \in B \\
 \Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B
 \end{align*}
-There is no equality: $A = (00)^*$, $B = (00)^*0$.
+There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
 
 \
