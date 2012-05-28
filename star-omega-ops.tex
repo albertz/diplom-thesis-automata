@@ -76,7 +76,8 @@ Proof: Follows directly from P2a and P2b.
 \item P4: $\ext \Lang \cup \dext \Lang \subsetneqq \BC \ext \Lang$ \newline
 Proof: $\tilde{L}_4 := \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, $\Sigma = \Set{a,b,c}$. Then we have $\tilde{L}_4 \notin \ext \cup \dext \Lang$, $\tilde{L}_4 \in \BC \ext \Lang$. (R101, p.38)
 \item P5: $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ \newline
-Proof: S405 / Staigner-Wagner-recognizable
+Proof: \ref{gen:staiger-wagner} (Staiger-Wagner-recognizable)
+%S405 / Staigner-Wagner-recognizable
 \item P6a: $\lim \Lang \cap \dlim \Lang \subsetneqq \lim \Lang$ \newline
 Proof: $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. With E3, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
 \item P6b: $\lim \Lang \cap \dlim \Lang \subsetneqq \dlim \Lang$ \newline
