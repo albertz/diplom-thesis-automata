@@ -1,18 +1,35 @@
 \section{General results}
 \label{general-results}
 
-%S401, S303: TODO
+%S401: TODO
 
 Let $\Lang$ be a $*$-language class.
 
 \subsection{general}
 \label{gen:general}
-Let $L \in \Lang$.
+Let $L,A,B \in \Lang$.
 \begin{enumerate}
 \item $\ext L = L \cdot \Sigma^\omega$
 \item $\ext L = \lim L \cdot \Sigma^*$ %S303
 \item $\ext L = \dlim L \cdot \Sigma^*$ %S303, S305.4
 \item $- \lim(-L) = \dlim L$
+\item $\lim A \cup \lim B = \lim A \cup B$ \newline %S305.4
+Proof:
+\begin{align*}
+& \alpha \in \lim A \cup \lim B \\
+\Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \ \vee \ \existsinf n \colon \alpha[0,n] \in B \\
+\Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \cup B \\
+\Leftrightarrow \ & \alpha \in \lim A \cup B
+\end{align*}
+\item $\dlim A \cup \dlim B \subsetneqq \dlim A \cup B$ \newline %S305.4
+Proof:
+\begin{align*}
+& \alpha \in \dlim A \cup \dlim B \\
+\Leftrightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \ \vee \ 
+\exists N \colon \forall n \ge N \colon \alpha[0,n] \in B \\
+\Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B
+\end{align*}
+There is no equality: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
 
 \
@@ -37,7 +54,7 @@ From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in
 \subsection{$\dext \subset \dlim$}
 
 %S302:
-From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$. 
+From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$ (in general, if E3 does not hold). 
 
 \subsection{union, intersection}
 %S303:
