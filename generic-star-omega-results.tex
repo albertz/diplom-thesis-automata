@@ -167,6 +167,97 @@ Open question: Is $L^*(\Ax) \in \Lang$?
 
 \subsection{Kleene-star $= \BC \lim$}
 \label{gen:kleene-star}
-%S407
+%S407: TODO...
+%S306, S306.1:
+Let $U,V \in \Lang$. Look at the non-deterministic automaton $\A$ defined as:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node (U)              {$U$};
+    \node (V) [right of=U] {$V \odot$};
 
-%S306:
+    \path[->] (U) +(-1,0) edge (U)
+              (U)         edge              node {$\epsilon$} (V)
+              (V)         edge  [loop above]       node {} ()
+              ;
+  \end{tikzpicture}
+\]
+
+Then we have $L^\omega_{\text{B"uchi}}(\A) = U \cdot V^\omega$.
+
+Let us construct deterministic automata for $\A$ so that we can formulate 'V will be visited and not be left anymore' and 'finite states of the V-related automaton will be visited infinitely often' (or '$UV^*$ will be visited infinitely often').
+
+In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-determinstic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set. Example:
+
+Let $U = (a+b)^*$, $V = \Set{b}$. I.e. $UV^\omega = \Set{\alpha \in \Set{a,b}^\omega}{\text{at one point in $\alpha$, there are only $b$s}}$. The non-deterministic automaton is:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$1$};
+    \node[state,double] (2) [right of=1] {$2$};
+	
+    \path[->]
+    (1) +(-1,0) edge (1)
+    (1) edge [loop above] node {$a,b$} ()
+    (1) edge node {$\epsilon$} (2)
+    (2) edge [loop above] node {$b$} ()
+    ;
+  \end{tikzpicture}
+\]
+
+Powerset construction: The initial state is $\Set{1,2}$. Then we have:
+\begin{itemize}
+\item $\Set{1,2} \overset{a}\rightarrow \Set{1,2}$
+\item $\Set{1,2} \overset{b}\rightarrow \Set{1,2}$
+\end{itemize}
+This gives the $*$-language $\Set{a,b}^*$ and we cannot formulate $UV^\omega$ in any way from there.
+
+In the construction, when we got the $a$ from $\Set{1,2}$, we knew that we have been deterministically in $1$, i.e. in $U$. We loose this information. To keep it, we introduce another state flag which exactly says wether we have determined that we have been in $U$. Thus, we construct an automaton with the states $\Power(Q) \times \B_{\text{det. been in $U$}}$.
+
+For the example, we get the initial state $(\Set{1,2},1)$. Then we have:
+\begin{itemize}
+\item $(\Set{1,2},1) \overset{a}\rightarrow (\Set{1,2},1)$
+\item $(\Set{1,2},1) \overset{b}\rightarrow (\Set{1,2},0)$
+\item $(\Set{1,2},0) \overset{a}\rightarrow (\Set{1,2},1)$
+\item $(\Set{1,2},0) \overset{b}\rightarrow (\Set{1,2},0)$
+\end{itemize}
+This is the automaton
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$\Set{1,2},1$};
+    \node[state] (2) [right of=1] {$\Set{1,2},0$};
+
+    \path[->]
+    (1) +(-1.5,0) edge (1)
+    (1) edge [loop above] node {$a$} ()
+    (1) edge [bend left] node {$b$} (2)
+    (2) edge [bend left] node {$a$} (1)
+    (2) edge [loop above] node {$b$} ()
+    ;
+  \end{tikzpicture}
+\]
+
+When we mark all states from $V$ and where we have not been deterministically in $U$ as final, this as a co-Büchi automaton gives exactly the condition 'V will be visited and not be left anymore'. Let $L_E$ be the $*$-language of this automata.
+
+When we mark the final states as in the original non-deterministic automata, no matter about $\B_{\text{det. been in $U$}}$, with Büchi-acceptance, we get the condition '$UV^*$ will be visited infinitely often'. This is just $\lim UV^*$.
+
+Together, we get $UV^\omega$, i.e.:
+\[ \lim UV^* \cap \dlim L_E = UV^\omega \]
+
+If we have $L_E \in \Lang$, it follows
+\[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang} \subseteq \BC \lim \Lang . \]
+
+Open question: Is $L_E \in \Lang$?
