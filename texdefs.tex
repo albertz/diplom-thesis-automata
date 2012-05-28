@@ -42,9 +42,9 @@
 
 \NewDocumentCommand\Set{mg}{%
     \IfNoValueTF{#2}{%
-        \ensuremath{\bigl\{ #1 \bigr\}}%
+        \ensuremath{\left\{ #1 \right\}}%
     }{%
-        \ensuremath{\bigl\{ #1 \bigm| #2 \bigr\}}%
+        \ensuremath{\left\{\left. #1 \right| #2 \right\}}%
     }%
 }
 
