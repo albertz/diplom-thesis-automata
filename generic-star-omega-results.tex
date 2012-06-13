@@ -100,7 +100,7 @@ We are now formulating a more general and direct proof for the $\BC \ext \Lang =
 %S305:
 First, we show $\lim \cap \dlim \Lang \subseteq \BC \ext \Lang$.
 
-Let $\tilde L \in \lim \cap \dlim \Lang$, i.e. there are deterministic automaton $\A$ and $\overline \A$ so that $L^\omega_{\text{B"uchi}}(\A) = L^\omega_{\text{co-B"uchi}}(\overline \A) = \tilde L$. Let $Q,\overline Q$ be the states of $\A,\overline \A$. Now look at the product automaton $\A \times \overline \A =: \Ax$ with states $Q \times \overline Q$ and final states $F \times \overline F \subseteq Q \times \overline Q$. $\Ax$ is also deterministic.
+Let $\tilde L \in \lim \cap \dlim \Lang$, i.e. there are deterministic automaton $\A$ and $\overline \A$ so that $L^\omega_{\text{Büchi}}(\A) = L^\omega_{\text{co-Büchi}}(\overline \A) = \tilde L$. Let $Q,\overline Q$ be the states of $\A,\overline \A$. Now look at the product automaton $\A \times \overline \A =: \Ax$ with states $Q \times \overline Q$ and final states $F \times \overline F \subseteq Q \times \overline Q$. $\Ax$ is also deterministic.
 
 %Let $(q,\overline q) \in Q \times \overline F$. If $\overline q$ is not part of a loop in $\A$, we can just take it away from $\overline F$ and get the same $\omega$-language (no matter if Büchi or co-Büchi). Thus assume that all $\overline q \in \overline F$ are part of a loop.
 
@@ -163,7 +163,7 @@ $\tilde L_a \cup \tilde L_b = \lim L_{a1} \cup \lim L_{b1} = \lim L_{a1} \cup L_
 The $\dlim\Lang$ case is harder.
 %S305.5: language theoretical proof: TODO
 %S305.6:
-Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{B"uchi}}(\A_a) = L^\omega_{\text{co-B"uchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{B"uchi}}(\A_b) = L^\omega_{\text{co-B"uchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$. Then we have $L^\omega_{\text{B"uchi}}(\Ax) = L^\omega_{\text{co-B"uchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
+Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{Büchi}}(\A_a) = L^\omega_{\text{co-Büchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{Büchi}}(\A_b) = L^\omega_{\text{co-Büchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$. Then we have $L^\omega_{\text{Büchi}}(\Ax) = L^\omega_{\text{co-Büchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
 
 Thus,
 \[ \tilde L_a \cup \tilde L_b \in \dlim \Lang^*(reg) . \]
@@ -197,7 +197,7 @@ Let $U,V \in \Lang$. Look at the non-deterministic automaton $\A$ defined as:
   \end{tikzpicture}
 \]
 
-Then we have $L^\omega_{\text{B"uchi}}(\A) = U \cdot V^\omega$.
+Then we have $L^\omega_{\text{Büchi}}(\A) = U \cdot V^\omega$.
 
 Let us construct deterministic automata for $\A$ so that we can formulate 'V will be visited and not be left anymore' and 'finite states of the V-related automaton will be visited infinitely often' (or '$UV^*$ will be visited infinitely often').
 
@@ -279,13 +279,15 @@ We also need to show $\BC \lim \Lang \subseteq \Kleene \Lang$.
 %S306.3:
 Show: $\lim \Lang \subseteq \Kleene \Lang$.
 
-Proof: Let $\A$ be a deterministic Büchi automaton for some language $\tilde L = L^\omega_{\text{B"uchi}}(\A) \in \Lang$ with final states $F$.
+Proof: Let $\A$ be a deterministic Büchi automaton for some language $\tilde L = L^\omega_{\text{Büchi}}(\A) \in \Lang$ with final states $F$.
 
 For all finite states $q \in F$: If $q$ is not part of a strongly connected component (SCC), we can ignore it. Let $S$ be the SCC where $q \in S$. Then the set of all $\alpha \in \Sigma^\omega$ which are infinitely often in $q$ can be described as $U_q \cdot V_q^\omega$, where $U_q$ is the set of words so that we arrive in $q$ and $V_q$ is the set of words so that we get from $q$ to $q$. Both sets are regular.
 
 Thus,
-\[ \tilde L = L^\omega_{\text{B"uchi}}(\A) = \bigcup_{q \in F} U_q V_q^\omega . \]
+\[ \tilde L = L^\omega_{\text{Büchi}}(\A) = \bigcup_{q \in F} U_q V_q^\omega . \]
 
 Obviously, the Kleene-Closure is closed under union.
 
 TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
+
+
