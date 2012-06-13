@@ -331,9 +331,11 @@ With this preparation, we show for some $R$ the equalities:
 
 \subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
 %S307.2,S307.3
+Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \begin{align*}
-& L^\omega = \ext L, L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R) \\
+& L^\omega = \ext L \\
 \Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists n \colon \alpha[0,n] \in \bigcup_i \left< w_i\right>_R} \\
-\Leftrightarrow \ &
+\Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists n \colon \delta_{\A_R}(\alpha[0,n]) \in \Set{\left< w_i\right>_R \subseteq S_R}{i}} \\
+\Leftrightarrow \ & L^\omega = L^\omega(\A^E_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
 \end{align*}
 
