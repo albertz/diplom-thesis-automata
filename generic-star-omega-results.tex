@@ -290,4 +290,50 @@ Obviously, the Kleene-Closure is closed under union.
 
 TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
 
+\subsection{$\Lang(R)$ for a relation $R\subseteq\Sigma^* \times \Sigma^*$}
+
+%S307
+If a language class $\Lang(R)$ is defined as finite union of equivalation classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
+\begin{itemize}
+\item the set of equivalent classes of $R$ is finite,
+\item $(v,w) \in R \ \Leftrightarrow \ (va,wa) \in R \ \forall a \in \Sigma$
+\end{itemize}
+(this is the case for LT, LTT, PT),
+then we can construct a canonical deterministic automaton $\A_R$ which has $S_R := \Sigma^* / R$ as states, $\left<\epsilon\right>_R$ is the initial state and the transitions are according to concatenation. Call this an $R$-automaton.
+
+The set of all such $R$-automatoa, varying in the final state set, is isomprophic to $\Lang(R)$. We have
+\[ \Lang(R) = \Set{L(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
+
+Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
+\[ \Lang^\omega_E(\A_R) := \Set{L^\omega(\A^E_R(F))}{F \subseteq S_R} , \]
+$R$-Büchi-automata and
+\[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega(\A_R^{\text{Büchi}})}{F \subseteq S_R} , \]
+$R$-Muller-automata and
+\[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega(\A_R^{\text{Muller}})}{F \subseteq 2^{S_R}} . \]
+
+%S307.1
+For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $R^\omega := \dext R$, i.e.
+\[ (\alpha,\beta) \in R^\omega \ :\Leftrightarrow \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
+
+Analogously to $\Lang(R)$, define the $\omega$-language-class
+\[ \Lang^\omega(R^\omega) := \Set{L^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
+
+With this preparation, we show for some $R$ the equalities:
+\begin{itemize}
+\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$
+\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$
+\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$
+\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$
+\item $\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$
+\item $\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$
+\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$
+\end{itemize}
+
+\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
+%S307.2,S307.3
+\begin{align*}
+& L^\omega = \ext L, L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R) \\
+\Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists n \colon \alpha[0,n] \in \bigcup_i \left< w_i\right>_R} \\
+\Leftrightarrow \ &
+\end{align*}
 
