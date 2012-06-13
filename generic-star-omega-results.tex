@@ -320,9 +320,9 @@ Analogously to $\Lang(R)$, define the $\omega$-language-class
 
 With this preparation, we show for some $R$ the equalities:
 \begin{itemize}
-\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$
-\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$
-\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$
+\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\ref{gen:lang_omega_e})
+\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\ref{gen:lang_omega_buechi})
+\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\ref{gen:lang_omega_muller})
 \item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$
 \item $\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$
 \item $\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$
@@ -330,6 +330,7 @@ With this preparation, we show for some $R$ the equalities:
 \end{itemize}
 
 \subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
+\label{gen:lang_omega_e}
 %S307.2,S307.3
 Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \begin{align*}
@@ -338,4 +339,25 @@ Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists n \colon \delta_{\A_R}(\alpha[0,n]) \in \Set{\left< w_i\right>_R \subseteq S_R}{i}} \\
 \Leftrightarrow \ & L^\omega = L^\omega(\A^E_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
 \end{align*}
+
+\subsection{$\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$}
+\label{gen:lang_omega_buechi}
+%S307.2,S307.3
+Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
+\begin{align*}
+& L^\omega = \lim L \\
+\Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists^\infty n \colon \alpha[0,n] \in \bigcup_i \left< w_i\right>_R} \\
+\Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists^\infty n \colon \delta_{\A_R}(\alpha[0,n]) \in \Set{\left< w_i\right>_R \subseteq S_R}{i}} \\
+\Leftrightarrow \ & L^\omega = L^\omega(\A^{\text{Büchi}}_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
+\end{align*}
+
+\subsection{$\Lang^\omega_{\text{Muller}} = \BC \lim \Lang(R)$}
+\label{gen:lang_omega_muller}
+%S307.2,S307.3
+Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S_R}}$ is also finite. Thus, any $A \in \BC 2^{S_R}$ can be represented in $2^{2^{S_R}}$. This is exactly an acceptance condition in Muller.
+
+\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
+\subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
+\subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
+\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 
