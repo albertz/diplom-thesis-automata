@@ -45,11 +45,14 @@
 
 \newcommand{\defword}[1]{{\bf #1}}
 
+% inspired by http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/macros/latex/contrib/braket/braket.sty
+\def\mid@vertical{\mskip1mu\vrule\mskip1mu}
+\def\midvert{\egroup\;\mid@vertical\;\bgroup}
 \NewDocumentCommand\Set{mg}{%
     \IfNoValueTF{#2}{%
         \ensuremath{\left\{ #1 \right\}}%
     }{%
-        \ensuremath{\left\{ #1 \left| #2 \right.\right\}}%
+        \ensuremath{\left\{ {#1} \;\mid@vertical\; {#2} \right\}}%
     }%
 }
 
