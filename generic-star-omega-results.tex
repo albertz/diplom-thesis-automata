@@ -33,6 +33,21 @@ Proof:
 There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
 
+\label{gen:e-determinism}
+%307.12
+\begin{lemma}
+The $\omega$-language-class accepted by deterministic E-automata is equal to non-deterministic E-automata. I.e., for every non-deterministic E-automaton, we can construct an equivalent deterministic E-automaton.
+\begin{proof} Let $\A^N$ be any non-deterministic automaton and $\A^D$ an ($*$-)equivalent deterministic automaton. Then:
+\begin{align*}
+& \alpha \in L^{E\omega}(\A^N) \\
+\Leftrightarrow \ & \exists n \colon \alpha[0,n] \in L(\A^N) \\
+\Leftrightarrow \ & \exists n \colon \alpha[0,n] \in L(\A^D) \\
+\Leftrightarrow \ & \alpha \in L^{E\omega}(\A^D)
+\end{align*}
+where $L^{E\omega}(\A)$ denotes the set of $\omega$-words which are E-accepted by $\A$. $\A^N$ can be interpreted as an arbitary E-automata and we have shown that we get an equivalent deterministic E-automata.
+\end{proof}
+\end{lemma}
+
 \
 
 %S302.1:
@@ -359,7 +374,11 @@ Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S_R}}$ is also finite. Thus, any $A \in \BC 2^{S_R}$ can be represented in $2^{2^{S_R}}$. This is exactly an acceptance condition in Muller.
 
 \subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
+
+
 \subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
+First, we show "$\subseteq$", i.e. let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Lang(reg)$. Because $L^\omega \in \ext \Lang(reg)$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
+
 \subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
 \subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 
