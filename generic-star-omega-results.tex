@@ -420,13 +420,16 @@ We must find an $R$-Büchi-automaton which accepts $L^\omega$. We will call it t
 
 Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
 
-Look at the SCC $S$ in $\A^M$ where there are final sets $F$ in $\A^M$ with $F \cap S \neq \emptyset$. Let $q \in S$. Let $\F_q$ be the subset of the final state sets of $\A^M$ where $q \in F$ for all $F \in \F_q$. Because those are all loops, we also have $F \subseteq S$ and $\F_q \subseteq 2^S$. Let $\mathcal S_q \subseteq 2^S$ be the set of all possible loops including $q$ in $S$.
+Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final state in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
+%Let $S^- \subseteq S$ be the set of states $q \in S$ where there is a final set $F \subseteq S$ in $\A^M$ with $q \in F$.
+%Let $S^A \subseteq S$ be the set of states $q \in S$ where all final sets $F \subseteq S$ in $\A^M$ have $q \in F$.
+%Let $q \in S$. Let $\F_q$ be the subset of the final state sets of $\A^M$ where $q \in F$ for all $F \in \F_q$. Because those are all loops, we also have $F \subseteq S$ and $\F_q \subseteq 2^S$. Let $\mathcal S_q \subseteq 2^S$ be the set of all possible loops including $q$ in $S$.
 
-1. We want to show that $\F_q \neq \emptyset$. Otherwise, $\A^M$ would only accept words that loop in $S$ but don't visit $q$ infinitely often. We cannot express that negative condition in Büchi.
+We want to show that $\F_q \neq \emptyset$. Otherwise, $\A^M$ would only accept words that loop in $S$ but don't visit $q$ infinitely often. We cannot express that negative condition in Büchi.
 
-2. We want to show that $\F_q = \mathcal S_q$.
+%2. We want to show that $\F_q = \mathcal S_q$.
 
-Case 2: $\F_q = \emptyset$. We want to show that
+Case 2: $\F_q \neq \emptyset$. We want to show that
 
 Then, $\A^M$ accepts all words in $L_q \cdot L_{q,S}^\omega$, where $L_q$ is the set of words to $q$ and $L^\omega_{q,S}$ is the set of words of possible infinite postfixes after $q$ in $S$ so that they are accepted. Any word with a prefix in $L_q$, which is not in $L_q \cdot L^\omega_{q,S}$, will not be accepted by $\A^M$ because $\A^M$ is deterministic. Also, because $L_{q^E} \cap L_q \neq \emptyset$ and $L_{q^E} \cdot \Sigma^\omega \subseteq L^\omega$ and $L_q \cdot L^\omega_{q,S} \subseteq L^\omega$, we get $L^\omega_{q,S} \neq \emptyset$.
 
