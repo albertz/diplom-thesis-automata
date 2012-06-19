@@ -389,14 +389,13 @@ Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according t
 
 Look at a final state $q^E$ of $\A^E$. Without restriction, we can assume that there is no path that we can reach multiple final states at once. Let $L_{q^E}$ be all words which reach $q^E$ exactly once at the end.
 
-Let $w \in L_{q^E}$. In $\A^M$, after $w$, we reached a state where anything that follows will eventually reach a SCC where any possible looping subset is an element of the final state set of $\A^M$ and there is no way out of the SCC.
-
+Let $w \in L_{q^E}$.
+%In $\A^M$, after $w$, we reached a state where anything that follows will eventually reach a SCC where any possible looping subset is an element of the final state set of $\A^M$ and there is no way out of the SCC.
 %Look at some SCC $S$ in $\A^M$. Let $q \in S$. Let $\F$ be the subset of the finite state set of $\A^M$ so that $q \in F$ for all $F \in \F$, i.e. $F \cap S \neq \emptyset$. We can ignore all $F$ which are not a loop because they would not accept anything because they cannot be reached infinitely often. Because $S$ is a SCC and $F$ is a loop, we also get $F \subseteq S$.
-
-Let $q$ be the state in $\A^M$ which is reached after $w$. Let $S$ be the set of states which can be reached from $q$.
+Let $q$ be the state in $\A^M$ which is reached after $w$. Let $S$ be the set of states in $\A^M$ which can be reached from $q$.
 %Let $\F$ be the subset of the finite state set of $\A^M$ so that $F \cap S \neq \emptyset$ for all $F \in \F$. We also get $F \subseteq S$.
 
-Then, $\A^M$ accepts all words of $L_q \cdot L_{q,S}^\omega$, where $L_q$ is the set of words to $q$ and $L^\omega_{q,S}$ is the set of words of possible infinite postfixes after $q$ in $S$ so that they are accepted.
+Then, $\A^M$ accepts all words in $L_q \cdot L_{q,S}^\omega$, where $L_q$ is the set of words to $q$ and $L^\omega_{q,S}$ is the set of words of possible infinite postfixes after $q$ in $S$ so that they are accepted.
 %loops $q\rightarrow q$ in $\F$.
 Any word with a prefix in $L_q$, which is not in $L_q \cdot L^\omega_{q,S}$, will not be accepted by $\A^M$ because $\A^M$ is deterministic. Also, because $L_{q^E} \cap L_q \neq \emptyset$ and $L_{q^E} \cdot \Sigma^\omega \subseteq L^\omega$ and $L_q \cdot L^\omega_{q,S} \subseteq L^\omega$, we get $L^\omega_{q,S} \neq \emptyset$.
 
@@ -409,5 +408,8 @@ Thus, $\A^M$ accepts all words in $L_q \cdot \Sigma^\omega$. Mark $q$ as a final
 Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\omega$ which is not accepted by $\overline{\A}^M$. I.e., the $R$-E-automata $\overline{\A}^M$ accepts exactly $L^\omega$. I.e. $L^\omega \in \ext \Lang(R)$.
 
 \subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
+%S307.6,S307.8
+
+
 \subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 
