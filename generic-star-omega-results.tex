@@ -306,6 +306,7 @@ Obviously, the Kleene-Closure is closed under union.
 TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
 
 \subsection{$\Lang(R)$ for a relation $R\subseteq\Sigma^* \times \Sigma^*$}
+\label{gen:R-automata}
 
 %S307
 If a language class $\Lang(R)$ is defined as finite union of equivalation classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
@@ -316,15 +317,15 @@ If a language class $\Lang(R)$ is defined as finite union of equivalation classe
 (this is the case for LT, LTT, PT),
 then we can construct a canonical deterministic automaton $\A_R$ which has $S_R := \Sigma^* / R$ as states, $\left<\epsilon\right>_R$ is the initial state and the transitions are according to concatenation. Call this an $R$-automaton.
 
-The set of all such $R$-automatoa, varying in the final state set, is isomprophic to $\Lang(R)$. We have
+The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang(R) = \Set{L(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
 
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
 \[ \Lang^\omega_E(\A_R) := \Set{L^\omega(\A^E_R(F))}{F \subseteq S_R} , \]
 $R$-Büchi-automata and
-\[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega(\A_R^{\text{Büchi}})}{F \subseteq S_R} , \]
+\[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega(\A_R^{\text{Büchi}}(F))}{F \subseteq S_R} , \]
 $R$-Muller-automata and
-\[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega(\A_R^{\text{Muller}})}{F \subseteq 2^{S_R}} . \]
+\[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega(\A_R^{\text{Muller}}(\F))}{\F \subseteq 2^{S_R}} . \]
 
 %S307.1
 For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $R^\omega := \dext R$, i.e.
@@ -368,16 +369,35 @@ Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \Leftrightarrow \ & L^\omega = L^\omega(\A^{\text{Büchi}}_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
 \end{align*}
 
-\subsection{$\Lang^\omega_{\text{Muller}} = \BC \lim \Lang(R)$}
+\subsection{$\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$}
 \label{gen:lang_omega_muller}
 %S307.2,S307.3
 Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S_R}}$ is also finite. Thus, any $A \in \BC 2^{S_R}$ can be represented in $2^{2^{S_R}}$. This is exactly an acceptance condition in Muller.
 
 \subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
-
+%S307.4,S307.5
 
 \subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
-First, we show "$\subseteq$", i.e. let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Lang(reg)$. Because $L^\omega \in \ext \Lang(reg)$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
+%S307.6,S307.7,S307.8
+We have $\ext \Lang(R) \subseteq \Lang(reg)$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
+
+Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Lang(reg)$. Because $L^\omega \in \ext \Lang(reg)$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
+
+We must find an $R$-E-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ E-automaton and will construct it in the following.
+
+Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Let $\overline{\A}^M$ have the same states and transitions as $\A^M$.
+
+%Look at a final state $q$ of $\A^E$. Without restriction, we can assume that there is no path that we can reach multiple final states at once. Let $L^q$ be all $w$ which reach $q$ exactly once at the end.
+
+%In $\A^M$, after $w$, we reached a state where anything that follows will reach a SCC where any possible looping subset is an element of the final state set of $\A^M$ and there is no way out of the SCC.
+
+Look at some SCC $S$ in $\A^M$. Let $q \in S$. Let $\F$ be the subset of the finite state set of $\A^M$ so that $q \in F$ for all $F \in \F$, i.e. $F \cap S \neq \emptyset$. We can ignore all $F$ which are not a loop because they would not accept anything because they cannot be reached infinitely often. Because $S$ is a SCC and $F$ is a loop, we also get $F \subseteq S$.
+
+Then, $\A^M$ accepts all words of $L_q \cdot L_{q,\F}^\omega$, where $L_q$ is the set of words to $q$ and $L_{q,\F}$ is the set of words of possible loops $q\rightarrow q$ in $\F$. Also, any word with a prefix in $L_q$, which is not in $L_q \cdot L^\omega_{q,\F}$, will not be accepted by $\A^M$ because $\A^M$ is deterministic.
+
+Assuming $L^\omega_{q,\F} \neq \Sigma^\omega$. Then we would have $L^\omega \not\in \ext \Lang(reg)$, which is a contradiction. I.e. $L^\omega_{q,\F} = \Sigma^\omega$. Because of $L^\omega_{q,\F} = \Sigma^\omega$, every possible loop in $S$ is in $\F$.
+
+Thus, $\A^M$ accepts all words in $L_q \cdot \Sigma^\omega$.
 
 \subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
 \subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
