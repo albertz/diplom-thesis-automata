@@ -435,7 +435,7 @@ Let $\alpha \in L^\omega(\overline{\A}^M)$. Let $q$ be some final state in $\ove
 
 Let us show $\F_q = \mathcal S_q$ under the condition $\F_q \neq \emptyset$. Of course we have $\F_q \subseteq \mathcal S_q$. Let $\A^B$ be the deterministic Büchi automaton for $L^\omega$ (we have $L^\omega \in \lim \Lang(reg)$).
 Let $L_q$ be the set of words which reach $q$ in $\A^M$.
-We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ (TODO: does that exists?!).
+We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ or $F \cup S \in \F_q$ (TODO: does that exists?!).
 
 Let $L_{q,S} \subseteq \Sigma^*$ be the set of non-looping words from $q \rightarrow q$ in $S$, and likewise $L_{q,F} \subseteq \Sigma^*$ in $F$.
 
