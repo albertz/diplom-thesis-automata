@@ -420,25 +420,35 @@ We must find an $R$-Büchi-automaton which accepts $L^\omega$. We will call it t
 
 Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
 
-Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final state in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
-%Let $S^- \subseteq S$ be the set of states $q \in S$ where there is a final set $F \subseteq S$ in $\A^M$ with $q \in F$.
-%Let $S^A \subseteq S$ be the set of states $q \in S$ where all final sets $F \subseteq S$ in $\A^M$ have $q \in F$.
-%Let $q \in S$. Let $\F_q$ be the subset of the final state sets of $\A^M$ where $q \in F$ for all $F \in \F_q$. Because those are all loops, we also have $F \subseteq S$ and $\F_q \subseteq 2^S$. Let $\mathcal S_q \subseteq 2^S$ be the set of all possible loops including $q$ in $S$.
+Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final states in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
 
-We want to show that $\F_q \neq \emptyset$. Otherwise, $\A^M$ would only accept words that loop in $S$ but don't visit $q$ infinitely often. We cannot express that negative condition in Büchi.
+Case 1: $\F_q = \emptyset$. %We want to show that there is no final state set $F$ in $\A^M$ with $F \cap S \neq \emptyset$ in that case. Otherwise, $\A^M$ would only accept words that loop in $S$ but don't visit $q$ infinitely often. We cannot express that negative condition in Büchi.
 
-%2. We want to show that $\F_q = \mathcal S_q$.
+Case 2: $\F_q \neq \emptyset$.
+In that case, mark $q$ as a final state in $\overline{\A}^M$. We will show below that in that case, we have $\F_q = \mathcal S_q$.
 
-Case 2: $\F_q \neq \emptyset$. We want to show that
+For the constructed Büchi-automaton $\overline{\A}^M$, we show that it accepts exactly $L^\omega$.
 
-Then, $\A^M$ accepts all words in $L_q \cdot L_{q,S}^\omega$, where $L_q$ is the set of words to $q$ and $L^\omega_{q,S}$ is the set of words of possible infinite postfixes after $q$ in $S$ so that they are accepted. Any word with a prefix in $L_q$, which is not in $L_q \cdot L^\omega_{q,S}$, will not be accepted by $\A^M$ because $\A^M$ is deterministic. Also, because $L_{q^E} \cap L_q \neq \emptyset$ and $L_{q^E} \cdot \Sigma^\omega \subseteq L^\omega$ and $L_q \cdot L^\omega_{q,S} \subseteq L^\omega$, we get $L^\omega_{q,S} \neq \emptyset$.
+Let $\alpha \in L^\omega$. Then, the set of states $F$ infinitely often visited by $\alpha$ in $\A^M$ is some final state set of the Muller-automaton $\A^M$. For any $q \in F$, we have $\F_q \neq \emptyset$. Thus, $q$ is marked as a final state in $\overline{\A}^M$ and thus, $\overline{\A}^M$ accepts $\alpha$.
 
-Assuming $L^\omega_{q,S} \neq \Sigma^\omega$. Then we would have $L^\omega \not\in \ext \Lang(reg)$, which is a contradiction. I.e. $L^\omega_{q,S} = \Sigma^\omega$.
+Let $\alpha \in L^\omega(\overline{\A}^M)$. Let $q$ be some final state in $\overline{\A}^M$ which is infinitely often visited by $\alpha$. Then, $\F_q \neq \emptyset$ from the construction. Assuming $\F_q = \mathcal S_q$, no matter what other loops of the related SCC are visited infinitely often by $\alpha$, it will be accepted by $\A^M$. Then, $\alpha \in L^\omega$.
 
-Thus, $\A^M$ accepts all words in $L_q \cdot \Sigma^\omega$. Mark $q$ as a final state in $\overline{\A}^M$. Thus, $\overline{\A}^M$ E-accepts all words in $L_q \cdot \Sigma^\omega \subseteq L^\omega$.
+Let us show $\F_q = \mathcal S_q$ under the condition $\F_q \neq \emptyset$. Of course we have $\F_q \subseteq \mathcal S_q$. Let $\A^B$ be the deterministic Büchi automaton for $L^\omega$ (we have $L^\omega \in \lim \Lang(reg)$).
+Let $L_q$ be the set of words which reach $q$ in $\A^M$.
+We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ (TODO: does that exists?!).
 
-Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\omega$ which is not accepted by $\overline{\A}^M$. I.e., the $R$-E-automata $\overline{\A}^M$ accepts exactly $L^\omega$. I.e. $L^\omega \in \ext \Lang(R)$.
+Let $L_{q,S} \subseteq \Sigma^*$ be the set of non-looping words from $q \rightarrow q$ in $S$, and likewise $L_{q,F} \subseteq \Sigma^*$ in $F$.
 
+Let $w \in L_q$, $\overline w_1 \in L_{q,F}$. Then, the infinite states visited by $w \overline w_1$ are exactly $F$. Thus, we have $w \overline w_1 \in L^\omega$.
+Let $\overline w_2 \in L_{q,S}$.
+In $\A^B$, after $w \cdot \Set{\overline w_1, \overline w_2}^\omega$, we will eventually reach a final SCC $S_B$. Let $\tilde w \in w \cdot \Set{\overline w_1, \overline w_2}^*$, so that $\tilde w$ reaches $S_B$. We have $\tilde w \cdot \Set{\overline w_1,\overline w_2}^* \cdot \overline w_1^\omega \subseteq L^\omega$.
+
+%Let $Q_B \subseteq S_B$ with $\tilde w \rightarrow Q_B$ (denotes: $\tilde w$ reaches $Q_B$), so that $\forall q_B \in Q_B \colon q_B \xrightarrow{\Set{\overline w_1,\overline w_2}^*} Q_B$ (denotes: from $q_B$ on after any word in $\Set{\overline w_1,\overline w_2}^*$, we will stay in $Q_B$).
+
+Let $W := \tilde w \cdot \Set{\overline w_1,\overline w_2}^*$, $W_1 := \overline w_1^+$, $W_2 := (\overline w_1^* \overline w_2 \overline w_1^*)^+$.
+Search $q_B \in S_B$ with $W \rightarrow q_B$, $q_B \xrightarrow{W_1} q_B$ and $q_B \xrightarrow{W_2} q_B$. Assuming such a $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$ so that $\tilde w_0 \rightarrow q_B$, $q_B \xrightarrow{\tilde w_i} q_B$ for $i \in \Set{1,2}$. Because $\tilde w_0 \cdot \tilde w_1^\omega \in L^\omega$, there is a final state $\tilde q_B$ in $\A^B$ on the path $q_B \xrightarrow{\tilde w_1} q_B$. Then, $\beta := \tilde w_0 \cdot (\tilde w_1 \cdot \tilde w_2)^\omega$ also visits $\tilde q_B$ infinitely often, thus $\A^B$ also accepts $\beta$. In $\A^M$, $\beta$ visits exactly $F \cup S = S$ infinitely often. Thus, $\A_M$ does not accept $\beta$. That is a contradiction. Thus, $\F_q = \mathcal S_q$.
+
+TODO: Now show that such $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$.
 
 \subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 
