@@ -435,7 +435,7 @@ Let $\alpha \in L^\omega(\overline{\A}^M)$. Let $q$ be some final state in $\ove
 
 Let us show $\F_q = \mathcal S_q$ under the condition $\F_q \neq \emptyset$. Of course we have $\F_q \subseteq \mathcal S_q$. Let $\A^B$ be the deterministic Büchi automaton for $L^\omega$ (we have $L^\omega \in \lim \Lang(reg)$).
 Let $L_q$ be the set of words which reach $q$ in $\A^M$.
-We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ or $F \cup S \in \F_q$ (TODO: does that exists?!).
+We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ or $F \cup S \in \F_q$ (TODO: does that exists?! -> no!).
 
 Let $L_{q,S} \subseteq \Sigma^*$ be the set of non-looping words from $q \rightarrow q$ in $S$, and likewise $L_{q,F} \subseteq \Sigma^*$ in $F$.
 
@@ -443,10 +443,8 @@ Let $w \in L_q$, $\overline w_1 \in L_{q,F}$. Then, the infinite states visited 
 Let $\overline w_2 \in L_{q,S}$.
 In $\A^B$, after $w \cdot \Set{\overline w_1, \overline w_2}^\omega$, we will eventually reach a final SCC $S_B$. Let $\tilde w \in w \cdot \Set{\overline w_1, \overline w_2}^*$, so that $\tilde w$ reaches $S_B$. We have $\tilde w \cdot \Set{\overline w_1,\overline w_2}^* \cdot \overline w_1^\omega \subseteq L^\omega$.
 
-%Let $Q_B \subseteq S_B$ with $\tilde w \rightarrow Q_B$ (denotes: $\tilde w$ reaches $Q_B$), so that $\forall q_B \in Q_B \colon q_B \xrightarrow{\Set{\overline w_1,\overline w_2}^*} Q_B$ (denotes: from $q_B$ on after any word in $\Set{\overline w_1,\overline w_2}^*$, we will stay in $Q_B$).
-
 Let $W := \tilde w \cdot \Set{\overline w_1,\overline w_2}^*$, $W_1 := \overline w_1^+$, $W_2 := (\overline w_1^* \overline w_2 \overline w_1^*)^+$.
-Search $q_B \in S_B$ with $W \rightarrow q_B$, $q_B \xrightarrow{W_1} q_B$ and $q_B \xrightarrow{W_2} q_B$. Assuming such a $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$ so that $\tilde w_0 \rightarrow q_B$, $q_B \xrightarrow{\tilde w_i} q_B$ for $i \in \Set{1,2}$. Because $\tilde w_0 \cdot \tilde w_1^\omega \in L^\omega$, there is a final state $\tilde q_B$ in $\A^B$ on the path $q_B \xrightarrow{\tilde w_1} q_B$. Then, $\beta := \tilde w_0 \cdot (\tilde w_1 \cdot \tilde w_2)^\omega$ also visits $\tilde q_B$ infinitely often, thus $\A^B$ also accepts $\beta$. In $\A^M$, $\beta$ visits exactly $F \cup S = S$ infinitely often. Thus, $\A_M$ does not accept $\beta$. That is a contradiction. Thus, $\F_q = \mathcal S_q$.
+Search $q_B \in S_B$ with $W \rightarrow q_B$, $q_B \xrightarrow{W_1} q_B$ and $q_B \xrightarrow{W_2} q_B$. Assuming such a $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$ so that $\tilde w_0 \rightarrow q_B$, $q_B \xrightarrow{\tilde w_i} q_B$ for $i \in \Set{1,2}$. Because $\tilde w_0 \cdot \tilde w_1^\omega \in L^\omega$, there is a final state $\tilde q_B$ in $\A^B$ on the path $q_B \xrightarrow{\tilde w_1} q_B$. Then, $\beta := \tilde w_0 \cdot (\tilde w_1 \cdot \tilde w_2)^\omega$ also visits $\tilde q_B$ infinitely often, thus $\A^B$ also accepts $\beta$. In $\A^M$, $\beta$ visits exactly $F \cup S$ infinitely often. Thus, $\A_M$ does not accept $\beta$. That is a contradiction. Thus, $\F_q = \mathcal S_q$.
 
 TODO: Now show that such $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$.
 
