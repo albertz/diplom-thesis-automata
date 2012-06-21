@@ -5,7 +5,8 @@
 
 Let $\Lang$ be a $*$-language class.
 
-\subsection{general}
+\subsection{Background}
+\begin{lemma}
 \label{gen:general}
 Let $L,A,B \in \Lang$.
 \begin{enumerate}
@@ -32,10 +33,11 @@ Proof:
 \end{align*}
 There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
+\end{lemma}
 
-\label{gen:e-determinism}
 %307.12
 \begin{lemma}
+\label{gen:e-determinism}
 The $\omega$-language-class accepted by deterministic E-automata is equal to non-deterministic E-automata. I.e., for every non-deterministic E-automaton, we can construct an equivalent deterministic E-automaton.
 \begin{proof} Let $\A^N$ be any non-deterministic automaton and $\A^D$ an ($*$-)equivalent deterministic automaton. Then:
 \begin{align*}
@@ -53,35 +55,44 @@ where $L^{E\omega}(\A)$ denotes the set of $\omega$-words which are E-accepted b
 %S302.1:
 We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In \ref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
 
-\subsection{non suffix sensitive}
-\label{gen:non-suffix-sens}
+\subsection{Classification for arbitrary language classes}
 
+%\subsection{non suffix sensitive}
 % S303, S101a:
+\begin{lemma}
+\label{gen:non-suffix-sens}
 If E1 ($\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang$, i.e. $\Lang$ is non suffix sensitive) holds for $\Lang$: For $L \in \Lang$, we have $\ext L = \lim L \Sigma^* = \dlim L \Sigma^*$ and thus
 \[ \ext \Lang \subseteq \lim \Lang \cup \dlim \Lang . \]
+\end{lemma}
 
-\subsection{$\BC \ext \subseteq \BC \lim$}
-\label{gen:S302a}
-
+%\subsection{$\BC \ext \subseteq \BC \lim$}
 %S302:
+\begin{lemma}
+\label{gen:S302a}
 From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in \Lang} \subseteq \Set{-\lim L}{L \in \Lang}$. Thus, it also follows
 \[ \BC \ext \Lang \subseteq \BC \lim \Lang . \]
+\end{lemma}
 
-\subsection{$\dext \subset \dlim$}
-
+%\subsection{$\dext \subset \dlim$}
 %S302:
-From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$ (in general, if E3 does not hold). 
+\begin{lemma}
+From $\ext \Lang \subseteq \lim \Lang$, we need E3 ($\Lang$ closed under negation) to get $\dext \Lang \subseteq \dlim \Lang$.
+\end{lemma}
+This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang \neq \dext \Lang$ (in general, if E3 does not hold). 
 
-\subsection{union, intersection}
+%\subsection{union, intersection}
 %S303:
+\begin{lemma}
 \begin{itemize}
 \item
 E2a (closed under union) $\Rightarrow \bigcup \ext \Lang \subseteq \ext \Lang$.
 \item
 E2b (closed under intersection) $\Rightarrow \bigcap \ext \Lang \subseteq \ext \Lang$.
 \end{itemize}
+\end{lemma}
 
-\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
+%\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
+\begin{lemma}
 If there is $L_\Sigma \in \Lang_\Sigma$ with $L_\Sigma \in \ext \Lang_\Sigma, L_\Sigma \not\in \dext \Lang_\Sigma$ and E3 (closed under negation) holds for $\Lang$:
 \begin{itemize}
 \item[$\Rightarrow$] $-L_\Sigma \in \dext \Lang_\Sigma, -L_\Sigma \not\in \ext \Lang_\Sigma$
@@ -90,7 +101,9 @@ $L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \ext \cup \dext \Lang_{\Sigma_1 \dot{\c
 \end{itemize}
 Thus,
 \[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang . \]
+\end{lemma}
 
+\begin{lemma}
 Similarily, if there is $L_\Sigma \in \lim \Lang_\Sigma, L_\Sigma \not\in \dlim \Lang_\Sigma$ and E3 holds for $\Lang$:
 \begin{itemize}
 \item[$\Rightarrow$] $-L_\Sigma \in \dlim \Lang_\Sigma, -L_\Sigma \not\in \lim \Lang_\Sigma$
@@ -99,19 +112,27 @@ $L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \lim \cup \dlim \Lang_{\Sigma_1 \dot{\c
 \end{itemize}
 Thus,
 \[ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
+\end{lemma}
 
-
-\subsection{$\BC \ext = \lim \cap \dlim$}
-\label{gen:staiger-wagner}
-%S405:
+%\subsection{$\BC \ext = \lim \cap \dlim$}
+\begin{mydef}
 A Staiger-Wagner automaton (weak Muller automaton) is of the same form $\A = (Q,\Sigma,q_0,\delta,\F)$ as a Muller automaton with the acceptance condition that a run $\rho$ is accepting if and only if $\Occ(\rho) := \Set{q \in Q \colon \text{q occurs in } p} \in \F$.  (R101,Def.61,p.43)
+\end{mydef}
 
+\begin{lemma}
+%S405:
 We see (R101,Th.63+64,p.44) that the class of Staigner-Wagner-recognized languages is exactly the class $\BC \ext \Lang^*(reg)$ and also $\lim \cap \dlim \Lang^*(reg)$.
+\end{lemma}
 
 We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata (where some of the ideas are loosely based on (R101,Th.63+64,p.44)).
 
 \
 
+\begin{lemma}
+\label{gen:staiger-wagner}
+\[ \BC \ext \Lang = \lim \cap \dlim \Lang \]
+
+\begin{proof}
 %S305:
 First, we show $\lim \cap \dlim \Lang \subseteq \BC \ext \Lang$.
 
@@ -186,12 +207,18 @@ Thus,
 Open question: Is $L^*(\Ax) \in \Lang$?
 
 \end{enumerate}
+\end{proof}
+\end{lemma}
 
 %S406.1: TODO...
 %S402: TODO...
 
-\subsection{Kleene-star $= \BC \lim$}
+%\subsection{Kleene-star $= \BC \lim$}
+\begin{lemma}
 \label{gen:kleene-star}
+\[ \BC \lim \Lang = \Kleene \Lang \]
+
+\begin{proof}
 %S407: TODO...
 %S306, S306.1:
 Let $U,V \in \Lang$. Look at the non-deterministic automaton $\A$ defined as:
@@ -304,10 +331,17 @@ Thus,
 Obviously, the Kleene-Closure is closed under union.
 
 TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
+\end{proof}
+\end{lemma}
 
-\subsection{$\Lang(R)$ for a relation $R\subseteq\Sigma^* \times \Sigma^*$}
+\subsection{Congruenced based language classes}
+
+\subsubsection{Introduction}
 \label{gen:R-automata}
 
+We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sigma^*$.
+
+\begin{mydef}
 %S307
 If a language class $\Lang(R)$ is defined as finite union of equivalation classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
 \begin{itemize}
@@ -316,23 +350,30 @@ If a language class $\Lang(R)$ is defined as finite union of equivalation classe
 \end{itemize}
 (this is the case for LT, LTT, PT),
 then we can construct a canonical deterministic automaton $\A_R$ which has $S_R := \Sigma^* / R$ as states, $\left<\epsilon\right>_R$ is the initial state and the transitions are according to concatenation. Call this an $R$-automaton.
+\end{mydef}
 
+\begin{mydef}
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang(R) = \Set{L(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
+\end{mydef}
 
+\begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
 \[ \Lang^\omega_E(\A_R) := \Set{L^\omega(\A^E_R(F))}{F \subseteq S_R} , \]
 $R$-Büchi-automata and
 \[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega(\A_R^{\text{Büchi}}(F))}{F \subseteq S_R} , \]
 $R$-Muller-automata and
 \[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega(\A_R^{\text{Muller}}(\F))}{\F \subseteq 2^{S_R}} . \]
+\end{mydef}
 
 %S307.1
+\begin{mydef}
 For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $R^\omega := \dext R$, i.e.
 \[ (\alpha,\beta) \in R^\omega \ :\Leftrightarrow \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
 
 Analogously to $\Lang(R)$, define the $\omega$-language-class
 \[ \Lang^\omega(R^\omega) := \Set{L^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
+\end{mydef}
 
 With this preparation, we show for some $R$ the equalities:
 \begin{itemize}
@@ -347,9 +388,12 @@ With this preparation, we show for some $R$ the equalities:
 
 We will see that all those equations hold for $\Lang(LT)$, $\Lang(LTT)$ and $\Lang(PT)$.
 
-\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
-\label{gen:lang_omega_e}
+\begin{lemma}
+%\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
 %S307.2,S307.3
+\label{gen:lang_omega_e}
+\[ \Lang^\omega_E(\A_R) = \ext \Lang(R) \]
+\begin{proof}
 Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \begin{align*}
 & L^\omega = \ext L \\
@@ -357,10 +401,15 @@ Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists n \colon \delta_{\A_R}(\alpha[0,n]) \in \Set{\left< w_i\right>_R \subseteq S_R}{i}} \\
 \Leftrightarrow \ & L^\omega = L^\omega(\A^E_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
 \end{align*}
+\end{proof}
+\end{lemma}
 
-\subsection{$\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$}
-\label{gen:lang_omega_buechi}
+\begin{lemma}
+%\subsection{$\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$}
 %S307.2,S307.3
+\label{gen:lang_omega_buechi}
+\[ \Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R) \]
+\begin{proof}
 Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \begin{align*}
 & L^\omega = \lim L \\
@@ -368,18 +417,34 @@ Let $L = \bigcup_i \left< w_i\right>_R, L \in \Lang(R)$. Then
 \Leftrightarrow \ & L^\omega = \Set{\alpha \in \Sigma^\omega}{\exists^\infty n \colon \delta_{\A_R}(\alpha[0,n]) \in \Set{\left< w_i\right>_R \subseteq S_R}{i}} \\
 \Leftrightarrow \ & L^\omega = L^\omega(\A^{\text{Büchi}}_R(\Set{\left< w_i\right>_R \subseteq S_R}{i}))
 \end{align*}
+\end{proof}
+\end{lemma}
 
-\subsection{$\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$}
-\label{gen:lang_omega_muller}
+\begin{lemma}
+%\subsection{$\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$}
 %S307.2,S307.3
+\label{gen:lang_omega_muller}
+\[ \Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R) \]
+\begin{proof}
 Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S_R}}$ is also finite. Thus, any $A \in \BC 2^{S_R}$ can be represented in $2^{2^{S_R}}$. This is exactly an acceptance condition in Muller.
+\end{proof}
+\end{lemma}
 
-\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
+\begin{lemma}
+%\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
 %S307.4,S307.5
+\[ \Lang^\omega(R^\omega) = \BC \ext \Lang(R) \]
+\begin{proof}
+TODO...
+\end{proof}
+\end{lemma}
 
-\subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
-\label{gen:R-bclim-cap-ext}
+\begin{lemma}
+%\subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
 %S307.6,S307.7,S307.8
+\label{gen:R-bclim-cap-ext}
+\[ \BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R) \]
+\begin{proof}
 We have $\ext \Lang(R) \subseteq \ext \Lang(reg)$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
 Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Lang(reg)$. Because $L^\omega \in \ext \Lang(reg)$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
@@ -457,6 +522,15 @@ Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words whic
 %Search $q_B \in S_B$ with $W \rightarrow q_B$, $q_B \xrightarrow{W_1} q_B$ and $q_B \xrightarrow{W_2} q_B$. Assuming such a $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$ so that $\tilde w_0 \rightarrow q_B$, $q_B \xrightarrow{\tilde w_i} q_B$ for $i \in \Set{1,2}$. Because $\tilde w_0 \cdot \tilde w_1^\omega \in L^\omega$, there is a final state $\tilde q_B$ in $\A^B$ on the path $q_B \xrightarrow{\tilde w_1} q_B$. Then, $\beta := \tilde w_0 \cdot (\tilde w_1 \cdot \tilde w_2)^\omega$ also visits $\tilde q_B$ infinitely often, thus $\A^B$ also accepts $\beta$. In $\A^M$, $\beta$ visits exactly $F \cup S$ infinitely often. Thus, $\A_M$ does not accept $\beta$. That is a contradiction. Thus, $\F_q = \mathcal S_q$.
 
 %TODO: Now show that such $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$.
+\end{proof}
+\end{lemma}
 
-\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
+\begin{lemma}
+%\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
+\[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
+\begin{proof}
+\end{proof}
+\end{lemma}
+
+
 
