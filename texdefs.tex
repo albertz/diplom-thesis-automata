@@ -63,3 +63,9 @@
 %\newcommand{\abs}[1]{\mathopen| #1 \mathclose|}
 %\newcommand{\Abs}[1]{\left| #1 \right|}
 \newcommand{\abs}[1]{\left| #1 \right|}
+
+% http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_today
+\def\monthgerman{\ifcase\month \or
+  Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or
+  Juli\or August\or September\or Oktober\or November\or Dezember\fi}
+\def\todaygerman{\number\day.~\monthgerman\space\number\year}
