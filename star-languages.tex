@@ -1,4 +1,4 @@
-\section{$*$-language classes}
+\section{Results on concrete $*$-language classes}
 
 \subsection{Overview}
 %...
@@ -183,6 +183,18 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 $\subseteq$: Exactly like the proof for PT except that we leave out the negated part.
 $\supseteq$: Also like the proof for PT.
 \end{proof}
+
+We also have a relation between pos-PT and PT.
+
+\begin{thm}
+\[ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) \]
+
+\begin{proof}
+In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{PT})$ we actually proved $\BC \lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{pos-PT})$. Similiarly we also proved $\BC \ext \Lang^* (\mathtext{PT}) \subseteq \BC \lim \Lang^* (\mathtext{pos-PT})$.
+
+With \ref{thm.ext.lim.posPT} and \ref{thm.PT} we get the claimed equality.
+\end{proof}
+\end{thm}
 
 
 \subsection{locally testable}
