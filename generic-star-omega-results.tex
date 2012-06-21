@@ -422,7 +422,7 @@ Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according t
 
 Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final states in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
 
-Case 1: $\F_q = \emptyset$. %We want to show that there is no final state set $F$ in $\A^M$ with $F \cap S \neq \emptyset$ in that case. Otherwise, $\A^M$ would only accept words that loop in $S$ but don't visit $q$ infinitely often. We cannot express that negative condition in Büchi.
+Case 1: $\F_q = \emptyset$.
 
 Case 2: $\F_q \neq \emptyset$.
 In that case, mark $q$ as a final state in $\overline{\A}^M$. We will show below that in that case, we have $\F_q = \mathcal S_q$.
