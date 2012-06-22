@@ -14,7 +14,7 @@ This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages
 \end{thm}
 
 \begin{proof}
-Let $\varphi \in \mathrm{FO[<]}$. By the \cite[Normal Form Theorem (4.4)]{CombTheoryOmegaAut} there are bounded formulas $\varphi_1(y),\dotsb,\varphi_r(y),\psi_1(y),\dotsb,\psi_r(y)$ such that for all $\alpha \in \Sigma^\omega$:
+Let $\varphi \in \mathrm{FO[<]}$. By the \cite[Normal Form Theorem (4.4)]{CombR107} there are bounded formulas $\varphi_1(y),\dotsb,\varphi_r(y),\psi_1(y),\dotsb,\psi_r(y)$ such that for all $\alpha \in \Sigma^\omega$:
 \[ \alpha \models \varphi \Leftrightarrow \alpha \models \bigvee_{i=1}^r \left( \forall x \exists y > x \colon \varphi_i (y) \right) \wedge \neg \left( \forall x \exists y > x \colon \psi_i (y) \right) \]
 Thus:
 \[
@@ -93,7 +93,7 @@ $\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde
 \end{thm}
 
 \begin{proof}
-From \cite[Theorem 4.8]{LangAutLogic}, we know that each formular in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
+From \cite[Theorem 4.8]{LangAutLogicR102}, we know that each formular in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
 \[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \varphi(\overline{x_1}, \dotsb, \overline{x_n}) \]
 where each $\overline{x_i}$ is a $\abs{\sigma}$-tuple of variables and the formula $\varphi$ states:
 \[
