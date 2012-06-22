@@ -339,23 +339,25 @@ TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with 
 \subsubsection{Introduction}
 \label{gen:R-automata}
 
-We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sigma^*$.
-
 \begin{mydef}
+We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sigma^*$
+\[ \Lang(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
+\end{mydef}
+
+Examples of such language classes are locally testable (\ref{lang:LT}) or piece-wise testable (\ref{lang:PT}) languages. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
+
 %S307
-If a language class $\Lang(R)$ is defined as finite union of equivalation classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
+If a language class $\Lang(R)$ is defined as finite union of equivalence classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
 \begin{itemize}
 \item the set of equivalent classes of $R$ is finite,
-\item $(v,w) \in R \ \Leftrightarrow \ (va,wa) \in R \ \forall a \in \Sigma$
+\item $R$ is a congruence relation, i.e. also $(v,w) \in R \ \Leftrightarrow \ (va,wa) \in R \ \ \forall a \in \Sigma$
 \end{itemize}
-(this is the case for LT, LTT, PT),
 then we can construct a canonical deterministic automaton $\A_R$ which has $S_R := \Sigma^* / R$ as states, $\left<\epsilon\right>_R$ is the initial state and the transitions are according to concatenation. Call this an $R$-automaton.
-\end{mydef}
 
-\begin{mydef}
+The LT, LTT and PT language classes have the above properties and thus such related canonical automaton.
+
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang(R) = \Set{L(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
-\end{mydef}
 
 \begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
@@ -372,7 +374,7 @@ For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation
 \[ (\alpha,\beta) \in R^\omega \ :\Leftrightarrow \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
 
 Analogously to $\Lang(R)$, define the $\omega$-language-class
-\[ \Lang^\omega(R^\omega) := \Set{L^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
+\[ \Lang^\omega(R^\omega) := \Set{L^\omega \subseteq \Sigma^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
 \end{mydef}
 
 With this preparation, we show for some $R$ the equalities:
