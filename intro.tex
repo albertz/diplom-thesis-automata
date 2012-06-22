@@ -2,12 +2,18 @@
 
 \section{Introduction}
 
-Language theory is strongly connected to the theory of automata. With some interpretation of run-acceptance in an automaton, we canonically get a language.
+The study of formal languages and finite-state automata theory is very old and fundamental in theoretical computer science. Regular expressions were introduced by Kleene in 1956 (\cite{Kleene56}). Research on the connection between formal languages, automata theory and mathematical logic began in the early 1960's by Büchi (\cite{Buchi60}). Good introductions into the theory are \cite{FinAutLogR109} and \cite{LangAutLogicR102}.
 
-We call languages over finite words the $*$-languages and often use $\Lang^*$ or some variant for such language class. Likewise, $\omega$-languages ($\Lang^\omega$) are over infinite words. The acceptance-condition in automata for $*$-languages is straight-forward. If we look at $\omega$-languages, several different types of automata and their acceptance have been thought of. For the class of regular languages, we see that many of them are equivalent.
+We call languages over finite words the $*$-languages. Likewise, $\omega$-languages are over infinite words.
 
-For all types, we can also argue with equivalent language-theoretical operators which operate on a $*$-language. We will study the equivalences in more detail.
+The class of regular $*$-languages is probably the most well studied language class. Its expressiveness is exactly equivalent to the class of finite-state automata. For many applications, less powerful subsets of the regular $*$-languages are interesting, like star-free $*$-languages, locally testable $*$-languages, etc., as well as more powerful supersets, like context-free $*$-languages.
 
-Depending on the $* \rightarrow \omega$ language operator (or the $\omega$-automaton acceptance condition), we get different $\omega$-language classes. This was studied earlier already in detail for the class of regular $*$-languages.
+The research on $\omega$-languages and their connection to finite-state automata began a bit later by Büchi \cite{DecisionSOR111} and \cite{Muller63}. As for the $*$-languages, the most well studied $\omega$ language class are the regular $\omega$-languages. Good introductions into these theories are \cite{AutInfObjsR103}, \cite{InfCompR101}, \cite{OmLangR108} and \cite{InfWordsR110}.
 
-When we look at other $*$-language classes, we might get different results. This study is the main topic of this thesis.
+The acceptance-condition in automata for $*$-languages is straight-forward. If we look at $\omega$-languages, several different types of automata and their acceptance have been thought of, like Büchi-acceptance or Muller-acceptance, or E-acceptance and A-acceptance.
+
+For all types, we can also argue with equivalent language-theoretical operators which operate on a $*$-language, like $\lim$ or $\ext$. We will study the equivalences in more detail.
+
+Depending on the $* \rightarrow \omega$ language operator or the $\omega$-automaton acceptance condition, we get different $\omega$-language classes. This was studied earlier already in detail for the class of regular $*$-languages. E.g., we get the result $\BC \ext \Lang(reg) \subsetneqq \BC \lim \Lang(reg)$ and $\lim \cap \dlim \Lang(reg) = \BC \ext \Lang(reg)$.
+
+When we look at other $*$-language classes and the different ways to transform them into $\omega$-languages, we can get different results. E.g., $\BC \ext \Lang(\PT) = \BC \lim \Lang(\PT)$. This study is the main topic of this thesis.
