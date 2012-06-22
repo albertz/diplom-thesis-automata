@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twoside,openright]{article}
 %%!TEX encoding = UTF-8 Unicode
 \usepackage[utf8]{inputenc}
 \usepackage{palatino} %Schriftart
@@ -16,6 +16,7 @@
 	includehead]{geometry}
 \usepackage{makeidx}
 \usepackage[nottoc,numbib]{tocbibind}
+\usepackage{titlesec}
 \usepackage[fleqn]{amsmath}
 \usepackage{amsthm}
 \usepackage{amstext}
@@ -27,6 +28,8 @@
 % doesnt work?
 %\usepackage{vaucanson-g}
 % evtl auch gastex. siehe: http://www.automata.rwth-aachen.de/material/skripte/latex/latex.pdf
+
+\pagestyle{headings}
 
 \hypersetup{%
 	pdftitle = {Language Operations and a Structure Theory of ω-Languages},%
@@ -92,13 +95,19 @@ Hiemit versichere ich, dass ich diese Arbeit selbstständig verfasst und keine a
 Aachen, den \todaygerman
 \end{titlepage}
 
+\thispagestyle{empty}
 \setlength{\parskip}{1ex}
 \tableofcontents
 \newpage
 
+
 % http://www.automata.rwth-aachen.de/material/skripte/latex/latex.pdf
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2ex plus0.5ex minus0.2ex}
+
+% http://www.ctex.org/documents/packages/layout/titlesec.pdf
+\titleformat{\section}[display]{\LARGE\bfseries}{Chapter \thesection}{0.5em}{}{}
+\titlespacing*{\section}{0pt}{0pt}{2em}
 
 \include{intro}
 \include{reg-omega-lang}
