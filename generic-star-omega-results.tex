@@ -377,6 +377,8 @@ Analogously to $\Lang(R)$, define the $\omega$-language-class
 \[ \Lang^\omega(R^\omega) := \Set{L^\omega \subseteq \Sigma^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
 \end{mydef}
 
+\subsubsection{Classification}
+
 With this preparation, we show for some $R$ the equalities:
 \begin{itemize}
 \item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\ref{gen:lang_omega_e})
@@ -446,6 +448,7 @@ TODO...
 %S307.6,S307.7,S307.8
 \label{gen:R-bclim-cap-ext}
 \[ \BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R) \]
+
 \begin{proof}
 We have $\ext \Lang(R) \subseteq \ext \Lang(reg)$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
@@ -474,9 +477,15 @@ Thus, $\A^M$ accepts all words in $L_q \cdot \Sigma^\omega$. Mark $q$ as a final
 %For any state $\tilde q$ in $\A^M$ which is not marked as a final state in the previously described way, all states in $\A^E$ after words in $L_{\tilde q}$ are not final states in $\A^E$. Thus, all words not in $L^\omega$ are not accepted by $\overline{\A}^M$.
 
 Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\omega$ which is not accepted by $\overline{\A}^M$. I.e., the $R$-E-automata $\overline{\A}^M$ accepts exactly $L^\omega$. I.e. $L^\omega \in \ext \Lang(R)$.
+\end{proof}
+\end{lemma}
 
-\subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
+%\subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
 %S307.6,S307.8
+\begin{lemma}
+\[ \BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R) \]
+
+\begin{proof}
 This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
 
 We have $\lim \Lang(R) \subseteq \lim \Lang(reg)$ and $\lim \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
