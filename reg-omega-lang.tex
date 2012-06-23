@@ -1,10 +1,46 @@
 \section{Background results on regular $\omega$-languages}
 
+\subsection{Preliminaries}
+We introduce some common terminonoly used in this thesis.
+
+The set of natural numbers $1,2,3,\dots$ is denoted by $\N$, likewise $0,1,2,3,\dots$ by $\N_0$.
+
+An \defword{alphabet} is a finite set of \defword{symbols}. We usually denote an alphabet by $\Sigma$ and its elements by $a, b, c, \dots$. A finite sequence of elements in $\Sigma$ is also called a \defword{finite word}, often named $u, v, w, \dots$. The set of such words, including the \defword{empty word} $\epsilon$, is denoted by $\Sigma^*$. Likewise, $\Sigma^+$ is the set of non-empty words. Infinite sequences over $\Sigma$ are called \defword{infinite words}, often named $\alpha, \beta$. The set of such infinite words is denoted by $\Sigma^\omega$.
+
+A subset $L \subseteq \Sigma^*$ is called a \defword{language} of finite words or also called a \defword{$*$-language}. Likewise, a subset $L^\omega \subseteq \Sigma^\omega$ is called an \defword{$\omega$-language}.
+
+A set $\Lang$ of $*$-languages is called a \defword{$*$-language class}. Likewise, a set $\Lang^\omega$ of $\omega$-languages is called a \defword{$\omega$-language class}.
+
+We can \defword{concatenate} finite words with each other and also finite words with infinite words. For languages $L_1 \subseteq \Sigma^*$, $L_2 \subseteq \Sigma^*$, $L^\omega_3 \subseteq \Sigma^\omega$, we define the concatenation $L_1 \cdot L_2 := \Set{v \cdot w}{v \in L_1, w \in L_2}$ and $L_1 \cdot L^\omega_3 := \Set{v \cdot \alpha}{v \in L_1, \alpha \in L^\omega_3}$. Exponentation of languages is defined naturally: For $L \subseteq \Sigma^*$, we define $L^0 := \Set{\epsilon}$ and $L^{i+1} := L^i \cdot L$ for all $i \in \N_0$. The union of all such sets, is called the \defword{Kleene closure} or the \defword{Kleene star} operator, defined as $L^* := \cup_{i\in\N_0} L^i$. The \defword{positive Kleene closure} is defined as $L^+ := \cup_{i\in\N} L^i$. The \defword{infinite Kleene closure} is defined by $L^\omega := \Set{w_1 \cdot w_2 \cdot w_3 \cdots}{w_i \in L}$.
+
+\subsection{The class of regular $*$-languages}
+
+A \defword{regular expression} is representing a language over an alphabet $\Sigma$. Regular expressions are defined recursively based on the ground terms $\emptyset$, $\epsilon$ and $a$ for $a \in \Sigma$ denoting the languages $\emptyset$, $\Set{\epsilon}$ and $\Set{a}$. Then, if $r$ and $s$ are regular expressions representing $R, S \subseteq \Sigma^*$, then also $r+s$ (written also as $r|s$, $r \vee s$, $r \cup s$), $r s$ (written also as $r \cdot s$) and $r^*$ are regular expressions, representing $R \cup S$, $R \cdot S$ and $R^*$. Let $\Lang(RE)$ be the set of languages which can be represented as regular expressions.
+
+We extend these expression also by $r \wedge s$ (written also as $r \cap s$) and $-r$ (written also as $\neg r$), representing the language $R \cap S$ and $-R := \Set{w \in \Sigma^*}{w \not\in R}$. Some basic result of the study of formal languages, as can be seen in e.g. \cite{FinAutLogR109}, is the equivalence of the class of these extended regular expression languages and $\Lang(RE)$.
+
+A \defword{non-deterministic} \defword{finite-state automaton} $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma^* \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial states} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
+
+We write:
+\[ \A = (Q, \Sigma, q_0, \Delta, F). \]
+
+The automaton is \defword{deterministic} (a DFA) iff $\Delta$ is a function $Q \times \Sigma \rightarrow Q$. In that case, we often call the function $\delta$.
+
+Two transitions $(p,a,q), (p',a',q') \in E$ are \defword{consecutive} iff $q=p'$.
+
+A \defword{run} in the automaton $\A$ is a sequence of consecutive transitions, written as:
+\[ q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \dots \]
+
+An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{accepts} a finite word $w = (a_0,a_1,...,a_n) \in \Sigma^*$ iff there is a run $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \dots \rightarrow^{a_n} q_{n+1}$ with $q_0 \in I$ und $q_{n+1} \in F$.
+
+The language $L^*(\A)$ is defined as set of all words which are accepted by $\A$.
+
+
 \subsection{The class of regular $\omega$-languages}
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \Lang^\omega(reg) := \Set{ \cup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Lang^*(reg) } \]
+\[ \Lang^\omega(reg) := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Lang^*(reg) } \]
 
 A different, very common description is in terms of automata.
 
