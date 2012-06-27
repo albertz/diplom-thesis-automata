@@ -44,7 +44,7 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \Lang^\omega(reg) := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg } \]
+\[ \LangOreg := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg } \]
 
 A different, very common description is in terms of automata.
 
@@ -54,19 +54,19 @@ The language $L^\omega(\A)$ is defined as the set of all infinite words which ar
 
 An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
 
-The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\Lang^\omega(reg)$. (S218,R101) Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
+The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\LangOreg$. (S218,R101) Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
 
 There are some different forms of $\omega$-automata, e.g. the Rabin automata and the Muller automata. We see that the class of languages accepted by non-deterministic Büchi automata is equal to deterministic Rabin automata and deterministic Muller automata. (S407)
 
 We also see that this is equal to boolean combinations of languages accepted by deterministic Büchi automata. Under this regard, an operator of interest is
 \[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } .\]
 We see that $\lim(\Lang^\omega)$ is equal to the languages accepted by deterministic Büchi automata. (S407) Thus:
-\[  \BC \lim \Langreg = \Lang^\omega(reg) \]
+\[  \BC \lim \Langreg = \LangOreg \]
 
 Some other descriptions:
-\[ \Lang^\omega(reg) = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg } \]
+\[ \LangOreg = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg } \]
 (S218,S411,R107)
-\[ \Lang^\omega(reg) = \Set{A \subset \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} \]
+\[ \LangOreg = \Set{A \subset \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} \]
 
 We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties in chapter \ref{general-results}.
 
