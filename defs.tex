@@ -16,22 +16,8 @@ A languages is \defword{regular} iff an automaton accepts it.
 \subsection{endwise testable}
 
 \section{$\omega$-languages}
-\subsection{Büchi automaton}
-An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-accepts} a word $\alpha = (a_0,a_1,a_2,...) \in \Sigma^\omega$ iff there is an infinite run $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \rightarrow^{a_2} q_3 ...$ with $q_0 \in I$ and $\{ q_i | q_i \in F \}$ infinite, i.e. which reaches a state in $F$ infinitely often.
-
-The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$.
-
-An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
 
 \subsection{Muller automaton}
-A Muller automaton $\A$ is a finite, deterministic automaton with \defword{Muller acceptence} and a set $\T \in 2^Q$, called the \defword{table} of the automaton (instead of the set $F$). A word $w \in \Sigma^\omega$ is accepted iff there is a run $p$ with $\Inf(p) \in \T$, where $\Inf(p)$ is the set of infinitely often reached states of the run $p$.
-
-We write:
-\[ \A = (Q, \Sigma, E, i, \T) . \]
-
-\subsection{Rabin automaton}
-A Rabin automaton is a tuple $\A = (Q, \Sigma, E, i, \R)$, where $(Q,\Sigma,E)$ is a deterministic automaton, $i$ is the initial state and $\R = \{(L_j, U_j) | j \in J\}$ is a family of pairs of state-sets. A run $p$ is successfull iff it starts in $i$ and there is an index $j \ in J$ such that $p$ reaches $U_j$ infinitely often and $L_j$ only finitely often. If the automaton is finite, this is equivalent to
-\[ \Inf(p) \cap L_j = \emptyset \ \text{and} \ \Inf(p) \cap U_j \neq \emptyset . \]
 
 \subsection{Staiger Wagner class of $\K$}
 

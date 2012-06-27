@@ -54,9 +54,30 @@ The language $L^\omega(\A)$ is defined as the set of all infinite words which ar
 
 An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
 
-The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\LangOreg$. (S218,R101) Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
+A basic result of the study of this language class is: The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\LangOreg$ (see \cite{InfCompR101} or others). %S218
+Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
 
-There are some different forms of $\omega$-automata, e.g. the Rabin automata and the Muller automata. We see that the class of languages accepted by non-deterministic Büchi automata is equal to deterministic Rabin automata and deterministic Muller automata. (S407)
+There are some different forms of $\omega$-automata which differ in their acceptance condition. Noteable are the \defword{Muller conition}, the \defword{Rabin condition}, the \defword{Streett condition} and the \defword{Parity condition}. With such an acceptance condition, we call it \defword{Muller automaton}, etc. The main theorem of deterministic $\omega$-automata states:
+\begin{itemize}
+\item Non-deterministic Büchi automata,
+\item a boolean combination of deterministic Büchi automata,
+\item deterministic Muller automata,
+\item deterministic Rabin automata,
+\item deterministic Streett automata
+\item deterministic Parity automata
+\end{itemize}
+all recognize the same languages. See \cite{InfCompR101}, \cite{LangAutLogicR102}, \cite{InfWordsR110} and others. Part of it is the \defword{McNaughton's Theorem} which states the equivalence of non-deterministic Büchi automata and deterministic Muller automata.
+%S407
+
+Muller automata are interesting for us in the rest of this thesis. A \defword{Muller automaton} $\A$ is a finite, deterministic automaton with \defword{Muller acceptence} and a set $\T \in 2^Q$, called the \defword{table} of the automaton (instead of the set $F$). A word $w \in \Sigma^\omega$ is accepted iff there is a run $p$ with $\Inf(p) \in \T$, where $\Inf(p)$ is the set of infinitely often reached states of the run $p$.
+
+We write:
+\[ \A = (Q, \Sigma, E, i, \T) . \]
+
+\subsection{Rabin automaton}
+A Rabin automaton is a tuple $\A = (Q, \Sigma, E, i, \R)$, where $(Q,\Sigma,E)$ is a deterministic automaton, $i$ is the initial state and $\R = \{(L_j, U_j) | j \in J\}$ is a family of pairs of state-sets. A run $p$ is successfull iff it starts in $i$ and there is an index $j \ in J$ such that $p$ reaches $U_j$ infinitely often and $L_j$ only finitely often. If the automaton is finite, this is equivalent to
+\[ \Inf(p) \cap L_j = \emptyset \ \text{and} \ \Inf(p) \cap U_j \neq \emptyset . \]
+
 
 We also see that this is equal to boolean combinations of languages accepted by deterministic Büchi automata. Under this regard, an operator of interest is
 \[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } .\]
