@@ -19,6 +19,10 @@ A languages is \defword{regular} iff an automaton accepts it.
 
 \subsection{Muller automaton}
 
+\subsection{Rabin automaton}
+A Rabin automaton is a tuple $\A = (Q, \Sigma, E, i, \R)$, where $(Q,\Sigma,E)$ is a deterministic automaton, $i$ is the initial state and $\R = \{(L_j, U_j) | j \in J\}$ is a family of pairs of state-sets. A run $p$ is successfull iff it starts in $i$ and there is an index $j \ in J$ such that $p$ reaches $U_j$ infinitely often and $L_j$ only finitely often. If the automaton is finite, this is equivalent to
+\[ \Inf(p) \cap L_j = \emptyset \ \text{and} \ \Inf(p) \cap U_j \neq \emptyset . \]
+
 \subsection{Staiger Wagner class of $\K$}
 
 \section{Operations: $*$-language $K$ to $\omega$-language $L_\omega (K)$}
