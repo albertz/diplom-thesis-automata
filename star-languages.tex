@@ -2,7 +2,7 @@
 
 %\subsection{Overview}
 %...
-We already showed many results for $\Lang^*(reg)$.
+We already showed many results for $\Langreg$.
 
 \subsection{Starfree regular languages}
 This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages.
@@ -72,12 +72,12 @@ $\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde
 
 \begin{itemize}
 \item P1: $\Set{a} \in \Lang$. $a \Sigma^* \in \Lang$, thus $a\Sigma^\omega = \ext(\Set{a}) = \dext{a\Sigma^*}$.
-\item P2a: $\tilde{L}_{2a} := \ext (a^* b) = a^* b \Sigma^\omega$, $a^* b \in \Lang$. Then $\tilde{L}_{2a} \notin \ext \Lang^*(reg) \supseteq \Lang^*( \mathrm{FO[<]} )$.
+\item P2a: $\tilde{L}_{2a} := \ext (a^* b) = a^* b \Sigma^\omega$, $a^* b \in \Lang$. Then $\tilde{L}_{2a} \notin \ext \Langreg \supseteq \Lang^*( \mathrm{FO[<]} )$.
 \item P2b: $-\tilde{L}_{2a} := \dext (-a^* b)$, $-a^* b \in \Lang$. Then $-\tilde{L}_{2a} \notin \ext \Lang$.
 \item P3: Follows directly from P2a and P2b.
-\item P4: $\tilde{L}_4 := \ext(\Sigma^* a) \cap \dext(-\Sigma^* b) = \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, whereby $\Sigma^* a \in \Lang$, $- \Sigma^* b \in \Lang$. $\tilde{L}_4 \notin \ext \cup \dext \Lang^*(reg) \supseteq \Lang^*( \mathrm{FO[<]} )$ but $\tilde{L}_4 \in \BC \ext \Lang$.
+\item P4: $\tilde{L}_4 := \ext(\Sigma^* a) \cap \dext(-\Sigma^* b) = \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, whereby $\Sigma^* a \in \Lang$, $- \Sigma^* b \in \Lang$. $\tilde{L}_4 \notin \ext \cup \dext \Langreg \supseteq \Lang^*( \mathrm{FO[<]} )$ but $\tilde{L}_4 \in \BC \ext \Lang$.
 \item P5: TODO
-\item P6a/P6b/P7/P8: $\Sigma^*a \in \Lang$. We can use the same arguments as for $\Lang^*(reg)$.
+\item P6a/P6b/P7/P8: $\Sigma^*a \in \Lang$. We can use the same arguments as for $\Langreg$.
 \item P9: TODO
 \item P10: TODO
 \end{itemize}

@@ -44,7 +44,7 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \Lang^\omega(reg) := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Lang^*(reg) } \]
+\[ \Lang^\omega(reg) := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg } \]
 
 A different, very common description is in terms of automata.
 
@@ -61,14 +61,14 @@ There are some different forms of $\omega$-automata, e.g. the Rabin automata and
 We also see that this is equal to boolean combinations of languages accepted by deterministic Büchi automata. Under this regard, an operator of interest is
 \[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } .\]
 We see that $\lim(\Lang^\omega)$ is equal to the languages accepted by deterministic Büchi automata. (S407) Thus:
-\[  \BC \lim \Lang^*(reg) = \Lang^\omega(reg) \]
+\[  \BC \lim \Langreg = \Lang^\omega(reg) \]
 
 Some other descriptions:
-\[ \Lang^\omega(reg) = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Lang^*(reg) } \]
+\[ \Lang^\omega(reg) = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg } \]
 (S218,S411,R107)
 \[ \Lang^\omega(reg) = \Set{A \subset \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} \]
 
-We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Lang^*(reg)$. We get some general results based on these properties in chapter \ref{general-results}.
+We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties in chapter \ref{general-results}.
 
 Let $L,A,B \in \Lang$.
 \begin{itemize}
@@ -83,7 +83,7 @@ In some proofs, e.g. in \ref{gen:staiger-wagner} or \ref{gen:kleene-star}, we ha
 
 E4: $\forall \text{ deterministic automaton } \A = (Q,q_0,\Delta,F), L^*(\A) = L \colon \forall F' \subseteq Q: L^*((Q,q_0,\Delta,F')) \in \Lang$
 
-For $\Lang^*(reg)$, this property holds obviously.
+For $\Langreg$, this property holds obviously.
 
 %S303.1.a:
 For $\Lang^*(\mathrm{FO[<]})$, it does not hold:

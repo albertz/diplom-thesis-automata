@@ -121,7 +121,7 @@ A Staiger-Wagner automaton (weak Muller automaton) is of the same form $\A = (Q,
 
 \begin{lemma}
 %S405:
-We see (R101,Th.63+64,p.44) that the class of Staigner-Wagner-recognized languages is exactly the class $\BC \ext \Lang^*(reg)$ and also $\lim \cap \dlim \Lang^*(reg)$.
+We see (R101,Th.63+64,p.44) that the class of Staigner-Wagner-recognized languages is exactly the class $\BC \ext \Langreg$ and also $\lim \cap \dlim \Langreg$.
 \end{lemma}
 
 We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata (where some of the ideas are loosely based on (R101,Th.63+64,p.44)).
@@ -175,7 +175,7 @@ Then we have
 \end{align*}
 
 Thus,
-\[ \tilde L \in \BC \ext \Lang^*(reg) . \]
+\[ \tilde L \in \BC \ext \Langreg . \]
 
 %TODO...
 Open question at this point: Is $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$? With E4, this is obviously the case. However, E4 is too strong.
@@ -202,7 +202,7 @@ The $\dlim\Lang$ case is harder.
 Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{Büchi}}(\A_a) = L^\omega_{\text{co-Büchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{Büchi}}(\A_b) = L^\omega_{\text{co-Büchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$. Then we have $L^\omega_{\text{Büchi}}(\Ax) = L^\omega_{\text{co-Büchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
 
 Thus,
-\[ \tilde L_a \cup \tilde L_b \in \dlim \Lang^*(reg) . \]
+\[ \tilde L_a \cup \tilde L_b \in \dlim \Langreg . \]
 
 Open question: Is $L^*(\Ax) \in \Lang$?
 
@@ -385,8 +385,8 @@ With this preparation, we show for some $R$ the equalities:
 \item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\ref{gen:lang_omega_buechi})
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\ref{gen:lang_omega_muller})
 \item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$
-\item $\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$
-\item $\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$
+\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$
+\item $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$
 \item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$
 \end{itemize}
 
@@ -444,15 +444,15 @@ TODO...
 \end{lemma}
 
 \begin{lemma}
-%\subsection{$\BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R)$}
+%\subsection{$\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$}
 %S307.6,S307.7,S307.8
 \label{gen:R-bclim-cap-ext}
-\[ \BC \lim \Lang(R) \cap \ext \Lang(reg) = \ext \Lang(R) \]
+\[ \BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R) \]
 
 \begin{proof}
-We have $\ext \Lang(R) \subseteq \ext \Lang(reg)$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
+We have $\ext \Lang(R) \subseteq \ext \Langreg$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
-Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Lang(reg)$. Because $L^\omega \in \ext \Lang(reg)$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
+Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Langreg$. Because $L^\omega \in \ext \Langreg$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
 
 We must find an $R$-E-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ E-automaton and will construct it in the following.
 
@@ -470,7 +470,7 @@ Then, $\A^M$ accepts all words in $L_q \cdot L_{q,S}^\omega$, where $L_q$ is the
 %loops $q\rightarrow q$ in $\F$.
 Any word with a prefix in $L_q$, which is not in $L_q \cdot L^\omega_{q,S}$, will not be accepted by $\A^M$ because $\A^M$ is deterministic. Also, because $L_{q^E} \cap L_q \neq \emptyset$ and $L_{q^E} \cdot \Sigma^\omega \subseteq L^\omega$ and $L_q \cdot L^\omega_{q,S} \subseteq L^\omega$, we get $L^\omega_{q,S} \neq \emptyset$.
 
-Assuming $L^\omega_{q,S} \neq \Sigma^\omega$. Then we would have $L^\omega \not\in \ext \Lang(reg)$, which is a contradiction. I.e. $L^\omega_{q,S} = \Sigma^\omega$.
+Assuming $L^\omega_{q,S} \neq \Sigma^\omega$. Then we would have $L^\omega \not\in \ext \Langreg$, which is a contradiction. I.e. $L^\omega_{q,S} = \Sigma^\omega$.
 
 Thus, $\A^M$ accepts all words in $L_q \cdot \Sigma^\omega$. Mark $q$ as a final state in $\overline{\A}^M$. Thus, $\overline{\A}^M$ E-accepts all words in $L_q \cdot \Sigma^\omega \subseteq L^\omega$.
 
@@ -480,17 +480,17 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 \end{proof}
 \end{lemma}
 
-%\subsection{$\BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R)$}
+%\subsection{$\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$}
 %S307.6,S307.8
 \begin{lemma}
-\[ \BC \lim \Lang(R) \cap \lim \Lang(reg) = \lim \Lang(R) \]
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
 
 \begin{proof}
 This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
 
-We have $\lim \Lang(R) \subseteq \lim \Lang(reg)$ and $\lim \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
+We have $\lim \Lang(R) \subseteq \lim \Langreg$ and $\lim \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
-Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \lim \Lang(reg)$. Because $L^\omega \in \lim \Lang(reg)$, there is an Büchi-automaton $\A^B$ which accepts $L^\omega$. We can assume that $\A^B$ is deterministic (with \ref{gen:e-determinism}).
+Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \lim \Langreg$. Because $L^\omega \in \lim \Langreg$, there is an Büchi-automaton $\A^B$ which accepts $L^\omega$. We can assume that $\A^B$ is deterministic (with \ref{gen:e-determinism}).
 
 We must find an $R$-Büchi-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ Büchi-automaton and will construct it in the following.
 
@@ -519,7 +519,7 @@ Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words whic
 
 %For any $q \in F$, we have $\F_q \neq \emptyset$. Thus, $q$ is marked as a final state in $\overline{\A}^M$ and thus, $\overline{\A}^M$ accepts $\alpha$.
 
-%Let us show $\F_q = \mathcal S_q$ under the condition $\F_q \neq \emptyset$. Of course we have $\F_q \subseteq \mathcal S_q$. Let $\A^B$ be the deterministic Büchi automaton for $L^\omega$ (we have $L^\omega \in \lim \Lang(reg)$).
+%Let us show $\F_q = \mathcal S_q$ under the condition $\F_q \neq \emptyset$. Of course we have $\F_q \subseteq \mathcal S_q$. Let $\A^B$ be the deterministic Büchi automaton for $L^\omega$ (we have $L^\omega \in \lim \Langreg$).
 %Let $L_q$ be the set of words which reach $q$ in $\A^M$.
 %We show the assumption by contradiction: Let $S \in \mathcal S_q$ with $S \not\in \F_q$. Let $F \in \F_q$ with $F \subseteq S$ or $F \cup S \in \F_q$ (TODO: does that exists?! -> no!).
 
