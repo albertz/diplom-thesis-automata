@@ -3,7 +3,7 @@
 
 %S401: TODO
 
-Let $\Lang$ be a $*$-language class.
+Let $\Lang$ be a $*$-language class. We start with some very basic results on language operators.
 
 \subsection{Background}
 \begin{lemma}
@@ -11,20 +11,25 @@ Let $\Lang$ be a $*$-language class.
 Let $L,A,B \in \Lang$.
 \begin{enumerate}
 \item $\ext L = L \cdot \Sigma^\omega$
-\item $\ext L = \lim L \cdot \Sigma^*$ %S303
-\item $\ext L = \dlim L \cdot \Sigma^*$ %S303, S305.4
-\item $- \lim(-L) = \dlim L$
+\item $\ext L = \lim(L \cdot \Sigma^*)$ %S303
+\item $\ext L = \dlim(L \cdot \Sigma^*)$ %S303, S305.4
+\item $- \lim(-L) = \dlim(L)$
 \item $\dlim L \subseteq \lim L$
-\item $\lim A \cup \lim B = \lim A \cup B$ \newline %S305.4
-Proof:
+\item $\lim A \cup \lim B = \lim A \cup B$ %S305.4
+\item $\dlim A \cup \dlim B \subseteq \dlim A \cup B$ \newline %S305.4
+There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+\item[1.-5.] They all follow directly from the definition.
+\item[6.] %S305.4
 \begin{align*}
 & \alpha \in \lim A \cup \lim B \\
 \Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \ \vee \ \existsinf n \colon \alpha[0,n] \in B \\
 \Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \cup B \\
 \Leftrightarrow \ & \alpha \in \lim A \cup B
 \end{align*}
-\item $\dlim A \cup \dlim B \subseteq \dlim A \cup B$ \newline %S305.4
-Proof:
+\item[7.] %S305.4
 \begin{align*}
 & \alpha \in \dlim A \cup \dlim B \\
 \Leftrightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \ \vee \ 
@@ -33,6 +38,7 @@ Proof:
 \end{align*}
 There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
+\end{proof}
 \end{lemma}
 
 %307.12
