@@ -6,16 +6,39 @@ We already introduced $\lim$. We can define a family of language operators, part
 
 \begin{enumerate}
 \item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
-\item $\dext(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
+\item $\dext(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L}$ (also called the dual-ext)
 \item $\BC \ext$
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
-\item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$
+\item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$ (also called dual-lim)
 \item $\BC \lim$
 \item Kleene-Closure of $\Lang$: $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$
 \item $\Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang}$
 \end{enumerate}
 
-From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$.
+From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$. $\BC$ denotes always all boolean combinations (union, intersection, complement) of a language class, i.e. for $\mathcal{X} \subseteq \Sigma^\omega \cup \Sigma^*$, $\BC \mathcal{X}$ is defined as the smallest set such that
+\begin{itemize}
+\item $\mathcal{X} \subseteq \BC \mathcal{X}$,
+\item $-X \in \BC \mathcal{X}$ for all $X \in \BC \mathcal{X}$,
+\item $X_1 \cup X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$,
+\item $X_1 \cap X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$.
+\end{itemize}
+
+For $\ext$ and $\dext$, we can also introduce equivalent $\omega$ automata acceptance conditions (as in \cite{InfCompR101}). Let $L \subseteq \Sigma^*$ be a regular $*$-language and $\A = (Q, \Sigma, q_0, \Delta, F)$ be an automaton which accepts exactly $L$. Let $\rho$ be an infinte run in $\A$.
+\begin{itemize}
+\item $\A$ \defword{E-accepts} $\rho$ \ \ iff \ \ $\exists i \colon \rho(i) \in F$,
+\item $\A$ \defword{A-accepts} $\rho$ \ \ iff \ \ $\forall i \colon \rho(i) \in F$.
+\end{itemize}
+We define
+\begin{itemize}
+\item[] $L^\omega_E(\A) := \Set{\alpha \in \Sigma^\omega}{\text{$\alpha$ is E-accepted in $\A$}}$,
+\item[] $L^\omega_A(\A) := \Set{\alpha \in \Sigma^\omega}{\text{$\alpha$ is A-accepted in $\A$}}$,
+\end{itemize}
+and we have the equalities
+\begin{itemize}
+\item[] $L^\omega_E(\A) = \ext(L)$,
+\item[] $L^\omega_A(\A) = \dext(L)$.
+\end{itemize}
+Note that $\A$ can be both deterministic or non-deterministic for this property. TODO: where do we say/show that?
 
 \subsection{Classification of regular $\omega$-languages} %$\Langreg$
 
