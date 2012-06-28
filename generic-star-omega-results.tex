@@ -15,8 +15,8 @@ Let $L,A,B \in \Lang$.
 \item $\ext L = \dlim(L \cdot \Sigma^*)$ %S303, S305.4
 \item $- \lim(-L) = \dlim(L)$
 \item $\dlim L \subseteq \lim L$
-\item $\lim A \cup \lim B = \lim A \cup B$ %S305.4
-\item $\dlim A \cup \dlim B \subseteq \dlim A \cup B$ \newline %S305.4
+\item $\lim A \cup \lim B = \lim(A \cup B)$ %S305.4
+\item $\dlim A \cup \dlim B \subseteq \dlim(A \cup B)$ \newline %S305.4
 There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
 \begin{proof}
@@ -36,7 +36,6 @@ There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \exists N \colon \forall n \ge N \colon \alpha[0,n] \in B \\
 \Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B
 \end{align*}
-There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{enumerate}
 \end{proof}
 \end{lemma}
@@ -47,12 +46,12 @@ There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 The $\omega$-language-class accepted by deterministic E-automata is equal to non-deterministic E-automata. I.e., for every non-deterministic E-automaton, we can construct an equivalent deterministic E-automaton.
 \begin{proof} Let $\A^N$ be any non-deterministic automaton and $\A^D$ an ($*$-)equivalent deterministic automaton. Then:
 \begin{align*}
-& \alpha \in L^{E\omega}(\A^N) \\
+& \alpha \in L^{\omega}_E(\A^N) \\
 \Leftrightarrow \ & \exists n \colon \alpha[0,n] \in L(\A^N) \\
 \Leftrightarrow \ & \exists n \colon \alpha[0,n] \in L(\A^D) \\
-\Leftrightarrow \ & \alpha \in L^{E\omega}(\A^D)
+\Leftrightarrow \ & \alpha \in L^{\omega}_E(\A^D)
 \end{align*}
-where $L^{E\omega}(\A)$ denotes the set of $\omega$-words which are E-accepted by $\A$. $\A^N$ can be interpreted as an arbitary E-automata and we have shown that we get an equivalent deterministic E-automata.
+$\A^N$ can be interpreted as an arbitary E-automata and we have shown that we get an equivalent deterministic E-automata.
 \end{proof}
 \end{lemma}
 
