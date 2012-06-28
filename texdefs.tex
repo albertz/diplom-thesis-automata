@@ -9,10 +9,10 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 
-\theoremstyle{definition}\newtheorem{mydef}{Definition}[section]
 \theoremstyle{plain}\newtheorem{lemma}{Lemma}[section]
-\theoremstyle{definition}\newtheorem{algo}{Algorithm}[section]
-\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain}\newtheorem{theorem}[lemma]{Theorem}
+\theoremstyle{definition}\newtheorem{mydef}[lemma]{Definition}
+\theoremstyle{definition}\newtheorem{algo}[lemma]{Algorithm}
 
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\Reg}{\text{Reg}}

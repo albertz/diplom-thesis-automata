@@ -66,28 +66,31 @@ For A-automata, the proof is analogue.
 %S302.1:
 We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In lemma \ref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
 
+We want to study all the properties we have shown for $\Langreg$ in lemma \ref{P:reg-star}.
+
 \
 
 We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties in chapter \ref{general-results}.
 
 %S303.E3, S218, R101
 Let $L,A,B \in \Lang$.
-\begin{itemize}
-\item E1: closure under suffix-insensitiveness: $L \cdot \Sigma^* \in \Lang$
-\item E2a: closure under union: $A \cup B \in \Lang$
-\item E2b: closure under intersection: $A \cap B \in \Lang$
-\item E3: closure under complementation/negation: $- L \in \Lang$
+\begin{enumerate}
+\item[1.] \defword{Closure under suffix-insensitiveness}: $L \cdot \Sigma^* \in \Lang$
+\item[2a.] \defword{Closure under union}: $A \cup B \in \Lang$
+\item[2b.] \defword{Closure under intersection}: $A \cap B \in \Lang$
+\item[3.] \defword{Closure under complementation/negation}: $- L \in \Lang$
 
-\item
+\item[4.]
+\defword{Closure under acceptance component variation}:
 %S303.1:
-In some proofs, e.g. in \ref{gen:staiger-wagner} or \ref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the final state set. If we stay in the language class, we call this the E4 property. Formally:
+In some proofs, e.g. in \ref{gen:staiger-wagner} or \ref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the acceptance component. If there is a way to stay in the language class, the class is called to be \defword{closed under acceptance component variation}. Formally:
 
-E4: $\forall \text{ det. aut. } \A = (Q,\Sigma,q_0,\delta,F)$, $L^*(\A) = L \colon \forall F' \subseteq Q: L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$
+There is a deterministic automaton $\A = (Q,\Sigma,q_0,\delta,F)$ with $L^*(\A) = L$ such that for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
 
 For $\Langreg$, this property holds obviously.
 
 %S303.1.a:
-For $\Lang^*(\mathrm{FO[<]})$, it does not hold:
+Note that we cannot just take any automaton. For $\Lang^*(\mathrm{FO[<]})$ and the automaton below, it does not hold:
 
   \begin{tikzpicture}[%
     >=stealth,
@@ -113,11 +116,9 @@ For $\Lang^*(\mathrm{FO[<]})$, it does not hold:
   
 This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{FO[<]})$. If you make $B$ also a final state, we get the language $a + b(bb)^* \not\in \Lang^*(\mathrm{FO[<]})$.
 
-So, E4 seems too restricted.
-
 %S303.1: TODO: weniger ...
 
-\end{itemize}
+\end{enumerate}
 
 
 \subsection{Classification for arbitrary language classes}
@@ -203,7 +204,7 @@ Thus, $ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang $.
 %\subsection{$\BC \ext = \lim \cap \dlim$}
 \begin{mydef}
 \label{def:staiger-wagner}
-A \defword{Staiger-Wagner automaton} (also called \defword{weak Muller automaton}) is of the same form $\A = (Q,\Sigma,q_0,\delta,\F)$ with acceptance component $\F \subseteq 2^Q$ like a Muller automaton with the acceptance condition that a run $\rho$ in $\A$ is accepting if and only if $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}} \in \F$.  (\cite[Def.61,p.43]{InfCompR101})
+A \defword{Staiger-Wagner automaton} (also called \defword{weak Muller automaton}) is of the same form $\A = (Q,\Sigma,q_0,\delta,\F)$ with acceptance component $\F \subseteq 2^Q$ like a Muller automaton with the acceptance condition that a run $\rho$ in $\A$ is accepting if and only if $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}} \in \F$.  (\cite[Def.61, p.43]{InfCompR101})
 \end{mydef}
 
 \begin{theorem}
@@ -216,13 +217,14 @@ See \cite[Theorem 63+64, p.44]{InfCompR101}.
 \end{proof}
 \end{theorem}
 
-We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata (where some of the ideas are loosely based on (R101,Th.63+64,p.44)).
+We are now formulating a more general and direct proof for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality without Staiger-Wagner-automata (where some of the ideas are loosely based on \cite[Theorem 63+64, p.44]{InfCompR101}).
 
 \
 
 \begin{lemma}
 \label{gen:staiger-wagner}
-\[ \BC \ext \Lang = \lim \cap \dlim \Lang \]
+Let $\Lang$ be closed under suffix-insensitiveness, union, negation and acceptance component variation. Then
+\[ \BC \ext \Lang = \lim \cap \dlim \Lang . \]
 
 \begin{proof}
 %S305:
@@ -269,23 +271,22 @@ Then we have
 Thus,
 \[ \tilde L \in \BC \ext \Langreg . \]
 
-%TODO...
-Open question at this point: Is $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$? With E4, this is obviously the case. However, E4 is too strong.
+Given the \emph{closure under acceptance component variation}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$.
 
 \
 
 %S305.3:
 Now let us show $\BC \ext \Lang \subseteq \lim \Lang$.
 
-With E1, we get $\ext \Lang \subseteq \lim \Lang$ and $\ext \Lang \subseteq \dlim \Lang$. I.e. $\ext \Lang \subseteq \lim \cap \dlim \Lang$. Let us show that $\lim \cap \dlim \Lang$ is closed under BC.
+With the \emph{closure under suffix-insensitiveness}, we get $\ext \Lang \subseteq \lim \Lang$ and $\ext \Lang \subseteq \dlim \Lang$. I.e. $\ext \Lang \subseteq \lim \cap \dlim \Lang$. Let us show that $\lim \cap \dlim \Lang$ is closed under boolean closure.
 
 Let $\tilde L_a,L_b \in \lim \cap \dlim \Lang$, i.e. $\exists L_{a1}, L_{a2}, L_{b1}, L_{b2} \in \Lang \colon \tilde L_a = \lim L_{a1} = \dlim L_{a2}, \tilde L_b = \lim L_{b1} = \dlim L_{b2}$. Let us show 1. $-\tilde L_a \in \lim \cap \dlim \Lang$, 2. $\tilde L_a \cup \tilde L_b \in \lim \cap \dlim \Lang$.
 \begin{enumerate}
-\item $-\tilde L_a = -\lim L_{a1} = \dlim -L_{a1}$, $-\tilde L_b = -\dlim L_{a2} = \lim -L_{a2}$. With E3 (closed under negation), we get
+\item $-\tilde L_a = -\lim L_{a1} = \dlim -L_{a1}$, $-\tilde L_b = -\dlim L_{a2} = \lim -L_{a2}$. With the \emph{closure under negation}, we get
 \[ -\tilde L_a \in \lim \cap \dlim \Lang . \]
 
 \item
-$\tilde L_a \cup \tilde L_b = \lim L_{a1} \cup \lim L_{b1} = \lim L_{a1} \cup L_{b1}$ (\ref{gen:general}). Thus, with E2a, we have
+$\tilde L_a \cup \tilde L_b = \lim L_{a1} \cup \lim L_{b1} = \lim L_{a1} \cup L_{b1}$ (\ref{gen:general}). Thus, with \emph{closure under union}, we have
 \[ \tilde L_a \cup \tilde L_b \in \lim \Lang . \]
 
 The $\dlim\Lang$ case is harder.
@@ -296,7 +297,7 @@ Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{Büchi}}
 Thus,
 \[ \tilde L_a \cup \tilde L_b \in \dlim \Langreg . \]
 
-Open question: Is $L^*(\Ax) \in \Lang$?
+Again, given the \emph{closure under acceptance component variation}, we have $L^*(\Ax) \in \Lang$.
 
 \end{enumerate}
 \end{proof}
@@ -308,7 +309,8 @@ Open question: Is $L^*(\Ax) \in \Lang$?
 %\subsection{Kleene-star $= \BC \lim$}
 \begin{lemma}
 \label{gen:kleene-star}
-\[ \BC \lim \Lang = \Kleene \Lang \]
+Let $\Lang$ be closed under acceptance component variation. Then
+\[ \BC \lim \Lang = \Kleene \Lang . \]
 
 \begin{proof}
 %S407: TODO...
@@ -335,7 +337,9 @@ Then we have $L^\omega_{\text{Büchi}}(\A) = U \cdot V^\omega$.
 
 Let us construct deterministic automata for $\A$ so that we can formulate 'V will be visited and not be left anymore' and 'finite states of the V-related automaton will be visited infinitely often' (or '$UV^*$ will be visited infinitely often').
 
-In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-determinstic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set. Example:
+In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-determinstic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set.
+
+Example:
 
 Let $U = (a+b)^*$, $V = \Set{b}$. I.e. $UV^\omega = \Set{\alpha \in \Set{a,b}^\omega}{\text{at one point in $\alpha$, there are only $b$s}}$. The non-deterministic automaton is:
 \[
@@ -401,10 +405,8 @@ When we mark the final states as in the original non-deterministic automata, no 
 Together, we get $UV^\omega$, i.e.:
 \[ \lim UV^* \cap \dlim L_E = UV^\omega \]
 
-If we have $L_E \in \Lang$, it follows
+Given the \emph{closure under acceptance component variation}, we have $L_E \in \Lang$. Then, it follows
 \[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang} = \Kleene \Lang \subseteq \BC \lim \Lang . \]
-
-Open question: Is $L_E \in \Lang$?
 
 \
 
@@ -607,7 +609,7 @@ Let us show that there is such $q \in F$ by contradiction. I.e. assume there is 
 
 Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words which end up looping there infinitely would also visit $\tilde q$ infinitely often in $\A^B$. Of course, all $P \in \mathcal P_{\tilde q}$ will be final state sets in $\A^M$ because $\A^B$ would accept. Define $\mathcal P_{\tilde q,S} := \Set{P \in \mathcal P_{\tilde q}}{P \subseteq S}$. No matter how much other infinte loops in $S$ we add to $\alpha$ so that we still visit some loops from $\mathcal P_{\tilde q,S}$ infinitely often, $\A^M$ and $\A^B$ will keep accepting. Thus, for $P \in \mathcal P_{\tilde q,S}$, every $P' \supseteq P$, $P' \in \mathcal S_S$, we have $P' \in \mathcal P_{\tilde q,S}$.
 
-...
+TODO ...
 
 %For any $q \in F$, we have $\F_q \neq \emptyset$. Thus, $q$ is marked as a final state in $\overline{\A}^M$ and thus, $\overline{\A}^M$ accepts $\alpha$.
 
@@ -631,7 +633,7 @@ Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words whic
 \begin{lemma}
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 \[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
-\begin{proof}
+\begin{proof} TODO...
 \end{proof}
 \end{lemma}
 
