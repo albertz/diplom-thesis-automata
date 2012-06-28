@@ -44,15 +44,26 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \LangOreg := \Set{ \bigcup_i\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg } \]
+\[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, n \in \N_0 } \]
+
+This is also called the \defword{Kleene closure}.
+
+\subsubsection{$\omega$ regular expressions}
+
+For a regular expression $r$ representing a $*$-language $R\subseteq \Sigma^*$, we can introduce a corresponding $\omega$ regular expression $r^\omega$ which represents the $\omega$-language $R^\omega$. This $\omega$ regular expression can be combined with other $\omega$ regular expressions as usual and prefixed by standard regular expressions. We call all these combinations $\omega$ regular expressions.
+
+We see that $\LangOreg$ is closed under union (obviously), intersection and complement.
+
+Thus, the class of languages accepted by $\omega$ regular expressions is exactly $\LangOreg$.
+
+
+\subsubsection{$\omega$-automata}
 
 A different, very common description is in terms of automata.
 
-An automaton $\A = (Q, \Sigma, E, I, F)$ \defword{Büchi-accepts} a word $\alpha = (a_0,a_1,a_2,...) \in \Sigma^\omega$ iff there is an infinite run $q_0 \rightarrow^{a_0} q_1 \rightarrow^{a_1} q_2 \rightarrow^{a_2} q_3 ...$ with $q_0 \in I$ and $\{ q_i | q_i \in F \}$ infinite, i.e. which reaches a state in $F$ infinitely often.
+An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{Büchi-accepts} an infinite word $\alpha = (a_0,a_1,a_2,...) \in \Sigma^\omega$ iff there is an infinite run $q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \xrightarrow{a_2} q_3 \cdots$ in $\A$ with $\Set{ i \in \N_0 }{ q_i \in F }$ infinite, i.e. which reaches a state in $F$ infinitely often.
 
-The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$.
-
-An automaton $\A$ is a Büchi automaton iff we use the Büchi-acceptence.
+The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$. To make clear that we use the Büchi acceptance condition, we sometimes will also write $L^\omega_\text{Büchi}(\A)$.
 
 A basic result of the study of this language class is: The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\LangOreg$ (see \cite{InfCompR101} or others). %S218
 Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
@@ -74,17 +85,24 @@ Muller automata are interesting for us in the rest of this thesis. The acceptanc
 We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, \F) . \]
 
+\subsubsection{Other language operators}
 
+Büchi acceptance is closely connected to the language operator
+\[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } . \]
+We define the language class operator
+\[ \lim(\Lang) := \Set{\lim(L)}{L \in \Lang} . \]
+We see that $\lim(\Langreg)$ is equal to the languages accepted by deterministic Büchi automata (\cite{InfCompR101}). %S407
+Thus:
+\[  \BC \lim \Langreg = \LangOreg , \]
+where $\BC$ means all boolean combinations (union, intersection, complement).
 
-We also see that this is equal to boolean combinations of languages accepted by deterministic Büchi automata. Under this regard, an operator of interest is
-\[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } .\]
-We see that $\lim(\Lang^\omega)$ is equal to the languages accepted by deterministic Büchi automata. (S407) Thus:
-\[  \BC \lim \Langreg = \LangOreg \]
+Another classification is
+\[ \LangOreg = \Set{ \bigcup_{i=0}^n U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg, n \in \N_0 } . \]
 
-Some other descriptions:
-\[ \LangOreg = \Set{ \cup_i U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg } \]
-(S218,S411,R107)
-\[ \LangOreg = \Set{A \subset \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} \]
+\subsubsection{Logic on infinite words}
+%(S218,S411,R107)
+Let $L_2(\Sigma)$ be the set of formulas $\operatorname{MSO}(<)$ over $\Sigma$. The interpretation of such formulas over infinite words is straight-forward. In \cite{CombR107}, we can see that
+\[ \LangOreg = \Set{A \subseteq \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} . \]
 
 We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties in chapter \ref{general-results}.
 
