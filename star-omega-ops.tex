@@ -11,8 +11,8 @@ We already introduced $\lim$. We can define a family of language operators, part
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
 \item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$ (also called dual-lim)
 \item $\BC \lim$
-\item Kleene-Closure of $\Lang$: $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$
-\item $\Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang}$
+\item $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang, n \in \N_0}$
+\item $\limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang, n \in \N_0}$
 \end{enumerate}
 
 From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$. $\BC$ denotes always all boolean combinations (union, intersection, complement) of a language class, i.e. for $\mathcal{X} \subseteq \Sigma^\omega \cup \Sigma^*$, $\BC \mathcal{X}$ is defined as the smallest set such that
@@ -39,6 +39,11 @@ and we have the equalities
 \item[] $L^\omega_A(\A) = \dext(L)$.
 \end{itemize}
 Note that $\A$ can be both deterministic or non-deterministic for this property. TODO: where do we say/show that?
+
+\
+
+Given these language operators, we are interested in the relations between them. For the class $\Langreg$ of regular languages, we already know that
+\[ \LangOreg = \Kleene(\Langreg) = \BC \lim (\Langreg) = \limClosure(\Langreg) . \]
 
 \subsection{Classification of regular $\omega$-languages} %$\Langreg$
 
@@ -87,38 +92,59 @@ where all inclusions are strict. In more detail:
 % overview of references: S50.1
 % S50.2:
 \label{P:reg-star}
-\begin{itemize}
-\item P1: $\ext \Lang \cap \dext \Lang \neq \emptyset$ \newline
-Proof: $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \Lang$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (a \Sigma^*)$. (R101, prop, p.38)
-\item P2a: $\ext \Lang \cap \dext \Lang \subsetneqq \ext \Lang$ \newline
-Proof: $\tilde{L}_{2a} := \ext(a^* b) = a^* b \Sigma^\omega \in \ext \Lang$. Assume some A-automaton $\A$ with $n$ states accepts $\tilde{L}_{2a}$. $\A$ would also accept $a^n b^\omega$. I.e. the $(n+1)$th state after the run of $a^n$ would also accept $a$, i.e. $\A$ would accept $a^{n+1}$. By inclusion, $\A$ would accept $a^\omega$. That is a contradiction. Thus, there is no such A-automat. Thus, $\tilde{L}_{2a} \notin \dext \Lang$.
-\item P2b: $\ext \Lang \cap \dext \Lang \subsetneqq \dext \Lang$ \newline
-Proof: $\tilde{L}_{2b} := - \tilde{L}_{2a} \in \dext \Lang$, $\tilde{L}_{2b} \notin \ext \Lang$.
-\item P3: $\ext \Lang \neq \dext \Lang$ \newline
-Proof: Follows directly from P2a and P2b.
-\item P4: $\ext \Lang \cup \dext \Lang \subsetneqq \BC \ext \Lang$ \newline
-Proof: $\tilde{L}_4 := \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, $\Sigma = \Set{a,b,c}$. Then we have $\tilde{L}_4 \notin \ext \cup \dext \Lang$, $\tilde{L}_4 \in \BC \ext \Lang$. (R101, p.38)
-\item P5: $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ \newline
-Proof: \ref{gen:staiger-wagner} (Staiger-Wagner-recognizable)
+\begin{lemma}
+
+\begin{enumerate}
+\item[1] $\ext \Lang \cap \dext \Lang \neq \emptyset$
+\item[2a.] $\ext \Lang \cap \dext \Lang \subsetneqq \ext \Lang$
+\item[2b.] $\ext \Lang \cap \dext \Lang \subsetneqq \dext \Lang$
+\item[3.] $\ext \Lang \neq \dext \Lang$
+\item[4.] $\ext \Lang \cup \dext \Lang \subsetneqq \BC \ext \Lang$
+\item[5.] $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ (Staiger-Wagner class)
+\item[6a.] $\lim \Lang \cap \dlim \Lang \subsetneqq \lim \Lang$
+\item[6b.] $\lim \Lang \cap \dlim \Lang \subsetneqq \dlim \Lang$
+\item[7.] $\lim \Lang \neq \dlim \Lang$
+\item[8.] $\lim \Lang \cup \dlim \Lang \subsetneqq \BC \lim \Lang$
+\end{enumerate}
+and we have the additional properties
+\begin{enumerate}
+\item[9.] $\BC \lim \Lang = \Kleene(\Lang)$
+\item[10.] $\BC \lim \Lang = \limClosure(\Lang)$
+\item[11.] $\BC \lim \Lang = \Set{L_{\text{Büchi}}^\omega(\A)}{\A \text{ automaton so that } L^*(\A) \in \Lang}$
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+\item[1] $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \Lang$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (a \Sigma^*)$. (\cite[prop, p.38]{InfCompR101})
+\item[2a.] $\tilde{L}_{2a} := \ext(a^* b) = a^* b \Sigma^\omega \in \ext \Lang$. Assume some A-automaton $\A$ with $n$ states accepts $\tilde{L}_{2a}$. $\A$ would also accept $a^n b^\omega$. I.e. the $(n+1)$th state after the run of $a^n$ would also accept $a$, i.e. $\A$ would accept $a^{n+1}$. By inclusion, $\A$ would accept $a^\omega$. That is a contradiction. Thus, there is no such A-automat. Thus, $\tilde{L}_{2a} \notin \dext \Lang$.
+\item[2b.] $\tilde{L}_{2b} := - \tilde{L}_{2a} \in \dext \Lang$, $\tilde{L}_{2b} \notin \ext \Lang$.
+\item[3.] Follows directly from P2a and P2b.
+\item[4.] $\tilde{L}_4 := \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, $\Sigma = \Set{a,b,c}$. Then we have $\tilde{L}_4 \notin \ext \cup \dext \Lang$, $\tilde{L}_4 \in \BC \ext \Lang$. (\cite[p.38]{InfCompR101})
+
+\item[5.]
 %S405 / Staigner-Wagner-recognizable
-\item P6a: $\lim \Lang \cap \dlim \Lang \subsetneqq \lim \Lang$ \newline
-Proof: $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. With E3, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
-\item P6b: $\lim \Lang \cap \dlim \Lang \subsetneqq \dlim \Lang$ \newline
-Proof: Analog to P6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
-\item P7: $\lim \Lang \neq \dlim \Lang$ \newline
-Proof: Follows directly from P6a and P6b.
-\item P8: $\lim \Lang \cup \dlim \Lang \subsetneqq \BC \lim \Lang$ \newline
+A language in this class is also said to have the \defword{obligation property}. Staiger and Wagner have introduced a \defword{Staiger-Wagner automaton} (also called a \defword{weak Muller automaton}) which can accept exactly this language class. This class of languages is called the \defword{Staiger-Wagner-recognizable} languages.
+
+Given an automaton $\A = (Q,\Sigma,q_0,\Delta,\F)$ with $\F \subseteq 2^Q$, a run $\rho$ in $\A$ is \defword{Staiger-Wagner-accepted} iff $\Occ(\rho) \in \F$, where $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}}$.
+
+A generic proof of the equality $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ is given in chapter \ref{gen:staiger-wagner}.
+
+\item[6a.] $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. With E3, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
+\item[6b.] Analog to 6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
+\item[7.] Follows directly from 6a and 6b.
+
+\item[8.]
 %(S408, S409)
-Proof: $\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma*b)^\omega$. Then $\tilde{L}_8 \notin \lim \cup \dlim \Lang$ but $\tilde{L}_8 \in \BC \lim \Lang$. (R101, prop, p.38)
-\item P9: $\BC \lim \Lang = \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$ \newline
+$\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma*b)^\omega$. Then $\tilde{L}_8 \notin \lim \cup \dlim \Lang$ but $\tilde{L}_8 \in \BC \lim \Lang$. (\cite[prop, p.38]{InfCompR101})
+
+\item[9.-11.]
 %(S402, S407)
-Proof: This is explained already in chapter \ref{reg-omega-lang}. 
-\item P10: $\BC \lim \Lang = \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang}$ \newline
 %(S403, S411) (R107, Theorem 3.1)
-Proof: This is explained already in chapter \ref{reg-omega-lang}. 
-\item P11: $\BC \lim \Lang = \Set{L_{\text{B"uchi}}^\omega(\A)}{\A \text{ automaton so that } L^*(\A) \in \Lang}$ \newline
-Proof: (R101,Th.12,p.9) says $\Set{L_{\text{B"uchi}}^\omega(\A)}{\dots} = \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang}$. The rest follows with P9.
-\end{itemize}
+This is explained already in chapter \ref{reg-omega-lang} and in more detail in \cite{InfCompR101}.
+
+\end{enumerate}
+\end{proof}
+\end{lemma}
 
 \subsection{Towards a theory for subclasses of the regular language class} %Questions
 
