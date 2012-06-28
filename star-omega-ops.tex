@@ -123,11 +123,11 @@ and we have the additional properties
 
 \item[5.]
 %S405 / Staigner-Wagner-recognizable
-A language in this class is also said to have the \defword{obligation property}. Staiger and Wagner have introduced a \defword{Staiger-Wagner automaton} (also called a \defword{weak Muller automaton}) which can accept exactly this language class. This class of languages is called the \defword{Staiger-Wagner-recognizable} languages.
+A language in this class is also said to have the \defword{obligation property}. Staiger and Wagner have introduced a \defword{Staiger-Wagner automaton} (also called a \defword{weak Muller automaton}; see definition \ref{def:staiger-wagner}) which can accept exactly this language class. This class of languages is called the \defword{Staiger-Wagner-recognizable} languages. This is stated in theorem \ref{thm:staiger-wagner}.
 
-Given an automaton $\A = (Q,\Sigma,q_0,\Delta,\F)$ with $\F \subseteq 2^Q$, a run $\rho$ in $\A$ is \defword{Staiger-Wagner-accepted} iff $\Occ(\rho) \in \F$, where $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}}$.
+%Given an automaton $\A = (Q,\Sigma,q_0,\Delta,\F)$ with $\F \subseteq 2^Q$, a run $\rho$ in $\A$ is \defword{Staiger-Wagner-accepted} iff $\Occ(\rho) \in \F$, where $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}}$.
 
-A generic proof of the equality $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ is given in chapter \ref{gen:staiger-wagner}.
+A generic proof of the equality $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ is given in lemma \ref{gen:staiger-wagner}.
 
 \item[6a.] $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. Because $\Lang$ is closed under complement, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
 \item[6b.] Analog to 6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
