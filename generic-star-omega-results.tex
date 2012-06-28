@@ -40,10 +40,14 @@ There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{proof}
 \end{lemma}
 
+For $\omega$ automata, we already know that non-determinism can be more powerful than determinism (see \ref{reg-omega-lang}): The class of non-deterministic Büchi automata can accept clearly more languages than the class of determinstic Büchi automata. E.g. $L^\omega := (a+b)^* b^\omega \in \LangOreg$ cannot be recognised by deterministic Büchi automata, i.e. $L^\omega \not\in \lim \Langreg$.
+
+Luckily, for E- and A-acceptance, this is not the case as we see below. This matches the intuition that E/A-acceptance doesn't really tell something about infinite properties of words but Büchi/Muller does. And when talking about finite words, we already know that non-deterministic and deterministic automata are equaly powerful (see chapter \ref{intro:reglang}).
+
 %307.12
 \begin{lemma}
 \label{gen:e-determinism}
-The $\omega$-language-class accepted by deterministic E-automata is equal to non-deterministic E-automata. I.e., for every non-deterministic E-automaton, we can construct an equivalent deterministic E-automaton.
+The $\omega$-language-class accepted by deterministic E-automata is equal to non-deterministic E-automata. I.e., for every non-deterministic E-automaton, we can construct an equivalent deterministic E-automaton. The same goes for A-automata.
 \begin{proof} Let $\A^N$ be any non-deterministic automaton and $\A^D$ an ($*$-)equivalent deterministic automaton. Then:
 \begin{align*}
 & \alpha \in L^{\omega}_E(\A^N) \\
@@ -52,6 +56,8 @@ The $\omega$-language-class accepted by deterministic E-automata is equal to non
 \Leftrightarrow \ & \alpha \in L^{\omega}_E(\A^D)
 \end{align*}
 $\A^N$ can be interpreted as an arbitary E-automata and we have shown that we get an equivalent deterministic E-automata.
+
+For A-automata, the proof is analogue.
 \end{proof}
 \end{lemma}
 
