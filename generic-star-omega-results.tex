@@ -122,6 +122,7 @@ This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{
 
 
 \subsection{Classification for arbitrary language classes}
+\label{gen:general}
 
 %\subsection{non suffix sensitive}
 % S303, S101a:
@@ -435,7 +436,7 @@ TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with 
 
 \begin{mydef}
 We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sigma^*$
-\[ \Lang(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
+\[ \Lang^*(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
 \end{mydef}
 
 Examples of such language classes are locally testable (LT, section \ref{lang:LT}), locally threshold testable (LTT, section \ref{lang:LTT}) or piece-wise testable (PT, section \ref{lang:PT}) languages. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
@@ -451,7 +452,9 @@ then we can construct a canonical deterministic automaton $\A_R$ which has $S_R 
 The LT, LTT and PT language classes have the above properties and thus such related canonical automaton.
 
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
-\[ \Lang(R) = \Set{L(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
+\[ \Lang^*(R) = \Set{L^*(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
+
+Obviously, by construction, such language classes are all \emph{closed under acceptance component variation}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-insensitiveness} doesn't directly follow from this --- however we have this property for most studied congruences $R$. This lets us apply most of the proofs in chapter \ref{gen:general}.
 
 \begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
@@ -473,11 +476,11 @@ Analogously to $\Lang(R)$, define the $\omega$-language-class
 
 \subsubsection{Classification}
 
-With this preparation, we show for some $R$ the equalities:
+With this preparation, we show some properties:
 \begin{itemize}
-\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\ref{gen:lang_omega_e})
-\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\ref{gen:lang_omega_buechi})
-\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\ref{gen:lang_omega_muller})
+\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (lemma \ref{gen:lang_omega_e})
+\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (lemma \ref{gen:lang_omega_buechi})
+\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (lemma \ref{gen:lang_omega_muller})
 \item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$
 \item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$
 \item $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$
