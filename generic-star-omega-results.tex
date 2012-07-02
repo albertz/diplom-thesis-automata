@@ -577,13 +577,27 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 \end{proof}
 \end{lemma}
 
+\begin{lemma}
+Let $\Lang$ be a $*$-language class which is \emph{closed under acceptance component variation}. Then
+\[ \BC \lim \Lang \cap \lim \Langreg = \lim \Lang . \]
+\begin{proof}
+We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" is shown.
+
+Now, we show "$\subseteq$". Let $L_\omega \in \BC \lim \Lang \cap \lim \Langreg$. Let $\A_M$ be a deterministic Muller automaton accepting $L_\omega$ and $\A_B$ a deterministic Büchi automaton accepting $L_\omega$. Construct the canonical product automaton $\A_\times$. Whereever we have a final state in $\A_B$, let this be a final state in $\A_\times$. Then, $\alpha$ is Büchi-accepted by $\A_B$ iff it is Büchi-accepted by $\A_\times$. I.e. $\A_\times$ Büchi-accepts exactly the language $L_\omega$.
+
+TODO: Is $L^*(\A_\times) \in \Lang$? \emph{acceptance component variation closure} is not enough...
+%Because of the \emph{acceptance component variation closure}, we also have $L^*(\A_\times) \in \Lang$.
+
+\end{proof}
+\end{lemma}
+
 %\subsection{$\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$}
 %S307.6,S307.8
 \begin{lemma}
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
 
 \begin{proof}
-This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
+%This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
 
 We have $\lim \Lang(R) \subseteq \lim \Langreg$ and $\lim \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
@@ -630,6 +644,33 @@ TODO ...
 %Search $q_B \in S_B$ with $W \rightarrow q_B$, $q_B \xrightarrow{W_1} q_B$ and $q_B \xrightarrow{W_2} q_B$. Assuming such a $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$ so that $\tilde w_0 \rightarrow q_B$, $q_B \xrightarrow{\tilde w_i} q_B$ for $i \in \Set{1,2}$. Because $\tilde w_0 \cdot \tilde w_1^\omega \in L^\omega$, there is a final state $\tilde q_B$ in $\A^B$ on the path $q_B \xrightarrow{\tilde w_1} q_B$. Then, $\beta := \tilde w_0 \cdot (\tilde w_1 \cdot \tilde w_2)^\omega$ also visits $\tilde q_B$ infinitely often, thus $\A^B$ also accepts $\beta$. In $\A^M$, $\beta$ visits exactly $F \cup S$ infinitely often. Thus, $\A_M$ does not accept $\beta$. That is a contradiction. Thus, $\F_q = \mathcal S_q$.
 
 %TODO: Now show that such $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$.
+
+---
+
+Note that this proof does not work for any $\A^M$. E.g. the language
+\[ \Set{\alpha \in \Set{a,b}^\omega}{\text{$a$ and $b$ do occur infinitely often in $\alpha$}} \]
+is accepted exactly by the Muller automaton
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$1$};
+    \node[state] (2) [right of=1] {$2$};
+
+    \path[->]
+    (1) +(-1.5,0) edge (1)
+    (1) edge [loop above] node {$a$} ()
+    (1) edge [bend left] node {$b$} (2)
+    (2) edge [bend left] node {$a$} (1)
+    (2) edge [loop above] node {$b$} ()
+    ;
+  \end{tikzpicture}
+\]
+where $\F = \Set{\Set{1,2}}$. It is not possible to find a final state set to Büchi-accept this language based on this state/transition graph, thus this automaton would not work in the proof. It is not possible to accept this language with a Muller automaton with less states, so in some way the given automaton is minimal. This demonstrates that some form of minima restriction/condition on $\A^M$ would not work for the proof.
+
 \end{proof}
 \end{lemma}
 
