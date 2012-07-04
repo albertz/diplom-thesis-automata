@@ -82,7 +82,7 @@ There are some different forms of $\omega$-automata which differ in their accept
 all recognize the same languages. See \cite{InfCompR101}, \cite{LangAutLogicR102}, \cite{InfWordsR110} and others. The main part of this theorem is the \defword{McNaughton's Theorem} which states the equivalence of non-deterministic Büchi automata and deterministic Muller automata.
 %S407
 
-Muller automata are interesting for us in the rest of this thesis. The acceptance component of a Muller automaton is a set $\F \subseteq 2^Q$, also called the \defword{table} of the automaton (instead of a single set $F \subseteq Q$). A word $w \in \Sigma^\omega$ is accepted iff there is an infinite run $p$ with $\Inf(p) \in \F$, where $\Inf(p)$ is the set of infinitely often reached states of the run $p$.
+Muller automata are interesting for us in the rest of this thesis. The acceptance component of a Muller automaton is a set $\F \subseteq 2^Q$, also called the \defword{table} of the automaton (instead of a single set $F \subseteq Q$). A word $w \in \Sigma^\omega$ is accepted iff there is an infinite run $\rho$ with $\Inf(\rho) \in \F$, where $\Inf(\rho)$ is the set of infinitely often reached states of the run $\rho$.
 
 We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, \F) . \]

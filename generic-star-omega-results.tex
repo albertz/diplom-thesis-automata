@@ -577,29 +577,60 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 \end{proof}
 \end{lemma}
 
+
+We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$.
+
+We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" does hold in all cases.
+
 \begin{lemma}
-Let $\Lang$ be a $*$-language class which is \emph{closed under acceptance component variation}. Then
-\[ \BC \lim \Lang \cap \lim \Langreg = \lim \Lang . \]
+\label{gen:bcLimLReg-and-limL:counter-example}
+The equality does not hold for any $\Lang$.
 \begin{proof}
-We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" is shown.
-
-Now, we show "$\subseteq$". Let $L_\omega \in \BC \lim \Lang \cap \lim \Langreg$. Let $\A_M$ be a deterministic Muller automaton accepting $L_\omega$ and $\A_B$ a deterministic Büchi automaton accepting $L_\omega$. Construct the canonical product automaton $\A_\times$. Whereever we have a final state in $\A_B$, let this be a final state in $\A_\times$. Then, $\alpha$ is Büchi-accepted by $\A_B$ iff it is Büchi-accepted by $\A_\times$. I.e. $\A_\times$ Büchi-accepts exactly the language $L_\omega$.
-
-TODO: Is $L^*(\A_\times) \in \Lang$? \emph{acceptance component variation closure} is not enough...
-%Because of the \emph{acceptance component variation closure}, we also have $L^*(\A_\times) \in \Lang$.
-
+Let $\Sigma = \Set{a,b}$,
+\[ L_a := (b^* a^+) (b^+ a^+)^* , \ \ \ L_b := b^* (a^+ b^+)^* \ \ \ \text{and} \ \ \ \Lang := \Set{L_a,L_b} . \]
+Then, $\lim L_a$ is the set of words where $a$ occurs infintely often and $\lim L_b$ is the set of words where $b$ occurs infinitely often. Then, $L_\omega := \lim L_a \cap \lim L_b \in \BC \lim \Lang$. Also, let
+\[ L_{ab} := (a^* b^+ a)^* . \]
+Then, $\lim L_{ab}$ is the set of words where both $a$ and $b$ occurs infintely often. Thus, $\lim L_{ab} = L_\omega$. Obviously, we also have $L_{ab} \in \Langreg$. Thus, $L_\omega \in \BC \lim \Lang \cap \lim \Langreg$. But we can also see that $L_\omega \not\in \lim \Lang$.
 \end{proof}
 \end{lemma}
+
+Thus, we need some conditions on $\Lang$ for the equality. Here, we will study the class $\Lang(R)$. We will introduce a property on $\Lang(R)$ where we can show the equality. The idea of this property is comming from the study of this equality in terms of automata. Let $L_\omega \in \BC \lim \Lang(R)$. Then there is a representing $R$-Muller-automaton $\A_M$ for $L_\omega$. Let also $L_\omega \in \lim \Langreg$. Then there is representing deterministic Büchi automaton $\A_r$ for $L_\omega$. We want to show that $L_\omega \in \lim \Lang(R)$. I.e. we are searching for a representing deterministic automaton whose language is in $\Lang(R)$ and where the Büchi-acceptance gives us $L_\omega$. Because the $R$-Büchi-automaton is the canonical deterministic Büchi automaton for $\Lang(R)$, we must be able to construct such $R$-Büchi-automaton $\A_B$ for $L_\omega$. Let us look at the product automaton $\A_M \times \A_r$ and determine from there the final state set of $\A_B$. $\A_M$ already has the right transition graph. $\A_r$ has the Büchi acceptance. So, when looking at the product automaton, we try to find the loops in $\A_M$ which match a final state in $\A_r$. $\A_r$ might be bigger than $\A_M$ and it doesn't seem clear wether the Muller final state sets of $\A_M$ can be translated to a Büchi final state set. However, when we say that each SCC in $\A_M$ has exactly one loop, there is no inconclusiveness about wether there is a Büchi final state in this SCC in $\A_B$ or not. We will formulate this formally below. So, if we have that property on $\A_M$, i.e. on $\Lang(R)$, we can construct $\A_B$ and thus we have the equality.
+
+It even turns out that for $\Lang(R)$, the equality holds exactly iff we have that property on $\Lang(R)$. We will show and proof that in lemma \ref{gen:bcLimLReg-and-limL}. Now the property:
+
+\begin{mydef}
+For $\alpha \in \Sigma^\omega$, let $\overrightarrow \alpha \in (\Sigma^* / R)^\omega$ be the state sequence we run through with $\alpha$ and thus $\Inf(\overrightarrow \alpha) \subseteq \Sigma^*/R$ those states which are visited infinitely often.
+
+If for every $L \in \Lang(R)$, there is a inclusion function $B_L \colon \Sigma^*/R \rightarrow \B$ such that for every $\alpha \in \Sigma^\omega$, we have
+\[ \alpha \in L \ \ \ \Leftrightarrow \ \ \ \exists q \in \Inf(\overrightarrow \alpha) \colon B_L(q) = 1 . \]
+Also, for every $s \not\in \Inf(\overrightarrow \alpha)$,
+\[ B_L(s) = B_L(q) \ \ \ \forall q \not\in \Inf(\overrightarrow \alpha) \]
+and
+\[ B_L(s) \neq B_L(q) \ \ \ \forall q \in \Inf(\overrightarrow \alpha) . \]
+
+If such $B_L$ always exists, we call $\Lang$ \defword{infinity-postfix-independent}.
+\end{mydef}
+
+This definition is as general as possible. It is also well defined if there are an infinity number of equivalence classes of $R$. Thus, $\Lang(R)$ doesn't need to be regular. Also, in that case, there might be an $\alpha \in \Sigma^\omega$ with $\Inf(\overrightarrow \alpha) = \emptyset$.
+
+If $\Lang(R)$ is regular and we look at an $R$-$\omega$-automaton, it basically says that when we visit some state infinitely often, it determines in what loop we are and we cannot switch the loop.
+
+For piecewise testable languages, this is the case.
+
+For locally testable languages, this is \emph{not} the case. Depending on the ending of $\alpha[0,n]$, we can switch through different equivalence classes and visit different loops.
+
+If we take the example given in lemma \ref{gen:bcLimLReg-and-limL:counter-example}: For $v,w \in \Set{a,b}^*$, let $v =_R w \ :\Leftrightarrow \ v,w$ end up with the same symbol. I.e., the equivalence classes are $\left<\epsilon\right>, \left<a\right>, \left<b\right>$. Then, $L_a = \left<a\right>$ and $L_b = \left<\epsilon\right> \cup \left<b\right>$ and $\Lang = \Set{L \in \Lang(R)}{\#L = \infty}$ (only the infinity $L \in \Lang(R)$ matter for $\lim$). Then, $\BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R)$. This example can actually be extended to be the $\Lang(LT_2)$ class.
 
 %\subsection{$\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$}
 %S307.6,S307.8
 \begin{lemma}
+\label{gen:bcLimLReg-and-limL}
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
 
 \begin{proof}
 %This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
 
-We have $\lim \Lang(R) \subseteq \lim \Langreg$ and $\lim \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
+It was already shown that "$\supseteq$" always holds.
 
 Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \lim \Langreg$. Because $L^\omega \in \lim \Langreg$, there is an Büchi-automaton $\A^B$ which accepts $L^\omega$. We can assume that $\A^B$ is deterministic (with \ref{gen:e-determinism}).
 
