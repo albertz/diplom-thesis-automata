@@ -582,7 +582,7 @@ We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim
 
 We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" does hold in all cases.
 
-\begin{lemma}
+\begin{example}
 \label{gen:bcLimLReg-and-limL:counter-example}
 The equality does not hold for any $\Lang$.
 \begin{proof}
@@ -592,7 +592,7 @@ Then, $\lim L_a$ is the set of words where $a$ occurs infintely often and $\lim 
 \[ L_{ab} := (a^* b^+ a)^* . \]
 Then, $\lim L_{ab}$ is the set of words where both $a$ and $b$ occurs infintely often. Thus, $\lim L_{ab} = L_\omega$. Obviously, we also have $L_{ab} \in \Langreg$. Thus, $L_\omega \in \BC \lim \Lang \cap \lim \Langreg$. But we can also see that $L_\omega \not\in \lim \Lang$.
 \end{proof}
-\end{lemma}
+\end{example}
 
 Thus, we need some conditions on $\Lang$ for the equality. Here, we will study the class $\Lang(R)$. We will introduce a property on $\Lang(R)$ where we can show the equality. The idea of this property is comming from the study of this equality in terms of automata. Let $L_\omega \in \BC \lim \Lang(R)$. Then there is a representing $R$-Muller-automaton $\A_M$ for $L_\omega$. Let also $L_\omega \in \lim \Langreg$. Then there is representing deterministic Büchi automaton $\A_r$ for $L_\omega$. We want to show that $L_\omega \in \lim \Lang(R)$. I.e. we are searching for a representing deterministic automaton whose language is in $\Lang(R)$ and where the Büchi-acceptance gives us $L_\omega$. Because the $R$-Büchi-automaton is the canonical deterministic Büchi automaton for $\Lang(R)$, we must be able to construct such $R$-Büchi-automaton $\A_B$ for $L_\omega$. Let us look at the product automaton $\A_M \times \A_r$ and determine from there the final state set of $\A_B$. $\A_M$ already has the right transition graph. $\A_r$ has the Büchi acceptance. So, when looking at the product automaton, we try to find the loops in $\A_M$ which match a final state in $\A_r$. $\A_r$ might be bigger than $\A_M$ and it doesn't seem clear wether the Muller final state sets of $\A_M$ can be translated to a Büchi final state set. However, when we say that each SCC in $\A_M$ has exactly one loop, there is no inconclusiveness about wether there is a Büchi final state in this SCC in $\A_B$ or not. We will formulate this formally below. So, if we have that property on $\A_M$, i.e. on $\Lang(R)$, we can construct $\A_B$ and thus we have the equality.
 
@@ -601,7 +601,7 @@ It even turns out that for $\Lang(R)$, the equality holds exactly iff we have th
 \begin{mydef}
 For $\alpha \in \Sigma^\omega$, let $\overrightarrow \alpha \in (\Sigma^* / R)^\omega$ be the state sequence we run through with $\alpha$ and thus $\Inf(\overrightarrow \alpha) \subseteq \Sigma^*/R$ those states which are visited infinitely often.
 
-If for every $L \in \Lang(R)$, there is a inclusion function $B_L \colon \Sigma^*/R \rightarrow \B$ such that for every $\alpha \in \Sigma^\omega$, we have
+If for every $L \in \Lang(R)$, there is an inclusion function $B_L \colon \Sigma^*/R \rightarrow \B$ such that for every $\alpha \in \Sigma^\omega$, we have
 \[ \alpha \in L \ \ \ \Leftrightarrow \ \ \ \exists q \in \Inf(\overrightarrow \alpha) \colon B_L(q) = 1 . \]
 Also, for every $s \not\in \Inf(\overrightarrow \alpha)$,
 \[ B_L(s) = B_L(q) \ \ \ \forall q \not\in \Inf(\overrightarrow \alpha) \]
@@ -613,51 +613,117 @@ If such $B_L$ always exists, we call $\Lang$ \defword{infinity-postfix-independe
 
 This definition is as general as possible. It is also well defined if there are an infinity number of equivalence classes of $R$. Thus, $\Lang(R)$ doesn't need to be regular. Also, in that case, there might be an $\alpha \in \Sigma^\omega$ with $\Inf(\overrightarrow \alpha) = \emptyset$.
 
-If $\Lang(R)$ is regular and we look at an $R$-$\omega$-automaton, it basically says that when we visit some state infinitely often, it determines in what loop we are and we cannot switch the loop.
+If $\Lang(R)$ is regular and we look at an $R$-$\omega$-automaton, it basically says that when we visit some state infinitely often, it determines in what loop we are and we cannot switch the loop. Formally:
+
+\begin{lemma}
+Let $R$ be a congruence relation with a finite number of equivalence classes. $\Lang(R)$ is \emph{infinity-postfix-independent} exactly if and only if every SCC $Q$ in the $R$-automata (as defined in section \ref{gen:R-automata}) has exactly one looping subset, i.e. $S$ itself is the only loop in $Q$.
+\begin{proof}
+$S_R := \Sigma^*/R$ are the states of the $R$-automata. Let $Q \subseteq S_R$ be any SCC. Let $\tilde L \in \BC \lim \Lang(R)$. Let $\A_M$ be the $R$-Muller-automaton accepting $\tilde L$.
+
+'$\Rightarrow$': Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then, for $L$, we have an inclusion function $B_L \colon S_R \rightarrow \B$. If there is an accepting loop $Q' \subseteq Q$ in $\A_M$, it means that every $\alpha \in \tilde L$ which ends up in $Q'$ is accepted, thus there is a $q' \in Q'$ with $B_L(q') = 1$. Because we can loop through all of $Q$ and thus construct $\beta \in \Sigma^\omega$ with $\Inf(\overrightarrow \beta) = Q$, we get $B_L(q) = 1$ for all $q \in Q$. Thus, all possible loops in $Q$ will accept. This was general for any SCC and any language $\tilde L \in \BC \lim \Lang(R)$. Because this is a Muller-automaton, this can only be if $Q$ itself is the only loop. Otherwise we can have both an accepting loop and a non-accepting loop in $Q$ which is a contradiction.
+
+'$\Leftarrow$': The SCC $Q$ has exactly one looping subset. This is $Q$ itself. Assuming $Q$ is accepting in $\A_M$. Then define $B_L(q) = 1$ for all $q \in Q$, otherwise $B_L(q) = 0$. This $B_L \colon S_R \rightarrow \B$ has the needed properties, thus $\Lang(R)$ is \emph{infinity-postfix-independent}.
+\end{proof}
+\end{lemma}
 
 For piecewise testable languages, this is the case.
 
 For locally testable languages, this is \emph{not} the case. Depending on the ending of $\alpha[0,n]$, we can switch through different equivalence classes and visit different loops.
 
-If we take the example given in lemma \ref{gen:bcLimLReg-and-limL:counter-example}: For $v,w \in \Set{a,b}^*$, let $v =_R w \ :\Leftrightarrow \ v,w$ end up with the same symbol. I.e., the equivalence classes are $\left<\epsilon\right>, \left<a\right>, \left<b\right>$. Then, $L_a = \left<a\right>$ and $L_b = \left<\epsilon\right> \cup \left<b\right>$ and $\Lang = \Set{L \in \Lang(R)}{\#L = \infty}$ (only the infinity $L \in \Lang(R)$ matter for $\lim$). Then, $\BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R)$. This example can actually be extended to be the $\Lang(LT_2)$ class.
+\begin{example}
+There is an $R$ so that $\Lang(R)$ is not \emph{infinity-postfix-independent} and
+\[ \BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R) . \]
+\begin{proof}
+If we take the example \ref{gen:bcLimLReg-and-limL:counter-example}: For $v,w \in \Set{a,b}^*$, let $v =_R w \ :\Leftrightarrow \ v,w$ end up with the same symbol. I.e., the equivalence classes are $\left<\epsilon\right>, \left<a\right>, \left<b\right>$.
+
+The $R$-automata is
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (0)              {$\left<\epsilon\right>$};
+    \node[state] (2) [right of=0] {$\left<b\right>$};
+    \node[state] (1) [above of=2] {$\left<a\right>$};
+
+    \path[->]
+    (0) +(-1.5,0) edge (0)
+    (0) edge [bend left] node {$a$} (1)
+    (0) edge [bend right] node {$b$} (2)
+    (1) edge [loop right] node {$a$} ()
+    (1) edge [bend left] node {$b$} (2)
+    (2) edge [bend left] node {$a$} (1)
+    (2) edge [loop right] node {$b$} ()
+    ;
+  \end{tikzpicture}
+\]
+
+From example \ref{gen:bcLimLReg-and-limL:counter-example}, we have $L_a = \left<a\right>$ and $L_b = \left<\epsilon\right> \cup \left<b\right>$ and $\Lang = \Set{L \in \Lang(R)}{\#L = \infty}$ (only the infinity $L \in \Lang(R)$ matter for $\lim$). We also see from the $R$-automata that there is no way to mark states as final states for Büchi-acceptance so that we get the condition "both $a$ and $b$ occur infinitely often". Via Muller, we just mark the loop $\Set{\left<a\right>,\left<b\right>}$ as final. I.e. $\lim L_{ab} \not\in \lim \Lang(R)$ but $\lim L_{ab} \in \BC \lim \Lang(R)$ and as shown in example \ref{gen:bcLimLReg-and-limL:counter-example}, $\lim L_{ab} \in \lim \Langreg$. Thus, $\BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R)$.
+\end{proof}
+\end{example}
+
+This example can actually be extended to be the $\Lang(LT_2)$ class and generalized to any $\Lang(LT_n)$. I.e. for all $n \in \N$, $\Lang(LT_n)$ is not \emph{infinty-postfix-independent} and
+\[ \BC \lim \Lang(LT_n) \cap \lim \Langreg \neq \lim \Lang(LT_n) . \]
+
+When studying the \emph{infinity-postfix-independence} property in more detail, we get the surprising result:
+
+\begin{lemma}
+\label{gen:BClimR=limR}
+Let $R$ be a congruence relation with a finite number of equivalence classes. $\Lang(R)$ is \emph{infinity-postfix-independent} exactly if and only if
+\[ \BC \lim \Lang(R) = \lim \Lang(R) . \]
+\begin{proof}
+$S_R := \Sigma^*/R$ are the states of the $R$-automata. Let $Q \subseteq S_R$ be any SCC. Let $\tilde L \in \BC \lim \Lang(R)$. Let $\A_M$ be the $R$-Muller-automaton accepting $\tilde L$.
+
+'$\Rightarrow$': Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then, for $L$, we have an inclusion function $B_L \colon S_R \rightarrow \B$. If there is an accepting loop $Q' \subseteq Q$ in $\A_M$, it means that every $\alpha \in \tilde L$ which ends up in $Q'$ is accepted, thus there is a $q' \in Q'$ with $B_L(q') = 1$. Because we can loop through all of $Q$ and thus construct $\beta \in \Sigma^\omega$ with $\Inf(\overrightarrow \beta) = Q$, we get $B_L(q) = 1$ for all $q \in Q$. Thus, all possible loops in $Q$ will accept. In an $R$-Büchi-automata $\A_B$, we can mark all states of $Q$ as final states. This was for any SCC $Q$, thus $\A_B$ will accept exactly iff $\A_M$ accepts. Thus we have $\tilde L \in \lim \Lang(R)$. This was for any $\tilde L$, i.e. $\BC \lim \Lang(R) = \lim \Lang(R)$.
+
+'$\Leftarrow$': Let $\BC \lim \Lang(R) = \lim \Lang(R)$. Assuming $Q$ has a final state $q \in Q$ in the $R$-Büchi-automata for $\tilde L$. Let $\alpha \in \Sigma^\omega$ so that $q \in \Inf(\overrightarrow \alpha)$.
+
+TODO ...
+\end{proof}
+\end{lemma}
 
 %\subsection{$\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$}
 %S307.6,S307.8
 \begin{lemma}
 \label{gen:bcLimLReg-and-limL}
-\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
+Let $R$ be a congruence relation with a finite number of equivalence classes. Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 
 \begin{proof}
+In lemma \ref{gen:BClimR=limR}, we showed that we have $\BC \lim \Lang(R) = \lim \Lang(R)$. Because $\lim \Lang(R) \subseteq \lim \Langreg$, we directly get the claimed equality.
+\end{proof}
+\end{lemma}
+
 %This proof is loosely analogue to the proof in \ref{gen:R-bclim-cap-ext}.
 
-It was already shown that "$\supseteq$" always holds.
+%It was already shown that "$\supseteq$" always holds.
 
-Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \lim \Langreg$. Because $L^\omega \in \lim \Langreg$, there is an Büchi-automaton $\A^B$ which accepts $L^\omega$. We can assume that $\A^B$ is deterministic (with \ref{gen:e-determinism}).
+%Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \lim \Langreg$. Because $L^\omega \in \lim \Langreg$, there is an Büchi-automaton $\A^B$ which accepts $L^\omega$. We can assume that $\A^B$ is deterministic (with \ref{gen:e-determinism}).
 
-We must find an $R$-Büchi-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ Büchi-automaton and will construct it in the following.
+%We must find an $R$-Büchi-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ Büchi-automaton and will construct it in the following.
 
-Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
+%Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
 
-Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final states in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
+%Look at the SCC $S$ in $\A^M$. Let $q \in S$. Let $\mathcal F_q \subseteq 2^S$ be the set of final states in $\A^M$ with $q \in F$ for all $F \in \F_q$. Let $\mathcal S_q \subseteq 2^S$ be the set of loops in $S$ which include $q$.
 
-Case 1: $\F_q \neq \mathcal S_q$.
+%Case 1: $\F_q \neq \mathcal S_q$.
 
-Case 2: $\F_q = \mathcal S_q$.
-In that case, mark $q$ as a final state in $\overline{\A}^M$.
+%Case 2: $\F_q = \mathcal S_q$.
+%In that case, mark $q$ as a final state in $\overline{\A}^M$.
 
-For the constructed Büchi-automaton $\overline{\A}^M$, we show that it accepts exactly $L^\omega$.
+%For the constructed Büchi-automaton $\overline{\A}^M$, we show that it accepts exactly $L^\omega$.
 
-Let $\alpha \in L^\omega(\overline{\A}^M)$. Let $q$ be some final state in $\overline{\A}^M$ which is infinitely often visited by $\alpha$. Then, $\F_q = \mathcal S_q$ from the construction. I.e., no matter what loops through $q$ of the related SCC are visited infinitely often by $\alpha$, it will be accepted by $\A^M$. Thus, $\alpha \in L^\omega$.
+%Let $\alpha \in L^\omega(\overline{\A}^M)$. Let $q$ be some final state in $\overline{\A}^M$ which is infinitely often visited by $\alpha$. Then, $\F_q = \mathcal S_q$ from the construction. I.e., no matter what loops through $q$ of the related SCC are visited infinitely often by $\alpha$, it will be accepted by $\A^M$. Thus, $\alpha \in L^\omega$.
 
-Let $\alpha \in L^\omega$. Then, the set of states $F$ infinitely often visited by $\alpha$ in $\A^M$ is some final state set of the Muller-automaton $\A^M$. In $\A^B$, there is a final state $\tilde q$ infinitely often visited by $\alpha$. Let $\alpha =: \prod_{i=1}^{\infty} w_i$ so that $\prod_{i=1}^{n} w_i$ ends up in $\tilde q$ in $\A^B$ for all $n \in \N$ for shortest possible $w_i$ (i.e. we don't miss any $\tilde q$). Let $S$ be the SCC in $\A^M$ where we finally end up with $\alpha$. Then, $F \subseteq S$.
+%Let $\alpha \in L^\omega$. Then, the set of states $F$ infinitely often visited by $\alpha$ in $\A^M$ is some final state set of the Muller-automaton $\A^M$. In $\A^B$, there is a final state $\tilde q$ infinitely often visited by $\alpha$. Let $\alpha =: \prod_{i=1}^{\infty} w_i$ so that $\prod_{i=1}^{n} w_i$ ends up in $\tilde q$ in $\A^B$ for all $n \in \N$ for shortest possible $w_i$ (i.e. we don't miss any $\tilde q$). Let $S$ be the SCC in $\A^M$ where we finally end up with $\alpha$. Then, $F \subseteq S$.
 
-There must be a $q \in F$ so that $\F_q = \mathcal S_q$. Then, by construction of $\overline{\A}^M$, $q$ is a final state in $\overline{\A}^M$ and thus, $\alpha \in L^\omega(\overline{\A}^M)$.
+%There must be a $q \in F$ so that $\F_q = \mathcal S_q$. Then, by construction of $\overline{\A}^M$, $q$ is a final state in $\overline{\A}^M$ and thus, $\alpha \in L^\omega(\overline{\A}^M)$.
 
-Let us show that there is such $q \in F$ by contradiction. I.e. assume there is no such $q \in F$. I.e. for all $q \in F$, $\F_q \neq \mathcal S_q$. Of course we have $F \in \F_q$ for all $q \in F$.
+%Let us show that there is such $q \in F$ by contradiction. I.e. assume there is no such $q \in F$. I.e. for all $q \in F$, $\F_q \neq \mathcal S_q$. Of course we have $F \in \F_q$ for all $q \in F$.
 
-Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words which end up looping there infinitely would also visit $\tilde q$ infinitely often in $\A^B$. Of course, all $P \in \mathcal P_{\tilde q}$ will be final state sets in $\A^M$ because $\A^B$ would accept. Define $\mathcal P_{\tilde q,S} := \Set{P \in \mathcal P_{\tilde q}}{P \subseteq S}$. No matter how much other infinte loops in $S$ we add to $\alpha$ so that we still visit some loops from $\mathcal P_{\tilde q,S}$ infinitely often, $\A^M$ and $\A^B$ will keep accepting. Thus, for $P \in \mathcal P_{\tilde q,S}$, every $P' \supseteq P$, $P' \in \mathcal S_S$, we have $P' \in \mathcal P_{\tilde q,S}$.
-
-TODO ...
+%Let $\mathcal P_{\tilde q}$ be the set of loops in $\A^M$ so that all words which end up looping there infinitely would also visit $\tilde q$ infinitely often in $\A^B$. Of course, all $P \in \mathcal P_{\tilde q}$ will be final state sets in $\A^M$ because $\A^B$ would accept. Define $\mathcal P_{\tilde q,S} := \Set{P \in \mathcal P_{\tilde q}}{P \subseteq S}$. No matter how much other infinte loops in $S$ we add to $\alpha$ so that we still visit some loops from $\mathcal P_{\tilde q,S}$ infinitely often, $\A^M$ and $\A^B$ will keep accepting. Thus, for $P \in \mathcal P_{\tilde q,S}$, every $P' \supseteq P$, $P' \in \mathcal S_S$, we have $P' \in \mathcal P_{\tilde q,S}$.
 
 %For any $q \in F$, we have $\F_q \neq \emptyset$. Thus, $q$ is marked as a final state in $\overline{\A}^M$ and thus, $\overline{\A}^M$ accepts $\alpha$.
 
@@ -676,34 +742,36 @@ TODO ...
 
 %TODO: Now show that such $q_B$ exists with $\tilde w_0 \in W$, $\tilde w_1 \in W_1$, $\tilde w_2 \in W_2$.
 
----
+%---
+%
+%Note that this proof does not work for any $\A^M$. E.g. the language
+%\[ \Set{\alpha \in \Set{a,b}^\omega}{\text{$a$ and $b$ do occur infinitely often in $\alpha$}} \]
+%is accepted exactly by the Muller automaton
+%\[
+%  \begin{tikzpicture}[%
+%    >=stealth,
+%	shorten >=1pt,
+%	node distance=2cm,
+%    auto,
+%  ]
+%    \node[state] (1)              {$1$};
+%    \node[state] (2) [right of=1] {$2$};
+%
+%    \path[->]
+%    (1) +(-1.5,0) edge (1)
+%    (1) edge [loop above] node {$a$} ()
+%    (1) edge [bend left] node {$b$} (2)
+%    (2) edge [bend left] node {$a$} (1)
+%    (2) edge [loop above] node {$b$} ()
+%    ;
+%  \end{tikzpicture}
+%\]
+%where $\F = \Set{\Set{1,2}}$. It is not possible to find a final state set to Büchi-accept this language based on this state/transition graph, thus this automaton would not work in the proof. It is not possible to accept this language with a Muller automaton with less states, so in some way the given automaton is minimal. This demonstrates that some form of minima restriction/condition on $\A^M$ would not work for the proof.
 
-Note that this proof does not work for any $\A^M$. E.g. the language
-\[ \Set{\alpha \in \Set{a,b}^\omega}{\text{$a$ and $b$ do occur infinitely often in $\alpha$}} \]
-is accepted exactly by the Muller automaton
-\[
-  \begin{tikzpicture}[%
-    >=stealth,
-	shorten >=1pt,
-	node distance=2cm,
-    auto,
-  ]
-    \node[state] (1)              {$1$};
-    \node[state] (2) [right of=1] {$2$};
 
-    \path[->]
-    (1) +(-1.5,0) edge (1)
-    (1) edge [loop above] node {$a$} ()
-    (1) edge [bend left] node {$b$} (2)
-    (2) edge [bend left] node {$a$} (1)
-    (2) edge [loop above] node {$b$} ()
-    ;
-  \end{tikzpicture}
-\]
-where $\F = \Set{\Set{1,2}}$. It is not possible to find a final state set to Büchi-accept this language based on this state/transition graph, thus this automaton would not work in the proof. It is not possible to accept this language with a Muller automaton with less states, so in some way the given automaton is minimal. This demonstrates that some form of minima restriction/condition on $\A^M$ would not work for the proof.
 
-\end{proof}
-\end{lemma}
+%TODO: then show that if not (P), then not equality
+%TODO: i.e. lemma: (P) <=> equality
 
 \begin{lemma}
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
