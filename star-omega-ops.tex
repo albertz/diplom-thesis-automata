@@ -95,31 +95,31 @@ where all inclusions are strict. In more detail:
 \label{P:reg-star}
 
 \begin{enumerate}
-\item[1] $\ext \Lang \cap \dext \Lang \neq \emptyset$
-\item[2a.] $\ext \Lang \cap \dext \Lang \subsetneqq \ext \Lang$
-\item[2b.] $\ext \Lang \cap \dext \Lang \subsetneqq \dext \Lang$
-\item[3.] $\ext \Lang \neq \dext \Lang$
-\item[4.] $\ext \Lang \cup \dext \Lang \subsetneqq \BC \ext \Lang$
-\item[5.] $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ (Staiger-Wagner class)
-\item[6a.] $\lim \Lang \cap \dlim \Lang \subsetneqq \lim \Lang$
-\item[6b.] $\lim \Lang \cap \dlim \Lang \subsetneqq \dlim \Lang$
-\item[7.] $\lim \Lang \neq \dlim \Lang$
-\item[8.] $\lim \Lang \cup \dlim \Lang \subsetneqq \BC \lim \Lang$
+\item[1] $\ext \mathcal{R} \cap \dext \mathcal{R} \neq \emptyset$
+\item[2a.] $\ext \mathcal{R} \cap \dext \mathcal{R} \subsetneqq \ext \mathcal{R}$
+\item[2b.] $\ext \mathcal{R} \cap \dext \mathcal{R} \subsetneqq \dext \mathcal{R}$
+\item[3.] $\ext \mathcal{R} \neq \dext \mathcal{R}$
+\item[4.] $\ext \mathcal{R} \cup \dext \mathcal{R} \subsetneqq \BC \ext \mathcal{R}$
+\item[5.] $\BC \ext \mathcal{R} = \lim \mathcal{R} \cap \dlim \mathcal{R}$ (Staiger-Wagner class)
+\item[6a.] $\lim \mathcal{R} \cap \dlim \mathcal{R} \subsetneqq \lim \mathcal{R}$
+\item[6b.] $\lim \mathcal{R} \cap \dlim \mathcal{R} \subsetneqq \dlim \mathcal{R}$
+\item[7.] $\lim \mathcal{R} \neq \dlim \mathcal{R}$
+\item[8.] $\lim \mathcal{R} \cup \dlim \mathcal{R} \subsetneqq \BC \lim \mathcal{R}$
 \end{enumerate}
 and we have the additional properties
 \begin{enumerate}
-\item[9.] $\BC \lim \Lang = \Kleene(\Lang)$
-\item[10.] $\BC \lim \Lang = \limClosure(\Lang)$
-\item[11.] $\BC \lim \Lang = \Set{L_{\text{Büchi}}^\omega(\A)}{\A \text{ automaton so that } L^*(\A) \in \Lang}$
+\item[9.] $\BC \lim \mathcal{R} = \Kleene(\mathcal{R})$
+\item[10.] $\BC \lim \mathcal{R} = \limClosure(\mathcal{R})$
+\item[11.] $\BC \lim \mathcal{R} = \Set{L_{\text{Büchi}}^\omega(\A)}{\A \text{ automaton so that } L^*(\A) \in \mathcal{R}}$
 \end{enumerate}
 
 \begin{proof}
 \begin{enumerate}
-\item[1] $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \Lang$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (a \Sigma^*)$. (\cite[prop, p.38]{InfCompR101})
-\item[2a.] $\tilde{L}_{2a} := \ext(a^* b) = a^* b \Sigma^\omega \in \ext \Lang$. Assume some A-automaton $\A$ with $n$ states accepts $\tilde{L}_{2a}$. $\A$ would also accept $a^n b^\omega$. I.e. the $(n+1)$th state after the run of $a^n$ would also accept $a$, i.e. $\A$ would accept $a^{n+1}$. By inclusion, $\A$ would accept $a^\omega$. That is a contradiction. Thus, there is no such A-automat. Thus, $\tilde{L}_{2a} \notin \dext \Lang$.
-\item[2b.] $\tilde{L}_{2b} := - \tilde{L}_{2a} \in \dext \Lang$, $\tilde{L}_{2b} \notin \ext \Lang$.
+\item[1] $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \mathcal{R}$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (a \Sigma^*)$. (\cite[prop, p.38]{InfCompR101})
+\item[2a.] $\tilde{L}_{2a} := \ext(a^* b) = a^* b \Sigma^\omega \in \ext \mathcal{R}$. Assume some A-automaton $\A$ with $n$ states accepts $\tilde{L}_{2a}$. $\A$ would also accept $a^n b^\omega$. I.e. the $(n+1)$th state after the run of $a^n$ would also accept $a$, i.e. $\A$ would accept $a^{n+1}$. By inclusion, $\A$ would accept $a^\omega$. That is a contradiction. Thus, there is no such A-automat. Thus, $\tilde{L}_{2a} \notin \dext \mathcal{R}$.
+\item[2b.] $\tilde{L}_{2b} := - \tilde{L}_{2a} \in \dext \mathcal{R}$, $\tilde{L}_{2b} \notin \ext \mathcal{R}$.
 \item[3.] Follows directly from P2a and P2b.
-\item[4.] $\tilde{L}_4 := \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, $\Sigma = \Set{a,b,c}$. Then we have $\tilde{L}_4 \notin \ext \cup \dext \Lang$, $\tilde{L}_4 \in \BC \ext \Lang$. (\cite[p.38]{InfCompR101})
+\item[4.] $\tilde{L}_4 := \Sigma^* a \Sigma^\omega \cap -(\Sigma^* b \Sigma^\omega)$, $\Sigma = \Set{a,b,c}$. Then we have $\tilde{L}_4 \notin \ext \cup \dext \mathcal{R}$, $\tilde{L}_4 \in \BC \ext \mathcal{R}$. (\cite[p.38]{InfCompR101})
 
 \item[5.]
 %S405 / Staigner-Wagner-recognizable
@@ -127,15 +127,15 @@ A language in this class is also said to have the \defword{obligation property}.
 
 %Given an automaton $\A = (Q,\Sigma,q_0,\Delta,\F)$ with $\F \subseteq 2^Q$, a run $\rho$ in $\A$ is \defword{Staiger-Wagner-accepted} iff $\Occ(\rho) \in \F$, where $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}}$.
 
-A generic proof of the equality $\BC \ext \Lang = \lim \Lang \cap \dlim \Lang$ is given in lemma \ref{gen:staiger-wagner}.
+A generic proof of the equality $\BC \ext \mathcal{R} = \lim \mathcal{R} \cap \dlim \mathcal{R}$ is given in lemma \ref{gen:staiger-wagner}.
 
-\item[6a.] $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \Lang$. Because $\Lang$ is closed under complement, we get $\tilde{L}_{6a} \notin \dlim \Lang$.
+\item[6a.] $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \mathcal{R}$. Because $\mathcal{R}$ is closed under complement, we get $\tilde{L}_{6a} \notin \dlim \mathcal{R}$.
 \item[6b.] Analog to 6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
 \item[7.] Follows directly from 6a and 6b.
 
 \item[8.]
 %(S408, S409)
-$\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma*b)^\omega$. Then $\tilde{L}_8 \notin \lim \cup \dlim \Lang$ but $\tilde{L}_8 \in \BC \lim \Lang$. (\cite[prop, p.38]{InfCompR101})
+$\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma*b)^\omega$. Then $\tilde{L}_8 \notin \lim \cup \dlim \mathcal{R}$ but $\tilde{L}_8 \in \BC \lim \mathcal{R}$. (\cite[prop, p.38]{InfCompR101})
 
 \item[9.-11.]
 %(S402, S407)
