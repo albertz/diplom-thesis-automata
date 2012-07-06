@@ -224,7 +224,7 @@ We are now formulating a more general and direct proof for the $\BC \ext \Lang =
 
 \begin{lemma}
 \label{gen:staiger-wagner}
-Let $\Lang$ be closed under suffix-independence, union, negation and change of final states. Then
+Let $\Lang$ be closed under suffix-independence, negation, union and change of final states. Then
 \[ \BC \ext \Lang = \lim \cap \dlim \Lang . \]
 
 \begin{proof}
@@ -245,7 +245,7 @@ In $\Ax$, we have
 \Leftrightarrow \ & \exists N \colon \forall n \ge N \colon \overx{\rho}(\alpha)[n] \in Q \times \overline F
 \end{align*}
 
-Look at strongly connected component (SCC) $S$ in $\Ax$. We have $S \cap F \times \overline Q \neq \emptyset$, iff $S$ accepts. It follows that all states in $S$ are finite states in $\overline \A$, i.e. $S \cap Q \times \overline F = S$.
+Look at a strongly connected component (SCC) $S$ in $\Ax$. We have $S \cap F \times \overline Q \neq \emptyset$, iff $S$ accepts. It follows that all states in $S$ are finite states in $\overline \A$, i.e. $S \cap Q \times \overline F = S$.
 
 Single $\overx{q} \in \overx{Q}$ which are not part of a SCC can be ignored. For the acceptance of infinte words, only SCCs are relevant. For $S$, define $S_+ := \Set{\overx{q} \in \overx{Q}-S}{\overx{q} \text{ can be visited after } S}$.
 
@@ -271,8 +271,8 @@ Then we have
 
 Thus,
 \[ \tilde L \in \BC \ext \Langreg . \]
-
-Given the \emph{closure under change of final states}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$.
+Given the \emph{closure under change of final states}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$, i.e.
+\[ \tilde L \in \BC \ext \Lang . \]
 
 \
 
@@ -476,18 +476,60 @@ Analogously to $\Lang(R)$, define the $\omega$-language-class
 
 \subsubsection{Classification}
 
-With this preparation, we show some properties:
+With this preparation, we get some obvious results:
+\begin{lemma}
+$\Lang(R)$ is closed under negation, union, intersection and change of final states.
+\begin{proof}
+This all follows directly from manipulations on final states of the canonical $R$-automata via negation, union, intersection or general change of final states.
+\end{proof}
+\end{lemma}
+
+\begin{example}
+There is an $R$ such that $\Lang(R)$ is \textbf{not} closed under suffix-independence.
+\begin{proof}
+Look at the transition graph over $\Sigma := \Set{a,b}$:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (0)              {$0$};
+    \node[state] (1) [right of=0] {$1$};
+    \node[state] (2) [below of=0] {$2$};
+
+    \path[->]
+    (0) +(-1.5,0) edge (0)
+    (0) edge [bend left] node {$a$} (1)
+    (0) edge [bend right] node {$b$} (2)
+    (1) edge [bend left] node {$a$} (2)
+    (1) edge [bend left] node {$b$} (0)
+    (2) edge [loop below] node {$a,b$} ()
+    ;
+  \end{tikzpicture}
+\]
+Define the congruence relation $R \subseteq (\Sigma^*,\Sigma^*)$ as $(v,w) \in R \ :\Leftrightarrow \ v,w$ end up in the same state. Then, the above transition graph is exactly the $R$-automaton.
+
+If $1$ is the only final state, this is the language $L_1 = a(ba)^*$. With suffix independence, we get the language $L_1 \cdot \Sigma^* = a \Sigma^*$.
+
+$a \Sigma^* \not\in \Lang(R)$, thus $\Lang(R)$ is not \emph{closed under suffix-independence}.
+\end{proof}
+\end{example}
+
+In the rest of this section, we show some equalities:
 \begin{itemize}
 \item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (lemma \ref{gen:lang_omega_e})
 \item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (lemma \ref{gen:lang_omega_buechi})
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (lemma \ref{gen:lang_omega_muller})
-\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$
-\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$
-\item $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$
-\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$
+\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$ (lemma \ref{gen:Romega=BCextR})
+\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (lemma \ref{gen:R-bclim-cap-ext})
+\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (lemma \ref{gen:R-staiger-wagner})
 \end{itemize}
 
-We will see that all those equations hold for $\Lang(LT)$, $\Lang(LTT)$ and $\Lang(PT)$.
+We will see that all those equations hold for all $R$, i.e. also for $\Lang(LT_n)$, $\Lang(LTT^k_n)$ and $\Lang(PT_n)$.
+
+We will also see that $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$ is not always the case. We will give an alternative characterization of this property (theorem \ref{gen:postfix-loop-det=limAndBclim}).
 
 \begin{lemma}
 %\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
@@ -534,6 +576,7 @@ Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S
 \begin{lemma}
 %\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
 %S307.4,S307.5
+\label{gen:Romega=BCextR}
 \[ \Lang^\omega(R^\omega) = \BC \ext \Lang(R) \]
 \begin{proof}
 TODO...
@@ -850,6 +893,7 @@ We showed that for all SCC of the $R$-automata. Thus we have shown the claimed e
 
 Thus, we get the final result
 \begin{theorem}
+\label{gen:postfix-loop-det=limAndBclim}
 $\Lang(R)$ is \emph{postfix-loop-deterministic} exactly if and only if
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 \begin{proof}
@@ -858,9 +902,11 @@ Lemma \ref{gen:postfixloopdet->BclimAndLreg=lim} and lemma \ref{gen:postfixloopd
 \end{theorem}
 
 \begin{lemma}
+\label{gen:R-staiger-wagner}
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 \[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
-\begin{proof} TODO...
+\begin{proof}
+TODO...
 \end{proof}
 \end{lemma}
 
