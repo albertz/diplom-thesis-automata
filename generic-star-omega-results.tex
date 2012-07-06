@@ -189,6 +189,19 @@ This is lemma \ref{gen:non-suffix-sens}, \ref{gen:DExtInDLim} and \ref{gen:DExtI
 \end{proof}
 \end{lemma}
 
+We also need the \emph{negation closure} for the natural expected inclusion of the dual operators in their boolean closures.
+
+\begin{lemma}
+Let $\Lang$ be closed under negation. Then
+\[ \ext \cup \dext \Lang \subseteq \BC \ext \Lang , \]
+\[ \lim \cup \dlim \Lang \subseteq \BC \lim \Lang . \]
+\begin{proof}
+Because of the negation closure, we have
+\[ \BC \ext \Lang \supseteq \Set{-\ext A}{A \in \Lang} = \Set{\dext A}{-A \in \Lang} = \dext \Lang , \]
+\[ \BC \lim \Lang \supseteq \Set{-\lim A}{A \in \Lang} = \Set{\dlim A}{-A \in \Lang} = \dlim \Lang . \]
+\end{proof}
+\end{lemma}
+
 %\subsection{union, intersection}
 %S303:
 \begin{lemma}
