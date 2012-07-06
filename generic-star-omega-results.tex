@@ -540,6 +540,8 @@ TODO...
 \end{proof}
 \end{lemma}
 
+When we compare the outer $\ext \Langreg$ (inside $\BC \lim \Langreg$, i.e. all regular $\omega$-languages) which is clearly a superset of $\ext \Lang$ and the inner whole class $\BC \lim \Lang$, a natural question is wether $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$. This is the case for $\Lang(R)$ as shown below.
+
 \begin{lemma}
 %\subsection{$\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$}
 %S307.6,S307.7,S307.8
@@ -577,8 +579,10 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 \end{proof}
 \end{lemma}
 
+In fact, we actually have shown $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$ for any $\Lang \subseteq \Langreg$.
 
-We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$.
+
+We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$. It turns out that this is not always the case and not as straightforward as in the $\ext$ case in lemma \ref{gen:R-bclim-cap-ext}.
 
 We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" does hold in all cases.
 
@@ -595,8 +599,6 @@ Then, $\lim L_{ab}$ is the set of words where both $a$ and $b$ occurs infintely 
 \end{example}
 
 Thus, we need some conditions on $\Lang$ for the equality. Here, we will study the class $\Lang(R)$. We will introduce a property on $\Lang(R)$ where we can show the equality. The idea of this property is comming from the study of this equality in terms of automata. Let $L_\omega \in \BC \lim \Lang(R)$. Then there is a representing $R$-Muller-automaton $\A_M$ for $L_\omega$. Let also $L_\omega \in \lim \Langreg$. Then there is representing deterministic Büchi automaton $\A_r$ for $L_\omega$. We want to show that $L_\omega \in \lim \Lang(R)$. I.e. we are searching for a representing deterministic automaton whose language is in $\Lang(R)$ and where the Büchi-acceptance gives us $L_\omega$. Because the $R$-Büchi-automaton is the canonical deterministic Büchi automaton for $\Lang(R)$, we must be able to construct such $R$-Büchi-automaton $\A_B$ for $L_\omega$. Let us look at the product automaton $\A_M \times \A_r$ and determine from there the final state set of $\A_B$. $\A_M$ already has the right transition graph. $\A_r$ has the Büchi acceptance. So, when looking at the product automaton, we try to find the loops in $\A_M$ which match a final state in $\A_r$. $\A_r$ might be bigger than $\A_M$ and it doesn't seem clear wether the Muller final state sets of $\A_M$ can be translated to a Büchi final state set. However, when we say that each SCC in $\A_M$ has exactly one loop, there is no inconclusiveness about wether there is a Büchi final state in this SCC in $\A_B$ or not. We will formulate this formally below. So, if we have that property on $\A_M$, i.e. on $\Lang(R)$, we can construct $\A_B$ and thus we have the equality.
-
-It even turns out that for $\Lang(R)$, the equality holds exactly iff we have that property on $\Lang(R)$. We will show and proof that in lemma \ref{gen:bcLimLReg-and-limL}. Now the property:
 
 \begin{mydef}
 For $\alpha \in \Sigma^\omega$, let $\overrightarrow \alpha \in (\Sigma^* / R)^\omega$ be the state sequence we run through with $\alpha$ and thus $\Inf(\overrightarrow \alpha) \subseteq \Sigma^*/R$ those states which are visited infinitely often.
@@ -834,10 +836,13 @@ There is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1
 
 Now, the question arises wether \emph{postfix-loop-determinism} is equivalent to the inequality.
 \begin{lemma}
+\label{gen:postfixloopdet<-BclimAndLreg=lim}
 Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 \begin{proof}
-I.e. assume that $\Lang(R)$ is not \emph{postfix-loop-determinism}. Thus, for all SCC $Q$ and subloops $P_1,P_2 \subseteq Q$, we either have $P_1 = P_2$ or $P_1 \subseteq P_2$ or $P_2 \subseteq P_1$. If we have always $P_1 = P_2$ for this $Q$, it means that $Q$ has only one loop. Then, if an $R$-Muller-automaton accepts $Q$, we can just mark any state $q \in Q$ final in a $R$-Büchi-automaton and every $\alpha$ going through $Q$ would be accepted by the $R$-Büchi-automata exactly if it would be accepted by the $R$-Muller-automata. Now, assume that there is $P_1 \subseteq P_2$. If $R$-Muller would accept $P_1$ but not $P_2$, the resulting language would not be recognizable by deterministic Büchi automata, thus we would be out of $\lim \Langreg$. If $R$-Muller accepts $P_2$ but not $P_1$, we mark some state from $P_2 - P_1$ as final in the $R$-Büchi automaton. If it accepts both, we mark some state from $P_1$ as fina in $R$-Büchi. In either case, we are in $\lim \Lang(R)$. If there are other loops $P' \subseteq Q$, they are either supersets of $P_2$ or subsets of $P_1$ and thus we can use the same argumentation.
+For all SCC $Q$ and subloops $P_1,P_2 \subseteq Q$, we either have $P_1 = P_2$ or $P_1 \subseteq P_2$ or $P_2 \subseteq P_1$. If we have always $P_1 = P_2$ for this $Q$, it means that $Q$ has only one loop. Then, if an $R$-Muller-automaton accepts $Q$, we can just mark any state $q \in Q$ final in a $R$-Büchi-automaton and every $\alpha$ going through $Q$ would be accepted by the $R$-Büchi-automata exactly if it would be accepted by the $R$-Muller-automata. 
+
+Now, assume that there is $P_1 \subseteq P_2$. If $R$-Muller would accept $P_1$ but not $P_2$, the resulting language would not be recognizable by deterministic Büchi automata, thus we would be out of $\lim \Langreg$. If $R$-Muller accepts $P_2$ but not $P_1$, we mark some state from $P_2 - P_1$ as final in the $R$-Büchi automaton. If it accepts both, we mark some state from $P_1$ as fina in $R$-Büchi. In either case, we are in $\lim \Lang(R)$. If there are other loops $P' \subseteq Q$, they are either supersets of $P_2$ or subsets of $P_1$ and thus we can use the same argumentation.
 
 We showed that for all SCC of the $R$-automata. Thus we have shown the claimed equality.
 \end{proof}
@@ -847,9 +852,10 @@ Thus, we get the final result
 \begin{theorem}
 $\Lang(R)$ is \emph{postfix-loop-deterministic} exactly if and only if
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\begin{proof}
+Lemma \ref{gen:postfixloopdet->BclimAndLreg=lim} and lemma \ref{gen:postfixloopdet<-BclimAndLreg=lim}.
+\end{proof}
 \end{theorem}
-
-%TODO: i.e. lemma: (P) <=> equality
 
 \begin{lemma}
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
