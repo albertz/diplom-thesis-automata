@@ -514,6 +514,8 @@ Define the congruence relation $R \subseteq (\Sigma^*,\Sigma^*)$ as $(v,w) \in R
 If $1$ is the only final state, this is the language $L_1 = a(ba)^*$. With suffix independence, we get the language $L_1 \cdot \Sigma^* = a \Sigma^*$.
 
 $a \Sigma^* \not\in \Lang(R)$, thus $\Lang(R)$ is not \emph{closed under suffix-independence}.
+
+Furthermore, $\ext L_1 = a \Sigma^\omega$. Marking $0$ or $1$ as final state in a $R$-Büchi-automaton accepts the language $\tilde L_1 := \Set{(ab)^\omega}$. Marking $2$ as final state accepts the language $\tilde L_2 := (ab)^* (b | aa) \Sigma^\omega$. Then, $\lim \Lang(R) = \Set{\emptyset, \tilde L_1, \tilde L_2, \tilde L_1 \cup \tilde L_2}$. And we have $\ext L_1 \not\in \lim \Lang(R)$. But we also have $\tilde L_1 \not\in \ext \Lang(R)$.
 \end{proof}
 \end{example}
 
