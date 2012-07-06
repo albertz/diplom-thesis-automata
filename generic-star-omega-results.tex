@@ -81,9 +81,9 @@ Let $L,A,B \in \Lang$. Then there are the following properties on $\Lang$:
 \item[3.] \defword{Closure under complementation/negation}: $- L \in \Lang$
 
 \item[4.]
-\defword{Closure under acceptance component variation}:
+\defword{Closure under change of final states}:
 %S303.1:
-In some proofs, e.g. in \ref{gen:staiger-wagner} or \ref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the acceptance component. If there is a way to stay in the language class, the class is called to be \defword{closed under acceptance component variation}. Formally:
+In some proofs, e.g. in \ref{gen:staiger-wagner} or \ref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the acceptance component. If there is a way to stay in the language class, the class is called to be \defword{closed under change of final states}. Formally:
 
 There is a deterministic automaton $\A = (Q,\Sigma,q_0,\delta,F)$ with $L^*(\A) = L$ such that for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
 
@@ -224,7 +224,7 @@ We are now formulating a more general and direct proof for the $\BC \ext \Lang =
 
 \begin{lemma}
 \label{gen:staiger-wagner}
-Let $\Lang$ be closed under suffix-independence, union, negation and acceptance component variation. Then
+Let $\Lang$ be closed under suffix-independence, union, negation and change of final states. Then
 \[ \BC \ext \Lang = \lim \cap \dlim \Lang . \]
 
 \begin{proof}
@@ -272,7 +272,7 @@ Then we have
 Thus,
 \[ \tilde L \in \BC \ext \Langreg . \]
 
-Given the \emph{closure under acceptance component variation}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$.
+Given the \emph{closure under change of final states}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$.
 
 \
 
@@ -298,7 +298,7 @@ Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{Büchi}}
 Thus,
 \[ \tilde L_a \cup \tilde L_b \in \dlim \Langreg . \]
 
-Again, given the \emph{closure under acceptance component variation}, we have $L^*(\Ax) \in \Lang$.
+Again, given the \emph{closure under change of final states}, we have $L^*(\Ax) \in \Lang$.
 
 \end{enumerate}
 \end{proof}
@@ -310,7 +310,7 @@ Again, given the \emph{closure under acceptance component variation}, we have $L
 %\subsection{Kleene-star $= \BC \lim$}
 \begin{lemma}
 \label{gen:kleene-star}
-Let $\Lang$ be closed under acceptance component variation. Then
+Let $\Lang$ be closed under change of final states. Then
 \[ \BC \lim \Lang = \Kleene \Lang . \]
 
 \begin{proof}
@@ -406,7 +406,7 @@ When we mark the final states as in the original non-deterministic automata, no 
 Together, we get $UV^\omega$, i.e.:
 \[ \lim UV^* \cap \dlim L_E = UV^\omega \]
 
-Given the \emph{closure under acceptance component variation}, we have $L_E \in \Lang$. Then, it follows
+Given the \emph{closure under change of final states}, we have $L_E \in \Lang$. Then, it follows
 \[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang} = \Kleene \Lang \subseteq \BC \lim \Lang . \]
 
 \
@@ -454,7 +454,7 @@ The LT, LTT and PT language classes have the above properties and thus such rela
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang^*(R) = \Set{L^*(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
 
-Obviously, by construction, such language classes are all \emph{closed under acceptance component variation}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-independence} doesn't directly follow from this --- however we have this property for most studied congruences $R$. This lets us apply most of the proofs in chapter \ref{gen:general}.
+Obviously, by construction, such language classes are all \emph{closed under change of final states}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-independence} doesn't directly follow from this --- however we have this property for most studied congruences $R$. This lets us apply most of the proofs in chapter \ref{gen:general}.
 
 \begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
