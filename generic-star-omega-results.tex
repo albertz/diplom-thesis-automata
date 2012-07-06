@@ -148,14 +148,46 @@ From $\ext \Lang \subseteq \lim \Lang$, it directly follows $\Set{-\ext L}{L \in
 %\subsection{$\dext \subset \dlim$}
 %S302:
 \begin{lemma}
+\label{gen:DExtInDLim}
 If we have $\ext \Lang \subseteq \lim \Lang$ and let $\Lang$ be closed under negation. Then we have
 \[ \dext \Lang \subseteq \dlim \Lang . \]
 \begin{proof}
-Let $L \in \Lang$. Then $ \dext L = - \ext (-L) $. Because of the negation closure, we also have $-L \in \Lang$ and $\ext(-L) \in \ext \Lang$. Thus $\lim(-L) \in \lim \Lang$. Thus, $-\lim(-L) \in \Set{-\lim A}{A \in \Lang} = \Set{\dlim A}{-A \in \Lang}$. Because of the negation closure, this is equal to $\Set{\dlim A}{A \in \Lang} = \dlim \Lang$. I.e. $\dlim L \in \dlim \Lang$.
+Let $L \in \Lang$. Then $ \dext L = - \ext (-L) $. Because of the negation closure, we also have $-L \in \Lang$ and $\ext(-L) \in \ext \Lang$.
+
+Thus $\ext(-L) \in \lim \Lang$. Thus, $\dext(L) = -\ext(-L) \in \Set{-\lim A}{A \in \Lang} = \Set{\dlim A}{-A \in \Lang}$. Because of the negation closure, we have
+\[ \Set{\dlim A}{-A \in \Lang} = \Set{\dlim A}{A \in \Lang} = \dlim \Lang . \]
+Thus,
+\[ \dext L \in \dlim \Lang . \]
 \end{proof}
 \end{lemma}
 
 Note that we needed the negation closure in the proof. This is in contrast to \ref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang := \Set{-\ext L}{L \in \Lang} \neq \dext \Lang$ (in general, if $\Lang$ is not closed under negation).
+
+Analogously:
+
+\begin{lemma}
+\label{gen:DExtInLim}
+If we have $\ext \Lang \subseteq \dlim \Lang$ and let $\Lang$ be closed under negation. Then we have
+\[ \dext \Lang \subseteq \lim \Lang . \]
+\begin{proof}
+Let $L \in \Lang$. Then $ \dext L = - \ext (-L) $. Because of the negation closure, we also have $-L \in \Lang$ and $\ext(-L) \in \ext \Lang$.
+
+Thus $\ext(-L) \in \dlim \Lang$. Thus, $\dext(L) = -\ext(-L) \in \Set{-\dlim A}{A \in \Lang} = \Set{\lim A}{-A \in \Lang}$. Because of the negation closure, we have
+\[ \Set{\lim A}{-A \in \Lang} = \Set{\lim A}{A \in \Lang} = \lim \Lang . \]
+Thus,
+\[ \dext L \in \lim \Lang . \]
+\end{proof}
+\end{lemma}
+
+Summerized:
+
+\begin{lemma}
+Let $\Lang$ be closed under suffix-independence and negation. Then we have
+\[ \ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang . \]
+\begin{proof}
+This is lemma \ref{gen:non-suffix-sens}, \ref{gen:DExtInDLim} and \ref{gen:DExtInLim}.
+\end{proof}
+\end{lemma}
 
 %\subsection{union, intersection}
 %S303:
