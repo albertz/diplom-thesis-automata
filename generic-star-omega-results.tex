@@ -616,7 +616,8 @@ This definition is as general as possible. It is also well defined if there are 
 If $\Lang(R)$ is regular and we look at an $R$-$\omega$-automaton, it basically says that when we visit some state infinitely often, it determines in what loop we are and we cannot switch the loop. Formally:
 
 \begin{lemma}
-Let $R$ be a congruence relation with a finite number of equivalence classes. $\Lang(R)$ is \emph{infinity-postfix-independent} exactly if and only if every SCC $Q$ in the $R$-automata (as defined in section \ref{gen:R-automata}) has exactly one looping subset, i.e. $S$ itself is the only loop in $Q$.
+\label{gen:infPostfixIndep-AutLoops}
+Let $R$ be a congruence relation with a finite number of equivalence classes. $\Lang(R)$ is \emph{infinity-postfix-independent} exactly if and only if every SCC $Q$ in the $R$-automata (as defined in section \ref{gen:R-automata}) has exactly one looping subset, i.e. $Q$ itself is the only loop in $Q$.
 \begin{proof}
 $S_R := \Sigma^*/R$ are the states of the $R$-automata. Let $Q \subseteq S_R$ be any SCC. Let $\tilde L \in \BC \lim \Lang(R)$. Let $\A_M$ be the $R$-Muller-automaton accepting $\tilde L$.
 
@@ -671,16 +672,18 @@ When studying the \emph{infinity-postfix-independence} property in more detail, 
 
 \begin{lemma}
 \label{gen:BClimR=limR}
-Let $R$ be a congruence relation with a finite number of equivalence classes. $\Lang(R)$ is \emph{infinity-postfix-independent} exactly if and only if
+Let $R$ be a congruence relation with a finite number of equivalence classes. Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then %exactly if and only if
 \[ \BC \lim \Lang(R) = \lim \Lang(R) . \]
 \begin{proof}
 $S_R := \Sigma^*/R$ are the states of the $R$-automata. Let $Q \subseteq S_R$ be any SCC. Let $\tilde L \in \BC \lim \Lang(R)$. Let $\A_M$ be the $R$-Muller-automaton accepting $\tilde L$.
 
-'$\Rightarrow$': Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then, for $L$, we have an inclusion function $B_L \colon S_R \rightarrow \B$. If there is an accepting loop $Q' \subseteq Q$ in $\A_M$, it means that every $\alpha \in \tilde L$ which ends up in $Q'$ is accepted, thus there is a $q' \in Q'$ with $B_L(q') = 1$. Because we can loop through all of $Q$ and thus construct $\beta \in \Sigma^\omega$ with $\Inf(\overrightarrow \beta) = Q$, we get $B_L(q) = 1$ for all $q \in Q$. Thus, all possible loops in $Q$ will accept. In an $R$-Büchi-automata $\A_B$, we can mark all states of $Q$ as final states. This was for any SCC $Q$, thus $\A_B$ will accept exactly iff $\A_M$ accepts. Thus we have $\tilde L \in \lim \Lang(R)$. This was for any $\tilde L$, i.e. $\BC \lim \Lang(R) = \lim \Lang(R)$.
-
-'$\Leftarrow$': Let $\BC \lim \Lang(R) = \lim \Lang(R)$. Assuming $Q$ has a final state $q \in Q$ in the $R$-Büchi-automata for $\tilde L$. Let $\alpha \in \Sigma^\omega$ so that $q \in \Inf(\overrightarrow \alpha)$.
-
-TODO ...
+%'$\Rightarrow$':
+%Let $\Lang(R)$ be \emph{infinity-postfix-independent}. Then,
+For $L$, we have an inclusion function $B_L \colon S_R \rightarrow \B$. If there is an accepting loop $Q' \subseteq Q$ in $\A_M$, it means that every $\alpha \in \tilde L$ which ends up in $Q'$ is accepted, thus there is a $q' \in Q'$ with $B_L(q') = 1$. Because we can loop through all of $Q$ and thus construct $\beta \in \Sigma^\omega$ with $\Inf(\overrightarrow \beta) = Q$, we get $B_L(q) = 1$ for all $q \in Q$. Thus, all possible loops in $Q$ will accept. In an $R$-Büchi-automata $\A_B$, we can mark all states of $Q$ as final states. This was for any SCC $Q$, thus $\A_B$ will accept exactly iff $\A_M$ accepts. Thus we have $\tilde L \in \lim \Lang(R)$. This was for any $\tilde L$, i.e. $\BC \lim \Lang(R) = \lim \Lang(R)$.
+%
+%'$\Leftarrow$': Let $\BC \lim \Lang(R) = \lim \Lang(R)$. Assuming $Q$ has a final state $q \in Q$ in the $R$-Büchi-automata for $\tilde L$. Let $\alpha \in \Sigma^\omega$ so that $q \in \Inf(\overrightarrow \alpha)$.
+%
+%TODO ...
 \end{proof}
 \end{lemma}
 
@@ -768,9 +771,84 @@ In lemma \ref{gen:BClimR=limR}, we showed that we have $\BC \lim \Lang(R) = \lim
 %\]
 %where $\F = \Set{\Set{1,2}}$. It is not possible to find a final state set to Büchi-accept this language based on this state/transition graph, thus this automaton would not work in the proof. It is not possible to accept this language with a Muller automaton with less states, so in some way the given automaton is minimal. This demonstrates that some form of minima restriction/condition on $\A^M$ would not work for the proof.
 
-
-
 %TODO: then show that if not (P), then not equality
+
+The question arises wether \emph{infinity-postfix-independence} on $\Lang(R)$ is equivalent to the equality $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$. We have shown in lemma \ref{gen:infPostfixIndep-AutLoops} that if $\Lang(R)$ is not \emph{infinity-postfix-independent}, there must be a SCC $Q \subseteq S_R$ with more than one loop.
+
+\begin{example}
+There is a congruence relation $R$ with a finite number of equivalence classes where $\Lang(R)$ is not \emph{infinity-postfix-independent} but we still have
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\begin{proof}
+Look at the fully connected transition graph over $\Sigma := \Set{a,b}$:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state] (3) [below of=2] {$3$};
+    \node[state] (4) [below of=1] {$4$};
+    \node[state] (5) [right of=3] {$5$};
+
+    \path[->]
+    (1) +(-1.5,0) edge (1)
+    (1) edge [bend left] node {$a$} (2)
+    (2) edge node {$a$} (1)
+    (2) edge node {$b$} (3)
+    (3) edge node {$b$} (1)
+    (1) edge [bend right] node {$b$} (4)
+    (2) edge node {$a$} (5)
+    (3) edge [bend right] node {$a$} (5)
+    (4) edge [loop below] node {$a, b$} ()
+    (5) edge [loop below] node {$a, b$} ()
+    ;
+  \end{tikzpicture}
+\]
+Define the congruence relation $R \subseteq (\Sigma^*,\Sigma^*)$ via the transition graph: $(v,w) \in R \ :\Leftrightarrow \ v,w$ end up in the same state. Then, the $R$-automata is exactly the transition graph. Look at the SCC $Q := \Set{1,2,3}$. $Q$ has two loops $P_1 := \Set{1,2}$ and $P_2 := Q$, where $P_1 \subsetneqq P_2$. Thus, $\Lang(R)$ is not \emph{infinity-postfix-independent}. Let $\tilde L$ be the language accepted by the $R$-Muller-automaton which only accepts the loop $P_1$. Then, $\tilde L$ is not recognizable by a deterministic Büchi automaton. Thus, we also have $\BC \lim \Lang(R) \neq \lim \Lang(R)$.
+
+The $R$-Muller-automaton only accepting $P_2$ is equivalent to the $R$-Büchi-automaton only accepting state $3$. The $R$-Muller-automaton accepting both $P_1$ and $P_2$ is equivalent to the $R$-Büchi-automaton accepting $Q$.
+
+All other $R$-Büchi-automata can be constructed canonically from that. Thus we have
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\end{proof}
+\end{example}
+
+However, if we get stricter on the possible subloops, we can show the inequality.
+\begin{mydef}
+Let $R$ be a congruence relation with a finite number of equivalence classes.
+
+If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}.
+\end{mydef}
+
+\begin{lemma}
+\label{gen:postfixloopdet->BclimAndLreg=lim}
+Let $R$ be a congruence relation with a finite number of equivalence classes. And let $\Lang(R)$ be \emph{postfix-loop-deterministic}. Then
+\[ \BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R) . \]
+\begin{proof}
+There is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$ and $P_2 \not\subseteq P_1$. They are in the same SCC $Q$, thus there is an outer loop $P \subseteq Q$ with $P_1,P_2 \subseteq P$. In the $R$-Muller-automaton, let $P$ be the only final state set. Let $\tilde L$ be the language accepted by this. For every $q \in Q$, look at the $R$-Büchi-automaton where $q$ is the only final state. The intersection of all these is recognized by a deterministic Büchi automaton (lemma \ref{reg:limRegClosedIntersection}). And the intersection accepts exactly $\tilde L$. Thus, $\tilde L \in \BC \lim \Lang(R) \cap \lim \Langreg$. However, there is no way in the $R$-Büchi-automaton to mark a subset of $Q$ as the final states such that we accept $\tilde L$. Thus, $\tilde L \not\in \lim \Lang(R)$.
+\end{proof}
+\end{lemma}
+
+Now, the question arises wether \emph{postfix-loop-determinism} is equivalent to the inequality.
+\begin{lemma}
+Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\begin{proof}
+I.e. assume that $\Lang(R)$ is not \emph{postfix-loop-determinism}. Thus, for all SCC $Q$ and subloops $P_1,P_2 \subseteq Q$, we either have $P_1 = P_2$ or $P_1 \subseteq P_2$ or $P_2 \subseteq P_1$. If we have always $P_1 = P_2$ for this $Q$, it means that $Q$ has only one loop. Then, if an $R$-Muller-automaton accepts $Q$, we can just mark any state $q \in Q$ final in a $R$-Büchi-automaton and every $\alpha$ going through $Q$ would be accepted by the $R$-Büchi-automata exactly if it would be accepted by the $R$-Muller-automata. Now, assume that there is $P_1 \subseteq P_2$. If $R$-Muller would accept $P_1$ but not $P_2$, the resulting language would not be recognizable by deterministic Büchi automata, thus we would be out of $\lim \Langreg$. If $R$-Muller accepts $P_2$ but not $P_1$, we mark some state from $P_2 - P_1$ as final in the $R$-Büchi automaton. If it accepts both, we mark some state from $P_1$ as fina in $R$-Büchi. In either case, we are in $\lim \Lang(R)$. If there are other loops $P' \subseteq Q$, they are either supersets of $P_2$ or subsets of $P_1$ and thus we can use the same argumentation.
+
+We showed that for all SCC of the $R$-automata. Thus we have shown the claimed equality.
+\end{proof}
+\end{lemma}
+
+Thus, we get the final result
+\begin{theorem}
+$\Lang(R)$ is \emph{postfix-loop-deterministic} exactly if and only if
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\end{theorem}
+
 %TODO: i.e. lemma: (P) <=> equality
 
 \begin{lemma}
