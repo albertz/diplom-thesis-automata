@@ -129,9 +129,9 @@ This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{
 \begin{lemma}
 \label{gen:non-suffix-sens}
 If $\Lang$ is closed under suffix-independence,
-\[ \ext \Lang \subseteq \lim \Lang \cup \dlim \Lang . \]
+\[ \ext \Lang \subseteq \lim \Lang \cap \dlim \Lang . \]
 \begin{proof}
-For $L \in \Lang$, we have $\ext L = \lim L \Sigma^* = \dlim L \Sigma^*$.
+For $L \in \Lang$, we have $\ext L = L \Sigma^\omega = \lim (L \Sigma^*) = \dlim (L \Sigma^*)$.
 \end{proof}
 \end{lemma}
 
