@@ -70,12 +70,12 @@ We want to study all the properties we have shown for $\Langreg$ in lemma \ref{P
 
 \
 
-We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties in chapter \ref{general-results}.
+We will formulate some properties of interest in a general form for a $*$-language class $\Lang$ which all hold for $\Langreg$. We get some general results based on these properties later in this chapter. %\ref{general-results}.
 
 %S303.E3, S218, R101
-Let $L,A,B \in \Lang$.
+Let $L,A,B \in \Lang$. Then there are the following properties on $\Lang$:
 \begin{enumerate}
-\item[1.] \defword{Closure under suffix-insensitiveness}: $L \cdot \Sigma^* \in \Lang$
+\item[1.] \defword{Closure under suffix-independence}: $L \cdot \Sigma^* \in \Lang$
 \item[2a.] \defword{Closure under union}: $A \cup B \in \Lang$
 \item[2b.] \defword{Closure under intersection}: $A \cap B \in \Lang$
 \item[3.] \defword{Closure under complementation/negation}: $- L \in \Lang$
@@ -128,7 +128,7 @@ This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{
 % S303, S101a:
 \begin{lemma}
 \label{gen:non-suffix-sens}
-If $\Lang$ is closed under suffix-insensitiveness,
+If $\Lang$ is closed under suffix-independence,
 \[ \ext \Lang \subseteq \lim \Lang \cup \dlim \Lang . \]
 \begin{proof}
 For $L \in \Lang$, we have $\ext L = \lim L \Sigma^* = \dlim L \Sigma^*$.
@@ -224,7 +224,7 @@ We are now formulating a more general and direct proof for the $\BC \ext \Lang =
 
 \begin{lemma}
 \label{gen:staiger-wagner}
-Let $\Lang$ be closed under suffix-insensitiveness, union, negation and acceptance component variation. Then
+Let $\Lang$ be closed under suffix-independence, union, negation and acceptance component variation. Then
 \[ \BC \ext \Lang = \lim \cap \dlim \Lang . \]
 
 \begin{proof}
@@ -279,7 +279,7 @@ Given the \emph{closure under acceptance component variation}, we have $L^*(\A^E
 %S305.3:
 Now let us show $\BC \ext \Lang \subseteq \lim \Lang$.
 
-With the \emph{closure under suffix-insensitiveness}, we get $\ext \Lang \subseteq \lim \Lang$ and $\ext \Lang \subseteq \dlim \Lang$. I.e. $\ext \Lang \subseteq \lim \cap \dlim \Lang$. Let us show that $\lim \cap \dlim \Lang$ is closed under boolean closure.
+With the \emph{closure under suffix-independence}, we get $\ext \Lang \subseteq \lim \Lang$ and $\ext \Lang \subseteq \dlim \Lang$. I.e. $\ext \Lang \subseteq \lim \cap \dlim \Lang$. Let us show that $\lim \cap \dlim \Lang$ is closed under boolean closure.
 
 Let $\tilde L_a,L_b \in \lim \cap \dlim \Lang$, i.e. $\exists L_{a1}, L_{a2}, L_{b1}, L_{b2} \in \Lang \colon \tilde L_a = \lim L_{a1} = \dlim L_{a2}, \tilde L_b = \lim L_{b1} = \dlim L_{b2}$. Let us show 1. $-\tilde L_a \in \lim \cap \dlim \Lang$, 2. $\tilde L_a \cup \tilde L_b \in \lim \cap \dlim \Lang$.
 \begin{enumerate}
@@ -454,7 +454,7 @@ The LT, LTT and PT language classes have the above properties and thus such rela
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang^*(R) = \Set{L^*(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
 
-Obviously, by construction, such language classes are all \emph{closed under acceptance component variation}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-insensitiveness} doesn't directly follow from this --- however we have this property for most studied congruences $R$. This lets us apply most of the proofs in chapter \ref{gen:general}.
+Obviously, by construction, such language classes are all \emph{closed under acceptance component variation}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-independence} doesn't directly follow from this --- however we have this property for most studied congruences $R$. This lets us apply most of the proofs in chapter \ref{gen:general}.
 
 \begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
