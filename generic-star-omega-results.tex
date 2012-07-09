@@ -118,6 +118,10 @@ This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{
 
 %S303.1: TODO: weniger ...
 
+\item[5.] \defword{Closure under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$. ($\sigma$ on words is defined canonically.)
+
+If $L = L_\sigma$ for all permutations $\sigma$, we call $L$ \defword{alphabet permutation invariant}.
+
 \end{enumerate}
 
 
@@ -192,6 +196,7 @@ This is lemma \ref{gen:non-suffix-sens}, \ref{gen:DExtInDLim} and \ref{gen:DExtI
 We also need the \emph{negation closure} for the natural expected inclusion of the dual operators in their boolean closures.
 
 \begin{lemma}
+\label{gen:opinBCop}
 Let $\Lang$ be closed under negation. Then
 \[ \ext \cup \dext \Lang \subseteq \BC \ext \Lang , \]
 \[ \lim \cup \dlim \Lang \subseteq \BC \lim \Lang . \]
@@ -216,18 +221,47 @@ Let $A,B \in \Lang$. Then we have $\ext(A\cup B) = \ext(A) \cup \ext(B)$ and $\e
 \end{proof}
 \end{lemma}
 
+We present some common examples which would separate $\ext\cup\dext \Lang$ from $\BC \ext \Lang$ and similarily $\lim\cup\dlim \Lang$ from $\BC \lim \Lang$.
+
+\begin{example}
+Let $\Set{a,b} \subseteq \Sigma$. Define $L_a := \Sigma^*a$, $L_b := \Sigma^*b$. Let $L_a,L_b \in \Lang$. Let $\Lang$ be closed under negation. Then
+\[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang , \]
+\[ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
+\begin{proof}
+The inclusion follows from lemma \ref{gen:opinBCop}.
+
+$\tilde L_1 := \ext(L_a) \cap -\ext(L_b)$. Then $\tilde L_1 \not\in \ext \cup \dext \Lang$ but $\tilde L_1 \in \BC \ext \Lang$. (Lemma \ref{P:reg-star})
+
+$\tilde L_2 := \lim(L_a) \cap -\lim(L_b)$. Then $\tilde L_2 \not\in \lim \cup \dlim \Lang$ but $\tilde L_2 \in \BC \lim \Lang$. (Lemma \ref{P:reg-star})
+\end{proof}
+\end{example}
+
+This exampe can be generalized a bit:
+
 %\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
 \begin{lemma}
-Let $\Lang$ be closed under negation. Then
+Let $\Lang$ be closed under negation and under alphabet permutation. Let there be an alphabet permutation non-invariant language $L \in \Lang$ with $\tilde L := \ext L \not\in \dext \Langreg$. Then
 \[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang . \]
 \begin{proof}
-If there is $L_\Sigma \in \Lang_\Sigma$ with $L_\Sigma \in \ext \Lang_\Sigma, L_\Sigma \not\in \dext \Lang_\Sigma$ and E3 (closed under negation) holds for $\Lang$:
-\begin{itemize}
-\item[$\Rightarrow$] $-L_\Sigma \in \dext \Lang_\Sigma, -L_\Sigma \not\in \ext \Lang_\Sigma$
-\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \ext \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
-$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \ext \cup \dext \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
-\end{itemize}
-Thus, $ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang$.
+Let $\sigma$ be a permutation such that $L_\sigma \neq L$. Because of the alphabet permutation closure, $L_\sigma \in \Lang$ and $\tilde L_\sigma := \ext L_\sigma \not\in \dext \Langreg$. I.e., $-\tilde L_\sigma = \dext (-L_\Sigma) \not\in \ext \Langreg$.
+
+Then, $L_\omega := \tilde L \cap -\tilde L_\sigma \in \BC \ext \Lang$.
+
+Let $\A_E = (Q_E,\Sigma,q_{E,0},\delta_E,F_E)$ be the det. E-automaton accepting exactly $\tilde L$ and $\A_A = (Q_A,\Sigma,q_{A,0},\delta_A,F_A)$ be the det. A-automaton accepting exactly $- \tilde L_\sigma$. Without restriction, let there be a bad state $q_{A,b} \in Q_A$ in $\A_A$ where all transitions end when there is no other way such that every possible word has a path in $\A$. Also, let $\A_A$ have only final states except $q_{A,b}$, i.e. $Q_A - \Set{q_{A,b}} = F_A$. Also, without restriction, let $\A_E$ have all transitions from final states only into themselves, i.e. $\delta_E(q,l) = q$ for all $q \in F_E, l \in \Sigma$. And let $q_{E,b}$ be the bad state for $\A_E$ such that every possible word has a path in $\A_E$.
+
+Look at the product automaton $\overset{\times}\A = (\overset\times Q,\Sigma,(q_{A,0},q_{E,0}),\delta_A \times \delta_E,\overset\times F)$ where $\overset\times Q := Q_A \times Q_E$, $\overset\times F := \Set{\overset\times q \in F_A \times F_E}{\text{$\overset\times q$ is reachable in $\overset\times\A$}}$. Then, $L^\omega_\text{co-Büchi}(\overset\times\A) = L_\omega$. Define $\overset\times F_1 := \Set{\overset\times q \in \overset\times F}{\text{there is no earlier final state on all paths to $\overset\times q$}}$. Let $L_{\rightarrow \overset\times q}$ be the language of all words wich end up in state $\overset\times q \in \overset\times Q$ and $L_{\overset\times q \rightarrow}$ be the language of all possible words starting in state $\overset\times q \in \overset\times Q$ and ending in any other final state. Then, we have
+\[ L_\omega = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
+The union elements are disjoint because $\overset\times\A$ is deterministic. Likewise, define $L_{\rightarrow q_A}$ and $L_{q_A \rightarrow}$ for $q_A \in Q_A$.
+
+Assume that $L_\omega \in \ext \Lang$. Then there is $L' \in \Lang$ with $\ext L' = L_\omega$. We can divide $L'$ with regard to $\overset\times\A$ like
+\[ L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot L'_{\overset\times q} \]
+for corresponding $L'_{\overset\times q}$. Then we have
+\[ L_\omega = \ext L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \ext L'_{\overset\times q} . \]
+I.e. we have $\ext L'_{\overset\times q} = \dext L_{\overset\times q \rightarrow}$ for all $\overset\times q \in \overset\times F_1$. We have $L_{(q_A,q_E) \rightarrow} = L_{q_A \rightarrow}$ for all $(q_A,q_E) \in \overset\times F_1$.
+%Define $F_1 := \Set{q_A}{(q_A,q_E) \in \overset\times F_1}$. 
+Define $\overset\times F_{-E} := \Set{\overset\times q \in \overset\times Q}{\text{there is no path from $\overset\times q$ to $\overset\times F_1$}}$. Then
+\[ -\tilde L_\sigma = \bigcup_{\overset\times q \in \overset\times F_1 \mathop{\dot\cup} \overset\times F_{-E}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
+
 \end{proof}
 \end{lemma}
 
@@ -237,13 +271,13 @@ Similarily:
 Let $\Lang$ be closed under negation. Then
 \[ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
 \begin{proof}
-If there is $L_\Sigma \in \lim \Lang_\Sigma, L_\Sigma \not\in \dlim \Lang_\Sigma$ and E3 holds for $\Lang$:
-\begin{itemize}
-\item[$\Rightarrow$] $-L_\Sigma \in \dlim \Lang_\Sigma, -L_\Sigma \not\in \lim \Lang_\Sigma$
-\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \lim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
-$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \lim \cup \dlim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
-\end{itemize}
-Thus, $ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang $.
+%If there is $L_\Sigma \in \lim \Lang_\Sigma, L_\Sigma \not\in \dlim \Lang_\Sigma$:
+%\begin{itemize}
+%\item[$\Rightarrow$] $-L_\Sigma \in \dlim \Lang_\Sigma, -L_\Sigma \not\in \lim \Lang_\Sigma$
+%\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \lim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
+%$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \lim \cup \dlim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
+%\end{itemize}
+%Thus, $ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang $.
 \end{proof}
 \end{lemma}
 
