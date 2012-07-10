@@ -249,54 +249,58 @@ There is always exactly one \defword{maximum invariant alphabet set $M_m \subset
 For the final \cref{gen:extInBCext}, we need another small lemma:
 
 \begin{lemma}
-
+\label{gen:multLetterInv}
+Let $L \subseteq \Sigma^*$ and let $L$ be $\Set{a,b} \subseteq \Sigma$ invariant. Then
+\[ \ext L \not\in \dext \Langreg \ \ \ \Rightarrow \ \ \ \ext L|_{\Sigma-\Set{a}} \not\in \dext \Langreg \]
+and
+\[ \lim L \not\in \dlim \Langreg \ \ \ \Rightarrow \ \ \ \lim L|_{\Sigma-\Set{a}} \not\in \dlim \Langreg . \]
+\begin{proof}
+In any automata for $L$ (no matter if $L$, $\ext L$, $\dext L$, $\lim L$ or $\dlim L$), we can assume without restriction that $a,b$ never changes the state and is everywhere accepted. I.e. we always have the transition set $T := \Set{(q, \Set{a,b}) \mapsto q}{\text{for all states $q$}}$. If we restrict $L$ on $\Sigma-\Set{a}$, those are all exactly the same automata with the only difference that the transition set becomes $T|_{\Sigma-\Set{a}} = \Set{(q, \Set{b}) \mapsto q}{\text{for all states $q$}}$. I.e. the set of possible automata we are interested about is isomorphic in both cases. Thus, saying that there doesn't exist some kind of automata is independent from wether we say it for $L$ or $L|_{\Sigma-\Set{a}}$.
+\end{proof}
 \end{lemma}
 
 %\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
-\begin{lemma}
+\begin{thm}
 \label{gen:extInBCext}
-Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L_a \in \Lang$ with $\tilde L_a := \ext L_a \not\in \dext \Langreg$.  Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L_a$} and let $L_a$ be \emph{$\Set{b,c}$-invariant}. Then
-\[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang . \]
+Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L_a \in \Lang$. Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L_a$} and let $L_a$ be \emph{$\Set{b,c}$-invariant}. Then
+\[ \ext L_a \not\in \dext \Langreg \ \ \ \Rightarrow \ \ \ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang \]
+and
+\[ \lim L_a \not\in \dlim \Langreg \ \ \ \Rightarrow \ \ \ \dlim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
 \begin{proof}
-Define the alphabet permutation $\sigma := \Set{a \mapsto b, b \mapsto a, x \mapsto x \text{ for any } x \in \Sigma-\Set{a,b}}$. $L_a$ is an alphabet permutation non-invariant language because $\sigma(L) \neq L$. Define $L_b := \sigma(L_a)$. Because of the alphabet permutation closure, $L_b \in \Lang$ and $\tilde L_b := \ext L_b \not\in \dext \Langreg$. I.e., $-\tilde L_b = \dext (-L_b) \not\in \ext \Langreg$.
+\def\op{\operatorname{op}}
+\def\dop{\operatorname{\overline{op}}}
+Let $\op$ be either $\ext$ or $\lim$ and let $\dop$ be the dual version of the operator ($\dext$ or $\dlim$). Assume that $\op L_a \not\in \op \Langreg$.
 
-Then, $L_\omega := \tilde L_a \cap -\tilde L_b \in \BC \ext \Lang$.
+The inclusion follows from \cref{gen:opinBCop}.
 
-Let $\A_E = (Q_E,\Sigma,q_{E,0},\delta_E,F_E)$ be the det. E-automaton accepting exactly $\tilde L$ and $\A_A = (Q_A,\Sigma,q_{A,0},\delta_A,F_A)$ be the det. A-automaton accepting exactly $- \tilde L_\sigma$. Without restriction, let there be a bad state $q_{A,b} \in Q_A$ in $\A_A$ where all transitions end when there is no other way such that every possible word has a path in $\A$. Also, let $\A_A$ have only final states except $q_{A,b}$, i.e. $Q_A - \Set{q_{A,b}} = F_A$. Also, without restriction, let $\A_E$ have all transitions from final states only into themselves, i.e. $\delta_E(q,l) = q$ for all $q \in F_E, l \in \Sigma$. And let $q_{E,b}$ be the bad state for $\A_E$ such that every possible word has a path in $\A_E$.
+Define $\tilde L_a := \op L_a$. Define the alphabet permutation $\sigma := \Set{a \mapsto b, b \mapsto a}$. $L_a$ is an alphabet permutation non-invariant language because $\sigma(L) \neq L$. Define $L_b := \sigma(L_a)$. Because of the alphabet permutation closure, $L_b \in \Lang$ and $\tilde L_b := \op L_b \not\in \dop \Langreg$. I.e., $-\tilde L_b = \dop (-L_b) \not\in \op \Langreg$. Also, $L_b$ is $\Set{a,c}$-invariant and $\Set{b}$ is the non-invariant alphabet set of $L_b$.
 
-Look at the product automaton $\overset{\times}\A = (\overset\times Q,\Sigma,(q_{A,0},q_{E,0}),\delta_A \times \delta_E,\overset\times F)$ where $\overset\times Q := Q_A \times Q_E$, $\overset\times F := \Set{\overset\times q \in F_A \times F_E}{\text{$\overset\times q$ is reachable in $\overset\times\A$}}$. Then, $L^\omega_\text{co-Büchi}(\overset\times\A) = L_\omega$. Define $\overset\times F_1 := \Set{\overset\times q \in \overset\times F}{\text{there is no earlier final state on all paths to $\overset\times q$}}$. Let $L_{\rightarrow \overset\times q}$ be the language of all words wich end up in state $\overset\times q \in \overset\times Q$ and $L_{\overset\times q \rightarrow}$ be the language of all possible words starting in state $\overset\times q \in \overset\times Q$ and ending in any other final state. Then, we have
-\[ L_\omega = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
-The union elements are disjoint because $\overset\times\A$ is deterministic. Likewise, define $L_{\rightarrow q_A}$ and $L_{q_A \rightarrow}$ for $q_A \in Q_A$.
+Then,
+\[ L_\omega := \tilde L_a \cap -\tilde L_b \in \BC \op \Lang . \]
 
-Assume that $L_\omega \in \ext \Lang$. Then there is $L' \in \Lang$ with $\ext L' = L_\omega$. We can divide $L'$ with regard to $\overset\times\A$ like
-\[ L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot L'_{\overset\times q} \]
-for corresponding $L'_{\overset\times q}$. Then we have
-\[ L_\omega = \ext L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \ext L'_{\overset\times q} . \]
-I.e. we have $\ext L'_{\overset\times q} = \dext L_{\overset\times q \rightarrow}$ for all $\overset\times q \in \overset\times F_1$. We have $L_{(q_A,q_E) \rightarrow} = L_{q_A \rightarrow}$ for all $(q_A,q_E) \in \overset\times F_1$.
+Assume there is $L \in \Langreg$ such that $\op L =  L_\omega$. Then $\op L|_{\Sigma-\Set{a}} = \dop -L_b |_{\Sigma-\Set{a}}$. However, because of \cref{gen:multLetterInv}, $\dop {-L_b} |_{\Sigma-\Set{a}} \not\in \op \Langreg$. That is a contradiction. Thus, $L_\omega \not\in \op \Langreg$.
+
+Assume there is $\overline L \in \Langreg$ such that $\dop \overline L =  L_\omega$. Then $\dop \overline{L}|_{\Sigma-\Set{b}} = \op {L_a} |_{\Sigma-\Set{b}}$. However, because of \cref{gen:multLetterInv}, $\op {L_a} |_{\Sigma-\Set{b}} \not\in \dop \Langreg$. That is a contradiction. Thus, $L_\omega \not\in \dop \Langreg$.
+%
+%Let $\A_E = (Q_E,\Sigma,q_{E,0},\delta_E,F_E)$ be the det. E-automaton accepting exactly $\tilde L$ and $\A_A = (Q_A,\Sigma,q_{A,0},\delta_A,F_A)$ be the det. A-automaton accepting exactly $- \tilde L_\sigma$. Without restriction, let there be a bad state $q_{A,b} \in Q_A$ in $\A_A$ where all transitions end when there is no other way such that every possible word has a path in $\A$. Also, let $\A_A$ have only final states except $q_{A,b}$, i.e. $Q_A - \Set{q_{A,b}} = F_A$. Also, without restriction, let $\A_E$ have all transitions from final states only into themselves, i.e. $\delta_E(q,l) = q$ for all $q \in F_E, l \in \Sigma$. And let $q_{E,b}$ be the bad state for $\A_E$ such that every possible word has a path in $\A_E$.
+%
+%Look at the product automaton $\overset{\times}\A = (\overset\times Q,\Sigma,(q_{A,0},q_{E,0}),\delta_A \times \delta_E,\overset\times F)$ where $\overset\times Q := Q_A \times Q_E$, $\overset\times F := \Set{\overset\times q \in F_A \times F_E}{\text{$\overset\times q$ is reachable in $\overset\times\A$}}$. Then, $L^\omega_\text{co-Büchi}(\overset\times\A) = L_\omega$. Define $\overset\times F_1 := \Set{\overset\times q \in \overset\times F}{\text{there is no earlier final state on all paths to $\overset\times q$}}$. Let $L_{\rightarrow \overset\times q}$ be the language of all words wich end up in state $\overset\times q \in \overset\times Q$ and $L_{\overset\times q \rightarrow}$ be the language of all possible words starting in state $\overset\times q \in \overset\times Q$ and ending in any other final state. Then, we have
+%\[ L_\omega = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
+%The union elements are disjoint because $\overset\times\A$ is deterministic. Likewise, define $L_{\rightarrow q_A}$ and $L_{q_A \rightarrow}$ for $q_A \in Q_A$.
+%
+%Assume that $L_\omega \in \ext \Lang$. Then there is $L' \in \Lang$ with $\ext L' = L_\omega$. We can divide $L'$ with regard to $\overset\times\A$ like
+%\[ L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot L'_{\overset\times q} \]
+%for corresponding $L'_{\overset\times q}$. Then we have
+%\[ L_\omega = \ext L' = \dot{\bigcup_{\overset\times q \in \overset\times F_1}} L_{\rightarrow \overset\times q} \cdot \ext L'_{\overset\times q} . \]
+%I.e. we have $\ext L'_{\overset\times q} = \dext L_{\overset\times q \rightarrow}$ for all $\overset\times q \in \overset\times F_1$. We have $L_{(q_A,q_E) \rightarrow} = L_{q_A \rightarrow}$ for all $(q_A,q_E) \in \overset\times F_1$.
 %Define $F_1 := \Set{q_A}{(q_A,q_E) \in \overset\times F_1}$. 
-Define $\overset\times F_{-E} := \Set{\overset\times q \in \overset\times Q}{\text{there is no path from $\overset\times q$ to $\overset\times F_1$}}$. Then
-\[ -\tilde L_\sigma = \bigcup_{\overset\times q \in \overset\times F_1 \mathop{\dot\cup} \overset\times F_{-E}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
-
+%Define $\overset\times F_{-E} := \Set{\overset\times q \in \overset\times Q}{\text{there is no path from $\overset\times q$ to $\overset\times F_1$}}$. Then
+%\[ -\tilde L_\sigma = \bigcup_{\overset\times q \in \overset\times F_1 \mathop{\dot\cup} \overset\times F_{-E}} L_{\rightarrow \overset\times q} \cdot \dext L_{\overset\times q \rightarrow} . \]
+%
 \end{proof}
-\end{lemma}
+\end{thm}
 
 The lemma could be generalized even more by using a generic $M$-non-invariant language $L \in \Lang$ with $K \subseteq \Sigma$ maximum invariant alphabet set such that $\#K > \#M$.
-
-Similarily:
-
-\begin{lemma}
-Let $\Lang$ be closed under negation. Then
-\[ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
-\begin{proof}
-%If there is $L_\Sigma \in \lim \Lang_\Sigma, L_\Sigma \not\in \dlim \Lang_\Sigma$:
-%\begin{itemize}
-%\item[$\Rightarrow$] $-L_\Sigma \in \dlim \Lang_\Sigma, -L_\Sigma \not\in \lim \Lang_\Sigma$
-%\item[$\Rightarrow$] $L_{\Sigma_1} \cup -L_{\Sigma_2} \in \BC \lim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$ \newline
-%$L_{\Sigma_1} \cup -L_{\Sigma_2} \not\in \lim \cup \dlim \Lang_{\Sigma_1 \dot{\cup} \Sigma_2}$
-%\end{itemize}
-%Thus, $ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang $.
-\end{proof}
-\end{lemma}
 
 %\subsection{$\BC \ext = \lim \cap \dlim$}
 \begin{mydef}
