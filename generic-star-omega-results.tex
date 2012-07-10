@@ -236,14 +236,22 @@ $\tilde L_2 := \lim(L_a) \cap -\lim(L_b)$. Then $\tilde L_2 \not\in \lim \cup \d
 \end{proof}
 \end{example}
 
-This exampe can be generalized a bit:
+This exampe can be generalized a bit. We first introduce $M$-invariance on a language for $M\subseteq\Sigma$.
+
+\begin{mydef}
+A language $L \subseteq \Sigma^* \cup \Sigma^\omega$ is called \defword{$M$-invariant} for $M \subseteq\Sigma$ iff for all $w \in \Sigma^* \cup \Sigma^\omega$,
+\[ w \in L \ \ \ \Leftrightarrow \ \ \  w |_M \in L , \]
+where $w|_M$ is the word $w$ with all letters from $M$ removed.
+
+There is always exactly one \defword{maximum invariant alphabet set $M_m \subseteq \Sigma$ of $L$} such that $L$ is $M_m$-invariant. Then call $\Sigma-M_m$ the \defword{non-invariant alphabet set of $L$}.
+\end{mydef}
 
 %\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
 \begin{lemma}
-Let $\Lang$ be closed under negation and under alphabet permutation. Let there be an alphabet permutation non-invariant language $L \in \Lang$ with $\tilde L := \ext L \not\in \dext \Langreg$. Then
+Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L \in \Lang$ with $\tilde L := \ext L \not\in \dext \Langreg$.  Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L$} and let $L$ be \emph{$\Set{b,c}$-invariant}. Then
 \[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang . \]
 \begin{proof}
-Let $\sigma$ be a permutation such that $L_\sigma \neq L$. Because of the alphabet permutation closure, $L_\sigma \in \Lang$ and $\tilde L_\sigma := \ext L_\sigma \not\in \dext \Langreg$. I.e., $-\tilde L_\sigma = \dext (-L_\Sigma) \not\in \ext \Langreg$.
+Define $\sigma := \Set{a \mapsto b, b \mapsto a, x \mapsto x \text{ for any } x \in \Sigma-\Set{a,b}}$. $L$ is an alphabet permutation non-invariant language because $L_\sigma \neq L$. Because of the alphabet permutation closure, $L_\sigma \in \Lang$ and $\tilde L_\sigma := \ext L_\sigma \not\in \dext \Langreg$. I.e., $-\tilde L_\sigma = \dext (-L_\Sigma) \not\in \ext \Langreg$.
 
 Then, $L_\omega := \tilde L \cap -\tilde L_\sigma \in \BC \ext \Lang$.
 
@@ -264,6 +272,8 @@ Define $\overset\times F_{-E} := \Set{\overset\times q \in \overset\times Q}{\te
 
 \end{proof}
 \end{lemma}
+
+The lemma could be generalized even more by using a generic $M$-non-invariant language $L \in \Lang$ with $K \subseteq \Sigma$ maximum invariant alphabet set such that $\#K > \#M$.
 
 Similarily:
 
