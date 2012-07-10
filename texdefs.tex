@@ -6,14 +6,14 @@
 % http://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
 % http://en.wikibooks.org/wiki/LaTeX/Theorems
 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
-
 \theoremstyle{plain}\newtheorem{lemma}{Lemma}[section]
 \theoremstyle{plain}\newtheorem{theorem}[lemma]{Theorem}
 \theoremstyle{definition}\newtheorem{mydef}[lemma]{Definition}
 \theoremstyle{definition}\newtheorem{algo}[lemma]{Algorithm}
 \theoremstyle{plain}\newtheorem{example}[lemma]{Example}
+
+\newtheorem{thm}[lemma]{Theorem}
+\newtheorem{lem}[lemma]{Lemma}
 
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\Reg}{\text{Reg}}
