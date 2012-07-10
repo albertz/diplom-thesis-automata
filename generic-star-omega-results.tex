@@ -248,12 +248,12 @@ There is always exactly one \defword{maximum invariant alphabet set $M_m \subset
 
 %\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
 \begin{lemma}
-Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L \in \Lang$ with $\tilde L := \ext L \not\in \dext \Langreg$.  Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L$} and let $L$ be \emph{$\Set{b,c}$-invariant}. Then
+Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L_a \in \Lang$ with $\tilde L_a := \ext L_a \not\in \dext \Langreg$.  Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L_a$} and let $L_a$ be \emph{$\Set{b,c}$-invariant}. Then
 \[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang . \]
 \begin{proof}
-Define $\sigma := \Set{a \mapsto b, b \mapsto a, x \mapsto x \text{ for any } x \in \Sigma-\Set{a,b}}$. $L$ is an alphabet permutation non-invariant language because $L_\sigma \neq L$. Because of the alphabet permutation closure, $L_\sigma \in \Lang$ and $\tilde L_\sigma := \ext L_\sigma \not\in \dext \Langreg$. I.e., $-\tilde L_\sigma = \dext (-L_\Sigma) \not\in \ext \Langreg$.
+Define the alphabet permutation $\sigma := \Set{a \mapsto b, b \mapsto a, x \mapsto x \text{ for any } x \in \Sigma-\Set{a,b}}$. $L_a$ is an alphabet permutation non-invariant language because $\sigma(L) \neq L$. Define $L_b := \sigma(L_a)$. Because of the alphabet permutation closure, $L_b \in \Lang$ and $\tilde L_b := \ext L_b \not\in \dext \Langreg$. I.e., $-\tilde L_b = \dext (-L_b) \not\in \ext \Langreg$.
 
-Then, $L_\omega := \tilde L \cap -\tilde L_\sigma \in \BC \ext \Lang$.
+Then, $L_\omega := \tilde L_a \cap -\tilde L_b \in \BC \ext \Lang$.
 
 Let $\A_E = (Q_E,\Sigma,q_{E,0},\delta_E,F_E)$ be the det. E-automaton accepting exactly $\tilde L$ and $\A_A = (Q_A,\Sigma,q_{A,0},\delta_A,F_A)$ be the det. A-automaton accepting exactly $- \tilde L_\sigma$. Without restriction, let there be a bad state $q_{A,b} \in Q_A$ in $\A_A$ where all transitions end when there is no other way such that every possible word has a path in $\A$. Also, let $\A_A$ have only final states except $q_{A,b}$, i.e. $Q_A - \Set{q_{A,b}} = F_A$. Also, without restriction, let $\A_E$ have all transitions from final states only into themselves, i.e. $\delta_E(q,l) = q$ for all $q \in F_E, l \in \Sigma$. And let $q_{E,b}$ be the bad state for $\A_E$ such that every possible word has a path in $\A_E$.
 
