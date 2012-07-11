@@ -1,55 +1,6 @@
 %!TEX root =  index.tex
 
-% Quelle: Automata, Semigroups, Logic and Games - Pin, Perrin
-
-
-\subsection{regular languages}
-A languages is \defword{regular} iff an automaton accepts it.
-
-\subsection{piece-wise testable}
-\subsection{$k$-locally testable}
-\subsection{dot-depth-$n$}
-\subsection{starfree}
-\subsection{locally modulo testable}
-\subsection{$R$-trivial}
-\subsection{endlich / co-endlich}
-\subsection{endwise testable}
-
-\section{$\omega$-languages}
-
-\subsection{Muller automaton}
-
 \subsection{Rabin automaton}
 A Rabin automaton is a tuple $\A = (Q, \Sigma, E, i, \R)$, where $(Q,\Sigma,E)$ is a deterministic automaton, $i$ is the initial state and $\R = \{(L_j, U_j) | j \in J\}$ is a family of pairs of state-sets. A run $p$ is successfull iff it starts in $i$ and there is an index $j \ in J$ such that $p$ reaches $U_j$ infinitely often and $L_j$ only finitely often. If the automaton is finite, this is equivalent to
 \[ \Inf(p) \cap L_j = \emptyset \ \text{and} \ \Inf(p) \cap U_j \neq \emptyset . \]
 
-\subsection{Staiger Wagner class of $\K$}
-
-\section{Operations: $*$-language $K$ to $\omega$-language $L_\omega (K)$}
-\subsection{...}
-a)
-* alle Sprachen $K \dot \Sigma^\omega = \ext(K)$, $K \in \K$
-
-* offene G
-
-* Staiger Wagner Klasse
-http://de.wikipedia.org/wiki/Staiger-Wagner-Automat
-Erich Grädel, Wolfgang Thomas und Thomas Wilke (Herausgeber), Automata, Logics, and Infinite Games, LNCS 2500, 2002, Seite 20 (auf englisch)
-http://www.automata.rwth-aachen.de/material/skripte/areas-english.pdf - s.53
-
-a')
-dual $\overline{K}$ = $\omega$-Wörter, deren alle Präfixe in $K$ sind
-
-b) Sprachen $\lim \K$
-BC Muller-erkennbare
-(BC: boolean closure ?)
-
-b') von einer Stelle an alle Prefixe in $K$
-
-c) Kleene-Closure
-
-alle der Form $\cup_{i=1}^n U_i \dot V_i^\omega$, $U_i, V_i \in \K$
-
-d) $\K$ nicht suffix sensitiv
-
-$K \in \K \Rightarrow K \dot \Sigma^* \in \K$  
