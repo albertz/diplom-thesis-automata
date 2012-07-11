@@ -14,10 +14,8 @@ This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages
 %W161,S210,S211,S101a,S51,S18
 
 %S210:
-\begin{thm}
+\begin{theorem}
 \[ \Lang^\omega (\mathrm{FO[<]}) = \BC \lim \Lang^*(\mathrm{FO[<]}) \]
-\end{thm}
-
 \begin{proof}
 Let $\varphi \in \mathrm{FO[<]}$. By the \cite[Normal Form Theorem (4.4)]{CombR107} there are bounded formulas $\varphi_1(y),\dotsb,\varphi_r(y),\psi_1(y),\dotsb,\psi_r(y)$ such that for all $\alpha \in \Sigma^\omega$:
 \[ \alpha \models \varphi \Leftrightarrow \alpha \models \bigvee_{i=1}^r \left( \forall x \exists y > x \colon \varphi_i (y) \right) \wedge \neg \left( \forall x \exists y > x \colon \psi_i (y) \right) \]
@@ -51,16 +49,14 @@ and thus also
 \[ \BC \lim \Lang^* (\mathrm{FO[<]}) \subseteq \Lang^\omega (\mathrm{FO[<]}) . \]
 Thus we have prooved the equality.
 \end{proof}
+\end{theorem}
 
 %S211:
-\begin{thm}
+\begin{theorem}
 \[ \BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} ) \]
-\end{thm}
-
 \begin{proof}
 $\subseteq$: $L \subset \Sigma^\omega \text{ starfree } \ \Rightarrow\ L \Sigma^\omega \in \lim( \Lang^*( \mathrm{FO[<]} ) )$
-\end{proof}
-\begin{proof}
+
 $\neq$:
 \begin{align*}
 & L := (\Sigma^* a)^\omega \\
@@ -69,11 +65,12 @@ $\neq$:
 \end{align*}
 And we have $L \notin \BC \ext \Lang^* (\mathrm{FO[<]})$.
 \end{proof}
+\end{theorem}
 
 %S101a:
-With \ref{gen:non-suffix-sens}, we get $\ext \Lang \subseteq \lim \Lang$.
+With \cref{gen:non-suffix-sens}, we get $\ext \Lang \subseteq \lim \Lang$.
 
-$\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde{L} \notin \ext \Lang$ as shown in chapter \ref{P:reg-star}.
+$\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde{L} \notin \ext \Lang$ as shown in \cref{P:reg-star}.
 
 \begin{itemize}
 \item P1: $\Set{a} \in \Lang$. $a \Sigma^* \in \Lang$, thus $a\Sigma^\omega = \ext(\Set{a}) = \dext{a\Sigma^*}$.
@@ -93,10 +90,8 @@ $\tilde{L} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega \in \lim \Lang$ but $\tilde
 %215: BC lim class
 
 %S103:
-\begin{thm}
+\begin{theorem}
 \[ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) \]
-\end{thm}
-
 \begin{proof}
 From \cite[Theorem 4.8]{LangAutLogicR102}, we know that each formular in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
 \[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \varphi(\overline{x_1}, \dotsb, \overline{x_n}) \]
@@ -118,8 +113,8 @@ Any formular in FO[+1] can be expressed as a boolean combination of $\psi$-like 
 \end{align*}
 we get:
 \[ \Lang^\omega(\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}). \]
-
 \end{proof}
+\end{theorem}
 
 \subsection{FO[]}
 \subsection{Piece-wise testable languages}
@@ -128,15 +123,13 @@ we get:
 %S212: BC lim class
 
 %S101:
+\begin{theorem}
 \label{thm.PT}
-\begin{thm}
 \[ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) \]
-\end{thm}
 
 \begin{proof}
 
-$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$
-\\
+$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$.
 
 $\subseteq$: It is sufficient to show $\ext(\Lang^* (\PT)) \subseteq \BC \lim \Lang^* (\PT)$.
 
@@ -154,7 +147,6 @@ It is sufficient to show negation only for such ground terms because we can alwa
 \end{align*}
 
 This makes the induction complete.
-\\
 
 $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \Lang^* (\PT)$.
 \begin{align*}
@@ -171,8 +163,8 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 & = \Set{ \alpha \in \Sigma^\omega }{ \exists n : \forall m > n \colon \alpha[0,m] \in A \cap B } = \lim(A) \cap \lim(B)
 \end{aligned}
 \end{align*}
-
 \end{proof}
+\end{theorem}
 
 
 
@@ -183,36 +175,35 @@ For positive piece-wise testable (pos-PT) languages, we get the same result.
 %S214: BC lim class
 
 %S101:
+\begin{theorem}
 \label{thm.ext.lim.posPT}
-\begin{thm}
 \[ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) \]
-\end{thm}
-
 \begin{proof}
 $\subseteq$: Exactly like the proof for PT except that we leave out the negated part.
+
 $\supseteq$: Also like the proof for PT.
 \end{proof}
+\end{theorem}
 
 We also have a relation between pos-PT and PT.
 
-\begin{thm}
+\begin{theorem}
 \[ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) \]
 
 \begin{proof}
 In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{PT})$ we actually proved $\BC \lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{pos-PT})$. Similiarly we also proved $\BC \ext \Lang^* (\mathtext{PT}) \subseteq \BC \lim \Lang^* (\mathtext{pos-PT})$.
 
-With \ref{thm.ext.lim.posPT} and \ref{thm.PT} we get the claimed equality.
+With \cref{thm.PT} and \cref{thm.ext.lim.posPT} we get the claimed equality.
 \end{proof}
-\end{thm}
+\end{theorem}
 
 
 \subsection{Locally testable languages}
 \label{lang:LT}
 %S16: def
 
-\begin{thm}
+\begin{theorem}
 \[ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT)  \]
-\end{thm}
 
 \begin{proof}
 Let $w \in \Sigma^+$.
@@ -226,6 +217,7 @@ Thus we have
 But we also have
 \[ \lim(\Sigma^*) = (\Sigma^* w)^\omega \notin \BC \ext \Lang^* (\LT) . \]
 \end{proof}
+\end{theorem}
 
 \subsection{Locally threshold testable languages}
 \label{lang:LTT}
