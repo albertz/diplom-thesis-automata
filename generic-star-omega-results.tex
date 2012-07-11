@@ -254,6 +254,11 @@ where $w|_M$ is the word $w$ with all letters from $M$ removed.
 There is always exactly one \defword{maximum invariant alphabet set $M_m \subseteq \Sigma$ of $L$} such that $L$ is $M_m$-invariant. Then call $\Sigma-M_m$ the \defword{non-invariant alphabet set of $L$}.
 \end{mydef}
 
+\begin{mydef}
+For $L \subseteq \Sigma^* \cup \Sigma^\omega$, $M \subseteq \Sigma$, define
+\[ L|_M := L \cap (M^* \cup M^\omega) . \]
+\end{mydef}
+
 For the final \cref{gen:extInBCext}, we need another small lemma:
 
 \begin{lemma}
