@@ -1,11 +1,19 @@
 \section{General results}
 \label{general-results}
 
+In this chapter, we study all the properties, equalities and inclusions from \cref{P:reg-star} for arbitrary $*$-language classes $\Lang$. We try to find necessary conditions such that the inclusions hold and als stay strict. And we demonstrate counter examples when they don't hold anymore or when inequalities become equalities.
+
+We will also study some relations between the $\omega$-language classes constructed from $\Lang$ with the $\omega$-language classes constructed from $\Langreg$, i.e. the diagram as shown in \cref{regomega-diagram}. E.g. we will show that for some cases, we have the equalities $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ and $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$.
+
 %S401: TODO
+
+\
 
 Let $\Lang$ be a $*$-language class. We start with some very basic results on language operators.
 
 \subsection{Background}
+We start with some generic properties, equalities and inclusions for the $\lim$ and $\ext$ operators.
+
 \begin{lemma}
 \label{gen:general}
 Let $L,A,B \in \Lang$.
@@ -40,9 +48,9 @@ There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \end{proof}
 \end{lemma}
 
-For $\omega$ automata, we already know that non-determinism can be more powerful than determinism (see \ref{reg-omega-lang}): The class of non-deterministic Büchi automata can accept clearly more languages than the class of determinstic Büchi automata. E.g. $L^\omega := (a+b)^* b^\omega \in \LangOreg$ cannot be recognised by deterministic Büchi automata, i.e. $L^\omega \not\in \lim \Langreg$.
+For $\omega$ automata, we already know that non-determinism can be more powerful than determinism (see \cref{reg-omega-lang}): The class of non-deterministic Büchi automata can accept clearly more languages than the class of determinstic Büchi automata. E.g. $L^\omega := (a+b)^* b^\omega \in \LangOreg$ cannot be recognised by deterministic Büchi automata, i.e. $L^\omega \not\in \lim \Langreg$.
 
-Luckily, for E- and A-acceptance, this is not the case as we see below. This matches the intuition that E/A-acceptance doesn't really tell something about infinite properties of words but Büchi/Muller does. And when talking about finite words, we already know that non-deterministic and deterministic automata are equaly powerful (see chapter \ref{intro:reglang}).
+Luckily, for E- and A-acceptance, this is not the case as we see below. This matches the intuition that E/A-acceptance doesn't really tell something about infinite properties of words but Büchi/Muller does. And when talking about finite words, we already know that non-deterministic and deterministic automata are equaly powerful (see \cref{intro:reglang}).
 
 %307.12
 \begin{lemma}
@@ -64,9 +72,9 @@ For A-automata, the proof is analogue.
 \
 
 %S302.1:
-We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In lemma \ref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
+We are interested in relations like $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$ or $\ext \Lang \overset{?}{\subsetneqq} \lim \Lang$. With $\Lang = \Set{\Set{a}}$, we realize that even $\ext \Lang \subseteq \lim \Lang$ is not true in general ($\ext \Set{\Set{a}} = \Set{a \Sigma^\omega} \neq \emptyset = \lim \Set{\Set{a}}$). In \cref{gen:non-suffix-sens}, we see a sufficient condition for this property, though.
 
-We want to study all the properties we have shown for $\Langreg$ in lemma \ref{P:reg-star}.
+We want to study all the properties we have shown for $\Langreg$ in \cref{P:reg-star}.
 
 \
 

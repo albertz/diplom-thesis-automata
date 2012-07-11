@@ -47,6 +47,7 @@ Given these language operators, we are interested in the relations between them.
 
 \subsection{Classification of regular $\omega$-languages} %$\Langreg$
 
+\label{regomega-diagram}
 Considering $\mathcal{R} := \Langreg$, we get a language diagram like:
 
 \begin{tikzpicture}
@@ -123,11 +124,11 @@ and we have the additional properties
 
 \item[5.]
 %S405 / Staigner-Wagner-recognizable
-A language in this class is also said to have the \defword{obligation property}. Staiger and Wagner have introduced a \defword{Staiger-Wagner automaton} (also called a \defword{weak Muller automaton}; see definition \ref{def:staiger-wagner}) which can accept exactly this language class. This class of languages is called the \defword{Staiger-Wagner-recognizable} languages. This is stated in theorem \ref{thm:staiger-wagner}.
+A language in this class is also said to have the \defword{obligation property}. Staiger and Wagner have introduced a \defword{Staiger-Wagner automaton} (also called a \defword{weak Muller automaton}; see definition \ref{def:staiger-wagner}) which can accept exactly this language class. This class of languages is called the \defword{Staiger-Wagner-recognizable} languages. This is stated in \cref{thm:staiger-wagner}.
 
 %Given an automaton $\A = (Q,\Sigma,q_0,\Delta,\F)$ with $\F \subseteq 2^Q$, a run $\rho$ in $\A$ is \defword{Staiger-Wagner-accepted} iff $\Occ(\rho) \in \F$, where $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}}$.
 
-A generic proof of the equality $\BC \ext \mathcal{R} = \lim \mathcal{R} \cap \dlim \mathcal{R}$ is given in lemma \ref{gen:staiger-wagner}.
+A generic proof of the equality $\BC \ext \mathcal{R} = \lim \mathcal{R} \cap \dlim \mathcal{R}$ is given in \cref{gen:staiger-wagner}.
 
 \item[6a.] $\tilde{L}_{6a} := \lim(\Sigma^* a) = (\Sigma^* a)^\omega$. Assume there is $L \subseteq \Sigma^*$ with $\lim(L) = -\tilde{L}_{6a}$. Let $(w_0,w_1,w_2,\dotsc) \in (\Sigma^*)^\N$ so that $w_0 \in L, w_0 a w_1 \in L, \dotsc, w_0 \prod_{i=0}^n a w_i \in L \ \forall n \in \N$. Thus, $\alpha := w_0 \prod_{i \in \N} a w_i \in \lim L$. But $\alpha \notin -\tilde{L}_{6a}$. That is a contradiction. Thus, $-\tilde{L}_{6a} \notin \lim \mathcal{R}$. Because $\mathcal{R}$ is closed under complement, we get $\tilde{L}_{6a} \notin \dlim \mathcal{R}$.
 \item[6b.] Analog to 6a with $\tilde{L}_{6b} := -\tilde{L}_{6a}$.
@@ -140,7 +141,7 @@ $\tilde{L}_8 := (\Sigma^*a)^\omega \cap -(\Sigma^*b)^\omega$. Then $\tilde{L}_8 
 \item[9.-11.]
 %(S402, S407)
 %(S403, S411) (R107, Theorem 3.1)
-This is explained already in chapter \ref{reg-omega-lang} and in more detail in \cite{InfCompR101} or \cite[Theorem 3.1]{CombR107}.
+This is explained already in \cref{reg-omega-lang} and in more detail in \cite{InfCompR101} or \cite[Theorem 3.1]{CombR107}.
 
 \end{enumerate}
 \end{proof}
@@ -156,6 +157,6 @@ This relation diagram was studied in detail for $\Langreg$. We are interested we
 %\item $\BC \ext \Lang \overset{?}{\subsetneqq} \BC \lim \Lang$
 %\end{itemize}
 
-In chapter \ref{general-results}, we will reformulate many proofs of the properties given in chapter \ref{P:reg-star} in a generic way. The results will give us an understanding about when such $\omega$-language class relations hold, when inclusions are strict and when they are not.
+In \cref{general-results}, we will reformulate many proofs of the properties given in \cref{P:reg-star} in a generic way. The results will give us an understanding about when such $\omega$-language class relations hold, when inclusions are strict and when they are not.
 
-These base theorems are then used in chapter \ref{concrete-results} to study some concrete $*$-language classes.
+These base theorems are then used in \cref{concrete-results} to study some concrete $*$-language classes.
