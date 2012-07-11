@@ -557,7 +557,7 @@ We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sig
 \[ \Lang^*(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
 \end{mydef}
 
-Examples of such language classes are locally testable (LT, section \ref{lang:LT}), locally threshold testable (LTT, section \ref{lang:LTT}) or piece-wise testable (PT, section \ref{lang:PT}) languages. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
+Examples of such language classes are locally testable (LT, \cref{lang:LT}), locally threshold testable (LTT, \cref{lang:LTT}) or piece-wise testable (PT, \cref{lang:PT}) languages. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
 
 %S307
 If a language class $\Lang(R)$ is defined as finite union of equivalence classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
@@ -714,11 +714,11 @@ When we compare the outer $\ext \Langreg$ (inside $\BC \lim \Langreg$, i.e. all 
 \begin{proof}
 We have $\ext \Lang(R) \subseteq \ext \Langreg$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
 
-Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Langreg$. Because $L^\omega \in \ext \Langreg$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \ref{gen:e-determinism}).
+Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Langreg$. Because $L^\omega \in \ext \Langreg$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \cref{gen:e-determinism}).
 
 We must find an $R$-E-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ E-automaton and will construct it in the following.
 
-Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \ref{gen:R-automata} and \ref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
+Let $\A^M$ be the deterministic $R$-Muller-automaton for $L^\omega$ (according to \cref{gen:R-automata} and \cref{gen:lang_omega_muller}). Without restriction, there are no final state sets in $\A^M$ which are not loops. Then, $\overline{\A}^M$ has the same states and transitions as $\A^M$.
 
 Look at a final state $q^E$ of $\A^E$. Without restriction, we can assume that there is no path that we can reach multiple final states at once. Let $L_{q^E}$ be all words which reach $q^E$ exactly once at the end.
 
