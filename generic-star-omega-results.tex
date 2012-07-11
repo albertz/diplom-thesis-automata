@@ -434,7 +434,7 @@ Let $\Lang$ be closed under change of final states. Then
 \begin{proof}
 %S407: TODO...
 %S306, S306.1:
-Let $U,V \in \Lang$. Look at the non-deterministic automaton $\A$ defined as:
+Let $U,V \subseteq \Sigma^*$, $U\cdot V^* \in \Lang$. Look at the non-deterministic automaton $\A$ defined as:
 \[
   \begin{tikzpicture}[%
     >=stealth,
@@ -536,7 +536,7 @@ Let $\Lang$ be closed under change of final states. Then
 \begin{proof}
 Let $\A$ be a deterministic Büchi automaton for some language $\tilde L = L^\omega_{\text{Büchi}}(\A) \in \Lang$ with final states $F$.
 
-For all finite states $q \in F$: If $q$ is not part of a strongly connected component (SCC), we can ignore it. Let $S$ be the SCC where $q \in S$. Then the set of all $\alpha \in \Sigma^\omega$ which are infinitely often in $q$ can be described as $U_q \cdot V_q^\omega$, where $U_q$ is the set of words so that we arrive in $q$ and $V_q$ is the set of words so that we get from $q$ to $q$. Both sets are regular.
+For all finite states $q \in F$: If $q$ is not part of a strongly connected component (SCC), we can ignore it. Let $S$ be the SCC where $q \in S$. Then the set of all $\alpha \in \Sigma^\omega$ which are infinitely often in $q$ can be described as $U_q \cdot V_q^\omega$, where $U_q$ is the set of words so that we arrive in $q$ and $V_q$ is the set of words so that we get from $q$ to $q$. Both sets are obviously regular and because of the \emph{closure of change of final states}, we have $U_q V_q^* \in \Lang$.
 
 Thus,
 \[ \tilde L = L^\omega_{\text{Büchi}}(\A) = \bigcup_{q \in F} U_q V_q^\omega . \]

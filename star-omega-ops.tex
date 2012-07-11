@@ -11,8 +11,8 @@ We already introduced $\lim$. We can define a family of language operators, part
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
 \item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$ (also called dual-lim)
 \item $\BC \lim$
-\item $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang, n \in \N_0}$
-\item $\limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \in \Lang, n \in \N_0}$
+\item $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
+\item $\limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang,, n \in \N_0}$
 \end{enumerate}
 
 From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$. $\BC$ denotes always all boolean combinations (union, intersection, complement) of a language class, i.e. for $\mathcal{X} \subseteq \Sigma^\omega \mathbin{\dot\cup} \Sigma^*$, $\BC \mathcal{X}$ is defined as the smallest set such that
