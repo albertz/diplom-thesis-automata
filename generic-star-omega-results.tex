@@ -634,17 +634,17 @@ Furthermore, $\ext L_1 = a \Sigma^\omega$. Marking $0$ or $1$ as final state in 
 
 In the rest of this section, we show some equalities:
 \begin{itemize}
-\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (lemma \ref{gen:lang_omega_e})
-\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (lemma \ref{gen:lang_omega_buechi})
-\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (lemma \ref{gen:lang_omega_muller})
-\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$ (lemma \ref{gen:Romega=BCextR})
-\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (lemma \ref{gen:R-bclim-cap-ext})
-\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (lemma \ref{gen:R-staiger-wagner})
+\item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\cref{gen:lang_omega_e})
+\item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\cref{gen:lang_omega_buechi})
+\item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\cref{gen:lang_omega_muller})
+\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$ (\cref{gen:Romega=BCextR})
+\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
+\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (\cref{gen:R-staiger-wagner})
 \end{itemize}
 
 We will see that all those equations hold for all $R$, i.e. also for $\Lang(LT_n)$, $\Lang(LTT^k_n)$ and $\Lang(PT_n)$.
 
-We will also see that $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$ is not always the case. We will give an alternative characterization of this property (theorem \ref{gen:postfix-loop-det=limAndBclim}).
+We will also see that $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$ is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}).
 
 \begin{lemma}
 %\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
@@ -740,7 +740,7 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 In fact, we actually have shown $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$ for any $\Lang \subseteq \Langreg$.
 
 
-We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$. It turns out that this is not always the case and not as straightforward as in the $\ext$ case in lemma \ref{gen:R-bclim-cap-ext}.
+We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$. It turns out that this is not always the case and not as straightforward as in the $\ext$ case in \cref{gen:R-bclim-cap-ext}.
 
 We have $\lim \Lang \subseteq \lim \Langreg$ and $\lim \Lang \subseteq \BC \lim \Lang$. Thus, "$\supseteq$" does hold in all cases.
 
@@ -795,7 +795,7 @@ For locally testable languages, this is \emph{not} the case. Depending on the en
 There is an $R$ so that $\Lang(R)$ is not \emph{infinity-postfix-independent} and
 \[ \BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R) . \]
 \begin{proof}
-If we take the example \ref{gen:bcLimLReg-and-limL:counter-example}: For $v,w \in \Set{a,b}^*$, let $v =_R w \ :\Leftrightarrow \ v,w$ end up with the same symbol. I.e., the equivalence classes are $\left<\epsilon\right>, \left<a\right>, \left<b\right>$.
+If we take the \cref{gen:bcLimLReg-and-limL:counter-example}: For $v,w \in \Set{a,b}^*$, let $v =_R w \ :\Leftrightarrow \ v,w$ end up with the same symbol. I.e., the equivalence classes are $\left<\epsilon\right>, \left<a\right>, \left<b\right>$.
 
 The $R$-automata is
 \[
@@ -821,7 +821,7 @@ The $R$-automata is
   \end{tikzpicture}
 \]
 
-From example \ref{gen:bcLimLReg-and-limL:counter-example}, we have $L_a = \left<a\right>$ and $L_b = \left<\epsilon\right> \cup \left<b\right>$ and $\Lang = \Set{L \in \Lang(R)}{\#L = \infty}$ (only the infinity $L \in \Lang(R)$ matter for $\lim$). We also see from the $R$-automata that there is no way to mark states as final states for Büchi-acceptance so that we get the condition "both $a$ and $b$ occur infinitely often". Via Muller, we just mark the loop $\Set{\left<a\right>,\left<b\right>}$ as final. I.e. $\lim L_{ab} \not\in \lim \Lang(R)$ but $\lim L_{ab} \in \BC \lim \Lang(R)$ and as shown in example \ref{gen:bcLimLReg-and-limL:counter-example}, $\lim L_{ab} \in \lim \Langreg$. Thus, $\BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R)$.
+From \cref{gen:bcLimLReg-and-limL:counter-example}, we have $L_a = \left<a\right>$ and $L_b = \left<\epsilon\right> \cup \left<b\right>$ and $\Lang = \Set{L \in \Lang(R)}{\#L = \infty}$ (only the infinity $L \in \Lang(R)$ matter for $\lim$). We also see from the $R$-automata that there is no way to mark states as final states for Büchi-acceptance so that we get the condition "both $a$ and $b$ occur infinitely often". Via Muller, we just mark the loop $\Set{\left<a\right>,\left<b\right>}$ as final. I.e. $\lim L_{ab} \not\in \lim \Lang(R)$ but $\lim L_{ab} \in \BC \lim \Lang(R)$ and as shown in \cref{gen:bcLimLReg-and-limL:counter-example}, $\lim L_{ab} \in \lim \Langreg$. Thus, $\BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R)$.
 \end{proof}
 \end{example}
 
@@ -855,7 +855,7 @@ Let $R$ be a congruence relation with a finite number of equivalence classes. Le
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 
 \begin{proof}
-In lemma \ref{gen:BClimR=limR}, we showed that we have $\BC \lim \Lang(R) = \lim \Lang(R)$. Because $\lim \Lang(R) \subseteq \lim \Langreg$, we directly get the claimed equality.
+In \cref{gen:BClimR=limR}, we showed that we have $\BC \lim \Lang(R) = \lim \Lang(R)$. Because $\lim \Lang(R) \subseteq \lim \Langreg$, we directly get the claimed equality.
 \end{proof}
 \end{lemma}
 
@@ -933,7 +933,7 @@ In lemma \ref{gen:BClimR=limR}, we showed that we have $\BC \lim \Lang(R) = \lim
 
 %TODO: then show that if not (P), then not equality
 
-The question arises wether \emph{infinity-postfix-independence} on $\Lang(R)$ is equivalent to the equality $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$. We have shown in lemma \ref{gen:infPostfixIndep-AutLoops} that if $\Lang(R)$ is not \emph{infinity-postfix-independent}, there must be a SCC $Q \subseteq S_R$ with more than one loop.
+The question arises wether \emph{infinity-postfix-independence} on $\Lang(R)$ is equivalent to the equality $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$. We have shown in \cref{gen:infPostfixIndep-AutLoops} that if $\Lang(R)$ is not \emph{infinity-postfix-independent}, there must be a SCC $Q \subseteq S_R$ with more than one loop.
 
 \begin{example}
 There is a congruence relation $R$ with a finite number of equivalence classes where $\Lang(R)$ is not \emph{infinity-postfix-independent} but we still have
@@ -988,7 +988,7 @@ If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $
 Let $R$ be a congruence relation with a finite number of equivalence classes. And let $\Lang(R)$ be \emph{postfix-loop-deterministic}. Then
 \[ \BC \lim \Lang(R) \cap \lim \Langreg \neq \lim \Lang(R) . \]
 \begin{proof}
-There is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$ and $P_2 \not\subseteq P_1$. They are in the same SCC $Q$, thus there is an outer loop $P \subseteq Q$ with $P_1,P_2 \subseteq P$. In the $R$-Muller-automaton, let $P$ be the only final state set. Let $\tilde L$ be the language accepted by this. For every $q \in Q$, look at the $R$-Büchi-automaton where $q$ is the only final state. The intersection of all these is recognized by a deterministic Büchi automaton (lemma \ref{reg:limRegClosedIntersection}). And the intersection accepts exactly $\tilde L$. Thus, $\tilde L \in \BC \lim \Lang(R) \cap \lim \Langreg$. However, there is no way in the $R$-Büchi-automaton to mark a subset of $Q$ as the final states such that we accept $\tilde L$. Thus, $\tilde L \not\in \lim \Lang(R)$.
+There is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$ and $P_2 \not\subseteq P_1$. They are in the same SCC $Q$, thus there is an outer loop $P \subseteq Q$ with $P_1,P_2 \subseteq P$. In the $R$-Muller-automaton, let $P$ be the only final state set. Let $\tilde L$ be the language accepted by this. For every $q \in Q$, look at the $R$-Büchi-automaton where $q$ is the only final state. The intersection of all these is recognized by a deterministic Büchi automaton (\cref{reg:limRegClosedIntersection}). And the intersection accepts exactly $\tilde L$. Thus, $\tilde L \in \BC \lim \Lang(R) \cap \lim \Langreg$. However, there is no way in the $R$-Büchi-automaton to mark a subset of $Q$ as the final states such that we accept $\tilde L$. Thus, $\tilde L \not\in \lim \Lang(R)$.
 \end{proof}
 \end{lemma}
 
@@ -1012,7 +1012,7 @@ Thus, we get the final result
 $\Lang(R)$ is \emph{postfix-loop-deterministic} exactly if and only if
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 \begin{proof}
-Lemma \ref{gen:postfixloopdet->BclimAndLreg=lim} and lemma \ref{gen:postfixloopdet<-BclimAndLreg=lim}.
+\Cref{gen:postfixloopdet->BclimAndLreg=lim} and \cref{gen:postfixloopdet<-BclimAndLreg=lim}.
 \end{proof}
 \end{theorem}
 
