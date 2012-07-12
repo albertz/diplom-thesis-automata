@@ -369,7 +369,13 @@ For references, see \cite{Berstel1996439}.
 \subsection{Regular languages of dot-depth-$n$}
 \label{lang:dotdepth}
 %S21: def
-
+For any $n \in \N_0, r \in \N$, define recursively the set $\mathcal{B}_{n,r}$ of \emph{dot-depth $n$ languages with products of length $\le r$}:
+\begin{align*}
+\mathcal{B}_{0,r} & := \BC \Set{\Set{w}}{w \in \Sigma^{\le r}} \\
+\mathcal{B}_{n+1,r} & := \BC \Set{B_1 \cdot \dotsc \cdot B_r}{B_i \in \mathcal{B}_{n,r}}
+\end{align*}
+Then, define the language class of \defword{dot-depth-$n$}
+\[ \Lang(\mathtext{dot-depth-$n$}) := \bigcup_{r\in\N} \mathcal{B}_{n,r} . \]
 For references, see \cite{ConcatGameDotDepth}.
 
 \subsection{$L$-trivial languages}
