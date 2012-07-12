@@ -599,21 +599,21 @@ Obviously, by construction, such language classes are all \emph{closed under cha
 
 \begin{mydef}
 Analogously for $\omega$, we get the set of $R$-E-automata with the $\omega$-language-class
-\[ \Lang^\omega_E(\A_R) := \Set{L^\omega(\A^E_R(F))}{F \subseteq S_R} , \]
+\[ \Lang^\omega_E(\A_R) := \Set{L^\omega_E(\A_R(F))}{F \subseteq S_R} , \]
 $R$-Büchi-automata and
-\[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega(\A_R^{\text{Büchi}}(F))}{F \subseteq S_R} , \]
+\[ \Lang^\omega_{\text{Büchi}} (\A_R) := \Set{L^\omega_\text{Büchi}(\A_R(F))}{F \subseteq S_R} , \]
 $R$-Muller-automata and
-\[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega(\A_R^{\text{Muller}}(\F))}{\F \subseteq 2^{S_R}} . \]
+\[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega_\text{Muller}(\A_R(\F))}{\F \subseteq 2^{S_R}} . \]
 \end{mydef}
 
 %S307.1
 \begin{mydef}
-For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $R^\omega := \dext R$, i.e.
-\[ (\alpha,\beta) \in R^\omega \ :\Leftrightarrow \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
-
-Analogously to $\Lang(R)$, define the $\omega$-language-class
-\[ \Lang^\omega(R^\omega) := \Set{L^\omega \subseteq \Sigma^\omega}{\text{$L^\omega$ is finite union of $R^\omega$-equivalence-classes}} . \]
+Analogously to $\Lang(R)$, for a congruence relation $\tilde R \subseteq \Sigma^\omega \times \Sigma^\omega$, define the $\omega$-language-class
+\[ \Lang^\omega(\tilde R) := \Set{\tilde L \subseteq \Sigma^\omega}{\text{$\tilde L$ is finite union of $\tilde R$-equivalence-classes}} . \]
 \end{mydef}
+
+For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $\dext R$, i.e.
+\[ (\alpha,\beta) \in \dext R \ \ \ \Leftrightarrow \ \ \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
 
 \subsubsection{Classification}
 
@@ -665,7 +665,7 @@ In the rest of this section, we show some equalities:
 \item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\cref{gen:lang_omega_e})
 \item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\cref{gen:lang_omega_buechi})
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\cref{gen:lang_omega_muller})
-\item $\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$ (\cref{gen:Romega=BCextR})
+\item $\Lang^\omega(\dext R) = \BC \ext \Lang(R)$ (\cref{gen:Romega=BCextR})
 \item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
 \item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (\cref{gen:R-staiger-wagner})
 \end{itemize}
@@ -720,7 +720,7 @@ Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S
 %\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
 %S307.4,S307.5
 \label{gen:Romega=BCextR}
-\[ \Lang^\omega(R^\omega) = \BC \ext \Lang(R) \]
+\[ \Lang^\omega(\dext R) = \BC \ext \Lang(R) \]
 \begin{proof}
 TODO...
 \end{proof}
