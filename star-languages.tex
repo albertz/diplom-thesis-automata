@@ -9,6 +9,8 @@ In \cref{general-results}, we found some general conditions on abritrary $*$-lan
 
 We will now study some concrete well-known $*$-language classes and try to apply the results from \cref{general-results} as well as study some properties individually.
 
+%S15/S151: overview, hierarchy
+
 \subsection{Starfree regular languages}
 This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages.
 %W161,S210,S211,S101a,S51,S18
@@ -124,15 +126,14 @@ we get:
 %S52: overview
 %S212: BC lim class
 
+$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$.
+
 %S101:
 \begin{theorem}
 \label{thm.PT}
 \[ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) \]
 
 \begin{proof}
-
-$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$.
-
 $\subseteq$: It is sufficient to show $\ext(\Lang^* (\PT)) \subseteq \BC \lim \Lang^* (\PT)$.
 
 By complete induction:
@@ -203,6 +204,13 @@ With \cref{thm.PT} and \cref{thm.ext.lim.posPT} we get the claimed equality.
 \subsection{Locally testable languages}
 \label{lang:LT}
 %S16: def
+Let $u,v \in \Sigma^*$.
+\begin{align*}
+u \simeq_{\text{LT}_n} v \ \ \ :\Leftrightarrow \ \ \ & u \simeq_{\text{endwise}_n} v , \\
+& \operatorname{Fact}_n(u) = \operatorname{Fact}_n(v)
+\end{align*}
+Then the class of \defword{locally testable languages} is defined as
+\[ \Lang(\LT) := \bigcup_{n\in\N} \Lang(\simeq_{\text{LT}_n}) . \]
 
 \begin{theorem}
 \[ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT)  \]
