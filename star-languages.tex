@@ -12,13 +12,19 @@ We will now study some concrete well-known $*$-language classes and try to apply
 %S15/S151: overview, hierarchy
 
 \subsection{Starfree regular languages}
-This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages.
+The set of \defword{star-free $*$-languages} $\Lang(\mathtext{starfree})$ is defined as the smallest set $\Lang = \Lang(\mathtext{starfree})$ with
+\begin{itemize}
+\item[(a)] $\Set{a} \in \Lang$ for all $a \in \Sigma$,
+\item[(b)] $\Lang$ is closed under boolean operations,
+\item[(c)] $\Lang$ is closed under concatenation.
+\end{itemize}
+See \cite[Section 2.2]{ConcHierR104} for further references.
+
+This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages. %TODO: ref
 %W161,S210,S211,S101a,S51,S18
 % R107: some characterization
-
-
-In \cite[Theorem 3.2]{CombR107}, we see that
-\[  \Lang^\omega(\Set{}) ... \]
+%In \cite[Theorem 3.2]{CombR107}, we see that
+%\[  \Lang^\omega(\Set{}) ... \]
 
 First, we start with some specific study on this language class.
 
