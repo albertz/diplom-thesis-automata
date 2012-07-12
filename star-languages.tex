@@ -210,12 +210,16 @@ With \cref{thm.PT} and \cref{thm.ext.lim.posPT} we get the claimed equality.
 \label{lang:LT}
 %S16: def
 Let $u,v \in \Sigma^*$.
-\begin{align*}
-u \simeq_{\text{LT}_n} v \ \ \ :\Leftrightarrow \ \ \ & u \simeq_{\text{endwise}_n} v , \\
-& \operatorname{Fact}_n(u) = \operatorname{Fact}_n(v)
-\end{align*}
+\begin{alignat*}{3}
+u \simeq_{\text{LT}_n} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left-Fact}_{<n}(u) = \operatorname{left-Fact}_{<n}(v) , \\
+&&& \operatorname{right-Fact}_{<n}(u) = \operatorname{right-Fact}_{<n}(v) , \\
+&&& \operatorname{Fact}_{n}(u) = \operatorname{Fact}_{n}(v) \\
+&& \Leftrightarrow \ \ \ & u \simeq_{\text{endwise}_n} v , \\
+&&& \operatorname{Fact}_n(u) = \operatorname{Fact}_n(v)
+\end{alignat*}
 Then the class of \defword{locally testable languages} is defined as
 \[ \Lang(\LT) := \bigcup_{n\in\N} \Lang(\simeq_{\text{LT}_n}) . \]
+See \cite[Section 2.5]{ConcHierR104} for further references.
 
 \begin{theorem}
 \[ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT)  \]
