@@ -136,7 +136,10 @@ we get:
 \subsection{Piecewise testable languages}
 \label{lang:PT}
 Let $u,v \in \Sigma^*$. For $n \in \N$, define the congruence relation $\simeq_{\PT_n}$:
-\[ u \simeq_{\PT_n} v \ \ \ :\Leftrightarrow \ \ \ \operatorname{Subwords}_{\le n}(u) = \operatorname{Subwords}_{\le n}(v) \]
+\[ u \simeq_{\PT_n} v \ \ \ :\Leftrightarrow \ \ \ \operatorname{Subwords}_{\le n}(u) = \operatorname{Subwords}_{\le n}(v) , \]
+where
+\[ \operatorname{Subwords}_{\le n}(u) := \Set{w \in \Sigma^{\le n}}{\text{$w$ is a subword of $u$}} \]
+and $w$ is a \defword{subword} of $u$ for $w,u \in \Sigma^*$ iff there is a subsequence $(s_n)_{n\in\N}$ of $(n)_{n\in\N}$ such that $w = u|_s$.
 Then the class of \defword{piecewise testable languages} is defined as
 \[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\simeq_{\PT_n}) . \]
 

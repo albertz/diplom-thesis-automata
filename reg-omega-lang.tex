@@ -47,7 +47,7 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, n \in \N_0 } \]
+\[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, \epsilon \not\in V_i, n \in \N_0 } \]
 
 This is also called the \defword{$\omega$-Kleene closure}.
 
@@ -109,6 +109,7 @@ Another classification is
 Let $L_2(\Sigma)$ be the set of formulas $\operatorname{MSO}(<)$ over $\Sigma$. The interpretation of such formulas over infinite words is straight-forward. In \cite[Theorem 3.1]{CombR107}, we can see that
 \[ \LangOreg = \Set{A \subseteq \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} . \]
 % in R107, similar/same thing for Langreg
+% In \cite[]{FinAutLogR109}, SOM[+1]
 
 \subsubsection{Some properties}
 
