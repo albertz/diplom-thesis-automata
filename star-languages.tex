@@ -248,10 +248,23 @@ But we also have
 \subsection{Endwise testable languages}
 \label{lang:endwise}
 %S20: def
+Let $u,v \in \Sigma^*$. For $n \in \N$, define the congruence relation $\simeq_{\text{endwise}_n}$:
+\begin{alignat*}{3}
+u \simeq_{\text{endwise}_n} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left-Fact}_{<n}(u) = \operatorname{left-Fact}_{<n}(v) , \\
+&&& \operatorname{right-Fact}_{<n}(u) = \operatorname{right-Fact}_{<n}(v)
+\end{alignat*}
+Then the class of \defword{endwise testable languages} is defined as
+\[ \Lang(\mathtext{endwise}) := \bigcup_{n\in\N} \Lang(\simeq_{\text{endwise}_n}) . \]
+
+We also have the characterization
+\[ \Lang(\mathtext{endwise}) = \Set{X \Sigma^* Y \cup Z}{X,Y \subseteq \Sigma^+, Z \subseteq \Sigma^*, \text{$X,Y,Z$ finite}} . \]
+
+See \cite[Section 2.4]{ConcHierR104} for further references.
+
 %S104:
 \begin{itemize}
-\item $\BC \ext \Lang^*(endwise) \neq \BC \lim \Lang^*(endwise)$ because $\Sigma^*a \in \Lang^*(endwise)$.
-\item $\ext(a\Sigma^* a) = a \Sigma^* a \Sigma^\omega \notin \BC \lim \Lang^*(endwise)$
+\item $\BC \ext \Lang^*(\mathtext{endwise}) \neq \BC \lim \Lang^*(\mathtext{endwise})$ because $\Sigma^*a \in \Lang^*(\mathtext{endwise})$.
+\item $\ext(a\Sigma^* a) = a \Sigma^* a \Sigma^\omega \notin \BC \lim \Lang^*(\mathtext{endwise})$
 \end{itemize}
 
 \subsection{Local languages}
@@ -261,10 +274,10 @@ But we also have
 \label{lang:finite}
 %S105:
 \begin{itemize}
-\item $\lim \Lang^*(finite) = \Set{\emptyset}$
-\item $\ext \Lang^*(finite) = \Lang^*(finite) \cdot \Sigma^\omega$
-\item $\lim \Lang^*(co-finite) = \Set{\Sigma^\omega}$
-\item $\ext \Lang^*(co-finite) = \Set{\Sigma^\omega}$
+\item $\lim \Lang^*(\mathtext{finite}) = \Set{\emptyset}$
+\item $\ext \Lang^*(\mathtext{finite}) = \Lang^*(finite) \cdot \Sigma^\omega$
+\item $\lim \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
+\item $\ext \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
 \end{itemize}
 
 \subsection{Regular languages of dot-depth-$n$}
