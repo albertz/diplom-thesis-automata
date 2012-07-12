@@ -650,7 +650,7 @@ Look at the transition graph over $\Sigma := \Set{a,b}$:
     ;
   \end{tikzpicture}
 \]
-Define the congruence relation $R \subseteq (\Sigma^*,\Sigma^*)$ as $(v,w) \in R \ :\Leftrightarrow \ v,w$ end up in the same state. Then, the above transition graph is exactly the $R$-automaton.
+Define the congruence relation $R \subseteq \Sigma^* \times \Sigma^*$ as $(v,w) \in R \ :\Leftrightarrow \ v,w$ end up in the same state. Then, the above transition graph is exactly the $R$-automaton.
 
 If $1$ is the only final state, this is the language $L_1 = a(ba)^*$. With suffix independence, we get the language $L_1 \cdot \Sigma^* = a \Sigma^*$.
 
@@ -670,7 +670,7 @@ In the rest of this section, we show some equalities:
 \item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (\cref{gen:R-staiger-wagner})
 \end{itemize}
 
-We will see that all those equations hold for all $R$, i.e. also for $\Lang(LT_n)$, $\Lang(LTT^k_n)$ and $\Lang(PT_n)$.
+We will see that all those equations hold for all $R$, i.e. also for $\Lang(\mathrm{LT}_n)$, $\Lang(\mathrm{LTT}^k_n)$ and $\Lang(\PT_n)$.
 
 We will also see that $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$ is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}).
 
