@@ -140,11 +140,14 @@ Let $u,v \in \Sigma^*$. For $n \in \N$, define the congruence relation $\simeq_{
 where
 \[ \operatorname{Subwords}_{\le n}(u) := \Set{w \in \Sigma^{\le n}}{\text{$w$ is a subword of $u$}} \]
 and $w$ is a \defword{subword} of $u$ for $w,u \in \Sigma^*$ iff there is a subsequence $(s_n)_{n\in\N}$ of $(n)_{n\in\N}$ such that $w = u|_s$.
+
+Define
+\[ \Lang(\PT_n) := \Lang(\simeq_{\PT_n}). \]
 Then the class of \defword{piecewise testable languages} is defined as
-\[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\simeq_{\PT_n}) . \]
+\[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\PT) . \]
 
 We also have the characterization
-\[ \Lang(\PT) = \BC \bigcup_{n\in\N_0,w \in \Sigma^n} \Set{\Sigma^* \cdot w[1] \cdot \Sigma^* \cdots \Sigma^* \cdot w[n] \cdot \Sigma^*} . \]
+\[ \Lang(\PT) = \BC \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
 % The syntactic monoid is also J-trivial.
 
 See \cite[Section 2.3]{ConcHierR104} for further references.
@@ -198,6 +201,9 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 
 
 \label{lang:posPT}
+\defword{Positive piece-wise testable languages} are defined as
+\[ \Lang(\mathtext{pos-PT}) := \operatorname{pos-BC} \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
+
 For positive piece-wise testable (pos-PT) languages, we get the same result.
 %\subsection{positive piece-wise testable}
 %S53: overview
@@ -238,8 +244,11 @@ u \simeq_{\text{LT}_n} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left-Fa
 && \Leftrightarrow \ \ \ & u \simeq_{\text{endwise}_n} v , \\
 &&& \operatorname{Fact}_n(u) = \operatorname{Fact}_n(v)
 \end{alignat*}
+
+Define
+\[ \Lang(\LT_n) := \Lang(\simeq_{\text{LT}_n}) . \]
 Then the class of \defword{locally testable languages} is defined as
-\[ \Lang(\LT) := \bigcup_{n\in\N} \Lang(\simeq_{\text{LT}_n}) . \]
+\[ \Lang(\LT) := \bigcup_{n\in\N} \Lang(\LT_n) . \]
 
 We also have the characterization
 \[ \Lang(\LT) = \BC \bigcup_{u,v,w \in \Sigma^+} \Set{u\Sigma^*, \Sigma^* v, \Sigma^* w \Sigma^*, \Set{\epsilon}} . \]
@@ -262,6 +271,10 @@ But we also have
 \[ \lim(\Sigma^*) = (\Sigma^* w)^\omega \notin \BC \ext \Lang^* (\LT) . \]
 \end{proof}
 \end{theorem}
+
+% TODO: I think R105... handles them?
+\defword{Positive locally testable languages} are defined as
+\[ \Lang(\mathtext{pos-LT}) = \operatorname{pos-BC} \bigcup_{u,v,w \in \Sigma^+} \Set{u\Sigma^*, \Sigma^* v, \Sigma^* w \Sigma^*, \Set{\epsilon}} . \]
 
 \subsection{Locally threshold testable languages}
 \label{lang:LTT}
