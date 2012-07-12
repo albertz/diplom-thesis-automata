@@ -339,18 +339,29 @@ See \cite[Section 2.4]{ConcHierR104} for further references.
 \item $\ext(a\Sigma^* a) = a \Sigma^* a \Sigma^\omega \notin \BC \lim \Lang^*(\mathtext{endwise})$
 \end{itemize}
 
-\subsection{Local languages}
-\label{lang:local}
-
 \subsection{Finite / Co-finite languages}
+%S22: def
 \label{lang:finite}
+
+The class of finite $*$-languages is denoted by $\Lang(\mathtext{finite}$. The class of infinite $*$-languages is denoted by $\Lang(\mathtext{co-finite})$.
+
+We get the following results:
 %S105:
 \begin{itemize}
 \item $\lim \Lang^*(\mathtext{finite}) = \Set{\emptyset}$
-\item $\ext \Lang^*(\mathtext{finite}) = \Lang^*(finite) \cdot \Sigma^\omega$
+\item $\ext \Lang^*(\mathtext{finite}) = \Lang^*(\mathtext{finite}) \cdot \Sigma^\omega$
 \item $\lim \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
 \item $\ext \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
 \end{itemize}
+
+Thus, the usual inclusions don't hold at all here.
+
+\subsection{Local languages}
+\label{lang:local}
+%S22: def
+% TODO: quelle?
+%The class of \defword{local $*$-languages} is defined as
+%\[ \Lang(\mathtext{local}) := \Lang(\mathtext{finite}) \cup \Lang(\mathtext{co-finite}) . \]
 
 \subsection{Regular languages of dot-depth-$n$}
 \label{lang:dotdepth}
