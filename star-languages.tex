@@ -12,6 +12,7 @@ We will now study some concrete well-known $*$-language classes and try to apply
 %S15/S151: overview, hierarchy
 
 \subsection{Starfree regular languages}
+%S18: def
 The set of \defword{star-free $*$-languages} $\Lang(\mathtext{starfree})$ is defined as the smallest set $\Lang = \Lang(\mathtext{starfree})$ with
 \begin{itemize}
 \item[(a)] $\Set{a} \in \Lang$ for all $a \in \Sigma$,
@@ -21,7 +22,7 @@ The set of \defword{star-free $*$-languages} $\Lang(\mathtext{starfree})$ is def
 See \cite[Section 2.2]{ConcHierR104} for further references.
 
 This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages. %TODO: ref
-%W161,S210,S211,S101a,S51,S18
+%W161,S210,S211,S101a,S51
 % R107: some characterization
 %In \cite[Theorem 3.2]{CombR107}, we see that
 %\[  \Lang^\omega(\Set{}) ... \]
@@ -101,6 +102,7 @@ Thus, with \cref{gen:main-theorem-inclusions}, we get
 
 
 \subsection{Piecewise testable languages}
+%S19: def
 \label{lang:PT}
 Let $u,v \in \Sigma^*$. For $n \in \N$, define the congruence relation $\simeq_{\PT_n}$:
 \[ u \simeq_{\PT_n} v \ \ \ :\Leftrightarrow \ \ \ \operatorname{Subwords}_{\le n}(u) = \operatorname{Subwords}_{\le n}(v) , \]
@@ -353,6 +355,7 @@ See \cite[Section 2.4]{ConcHierR104} for further references.
 \subsection{Regular languages of dot-depth-$n$}
 \label{lang:dotdepth}
 %S21: def
+
 \subsection{$L$-trivial languages}
 \label{lang:Ltrivial}
 \subsection{$R$-trivial languages}
