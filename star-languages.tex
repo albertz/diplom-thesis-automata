@@ -126,8 +126,20 @@ we get:
 \end{theorem}
 
 \subsection{FO[]}
-\subsection{Piece-wise testable languages}
+
+\subsection{Piecewise testable languages}
 \label{lang:PT}
+Let $u,v \in \Sigma^*$. For $n \in \N$, define the congruence relation $\simeq_{\PT_n}$:
+\[ u \simeq_{\PT_n} v \ \ \ :\Leftrightarrow \ \ \ \operatorname{Subwords}_{\le n}(u) = \operatorname{Subwords}_{\le n}(v) \]
+Then the class of \defword{piecewise testable languages} is defined as
+\[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\simeq_{\PT_n}) . \]
+
+We also have the characterization
+\[ \Lang(\PT) = \BC \bigcup_{n\in\N_0,w \in \Sigma^n} \Set{\Sigma^* \cdot w[1] \cdot \Sigma^* \cdots \Sigma^* \cdot w[n] \cdot \Sigma^*} . \]
+% The syntactic monoid is also J-trivial.
+
+See \cite[Section 2.3]{ConcHierR104} for further references.
+
 %S52: overview
 %S212: BC lim class
 
