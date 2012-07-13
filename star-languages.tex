@@ -11,6 +11,12 @@ We will now study some concrete well-known $*$-language classes and try to apply
 
 %S15/S151: overview, hierarchy
 
+% If I need syntactic semigroups, M(L), see Chapter5,p53 from FinAutLogR109.
+% M(L) is finite <=> L is regular
+% L in FO[\emptyset] <=> M(L) is finite, commutative and (every elem is) idempotent (p.77)
+% note that FO[\emptyset] is even less than FO[=]
+% more: ConcHierR104
+
 \subsection{Starfree regular languages}
 %S18: def
 \label{lang:starfree}
@@ -33,6 +39,7 @@ Starfree languages have a direct representing regular expression, directly deriv
 
 In \cite[Theorem 4.10]{LangAutLogicR102}, we can see that
 \[ \Lang(\mathtext{starfree}) = \Lang(\mathrm{FO[<]}) . \]
+% even more: V_n = B_n in Theo 4.12
 %W161,S210,S211,S101a,S51
 % R107: some characterization
 %In \cite[Theorem 3.2]{CombR107}, we see that
@@ -369,10 +376,13 @@ Locally threshold testable languages are a generalization of locally testable la
 
 For further references, see \cite[IV.3]{FinAutLogR109}.
 
-In \cite[IV.3.3]{FinAutLogR109}, we can see that
+In \cite[IV.3.3]{FinAutLogR109} or \cite[Corollary 4.9]{LangAutLogicR102}, we can see that
 \[  \Lang(\text{LTT}) = \Lang(\mathrm{FO[+1]}). \]
 In \cite[IV.3.4]{FinAutLogR109}, we see that
 \[  \Lang(\text{LTT}) \subsetneqq \Lang(\mathtext{starfree}). \]
+
+% FinAutLogR109, p.51:
+% L in FO[=] <=> L is union of LTT^1_r classes for some r
 
 %\subsection{FO[+1]}
 %def: S17
