@@ -116,7 +116,7 @@ TODO...
 
 $L_a := \Sigma^* a \in \Lang$ is a $\ext$-$\dext$-separating and $\lim$-$\dlim$-separating language.
 
-Thus, with \cref{gen:main-theorem-inclusions}, we get
+Thus, with \cref{gen:main-theorem-inclusions}, for $\Lang := \Lang(\mathtext{starfree})$, we get
 \[ \ext \cap \dext \Lang \subsetneqq
 \ext \cup \dext \Lang \subsetneqq
 \BC \ext \Lang =
@@ -124,6 +124,26 @@ Thus, with \cref{gen:main-theorem-inclusions}, we get
 \lim \cup \dlim \Lang \subsetneqq
 \BC \lim \Lang . \]
 
+
+\subsection{Regular languages of dot-depth-$n$}
+\label{lang:dotdepth}
+When we consider the concatination-depth of the construction of starfree languages, we get a hierarchy. The concationation-depth is also called the \defword{dot-depth}.
+
+%S21: def
+For any $n \in \N_0, r \in \N$, define recursively the set $\mathcal{B}_{n,r}$ of \emph{dot-depth $n$ languages with products of length $\le r$}:
+\begin{align*}
+\mathcal{B}_{0,r} & := \BC \Set{\Set{w}}{w \in \Sigma^{\le r}} \\
+\mathcal{B}_{n+1,r} & := \BC \Set{B_1 \cdot \dotsc \cdot B_r}{B_i \in \mathcal{B}_{n,r}}
+\end{align*}
+Then, define the language class of \defword{dot-depth-$n$}
+\[ \Lang(\mathtext{dot-depth-$n$}) := \bigcup_{r\in\N} \mathcal{B}_{n,r} . \]
+By this definition, we get
+\[ \Lang(\mathtext{starfree}) = \bigcup_{n\in\N} \Lang(\mathtext{dot-depth-$n$}) . \]
+For references, see \cite{ConcatGameDotDepth}.
+
+A known result (shown e.g. in \cite{ConcatGameDotDepth}) is the strict hierarchy
+\[ \Lang(\mathtext{dot-depth-$n$}) \subsetneqq \Lang(\mathtext{dot-depth-$n+1$}). \]
+Also, it was shown in \cite{RegEvTho82} that the dot-depth hierarchy characterizes exactly the \defword{first-order quantifier alternation depth} (of $\mathrm{FO[<]}$ formulas in prenex normal form) hierarchy.
 
 \subsection{Piecewise testable languages}
 %S19: def
@@ -326,6 +346,10 @@ We also have the characterization
 
 See \cite[Section 2.5]{ConcHierR104} for further references.
 
+We also have more direct connection to starfree languages:
+\[ \Lang(\LT) = \Lang(\mathtext{dot-depth-$1$}) \]
+See \cite{CharVarietiesKnast} for references.
+
 \begin{theorem}
 \[ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT)  \]
 
@@ -466,21 +490,6 @@ Thus, the usual inclusions don't hold at all here.
 A language $L \subseteq \Sigma^*$ is called \defword{local} iff there exist $P,S \subseteq \Sigma$, $N \subseteq \Sigma^2$ such that
 \[ L - \Set{\epsilon} = (P\Sigma^* \cap \Sigma^* S) - (\Sigma^* N \Sigma^*). \]
 For references, see \cite{Berstel1996439}.
-
-\subsection{Regular languages of dot-depth-$n$}
-\label{lang:dotdepth}
-%S21: def
-For any $n \in \N_0, r \in \N$, define recursively the set $\mathcal{B}_{n,r}$ of \emph{dot-depth $n$ languages with products of length $\le r$}:
-\begin{align*}
-\mathcal{B}_{0,r} & := \BC \Set{\Set{w}}{w \in \Sigma^{\le r}} \\
-\mathcal{B}_{n+1,r} & := \BC \Set{B_1 \cdot \dotsc \cdot B_r}{B_i \in \mathcal{B}_{n,r}}
-\end{align*}
-Then, define the language class of \defword{dot-depth-$n$}
-\[ \Lang(\mathtext{dot-depth-$n$}) := \bigcup_{r\in\N} \mathcal{B}_{n,r} . \]
-For references, see \cite{ConcatGameDotDepth}.
-
-A known result (shown e.g. in \cite{ConcatGameDotDepth}) is the strict hierarchy
-\[ \Lang(\mathtext{dot-depth-$n$}) \subsetneqq \Lang(\mathtext{dot-depth-$n+1$}). \]
 
 \subsection{$L$-trivial languages}
 \label{lang:Ltrivial}
