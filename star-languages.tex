@@ -13,6 +13,7 @@ We will now study some concrete well-known $*$-language classes and try to apply
 
 \subsection{Starfree regular languages}
 %S18: def
+\label{lang:starfree}
 The set of \defword{starfree $*$-languages} $\Lang(\mathtext{starfree})$ is defined as the smallest set $\Lang = \Lang(\mathtext{starfree})$ with
 \begin{itemize}
 \item[(a)] $\Set{a} \in \Lang$ for all $a \in \Sigma$,
@@ -24,13 +25,14 @@ See \cite[Section 2.2]{ConcHierR104} for further references.
 \begin{lemma}
 \[ \Lang(\mathtext{starfree}) \subsetneqq \Langreg \]
 \begin{proof}
-Obviously, all starfree $*$-languages are regular. $(aa)^*$ is a language which is not starfree. Intuitively, this language is counting the $a$ and requires that the amount of $a$ is even. Every "counting" language is not starfree.
+Obviously, all starfree $*$-languages are regular. $(\Sigma\Sigma)^*$ is a language which is not starfree (see \cite[IV.2.1]{FinAutLogR109}). Intuitively, this language is counting the letters and requires that the amount is even. Every "counting" language is not starfree.
 \end{proof}
 \end{lemma}
 
 Starfree languages have a direct representing regular expression, directly derived from the definition, like $\neg(a \wedge b)$, i.e. $-(\Set{a}\cap\Set{b})$. However, they don't require that a straight-forward ($\approx$ deterministic) representing regular languages also have no stars; for the given example, that is $-\emptyset = \Sigma^*$. Thus, $\emptyset$, $\Sigma$, $\Sigma^*$, $\Sigma^+ = \Sigma^* \cdot \Sigma$, $\Set{\epsilon} = \Sigma^* - \Sigma^+$, $a^* = \Sigma^* - (\Sigma^* \cdot (\Sigma - \Set{a}) \cdot \Sigma^*)$ are all starfree languages.
 
-This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages. %TODO: ref
+In \cite[Theorem 4.10]{LangAutLogicR102}, we can see that
+\[ \Lang(\mathtext{starfree}) = \Lang(\mathrm{FO[<]}) . \]
 %W161,S210,S211,S101a,S51
 % R107: some characterization
 %In \cite[Theorem 3.2]{CombR107}, we see that
@@ -369,6 +371,9 @@ For further references, see \cite[IV.3]{FinAutLogR109}.
 
 In \cite[IV.3.3]{FinAutLogR109}, we can see that
 \[  \Lang(\text{LTT}) = \Lang(\mathrm{FO[+1]}). \]
+In \cite[IV.3.4]{FinAutLogR109}, we see that
+\[  \Lang(\text{LTT}) \subsetneqq \Lang(\mathtext{starfree}). \]
+
 %\subsection{FO[+1]}
 %def: S17
 %S213: BC ext class

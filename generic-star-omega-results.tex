@@ -98,7 +98,7 @@ There is a deterministic automaton $\A = (Q,\Sigma,q_0,\delta,F)$ with $L^*(\A) 
 For $\Langreg$, this property holds obviously.
 
 %S303.1.a:
-Note that we cannot just take any automaton. For $\Lang^*(\mathrm{FO[<]})$ and the automaton below, it does not hold:
+Note that we cannot just take any automaton. For $\Lang^*(\mathtext{starfree})$ (see \cref{lang:starfree}) and the automaton below, it does not hold:
 
   \begin{tikzpicture}[%
     >=stealth,
@@ -122,7 +122,7 @@ Note that we cannot just take any automaton. For $\Lang^*(\mathrm{FO[<]})$ and t
               ;
   \end{tikzpicture}
   
-This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathrm{FO[<]})$. If you make $B$ also a final state, we get the language $a + b(bb)^* \not\in \Lang^*(\mathrm{FO[<]})$.
+This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathtext{starfree})$. If you make $B$ also a final state, we get the language $a + b(bb)^* \not\in \Lang^*(\mathtext{starfree})$.
 
 %S303.1: TODO: weniger ...
 
