@@ -220,11 +220,13 @@ Via \cref{gen:R-bclim-cap-ext}, we have
 $\Lang(\PT_n)$ is obviously also not \emph{postfix-loop-deterministic}. Thus, with \cref{gen:postfixloopdet<-BclimAndLreg=lim},
 \[ \BC \lim \Lang(\PT_n) \cap \lim \Langreg = \lim \Lang(\PT_n) . \]
 
+\
+
 \label{lang:posPT}
 \defword{Positive piece-wise testable languages} are defined as
 \[ \Lang(\mathtext{pos-PT}) := \operatorname{pos-BC} \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
 
-For positive piece-wise testable (pos-PT) languages, we get the same result.
+For positive piece-wise testable (pos-PT) languages, we get the same result on the $\BC \ext$ and $\BC \lim$ relation.
 %\subsection{positive piece-wise testable}
 %S53: overview
 %S214: BC lim class
@@ -234,9 +236,9 @@ For positive piece-wise testable (pos-PT) languages, we get the same result.
 \label{thm.ext.lim.posPT}
 \[ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) \]
 \begin{proof}
-$\subseteq$: Exactly like the proof for PT except that we leave out the negated part.
+$\subseteq$: Exactly like the proof for \cref{thm.PT} except that we leave out the negated part.
 
-$\supseteq$: Also like the proof for PT.
+$\supseteq$: Also like the proof for \cref{thm.PT}.
 \end{proof}
 \end{theorem}
 
