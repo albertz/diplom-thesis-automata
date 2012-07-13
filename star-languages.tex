@@ -95,9 +95,15 @@ And we have $L \notin \BC \ext \Lang^* (\mathrm{FO[<]})$.
 %S101a:
 $\Set{a} \in \Lang$. $a \Sigma^* \in \Lang$, thus $a\Sigma^\omega = \ext(\Set{a}) = \dext{a\Sigma^*}$. I.e. $\ext \cap \dext \Lang \ne \emptyset$.
 
-$\Lang^*( \mathrm{FO[<]} )$ is obviously \emph{closed under negation, suffix-independence, union and alphabet permutation}.
+$\Lang^*(\mathtext{starfree})$ is obviously \emph{closed under negation, suffix-independence, union and alphabet permutation}.
 
-We can also see that $\Lang^*( \mathrm{FO[<]} )$ is \emph{closed under change of final states}. %TODO: argue
+\begin{lemma}
+$\Lang^*(\mathtext{starfree})$ is \emph{closed under change of final states}.
+\begin{proof}
+%For every starfree language, we 
+TODO...
+\end{proof}
+\end{lemma}
 
 $L_a := \Sigma^* a \in \Lang$ is a $\ext$-$\dext$-separating and $\lim$-$\dlim$-separating language.
 
@@ -265,6 +271,10 @@ But we also have
 \[ \lim(\Sigma^*) = (\Sigma^* w)^\omega \notin \BC \ext \Lang^* (\LT) . \]
 \end{proof}
 \end{theorem}
+
+$\Lang(\LT_n)$ is defined via the congruence relation $\simeq_{\text{LT}_n}$. The set of equivalence classes is finite. And we get a canonical $\simeq_{\text{LT}_n}$-automaton which we will call just $\LT_n$-automaton.
+
+Thus, by \cref{gen:R:closurelemma}, $\Lang(\LT_n)$ is closed under negation, union, intersection and change of final states.
 
 % TODO: I think R105... handles them?
 \defword{Positive locally testable languages} are defined as
