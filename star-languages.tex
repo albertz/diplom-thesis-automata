@@ -186,7 +186,34 @@ $\supseteq$: It is sufficient to show $\lim(\Lang^* (\PT)) \subseteq \BC \ext \L
 \end{proof}
 \end{theorem}
 
+$\Lang(\PT_n)$ is defined via the congruence relation $\simeq_{\text{PT}_n}$. The set of equivalence classes is finite. And we get a canonical $\simeq_{\text{PT}_n}$-automaton which we will call just $\PT_n$-automaton. The state set of such automaton is $S_{\PT_n} := \Sigma^* / \simeq_{\text{PT}_n}$.
 
+Thus, by \cref{gen:R:closurelemma}, $\Lang(\PT_n)$ is closed under negation, union, intersection and change of final states.
+
+\begin{lemma}
+$\Lang(\PT_n)$ is closed under suffix-independence.
+\begin{proof}
+Look at some $\PT_n$-automaton $\A$ with final state set $F \subseteq S_{\PT_n}$. Any state in $S_{\PT_n}$ describes what letters $M \subseteq \Sigma$ we have seen so far. This can only increase. Thus, there is no way back. Let $F' \subseteq S_{\PT_n}$ be all states from $F$ and all that follow. Then
+\[ L^*(\A(F')) \cdot \Sigma^* = L^*(\A(F)) . \]
+\end{proof}
+\end{lemma}
+
+Obviously, $\Lang(\PT_n)$ is also closed under alphabet permutation. And $L_a := \Sigma^* a \Sigma^*$ is a $\ext$-$\dext$-separating language.
+
+Thus, via \cref{gen:main-theorem-inclusions}, for $\Lang := \Lang(\PT_n)$, we have
+\[ \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang =
+\lim \cap \dlim \Lang \subseteq
+\lim \cup \dlim \Lang \subseteq
+\BC \lim \Lang . \]
+
+As we have said, in the $\PT_n$-automaton, there are never transitions back. Thus, all loops in the $\PT_n$-automaton only loop in a single state. Thus,
+\[ \lim \Lang(\PT_n) = \dlim \Lang(\PT_n) . \]
+It follows
+\[ \lim \cap \dlim \Lang(\PT_n) =
+\lim \cup \dlim \Lang(\PT_n) =
+\BC \lim \Lang(\PT_n) . \]
 
 \label{lang:posPT}
 \defword{Positive piece-wise testable languages} are defined as

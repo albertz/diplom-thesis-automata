@@ -194,6 +194,7 @@ Thus,
 Summerized:
 
 \begin{lemma}
+\label{gen:extInLim}
 Let $\Lang$ be closed under suffix-independence and negation. Then we have
 \[ \ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang . \]
 \begin{proof}
@@ -433,28 +434,12 @@ This follows with \cref{gen:staiger-wagner:limInExt} and \cref{gen:staiger-wagne
 \end{proof}
 \end{theorem}
 
-We summarize some of the results from this chapter to represent all of the strict inclusions from the diagram in \cref{regomega-diagram}. The diagram is about $\Langreg$ but the following theorem is generic.
+%If the conditions on $\Lang$ are weaker and $\ext \Lang$ is closed under boolean combinations, we can 
+%If $\Lang$ is closed under suffix-independence and negation and $\ext \Lang$ is closed under boolean combinations, then
+%\[ \BC \ext \Lang \subseteq \lim \cap \dlim \Lang . \]
+%via \cref{gen:extInLim}
 
-% main
-\begin{theorem}
-\label{gen:main-theorem-inclusions}
-Let $\Lang$ be closed under suffix-independence, negation, union, change of final states and alphabet permutation.
-Let $L_a$ be a $\Lang$-$\ext$-$\dext$-separating language and let $L'_a$ be a $\Lang$-$\lim$-$\dlim$-separating language.
-Then we have
-\[ \ext \cap \dext \Lang \stackrel{(1.)}\subsetneqq
-\ext \cup \dext \Lang \stackrel{(2.)}\subsetneqq
-\BC \ext \Lang \stackrel{(3.)}=
-\lim \cap \dlim \Lang \stackrel{(4.)}\subsetneqq
-\lim \cup \dlim \Lang \stackrel{(5.)}\subsetneqq
-\BC \lim \Lang . \]
-\begin{proof}
-(1) follows with the existance of $L_a$. \\
-(2) follows with \emph{closure under negation and alphabet permutation}, $L_a$ and \cref{gen:extInBCext}. \\
-(3) follows with \emph{closure under suffix-independence, negation, union and change of final states} and \cref{gen:staiger-wagner}. \\
-(4) follows with the existance of $L'_a$. \\
-(5) follows with \emph{closure under negation and alphabet permutation}, $L'_a$ and \cref{gen:extInBCext}.
-\end{proof}
-\end{theorem}
+We summarize some of the results from this chapter to represent all of the strict inclusions from the diagram in \cref{regomega-diagram}. The diagram is about $\Langreg$ but the following theorem is generic.
 
 In any case for any $\Lang$, we obviously have
 \[ \ext \cap \dext \Lang \subseteq
@@ -465,9 +450,34 @@ and
 \lim \cup \dlim \Lang \subseteq
 \BC \lim \Lang . \]
 
+% main
+\begin{theorem}
+\label{gen:main-theorem-inclusions}
+Let $\Lang$ be closed under suffix-independence, negation, union, change of final states and alphabet permutation.
+Then we have
+\[ \ext \cap \dext \Lang \stackrel{(1.)}\subseteq
+\ext \cup \dext \Lang \stackrel{(2.)}\subseteq
+\BC \ext \Lang \stackrel{(3.)}=
+\lim \cap \dlim \Lang \stackrel{(4.)}\subseteq
+\lim \cup \dlim \Lang \stackrel{(5.)}\subseteq
+\BC \lim \Lang . \]
+\begin{itemize}
+\item If there is a $\Lang$-$\ext$-$\dext$-separating language $L_a$, the inclusion in (1) and (2) are strict.
+\item If there is a $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusion in (4) and (5) are strict.
+\end{itemize}
+\begin{proof}
+(1)-strictness follows with the existance of $L_a$. \\
+(2)-strictness follows with \emph{closure under negation and alphabet permutation}, $L_a$ and \cref{gen:extInBCext}. \\
+(3) follows with \emph{closure under suffix-independence, negation, union and change of final states} and \cref{gen:staiger-wagner}. \\
+(4)-strictness follows with the existance of $L'_a$. \\
+(5)-strictness follows with \emph{closure under negation and alphabet permutation}, $L'_a$ and \cref{gen:extInBCext}.
+\end{proof}
+\end{theorem}
+
 Thus, a bit less restrictive than \cref{gen:main-theorem-inclusions} is the following lemma:
 \begin{lemma}
-Let $\Lang$ be closed under suffix-independence, negation, union, change of final states\[ \ext \cap \dext \Lang \subseteq
+Let $\Lang$ be closed under suffix-independence, negation, union, change of final states. Then
+\[ \ext \cap \dext \Lang \subseteq
 \ext \cup \dext \Lang \subseteq
 \BC \ext \Lang =
 \lim \cap \dlim \Lang \subseteq
