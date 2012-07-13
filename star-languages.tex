@@ -215,6 +215,11 @@ It follows
 \lim \cup \dlim \Lang(\PT_n) =
 \BC \lim \Lang(\PT_n) . \]
 
+Via \cref{gen:R-bclim-cap-ext}, we have
+\[ \BC \lim \Lang(\PT_n) \cap \ext \Langreg = \ext \Lang(\PT_n) . \]
+$\Lang(\PT_n)$ is obviously also not \emph{postfix-loop-deterministic}. Thus, with \cref{gen:postfixloopdet<-BclimAndLreg=lim},
+\[ \BC \lim \Lang(\PT_n) \cap \lim \Langreg = \lim \Lang(\PT_n) . \]
+
 \label{lang:posPT}
 \defword{Positive piece-wise testable languages} are defined as
 \[ \Lang(\mathtext{pos-PT}) := \operatorname{pos-BC} \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
