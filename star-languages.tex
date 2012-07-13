@@ -13,13 +13,22 @@ We will now study some concrete well-known $*$-language classes and try to apply
 
 \subsection{Starfree regular languages}
 %S18: def
-The set of \defword{star-free $*$-languages} $\Lang(\mathtext{starfree})$ is defined as the smallest set $\Lang = \Lang(\mathtext{starfree})$ with
+The set of \defword{starfree $*$-languages} $\Lang(\mathtext{starfree})$ is defined as the smallest set $\Lang = \Lang(\mathtext{starfree})$ with
 \begin{itemize}
 \item[(a)] $\Set{a} \in \Lang$ for all $a \in \Sigma$,
 \item[(b)] $\Lang$ is closed under boolean operations,
 \item[(c)] $\Lang$ is closed under concatenation.
 \end{itemize}
 See \cite[Section 2.2]{ConcHierR104} for further references.
+
+\begin{lemma}
+\[ \Lang(\mathtext{starfree}) \subsetneqq \Langreg \]
+\begin{proof}
+Obviously, all starfree $*$-languages are regular. $(aa)^*$ is a language which is not starfree. Intuitively, this language is counting the $a$ and requires that the amount of $a$ is even. Every "counting" language is not starfree.
+\end{proof}
+\end{lemma}
+
+Starfree languages have a direct representing regular expression, directly derived from the definition, like $\neg(a \wedge b)$, i.e. $-(\Set{a}\cap\Set{b})$. However, they don't require that a straight-forward ($\approx$ deterministic) representing regular languages also have no stars; for the given example, that is $-\emptyset = \Sigma^*$. Thus, $\emptyset$, $\Sigma$, $\Sigma^*$, $\Sigma^+ = \Sigma^* \cdot \Sigma$, $\Set{\epsilon} = \Sigma^* - \Sigma^+$, $a^* = \Sigma^* - (\Sigma^* \cdot (\Sigma - \Set{a}) \cdot \Sigma^*)$ are all starfree languages.
 
 This class is also equivalent to the set of $\mathrm{FO[<]}$-definable languages. %TODO: ref
 %W161,S210,S211,S101a,S51
@@ -113,18 +122,23 @@ and $w$ is a \defword{subword} of $u$ for $w,u \in \Sigma^*$ iff there is a subs
 Define
 \[ \Lang(\PT_n) := \Lang(\simeq_{\PT_n}). \]
 Then the class of \defword{piecewise testable languages} is defined as
-\[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\PT) . \]
-
+\[ \Lang(\PT) := \bigcup_{n\in\N} \Lang(\PT_n) . \]
 We also have the characterization
 \[ \Lang(\PT) = \BC \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
 % The syntactic monoid is also J-trivial.
-
 See \cite[Section 2.3]{ConcHierR104} for further references.
+
+\begin{lemma}
+\[\Lang(\PT) \subsetneqq \Lang(\mathtext{starfree})\]
+\begin{proof}
+Let $n\in\N$, $a_i \in \Sigma$. $\Sigma^*$ and $\Set{a_i}$ are starfree. Thus, $\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*$ is starfree. And starfree languages are closed under boolean operations. This proofs the inclusion.
+
+$\Sigma^* aa \Sigma^*$ is a starfree language which is not piecewise testable.
+\end{proof}
+\end{lemma}
 
 %S52: overview
 %S212: BC lim class
-
-$L$ piece-wise testable $\Leftrightarrow$ $L$ is a boolean algebra of $\Sigma^* a_1 \Sigma^* a_2 \dotsb a_n \Sigma^*$.
 
 %S101:
 \begin{theorem}
