@@ -116,7 +116,7 @@ and we have the additional properties
 
 \begin{proof}
 \begin{enumerate}
-\item[1] $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \mathcal{R}$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (a \Sigma^*)$. (\cite[prop, p.38]{InfCompR101})
+\item[1] $\tilde{L}_1 := a \Sigma^\omega \in \ext \cap \dext \mathcal{R}$ with $\tilde{L}_1 = \ext(a)$ and $\tilde{L}_1 = \dext (\Set{\epsilon} \cup a \Sigma^*)$. (\cite[prop, p.38]{InfCompR101})
 \item[2a.] $\tilde{L}_{2a} := \ext(a^* b) = a^* b \Sigma^\omega \in \ext \mathcal{R}$. Assume some A-automaton $\A$ with $n$ states accepts $\tilde{L}_{2a}$. $\A$ would also accept $a^n b^\omega$. I.e. the $(n+1)$th state after the run of $a^n$ would also accept $a$, i.e. $\A$ would accept $a^{n+1}$. By inclusion, $\A$ would accept $a^\omega$. That is a contradiction. Thus, there is no such A-automat. Thus, $\tilde{L}_{2a} \notin \dext \mathcal{R}$.
 \item[2b.] $\tilde{L}_{2b} := - \tilde{L}_{2a} \in \dext \mathcal{R}$, $\tilde{L}_{2b} \notin \ext \mathcal{R}$.
 \item[3.] Follows directly from P2a and P2b.

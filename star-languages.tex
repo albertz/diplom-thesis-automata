@@ -198,7 +198,7 @@ Look at some $\PT_n$-automaton $\A$ with final state set $F \subseteq S_{\PT_n}$
 \end{proof}
 \end{lemma}
 
-Obviously, $\Lang(\PT_n)$ is also closed under alphabet permutation. And $L_a := \Sigma^* a \Sigma^*$ is a $\ext$-$\dext$-separating language.
+Obviously, $\Lang(\PT_n)$ is also closed under alphabet permutation. And $L_a := \Sigma^* a \Sigma^* \in \Lang(\PT_n)$ is a $\ext$-$\dext$-separating language.
 
 Thus, via \cref{gen:main-theorem-inclusions}, for $\Lang := \Lang(\PT_n)$, we have
 \[ \ext \cap \dext \Lang \subsetneqq
@@ -219,6 +219,21 @@ Via \cref{gen:R-bclim-cap-ext}, we have
 \[ \BC \lim \Lang(\PT_n) \cap \ext \Langreg = \ext \Lang(\PT_n) . \]
 $\Lang(\PT_n)$ is obviously also not \emph{postfix-loop-deterministic}. Thus, with \cref{gen:postfixloopdet<-BclimAndLreg=lim},
 \[ \BC \lim \Lang(\PT_n) \cap \lim \Langreg = \lim \Lang(\PT_n) . \]
+
+For $\Lang(\PT)$, via \cref{gen:extInBCext} and $L_a$, we also have
+\[ \ext \cap \dext \Lang(\PT) \subsetneqq
+\ext \cup \dext \Lang(\PT) \subsetneqq
+\BC \ext \Lang(\PT) . \]
+
+We also have $\Lang(\PT_n) \subseteq \Lang(\PT_{n+1})$ for all $n \in \N$. Thus, we have $\operatorname{op} \Lang(\PT_n) \subseteq \operatorname{op} \Lang(\PT_{n+1})$ for $\operatorname{op} \in \Set{\ext, \dext, \BC \ext, \lim,\dlim,\BC \lim}$.
+
+From the results so far, for $\Lang := \Lang(\PT_n)$, it follows
+\[ \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang =
+\lim \cap \dlim \Lang =
+\lim \cup \dlim \Lang =
+\BC \lim \Lang . \]
 
 \
 
@@ -242,9 +257,23 @@ $\supseteq$: Also like the proof for \cref{thm.PT}.
 \end{proof}
 \end{theorem}
 
+We note that we cannot make good reasonings about $\dext$ and $\dlim$ because we don't have the negation closure. However, we can define
+\[ \neg\ext \Lang := \Set{-\ext L}{L \in \Lang} , \]
+\[ \neg\lim \Lang := \Set{-\lim L}{L \in \Lang} . \]
+When using $\neg\ext$ and $\neg\lim$ instead of $\dext$ and $\dlim$, we get the extended result
+\[ \BC \ext \Lang(\mathtext{pos-PT}) =
+\lim \cap \neg\lim \Lang(\mathtext{pos-PT}) =
+\lim \cup \neg\lim \Lang(\mathtext{pos-PT}) =
+\BC \lim \Lang(\mathtext{pos-PT}) .\]
+
+Also, the $L_a$ from above is also in $\Lang(\mathtext{pos-PT})$. When using $\neg\ext$, we don't need the negation closure to use \cref{gen:extInBCext}. Thus, we have
+\[ \ext \cap \neg\ext \Lang(\PT) \subsetneqq
+\ext \cup \neg\ext \Lang(\PT) \subsetneqq
+\BC \ext \Lang(\PT) . \]
+
 We also have a relation between pos-PT and PT.
 
-\begin{theorem}
+\begin{lemma}
 \[ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) \]
 
 \begin{proof}
@@ -252,8 +281,7 @@ In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathte
 
 With \cref{thm.PT} and \cref{thm.ext.lim.posPT} we get the claimed equality.
 \end{proof}
-\end{theorem}
-
+\end{lemma}
 
 \subsection{Locally testable languages}
 \label{lang:LT}
