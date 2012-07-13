@@ -145,6 +145,14 @@ A known result (shown e.g. in \cite{ConcatGameDotDepth}) is the strict hierarchy
 \[ \Lang(\mathtext{dot-depth-$n$}) \subsetneqq \Lang(\mathtext{dot-depth-$n+1$}). \]
 Also, it was shown in \cite{RegEvTho82} that the dot-depth hierarchy characterizes exactly the \defword{first-order quantifier alternation depth} (of $\mathrm{FO[<]}$ formulas in prenex normal form) hierarchy.
 
+For every $n\in\N_0$, $\Lang(\mathtext{dot-depth-$n$})$ is obviously closed under negation and alphabet permutation. From the construction in \cref{lang:starfree}, we see that $\Sigma^* \in \Lang(\mathtext{dot-depth-$0$})$. Thus, $L_a := \Sigma^* \cdot a \in \Lang(\mathtext{dot-depth-$1$})$. $L_a$ is a $\ext$-$\dext$-separating and $\lim$-$\dlim$-separating language. Thus, as can be seen in \cref{gen:main-theorem-inclusions}, for $n \ge 1$, $\Lang := \Lang(\mathtext{dot-depth-$n$})$, we get
+\[ \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang , \]
+\[ \lim \cap \dlim \Lang \subsetneqq
+\lim \cup \dlim \Lang \subsetneqq
+\BC \lim \Lang . \]
+
 \subsection{Piecewise testable languages}
 %S19: def
 \label{lang:PT}
