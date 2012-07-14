@@ -155,6 +155,7 @@ For every $n\in\N_0$, $\Lang(\mathtext{dot-depth-$n$})$ is obviously closed unde
 
 For $\Lang(\mathtext{dot-depth-$0$})$, we get a different result as we see in the following.
 \begin{lemma}
+\label{lang:dotdepth0:ext=dext-lim=dlim}
 $\Lang(\mathtext{dot-depth-$0$})$ is closed under change of final states and we have
 \[ \ext \Lang(\mathtext{dot-depth-$0$}) = \dext \Lang(\mathtext{dot-depth-$0$}), \]
 \[ \lim \Lang(\mathtext{dot-depth-$0$}) = \dlim \Lang(\mathtext{dot-depth-$0$}). \]
@@ -180,6 +181,19 @@ For Büchi/co-Büchi, we don't need to change the final state set at all because
 And also:
 \begin{lemma}
 \[ \BC \ext \Lang(\mathtext{dot-depth-$0$}) = \lim \cap \dlim \Lang(\mathtext{dot-depth-$0$}) \]
+\begin{proof}
+Define $\Lang := \Lang(\mathtext{dot-depth-$0$})$.
+
+Let $\A$ be an A-automaton with $L^*(\A) \in \Lang$ with the properties as in \cref{lang:dotdepth0:ext=dext-lim=dlim}. Because $\dext \Lang = \BC \ext \Lang$, $L^\omega_A(\A)$ is representing any language from $\BC \ext \Lang$. Then,
+\[ L^\omega_A(\A) = L^\omega_\text{Büchi}(\A) = L^\omega_\text{co-Büchi}(\A) . \]
+I.e.
+\[ \BC \ext \Lang \subseteq \lim \cap \dlim \Lang . \]
+From that, we also see that
+\[ \lim \cup \dlim \Lang \subseteq \dext \Lang , \]
+i.e. esp.
+\[ \lim \cap \dlim \Lang \subseteq \BC \ext \Lang. \]
+%Given two automata $\A_1$, $\A_2$ with $L^*(\A_1), L^*(\A_2) \in \Lang$ with the properties as in \cref{lang:dotdepth0:ext=dext,lim=dlim} and $L^\omega_\text{Büchi}(\A_1) = L^\omega_\text{co-Büchi}(\A_2)$.
+\end{proof}
 \end{lemma}
 
 Thus, for $\Lang := \Lang(\mathtext{dot-depth-$0$})$ we have
