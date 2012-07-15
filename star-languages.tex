@@ -323,6 +323,13 @@ From the results so far, for $\Lang := \Lang(\PT)$, it follows
 \lim \cup \dlim \Lang =
 \BC \lim \Lang . \]
 
+To extend that, we note that every loop in a $\PT_n$-automaton is looping only in a single state because we never can get back as it was noted earlier. Thus, by \cref{gen:infPostfixIndep-AutLoops}, $\Lang(\PT_n)$ is \emph{infinity-postfix-independent} (\cref{gen:def:infinity-postfix-independent}). Also, $\Lang(\PT_n)$ is not \emph{postfix-loop-deterministic} (\cref{gen:def:postfix-loop-deterministic}).
+
+By \cref{gen:bcLimLReg-and-limL} or \cref{gen:postfix-loop-det=limAndBclim}, we get
+\[ \BC \lim \Lang(\PT_n) \cap \lim \Langreg = \lim \Lang(\PT_n) . \]
+I.e. we also have
+\[ \BC \lim \Lang(\PT) \cap \lim \Langreg = \lim \Lang(\PT) . \]
+
 \
 
 \label{lang:posPT}

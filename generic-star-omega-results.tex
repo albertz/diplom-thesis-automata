@@ -834,6 +834,7 @@ Then, $\lim L_{ab}$ is the set of words where both $a$ and $b$ occurs infintely 
 Thus, we need some conditions on $\Lang$ for the equality. Here, we will study the class $\Lang(R)$. We will introduce a property on $\Lang(R)$ where we can show the equality. The idea of this property is comming from the study of this equality in terms of automata. Let $L_\omega \in \BC \lim \Lang(R)$. Then there is a representing $R$-Muller-automaton $\A_M$ for $L_\omega$. Let also $L_\omega \in \lim \Langreg$. Then there is representing deterministic Büchi automaton $\A_r$ for $L_\omega$. We want to show that $L_\omega \in \lim \Lang(R)$. I.e. we are searching for a representing deterministic automaton whose language is in $\Lang(R)$ and where the Büchi-acceptance gives us $L_\omega$. Because the $R$-Büchi-automaton is the canonical deterministic Büchi automaton for $\Lang(R)$, we must be able to construct such $R$-Büchi-automaton $\A_B$ for $L_\omega$. Let us look at the product automaton $\A_M \times \A_r$ and determine from there the final state set of $\A_B$. $\A_M$ already has the right transition graph. $\A_r$ has the Büchi acceptance. So, when looking at the product automaton, we try to find the loops in $\A_M$ which match a final state in $\A_r$. $\A_r$ might be bigger than $\A_M$ and it doesn't seem clear wether the Muller final state sets of $\A_M$ can be translated to a Büchi final state set. However, when we say that each SCC in $\A_M$ has exactly one loop, there is no inconclusiveness about wether there is a Büchi final state in this SCC in $\A_B$ or not. We will formulate this formally below. So, if we have that property on $\A_M$, i.e. on $\Lang(R)$, we can construct $\A_B$ and thus we have the equality.
 
 \begin{mydef}
+\label{gen:def:infinity-postfix-independent}
 For $\alpha \in \Sigma^\omega$, let $\overrightarrow \alpha \in (\Sigma^* / R)^\omega$ be the state sequence we run through with $\alpha$ and thus $\Inf(\overrightarrow \alpha) \subseteq \Sigma^*/R$ those states which are visited infinitely often.
 
 If for every $L \in \Lang(R)$, there is an inclusion function $B_L \colon \Sigma^*/R \rightarrow \B$ such that for every $\alpha \in \Sigma^\omega$, we have
@@ -862,9 +863,9 @@ $S_R := \Sigma^*/R$ are the states of the $R$-automata. Let $Q \subseteq S_R$ be
 \end{proof}
 \end{lemma}
 
-For piecewise testable languages, this is the case.
+For piecewise testable languages, this is the case. See \cref{lang:PT}.
 
-For locally testable languages, this is \emph{not} the case. Depending on the ending of $\alpha[0,n]$, we can switch through different equivalence classes and visit different loops.
+For locally testable languages, this is \emph{not} the case. Depending on the ending of $\alpha[0,n]$, we can switch through different equivalence classes and visit different loops. See \cref{lang:LT}.
 
 \begin{example}
 There is an $R$ so that $\Lang(R)$ is not \emph{infinity-postfix-independent} and
@@ -1053,6 +1054,7 @@ All other $R$-Büchi-automata can be constructed canonically from that. Thus we 
 
 However, if we get stricter on the possible subloops, we can show the inequality.
 \begin{mydef}
+\label{gen:def:postfix-loop-deterministic}
 Let $R$ be a congruence relation with a finite number of equivalence classes.
 
 If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}.
