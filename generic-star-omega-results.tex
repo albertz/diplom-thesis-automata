@@ -714,12 +714,15 @@ In the rest of this section, we show some equalities:
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\cref{gen:lang_omega_muller})
 \item $\Lang^\omega(\dext R) = \BC \ext \Lang(R)$ (\cref{gen:Romega=BCextR})
 \item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
-\item $\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ (\cref{gen:R-staiger-wagner})
 \end{itemize}
 
 We will see that all those equations hold for all $R$, i.e. also for $\Lang(\mathrm{LT}_n)$, $\Lang(\mathrm{LTT}^k_n)$ and $\Lang(\PT_n)$.
 
-We will also see that $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$ is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}).
+We will also see that
+\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
+is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}). We will also see that if this holds, we also get
+\[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
+(\cref{gen:R-staiger-wagner}).
 
 \begin{lemma}
 %\subsection{$\Lang^\omega_E(\A_R) = \ext \Lang(R)$}
@@ -1086,21 +1089,70 @@ We showed that for all SCC of the $R$-automata. Thus we have shown the claimed e
 Thus, we get the final result
 \begin{theorem}
 \label{gen:postfix-loop-det=limAndBclim}
-$\Lang(R)$ is \emph{postfix-loop-deterministic} exactly if and only if
+$\Lang(R)$ is not \emph{postfix-loop-deterministic} exactly if and only if
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 \begin{proof}
 \Cref{gen:postfixloopdet->BclimAndLreg=lim} and \cref{gen:postfixloopdet<-BclimAndLreg=lim}.
 \end{proof}
 \end{theorem}
 
+Note this is almost equivalent to the dual case:
 \begin{lemma}
-\label{gen:R-staiger-wagner}
-%\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
-\[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
+\label{gen:limAndBclim:dual}
+Let $\Lang$ be any arbitrary language class which is closed under negation. And let
+\[ \BC \lim \Lang \cap \lim \Langreg = \lim \Lang . \]
+Then we also have
+\[ \BC \lim \Lang \cap \dlim \Langreg = \dlim \Lang . \]
 \begin{proof}
-TODO...
+\begin{alignat*}{3}
+&& L \in & \ \BC \lim \Lang \cap \dlim \Langreg \\
+&\Leftrightarrow \ \ & -L \in & \ \BC \lim \Lang \cap \lim \Langreg \\
+&\Leftrightarrow \ \ & -L \in & \ \lim \Lang \\
+&\Leftrightarrow \ \ & L \in & \ \dlim \Lang
+\end{alignat*}
 \end{proof}
 \end{lemma}
 
+Non-postfix-loop-determinism gives us another nice property:
+\begin{lemma}
+\label{gen:non-postfix-loop-det->extInLim}
+Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
+\[ \ext \Lang(R) \subseteq \lim \Lang(R) . \]
+\begin{proof}
+TODO
+\end{proof}
+\end{lemma}
 
+Note that non-postfix-loop-determinism doesn't give us closure under suffix-independence:
+\begin{example}
+There is a congruence relation $R$ such that $\Lang(R)$ is not postfix-loop-deterministic and not closed under suffix-independence.
+\begin{proof}
+TODO
+\end{proof}
+\end{example}
 
+%\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
+\begin{theorem}
+\label{gen:R-staiger-wagner}
+Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
+\[ \lim \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
+\begin{proof}
+Because $\Lang(R)$ is closed under change of final states, we can apply \cref{gen:staiger-wagner:limInExt} and have
+\[ \lim \cap \dlim \Lang(R) \subseteq \BC \ext \Lang(R) .\]
+Via \cref{gen:postfix-loop-det=limAndBclim}, we have
+\[ \lim \Lang(R) = \BC \lim \Lang(R) \cap \lim \Langreg . \]
+Via \cref{gen:limAndBclim:dual}, we have
+\[ \dlim \Lang(R) = \BC \lim \Lang(R) \cap \dlim \Langreg . \]
+Thus,
+\[ \lim \cap \dlim \Lang(R) = \BC \lim \Lang(R) \cap \lim \Langreg \cap \dlim \Langreg . \]
+With \cref{thm:staiger-wagner}, we get
+\[ \lim \cap \dlim \Lang(R) = \BC \lim \Lang(R) \cap \BC \ext \Langreg . \]
+With \cref{gen:non-postfix-loop-det->extInLim}, we have
+\[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) . \]
+We also obviously have
+\[ \BC \ext \Lang(R) \subseteq \BC \ext \Langreg . \]
+Thus, we have
+\[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) \cap \BC \ext \Langreg = \lim \cap \dlim \Lang(R). \]
+This gives us the equality.
+\end{proof}
+\end{theorem}
