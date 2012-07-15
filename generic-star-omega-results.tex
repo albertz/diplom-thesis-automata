@@ -1241,6 +1241,18 @@ Every possible loop in this $R$-automaton can be expressed by an A-$R$-automaton
 %\end{proof}
 %\end{example}
 
+Another remark:
+\begin{lemma}
+Let $\Lang(R)$ be closed under suffix-independence. Then, every loop in the $R$-automaton has only a single state. This also means that $\Lang(R)$ is not postfix-loop-deterministic and infinity-postfix-independent.
+\begin{proof}
+By contradiction: Assume there is a loop $S$ with at least two states $q_1,q_2 \in S$. One of those states is reached first by some word. Without restriction, let $w \in \Sigma^*$ so that we reach $q_1$ but not visit $q_2$ on the way. Let $L_1$ be the language of all words which reach $q_1$ and let $L_2$ be the language of all words which reach $q_2$.
+
+Clearly, $L_2 \in \Lang(R)$. $\Lang(R)$ is closed under suffix-independence, thus $L'_2 := L_2 \Sigma^* \in \Lang(R)$. It means that we reach $q_2$ and then anything can follow. I.e. any possible following state will accept. I.e. $q_1$ accepts. This means that $w \in L'_2$. But that is a contradiction because $w$ would not have visited $q_2$ which was required by $L'_2$.
+
+Thus, every loop has only a single state.
+\end{proof}
+\end{lemma}
+
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 \begin{theorem}
 \label{gen:R-staiger-wagner}
