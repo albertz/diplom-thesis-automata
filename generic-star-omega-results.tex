@@ -135,6 +135,7 @@ If $L = L_\sigma$ for all permutations $\sigma$, we call $L$ \defword{alphabet p
 
 \subsection{Classification for arbitrary language classes}
 
+We will first study $\ext \Lang \subseteq \lim \Lang$ inclusions. We have the very simple result:
 %\subsection{non suffix sensitive}
 % S303, S101a:
 \begin{lemma}
@@ -145,6 +146,36 @@ If $\Lang$ is closed under suffix-independence,
 For $L \in \Lang$, we have $\ext L = L \Sigma^\omega = \lim (L \Sigma^*) = \dlim (L \Sigma^*)$.
 \end{proof}
 \end{lemma}
+
+However, there is no equivalence.
+\begin{example}
+There is a $*$-language class $\Lang$ with $\ext \Lang \subseteq \lim \Lang$ which is not closed under suffix-independence.
+\begin{proof}
+Let $\Sigma = \Set{a}$. Consider the transition graph $\A = (Q,\Sigma,q_0,\delta)$:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state] (3) [right of=2] {$3$};
+
+    \path[->]
+    (1) +(-1.5,0) edge (1)
+    (1) edge node {$a$} (2)
+    (2) edge [bend left] node {$a$} (3)
+    (3) edge [bend left] node {$a$} (2)
+    ;
+  \end{tikzpicture}
+\]
+\end{proof}
+Let $\Lang := \Set{L^*(\A(F))}{F \subseteq Q}$. I.e. $L_3 := \Sigma(\Sigma\Sigma)^*$
+\end{example}
+
+Closure under suffix-independence is a very strong property as can be seen in \cref{gen:R-suffix-indep->single-state-loops}.
 
 %\subsection{$\BC \ext \subseteq \BC \lim$}
 %S302:
@@ -1243,6 +1274,7 @@ Every possible loop in this $R$-automaton can be expressed by an A-$R$-automaton
 
 Another remark:
 \begin{lemma}
+\label{gen:R-suffix-indep->single-state-loops}
 Let $\Lang(R)$ be closed under suffix-independence. Then, every loop in the $R$-automaton has only a single state. This also means that $\Lang(R)$ is not postfix-loop-deterministic and infinity-postfix-independent.
 \begin{proof}
 By contradiction: Assume there is a loop $S$ with at least two states $q_1,q_2 \in S$. One of those states is reached first by some word. Without restriction, let $w \in \Sigma^*$ so that we reach $q_1$ but not visit $q_2$ on the way. Let $L_1$ be the language of all words which reach $q_1$ and let $L_2$ be the language of all words which reach $q_2$.
