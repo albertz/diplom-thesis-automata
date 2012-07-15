@@ -201,7 +201,46 @@ This is lemma \ref{gen:non-suffix-sens}, \ref{gen:DExtInDLim} and \ref{gen:DExtI
 \end{proof}
 \end{lemma}
 
-We also need the \emph{negation closure} for the natural expected inclusion of the dual operators in their boolean closures.
+Note that we don't always have $\ext \Lang \subseteq \lim \Lang$. For one example with some strict properties see \cref{gen:example:R-extNotInLim}. Another example with separates $\ext \Lang$ and $\lim \Lang$ even more:
+\begin{example}
+\label{gen:example:ext<->lim}
+There is a $*$-language class $\Lang$, closed under negation, union, intersection and change of final states such that
+\[ \ext \Lang \not\subseteq \lim \Lang , \ \ \ \ext \Lang \not\supseteq \lim \Lang . \]
+\begin{proof}
+Let $\Sigma = \Set{a,b}$. Look at the transition graph $\A = (Q,\Sigma,q_0,\delta)$:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (1)              {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state] (3) [below of=1] {$3$};
+
+    \path[->]
+    (1) +(-1.5,0) edge (1)
+    (1) edge [bend left] node {$a$} (2)
+    (2) edge node {$a,b$} (1)
+    (1) edge node {$b$} (3)
+    (3) edge [bend left] node {$a,b$} (1)
+    ;
+  \end{tikzpicture}
+\]
+Then define $\Lang := \Set{L^*(\A(F))}{F \subseteq Q}$. $\A$ is deterministic, thus $\Lang$ is closed under negation, union, intersection and change of final states.
+
+Let $L_2 := a (\Sigma (b \Sigma)^* a)^* \in \Lang$ (all words ending in state $2$). Then $\ext L_2 = a\Sigma^\omega \not\in \BC \lim \Lang$.
+
+Also, $\lim L_2 = \Set{\alpha \in \Sigma^\omega}{\text{$\alpha$ visits state $2$ infinitely often}} \not\in \BC \ext \Lang$.
+
+In this example, we can see that
+\[ \BC \ext \Lang \cup \BC \lim \Lang \subsetneqq \BC (\ext \cup \lim) \Lang . \]
+$\omega$-languages from $\BC (\ext \cup \lim) \Lang$ express which states will be visited, which will not be visited and which will be visited infinitely often and which not.
+\end{proof}
+\end{example}
+
+We need the \emph{negation closure} for the natural expected inclusion of the dual operators in their boolean closures.
 
 \begin{lemma}
 \label{gen:opinBCop}
@@ -717,6 +756,8 @@ In the rest of this section, we show some equalities:
 \end{itemize}
 
 We will see that all those equations hold for all $R$, i.e. also for $\Lang(\mathrm{LT}_n)$, $\Lang(\mathrm{LTT}^k_n)$ and $\Lang(\PT_n)$.
+
+Note that we still don't necessarily have $\ext \Lang(R) \subseteq \lim \Lang(R)$. The \cref{gen:example:ext<->lim} also applies here.
 
 We will also see that
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
