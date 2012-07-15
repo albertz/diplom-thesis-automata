@@ -720,7 +720,9 @@ We will see that all those equations hold for all $R$, i.e. also for $\Lang(\mat
 
 We will also see that
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) \]
-is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}). We will also see that if this holds, we also get
+is not always the case. We will give an alternative characterization of this property (\cref{gen:postfix-loop-det=limAndBclim}).
+
+Again, a bit more special is the relation
 \[ \lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
 (\cref{gen:R-staiger-wagner}).
 
@@ -1113,19 +1115,27 @@ Then we also have
 \end{proof}
 \end{lemma}
 
-Non-postfix-loop-determinism gives us another nice property:
-\begin{lemma}
-\label{gen:non-postfix-loop-det->extInLim}
-Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
-\[ \ext \Lang(R) \subseteq \lim \Lang(R) . \]
-\begin{proof}
-TODO
-\end{proof}
-\end{lemma}
+%Infinity-postfix-independence gives us another nice property:
+%\begin{lemma}
+%\label{gen:inf-postfix-indep->extInLim}
+%Let $\Lang(R)$ be not \emph{infinity-postfix-independent}. Then
+%\[ \ext \Lang(R) \subseteq \lim \Lang(R) . \]
+%\begin{proof}
+%Let $\A = (S_R,\Sigma,\left<\epsilon\right>_R,\delta_R,F)$ be an E-$R$-automaton. Define $\mathcal{S}(Q)$ as the set of SCCs which are covered by $Q \subseteq S_R$. $\delta_R(F,\Sigma^*)$ (as usual) denotes all the states which can be reached from $F$. Because $\Lang(R)$ is infinity-postfix-independent, every SCC $S$ has only one loop which is $S$ itself. Then define
+%\[ F' := F \cup \delta_R(F,\Sigma^*)} . \]
+%
+%Every $\alpha \in L^\omega_E(\A)$ will loop in any $S \in \mathcal{S}(\delta_R(F,\Sigma^*))$ and thus $\alpha \in L^\omega_\text{Büchi}(\A(F'))$.
+%
+%Every $\alpha \in L^\omega_\text{Büchi}(\A(F'))$ ...
+%We can see that
+%\[ L^\omega_E(\A) = L^\omega_\text{Büchi}(\A(F')) . \]
+%\end{proof}
+%\end{lemma}
 
-Note that non-postfix-loop-determinism doesn't give us closure under suffix-independence:
+Note that infinity-postfix-independence nor non-postfix-loop-determinism don't give us $\ext \Lang(R) \subseteq \lim \Lang(R)$:
 \begin{example}
-There is a congruence relation $R$ such that $\Lang(R)$ is not postfix-loop-deterministic and not closed under suffix-independence.
+There is a congruence relation $R$ such that $\Lang(R)$ is infinity-postfix-independent and not postfix-loop-deterministic and
+\[ \ext \Lang(R) \not\subseteq \lim \Lang(R) . \]
 \begin{proof}
 Let $\Sigma = \Set{a,b}$. Consider the congruence relation $R$ defined by the transition graph:
 \[
@@ -1142,26 +1152,54 @@ Let $\Sigma = \Set{a,b}$. Consider the congruence relation $R$ defined by the tr
     \path[->]
     (1) +(-1.5,0) edge (1)
     (1) edge [bend left] node {$a$} (2)
-    (2) edge [bend left] node {$b$} (1)
-    (2) edge [loop right] node {$a$} ()
+    (2) edge [bend left] node {$a,b$} (1)
     (1) edge [bend right] node {$b$} (3)
     (3) edge [loop right] node {$a,b$} ()
     ;
   \end{tikzpicture}
 \]
-The SCC $\Set{1,2}$ in the $R$-automaton (re-using the states from the transition graph above) has the loops $\Set{1,2}$ and $\Set{2}$. The SCC $\Set{3}$ has only itself as its loops. Thus, $\Lang(R)$ is not postfix-loop-deterministic.
+The SCC $\Set{1,2}$ in the $R$-automaton (re-using the states from the transition graph above) has the loops $\Set{1,2}$. The SCC $\Set{3}$ has only itself as its loops. Thus, $\Lang(R)$ is infinity-postfix-independent and not postfix-loop-deterministic.
 
-However, $L_1 := a^+(ba^+)^* \in \Lang(R)$ (all words accepted by state $1$) but $L_1\Sigma^* = a\Sigma^* \not\in \Lang(R)$. I.e. $\Lang(R)$ is not closed under suffix-independence.
+However, $L_1 := a(\Sigma a)^* \in \Lang(R)$ (all words accepted by state $1$) but $L_1\Sigma^* = a\Sigma^* \not\in \Lang(R)$. I.e. $\Lang(R)$ is not closed under suffix-independence.
 
-Note that in this example, $\ext L_1 = a\Sigma^\omega = \lim(L_1 \cup L_3)$ with $L_3 := (a^+ b)^* b \Sigma^*$ (all words accepted by state $3$). I.e., obviously, $L_1 \cup L_3 \in \Lang(R)$. This is also what we expect from \cref{gen:non-postfix-loop-det->extInLim}, i.e.
-\[ \ext \Lang(R) \subseteq \lim \Lang(R) . \]
+Esp. $\ext L_1 = a \Sigma^\omega \not\in \BC \lim \Lang(R)$. 
 \end{proof}
 \end{example}
+
+%Also note that non-postfix-loop-determinism doesn't give us $\ext \Lang(R) \subseteq \lim \Lang(R)$:
+%\begin{example}
+%There is a congruence relation $R$ such that $\Lang(R)$ is not postfix-loop-deterministic and
+%\[ \ext \Lang(R) \not\subseteq \lim \Lang(R) . \]
+%\begin{proof}
+%Let $\Sigma = \Set{a,b}$. Consider the congruence relation $R$ defined by the transition graph:
+%\[
+%  \begin{tikzpicture}[%
+%    >=stealth,
+%	shorten >=1pt,
+%	node distance=2cm,
+%    auto,
+%  ]
+%    \node[state] (1)              {$1$};
+%    \node[state] (2) [right of=1] {$2$};
+%
+%    \path[->]
+%    (1) +(-1.5,0) edge (1)
+%    (1) edge [loop above] node {$b$} ()
+%    (1) edge node {$a$} (2)
+%    (2) edge [bend left] node {$a,b$} (1)
+%    ;
+%  \end{tikzpicture}
+%\]
+%Then, $L_2 := b^* a (\Sigma b^* a)^* \in \Lang(R)$. And we have $\ext L_2 = b^* a \Sigma^\omega$. But $b^* a \Sigma^\omega \not\in \lim \Lang(R)$.
+%
+%We even have $\ext L_2 \not\in \BC \lim \Lang(R)$ here.
+%\end{proof}
+%\end{example}
 
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
 \begin{theorem}
 \label{gen:R-staiger-wagner}
-Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. Then
+Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. And let $\ext \Lang(R) \subseteq \lim \Lang(R)$. Then
 \[ \lim \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
 \begin{proof}
 Because $\Lang(R)$ is closed under change of final states, we can apply \cref{gen:staiger-wagner:limInExt} and have
@@ -1174,9 +1212,9 @@ Thus,
 \[ \lim \cap \dlim \Lang(R) = \BC \lim \Lang(R) \cap \lim \Langreg \cap \dlim \Langreg . \]
 With \cref{thm:staiger-wagner}, we get
 \[ \lim \cap \dlim \Lang(R) = \BC \lim \Lang(R) \cap \BC \ext \Langreg . \]
-With \cref{gen:non-postfix-loop-det->extInLim}, we have
-\[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) . \]
-We also obviously have
+We have
+\[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) \]
+and
 \[ \BC \ext \Lang(R) \subseteq \BC \ext \Langreg . \]
 Thus, we have
 \[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) \cap \BC \ext \Langreg = \lim \cap \dlim \Lang(R). \]
