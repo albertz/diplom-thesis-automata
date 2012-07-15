@@ -437,36 +437,27 @@ Thus, by \cref{gen:R:closurelemma}, $\Lang(\LT_n)$ is closed under negation, uni
 
 % TODO... what about suffix-independence closure?
 
-About the relation to $\Langreg$: Our tools are \cref{gen:bcLimLReg-and-limL} or \cref{gen:postfix-loop-det=limAndBclim}. Let us study the \emph{infinity-postfix-independence}.
+About the relation to $\Langreg$: Our tools are \cref{gen:bcLimLReg-and-limL} or \cref{gen:postfix-loop-det=limAndBclim}.
 \begin{lemma}
-\label{lang:LT3:infinity-postfix-indep}
-Let $a,b \in \Sigma$. $\Lang(\LT_n)$ is not \emph{infinity-postfix-independent} (\cref{gen:def:infinity-postfix-independent}) for $n \ge 3$.
+Let $a,b \in \Sigma$. $\Lang(\LT_n)$ is \emph{postfix-loop-deterministic} (\cref{gen:def:postfix-loop-deterministic}) and not \emph{infinity-postfix-independent} (\cref{gen:def:infinity-postfix-independent}) for $n \ge 2$.
 \begin{proof}
-Let $u \in \Sigma^*$ so that every word in $\Sigma^3$ is a factor of $u$. Then, in the $LT_3$-automata, we are in a final SCC $S$ where we cannot get out anymore because all left-factors and all factors are fixed. We can only change the right factors. The states of $S$ are
-\[ S = \Set{\left< waa \right>, \left< wab \right>, \left< wba \right>, \left< wbb \right>} . \]
-And we have the two loops
-\[ \left< waa \right> \xrightarrow{b} \left< waab \right> = \left< wab \right> \xrightarrow{a} \left< waba \right> = \left< wba \right> \xrightarrow{a} \left< wbaa \right> = \left< waa \right> \]
+Let $u \in \Sigma^*$ so that every word in $\Sigma^2$ is a factor of $u$. Then, in the $LT_2$-automata, we are in a final SCC $S$ where we cannot get out anymore because all left-factors and all factors are fixed. We can only change the right-factors (of len $<2$). The states of $S$ are
+\[ S = \Set{\left< wa \right>, \left< wb \right>} . \]
+And we have two loops
+\[ P_1 : \left< wa \right> \xrightarrow{a} \left< wa \right> \]
 and
-\[ \left< waa \right> \xrightarrow{a} \left< waaa \right> = \left< waa \right> . \]
-This can be extended in a similar way for any $n > 3$.
-\end{proof}
-\end{lemma}
-Thus, we cannot apply \cref{gen:bcLimLReg-and-limL}. However:
-\begin{lemma}
-Let $a,b \in \Sigma$. $\Lang(\LT_n)$ is \emph{postfix-loop-deterministic} (\cref{gen:def:postfix-loop-deterministic}) for $n \ge 3$.
-\begin{proof}
-Consider the $S$ from \cref{lang:LT3:infinity-postfix-indep}. We have the two loops
-\[ P_1 : \left< wab \right> \xrightarrow{b} \left< wbb \right> \xrightarrow{a} \left< wba \right> \xrightarrow{b} \left< wab \right> \]
-and
-\[ P_2 : \left< wab \right> \xrightarrow{a} \left< wba \right> \xrightarrow{a} \left< waa \right> \xrightarrow{b} \left< wab \right> . \]
-I.e. $P_1,P_2 \subseteq S$, $P_1 \ne P_2$ and $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$.
+\[ P_2 : \left< wb \right> \xrightarrow{b} \left< wb \right> , \]
+where $P_1,P_2 \subseteq S$, $P_1 \ne P_2$ and $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$. I.e. $\Lang(\LT_2)$ is postfix-loop-deterministic and not infinty-postfix-independent.
+This can be extended in a similar way for any $n > 2$.
 \end{proof}
 \end{lemma}
 
-I.e., by \cref{gen:postfix-loop-det=limAndBclim}, for all $n \ge 3$, we have
+We cannot apply \cref{gen:bcLimLReg-and-limL}.  But by \cref{gen:postfix-loop-det=limAndBclim}, for all $n \ge 2$, we have
 \[ \BC \lim \Lang(\LT_n) \cap \lim \Langreg \supsetneqq \lim \Lang(\LT_n) . \]
+Unfortunately, we cannot argue directly about $\Lang(\LT)$ with this result.
 
-For $LT_2$, it again looks different.
+For $LT_1$, it looks different. The right-factors of len $<1$ don't tell anything anymore about a word. Thus, $\Lang(\LT_1)$ is not postfix-loop-deterministic. I.e., by \cref{gen:bcLimLReg-and-limL}, we have
+\[ \BC \lim \Lang(\LT_1) \cap \lim \Langreg = \lim \Lang(\LT_1) . \]
 
 %\emph{postfix-loop-deterministic} (\cref{gen:def:postfix-loop-deterministic})
 
