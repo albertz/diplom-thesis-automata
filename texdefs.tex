@@ -77,3 +77,8 @@
   Januar\or Februar\or M\"arz\or April\or Mai\or Juni\or
   Juli\or August\or September\or Oktober\or November\or Dezember\fi}
 \def\todaygerman{\number\day.~\monthgerman\space\number\year}
+
+
+% new page for every section
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
