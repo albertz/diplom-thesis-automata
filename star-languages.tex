@@ -557,18 +557,32 @@ See \cite[Section 2.4]{ConcHierR104} for further references.
 %S22: def
 \label{lang:finite}
 
-The class of finite $*$-languages is denoted by $\Lang(\mathtext{finite})$. The class of infinite $*$-languages is denoted by $\Lang(\mathtext{co-finite})$.
+The class of finite $*$-languages is denoted by $\Lang(\mathtext{finite})$. The class of infinite $*$-languages is denoted by $\Lang(\mathtext{co-finite})$. Formally
 
 We get the following results:
 %S105:
 \begin{itemize}
-\item $\lim \Lang^*(\mathtext{finite}) = \Set{\emptyset}$
-\item $\ext \Lang^*(\mathtext{finite}) = \Lang^*(\mathtext{finite}) \cdot \Sigma^\omega$
-\item $\lim \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
-\item $\ext \Lang^*(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
+\item $\ext \Lang(\mathtext{finite}) = \Lang(\mathtext{finite}) \cdot \Sigma^\omega$
+\item $\dext \Lang(\mathtext{finite}) = \Set{\emptyset}$
+\item $\neg\ext \Lang(\mathtext{finite}) = \Set{-\ext L}{L \in \Lang(\mathtext{finite})} = \Set{\dext L}{L \in \Lang(\mathtext{co-finite})} = \dext \Lang(\mathtext{co-finite})$
+\item $\lim \Lang(\mathtext{finite}) = \Set{\emptyset}$
+\item $\dlim \Lang(\mathtext{finite}) = \Set{\emptyset}$
+\item $\neg\lim \Lang(\mathtext{finite}) = \Set{\Sigma^\omega}$
+\item $\BC \lim \Lang(\mathtext{finite}) = \Set{\emptyset,\Sigma^\omega}$
+\item $\ext \Lang(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
+\item $\neg\ext \Lang(\mathtext{co-finite}) = \Set{\emptyset}$
+\item $\lim \Lang(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
+\item $\dlim \Lang(\mathtext{co-finite}) = \Set{\Sigma^\omega}$
+\item $\neg\lim \Lang(\mathtext{co-finite}) = \dlim \Lang(\mathtext{finite}) = \Set{\emptyset}$
+\item $\BC \lim \Lang(\mathtext{co-finite}) = \Set{\emptyset, \Sigma^\omega}$
 \end{itemize}
 
-Thus, the usual inclusions don't hold at all here.
+Thus, the usual inclusions don't hold at all here. Esp. we again have
+\[ \BC \ext \Lang(\mathtext{finite}) \supsetneqq \BC \lim \Lang(\mathtext{finite}) , \ \ \ 
+\BC \ext \Lang(\mathtext{co-finite}) \supsetneqq \BC \lim \Lang(\mathtext{co-finite}) . \]
+We also have
+\[ \BC \ext \Lang(\mathtext{finite}) = \BC \ext \Lang(\mathtext{co-finite}) , \ \ \ 
+\BC \lim \Lang(\mathtext{finite}) = \BC \lim \Lang(\mathtext{co-finite}) . \]
 
 \subsection{Local languages}
 \label{lang:local}
