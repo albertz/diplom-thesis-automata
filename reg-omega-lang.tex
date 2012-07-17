@@ -99,12 +99,22 @@ I.e.
 \[ \lim \Langreg = \Set{L^\omega_\text{Büchi}(\A)}{\text{$\A$ is det. Büchi automaton}} . \]
 Thus,
 \[  \BC \lim \Langreg = \LangOreg , \]
-where $\BC$ means all boolean combinations (union, intersection, complement).
+where $\BC$ (\defword{boolean combinations}: union, intersection, complement) is defined as:
 
+Let $\mathcal{X} \subseteq \Sigma^\omega \mathbin{\dot\cup} \Sigma^*$. Then, $\BC \mathcal{X}$ is defined as the smallest set such that
+\begin{itemize}
+\item $\mathcal{X} \subseteq \BC \mathcal{X}$,
+\item $-X \in \BC \mathcal{X}$ for all $X \in \BC \mathcal{X}$,
+\item $X_1 \cup X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$,
+\item $X_1 \cap X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$.
+\end{itemize}
+
+% TODO: ref
 Another classification is
 \[ \LangOreg = \Set{ \bigcup_{i=0}^n U_i \cdot \lim V_i }{ U_i, V_i \in \Langreg, n \in \N_0 } . \]
 
 \subsubsection{Logic on infinite words}
+% TODO: more
 %(S218,S411,R107)
 Let $L_2(\Sigma)$ be the set of formulas $\operatorname{MSO}(<)$ over $\Sigma$. The interpretation of such formulas over infinite words is straight-forward. In \cite[Theorem 3.1]{CombR107}, we can see that
 \[ \LangOreg = \Set{A \subseteq \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} . \]
