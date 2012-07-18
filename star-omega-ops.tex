@@ -28,8 +28,8 @@ In many cases, it is interesting to look at boolean combinations of $\omega$-lan
 
 In addition, from historical reasons, we also have the following other language class operators:
 \begin{enumerate}
-\item $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, \epsilon \not\in V_i, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
-\item $\limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang,, n \in \N_0}$
+\item $\displaystyle \Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
+\item $\displaystyle \limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
 \end{enumerate}
 In \cref{reg-omega-lang}, we have seen that
 \[ \BC \lim \Langreg = \Kleene \Langreg = \limClosure \Langreg . \]

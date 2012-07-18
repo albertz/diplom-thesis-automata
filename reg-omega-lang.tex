@@ -12,7 +12,7 @@ A subset $L \subseteq \Sigma^*$ is called a \defword{language} of finite words o
 
 A set $\Lang$ of $*$-languages is called a \defword{$*$-language class}. Likewise, a set $\Lang^\omega$ of $\omega$-languages is called a \defword{$\omega$-language class}.
 
-We can \defword{concatenate} finite words with each other and also finite words with infinite words. For languages $L_1 \subseteq \Sigma^*$, $L_2 \subseteq \Sigma^*$, $\tilde L_3 \subseteq \Sigma^\omega$, we define the concatenation $L_1 \cdot L_2 := \Set{v \cdot w}{v \in L_1, w \in L_2}$ and $L_1 \cdot \tilde L_3 := \Set{v \cdot \alpha}{v \in L_1, \alpha \in \tilde L_3}$. Exponentation of languages is defined naturally: For $L \subseteq \Sigma^*$, we define $L^0 := \Set{\epsilon}$ and $L^{i+1} := L^i \cdot L$ for all $i \in \N_0$. The union of all such sets, is called the \defword{Kleene star} operator, defined as $L^* := \cup_{i\in\N_0} L^i$. The \defword{positive Kleene star} is defined as $L^+ := \cup_{i\in\N} L^i$. The \defword{$\omega$-Kleene star} is defined by $L^\omega := \Set{w_1 \cdot w_2 \cdot w_3 \cdots}{w_i \in L}$.
+We can \defword{concatenate} finite words with each other and also finite words with infinite words. For languages $L_1 \subseteq \Sigma^*$, $L_2 \subseteq \Sigma^*$, $\tilde L_3 \subseteq \Sigma^\omega$, we define the concatenation $L_1 \cdot L_2 := \Set{v \cdot w}{v \in L_1, w \in L_2}$ and $L_1 \cdot \tilde L_3 := \Set{v \cdot \alpha}{v \in L_1, \alpha \in \tilde L_3}$. Exponentation of languages is defined naturally: For $L \subseteq \Sigma^*$, we define $L^0 := \Set{\epsilon}$ and $L^{i+1} := L^i \cdot L$ for all $i \in \N_0$. The union of all such sets, is called the \defword{Kleene star} operator, defined as $L^* := \cup_{i\in\N_0} L^i$. The \defword{positive Kleene star} is defined as $L^+ := \cup_{i\in\N} L^i$. The \defword{$\omega$-Kleene star} is defined by $L^\omega := \Set{w_1 \cdot w_2 \cdot w_3 \cdots}{w_i \in L, w_i \ne \epsilon}$.
 
 \subsection{The class of regular $*$-languages}
 \label{intro:reglang}
@@ -49,7 +49,7 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 \label{reg-omega-lang}
 
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
-\[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, \epsilon \not\in V_i, n \in \N_0 } \]
+\[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, n \in \N_0 } \]
 
 This is also called the \defword{$\omega$-Kleene closure}.
 
