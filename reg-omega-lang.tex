@@ -21,6 +21,10 @@ The class of regular $*$-languages is probably the most well-studied class of la
 
 A \defword{regular expression} is representing such a regular set. It represents a language over an alphabet $\Sigma$. Regular expressions are defined recursively based on the ground terms $\emptyset$, $\epsilon$ and $a$ for $a \in \Sigma$ denoting the languages $\emptyset$, $\Set{\epsilon}$ and $\Set{a}$. Then, if $r$ and $s$ are regular expressions representing $R, S \subseteq \Sigma^*$, then also $r+s$ (written also as $r|s$, $r \vee s$, $r \cup s$), $r s$ (written also as $r \cdot s$) and $r^*$ are regular expressions, representing $R \cup S$, $R \cdot S$ and $R^*$. Let $\Lang^*(\text{RE})$ be the set of languages which can be represented as regular expressions.
 
+\begin{simpleexample}
+$a(a+b)^*bb$ is a regular expression representing the language $\Set{a} \cdot \Set{a,b}^* \cdot \Set{bb}$.
+\end{simpleexample}
+
 We extend these expressions also by $r \wedge s$ (written also as $r \cap s$) and $-r$ (written also as $\neg r$), representing the language $R \cap S$ and $-R := \Set{w \in \Sigma^*}{w \not\in R}$. Some basic result of the study of formal languages, as can be seen in e.g. \cite{FinAutLogR109}, is the equivalence of the class of these extended regular expression languages and $\Lang^*(\text{RE})$.
 
 Regular languages are also strongly connected to finite-state automata. These are a theoretical description of a machine having a finite number of internal states. These automata operate on a discrete set of input symbols and can change the internal state with each input symbol. Because the number of states is finite, these are strictly less powerful than Turing machines, which have an infinite number of states given by the infinite memory. S.C. Kleene proved in \cite{Kleene56} that finite automata can express exactly the class of regular languages. A first generic definition of such automata was given in \cite{FinAutRabin59}.

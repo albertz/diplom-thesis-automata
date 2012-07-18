@@ -11,7 +11,7 @@
 \theoremstyle{definition}\newtheorem{mydef}[lemma]{Definition}
 \theoremstyle{definition}\newtheorem{algo}[lemma]{Algorithm}
 \theoremstyle{plain}\newtheorem{example}[lemma]{Example}
-\theoremstyle{definition}\newtheorem{simpleexample}[lemma]{Example}
+\theoremstyle{definition}\newtheorem{sexample}[lemma]{Example}
 
 % http://tex.stackexchange.com/questions/5767/how-to-get-more-complete-references
 \Crefname{section}{Chapter}{Chapters}
@@ -19,7 +19,11 @@
 \Crefname{subsection}{Section}{Sections}
 \crefname{subsection}{section}{sections}
 
-\crefname{simpleexample}{example}{examples}
+\crefname{sexample}{example}{examples}
+
+\newenvironment{simpleexample}[0]%
+{\begin{sexample}}%
+{\qed \end{sexample}}
 
 \newcommand{\K}{\mathcal{K}}
 \newcommand{\Reg}{\text{Reg}}
