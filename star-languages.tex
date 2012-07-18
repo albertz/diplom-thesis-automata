@@ -468,9 +468,9 @@ For $LT_1$, it looks different. The right-factors of len $<1$ don't tell anythin
 \subsection{Locally threshold testable languages}
 \label{lang:LTT}
 %S17: def
-Let $u,v \in \Sigma^*$. Let $k,r \in \N$, define the congruence relation $\simeq_{\text{LTT}^k_r}$:
+Let $u,v \in \Sigma^*$. Let $k,r \in \N$, define the congruence relation $\simeq_{\LTT^k_r}$:
 \begin{alignat*}{3}
-u \simeq_{\text{LTT}^k_r} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left-Fact}_{<n}(u) = \operatorname{left-Fact}_{<n}(v) , \\
+u \simeq_{\LTT^k_r} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left-Fact}_{<n}(u) = \operatorname{left-Fact}_{<n}(v) , \\
 &&& \operatorname{right-Fact}_{<n}(u) = \operatorname{right-Fact}_{<n}(v) , \\
 &&& \begin{aligned}
 \forall x \in \Sigma^{\le k} \colon & \operatorname{count-Fact}_x(u) = \operatorname{count-Fact}_x(v) < r \ \ \ \ \text{or} \\
@@ -480,19 +480,19 @@ u \simeq_{\text{LTT}^k_r} v \ \ \ && :\Leftrightarrow \ \ \ & \operatorname{left
 where for $x \in \Sigma^*$, $\operatorname{count-Fact}_x(u)$ states how often $x$ occurs as a factor in $u$, formally
 \[ \operatorname{count-Fact}_x(u) := \#\Set{n \in \N}{u[n,n+\vert x \vert - 1] = x} . \]
 Define
-\[ \Lang(\text{LTT}^k_r) := \Lang(\simeq_{\text{LTT}^k_r}). \]
+\[ \Lang(\LTT^k_r) := \Lang(\simeq_{\LTT^k_r}). \]
 Then the class of \defword{locally threshold testable languages} is defined as
-\[ \Lang(\mathtext{LTT}) := \bigcup_{k,r\in\N} \Lang(\text{LTT}^k_r) . \]
+\[ \Lang(\LTT) := \bigcup_{k,r\in\N} \Lang(\LTT^k_r) . \]
 
 Locally threshold testable languages are a generalization of locally testable language. We can see that
-\[  \Lang(\LT) = \bigcup_{k\in\N} \Lang(\text{LTT}^k_1) . \]
+\[  \Lang(\LT) = \bigcup_{k\in\N} \Lang(\LTT^k_1) . \]
 
 For further references, see \cite[IV.3]{FinAutLogR109}.
 
 In \cite[IV.3.3]{FinAutLogR109} or \cite[Corollary 4.9]{LangAutLogicR102}, we can see that
-\[  \Lang(\text{LTT}) = \Lang(\mathrm{FO[+1]}). \]
+\[  \Lang(\LTT) = \Lang(\mathrm{FO[+1]}). \]
 In \cite[IV.3.4]{FinAutLogR109}, we see that
-\[  \Lang(\text{LTT}) \subsetneqq \Lang(\mathtext{starfree}). \]
+\[  \Lang(\LTT) \subsetneqq \Lang(\mathtext{starfree}). \]
 
 % FinAutLogR109, p.51:
 % L in FO[=] <=> L is union of LTT^1_r classes for some r
