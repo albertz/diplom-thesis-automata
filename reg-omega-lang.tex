@@ -88,6 +88,7 @@ The following deterministic automaton is in some way (as defined later) equivale
     (1) edge [bend left] node {$b$} (2)
     (2) edge node {$a$} (1)
     (2) edge node {$b$} (3)
+    (3) edge [loop above] node {$b$} ()
     (3) edge [bend left] node {$a$} (1)
     ;
   \end{tikzpicture}
@@ -120,6 +121,7 @@ The automaton from \cref{reg:dfa-example-1} is not complete. This is a complete 
     (1) edge [bend left] node {$b$} (2)
     (2) edge node {$a$} (1)
     (2) edge node {$b$} (3)
+    (3) edge [loop above] node {$b$} ()
     (3) edge [bend left] node {$a$} (1)
     ;
   \end{tikzpicture}
