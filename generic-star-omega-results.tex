@@ -3,7 +3,7 @@
 
 In this chapter, we study all the properties, equalities and inclusions from \cref{P:reg-star} for arbitrary $*$-language classes $\Lang$. We try to find necessary conditions such that the inclusions hold and als stay strict. And we demonstrate counter examples when they don't hold anymore or when inequalities become equalities.
 
-We will also study some relations between the $\omega$-language classes constructed from $\Lang$ with the $\omega$-language classes constructed from $\Langreg$, i.e. the diagram as shown in \cref{regomega-diagram}. E.g. we will show that for some cases, we have the equalities $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ and $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$.
+We will also study some relations between the $\omega$-language classes constructed from $\Lang$ with the $\omega$-language classes constructed from $\Langreg$, i.e. the diagram as shown in \cref{regomega-diagram}. E.g. we will show that for some cases on $\Lang$, we have the equalities $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ and $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$.
 
 %S401: TODO
 
@@ -25,7 +25,7 @@ Let $L,A,B \in \Lang$.
 \item $\dlim L \subseteq \lim L$
 \item $\lim A \cup \lim B = \lim(A \cup B)$ %S305.4
 \item $\dlim A \cup \dlim B \subseteq \dlim(A \cup B)$ \newline %S305.4
-There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
+There is no equality, i.e. `$\supseteq$` does not hold in general.
 \end{enumerate}
 \begin{proof}
 \begin{enumerate}
@@ -44,6 +44,9 @@ There is no equality in general: $A = (00)^*$, $B = (00)^*0$.
 \exists N \colon \forall n \ge N \colon \alpha[0,n] \in B \\
 \Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B
 \end{align*}
+
+Consider the languages $A := (aa)^*$, $B := (aa)^*a$. Then,
+\[ \dlim(A \cup B) = \dlim(a^*) = a^\omega \ne \emptyset = \emptyset \cup \emptyset = \dlim A \cup \dlim B . \]
 \end{enumerate}
 \end{proof}
 \end{lemma}
@@ -140,7 +143,7 @@ We will first study $\ext \Lang \subseteq \lim \Lang$ inclusions. We have the ve
 % S303, S101a:
 \begin{lemma}
 \label{gen:non-suffix-sens}
-If $\Lang$ is closed under suffix-independence,
+If $\Lang$ is closed under suffix-independence, then
 \[ \ext \Lang \subseteq \lim \Lang \cap \dlim \Lang . \]
 \begin{proof}
 For $L \in \Lang$, we have $\ext L = L \Sigma^\omega = \lim (L \Sigma^*) = \dlim (L \Sigma^*)$.
@@ -200,7 +203,9 @@ Thus,
 \end{proof}
 \end{lemma}
 
-Note that we needed the negation closure in the proof. This is in contrast to \cref{gen:S302a}, where it directly follows. We have to be careful about the difference $- \ext \Lang := \Set{-\ext L}{L \in \Lang} \neq \dext \Lang$ (in general, if $\Lang$ is not closed under negation).
+Note that we needed the negation closure in the proof. This is in contrast to \cref{gen:S302a}, where it directly follows. We have to be careful about the inequality
+\[ \neg\ext \Lang := \Set{-\ext L}{L \in \Lang} \neq \dext \Lang \]
+(in general, if $\Lang$ is not closed under negation).
 
 Analogously:
 

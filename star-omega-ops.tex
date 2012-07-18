@@ -20,7 +20,7 @@ From these, we get operators on language classes ($\Power(\Power(\Sigma^*)) \rig
 \item $\dlim(\Lang) := \Set{\dlim L}{L \in \Lang}$
 \end{enumerate}
 
-In many cases, it is interesting to look at boolean combinations of $\omega$-language classes, i.e.:
+Note that we sometimes combine those operators via union or intersection, e.g. $\ext \cup \dext \Lang := \ext \Lang \cup \dext \Lang$ or $\ext \cup \lim \Lang := \ext \Lang \cup \lim \Lang$. In many cases, it is also interesting to look at boolean combinations of $\omega$-language classes, i.e.:
 \begin{enumerate}
 \item $\BC \ext \Lang = \BC (\ext (\Lang))$
 \item $\BC \lim \Lang = \BC (\lim (\Lang))$
@@ -61,7 +61,7 @@ Given these language operators, we are interested in the relations between them.
 \subsection{Classification of regular $\omega$-languages} %$\Langreg$
 
 \label{regomega-diagram}
-Considering $\mathcal{R} := \Langreg$, we get a language diagram like:
+Considering $\mathcal{R} := \Langreg$, we get the following language diagram:
 
 \begin{tikzpicture}
 \pgftransformscale{.55}
@@ -120,7 +120,7 @@ where all inclusions are strict. In more detail:
 \item[7.] $\lim \mathcal{R} \neq \dlim \mathcal{R}$
 \item[8.] $\lim \mathcal{R} \cup \dlim \mathcal{R} \subsetneqq \BC \lim \mathcal{R}$
 \end{enumerate}
-and we have the additional properties
+and we have the additional equalities
 \begin{enumerate}
 \item[9.] $\BC \lim \mathcal{R} = \Kleene(\mathcal{R})$
 \item[10.] $\BC \lim \mathcal{R} = \limClosure(\mathcal{R})$
