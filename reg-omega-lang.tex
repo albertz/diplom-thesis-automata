@@ -103,13 +103,14 @@ Thus,
 \[  \BC \lim \Langreg = \LangOreg , \]
 where $\BC$ (\defword{boolean combinations}: union, intersection, complement) is defined as a function
 \[ \BC \colon \Power(\mathcal{W}) \rightarrow \Power(\mathcal{W}) \]
-where $\mathcal{W}$ is usually $\Sigma^\omega$. Then, $\BC(\mathcal{X})$ is defined as the smallest set with
+where $\mathcal{W}$ is usually $\Power(\Sigma^\omega)$. Then, $\BC(\mathcal{X})$ is defined as the smallest set with
 \begin{itemize}
 \item $\mathcal{X} \subseteq \BC \mathcal{X}$,
 \item $-X \in \BC \mathcal{X}$ for all $X \in \BC \mathcal{X}$,
 \item $X_1 \cup X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$,
 \item $X_1 \cap X_2 \in \BC \mathcal{X}$ for all $X_1,X_2 \in \BC \mathcal{X}$.
 \end{itemize}
+$\mathcal{W}$ is always determined from the context. We normally have $\mathcal{W} = \Power(\Sigma^\omega)$, i.e. the set of all $\omega$-languages. Then, $\BC$ is an operator on $\omega$-language classes. We could also have $\mathcal{W} = \Power(\Sigma^*)$, then $\BC$ would be an operator on $*$-language classes. Note that we never have $\mathcal{W} = \Power(\Sigma^* \cup \Sigma^\omega)$ in this thesis. This note is important as the $\BC$ operator would be ambiguous otherwise.
 
 % TODO: ref
 Another classification is
