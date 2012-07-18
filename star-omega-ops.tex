@@ -4,18 +4,37 @@
 
 We already introduced $\lim$. We can define a family of language operators, partly also derived from the study of $\LangOreg$. Some of these operators operate on a single language and not on the class. Let $\Lang$ be a $*$-language class. Let $L \in \Lang$.
 
+We define the following operators on languages, i.e. $\Power(\Sigma^*) \rightarrow \Power(\Sigma^\omega)$:
 \begin{enumerate}
 \item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
 \item $\dext(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L}$ (also called the dual-ext)
-\item $\BC \ext$
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
 \item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$ (also called dual-lim)
-\item $\BC \lim$
+\end{enumerate}
+
+From these, we get operators on language classes ($\Power(\Power(\Sigma^*)) \rightarrow \Power(\Power(\Sigma^\omega))$) in a canonical way:
+\begin{enumerate}
+\item $\ext(\Lang) := \Set{\lim L}{L \in \Lang}$
+\item $\dext(\Lang) := \Set{\dext L}{L \in \Lang}$
+\item $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$
+\item $\dlim(\Lang) := \Set{\dlim L}{L \in \Lang}$
+\end{enumerate}
+
+In many cases, it is interesting to look at boolean combinations of $\omega$-language classes, i.e.:
+\begin{enumerate}
+\item $\BC \ext \Lang = \BC (\ext (\Lang))$
+\item $\BC \lim \Lang = \BC (\lim (\Lang))$
+\end{enumerate}
+
+In addition, from historical reasons, we also have the following other language class operators:
+\begin{enumerate}
 \item $\Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, \epsilon \not\in V_i, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
 \item $\limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang,, n \in \N_0}$
 \end{enumerate}
+In \cref{reg-omega-lang}, we have seen that
+\[ \BC \lim \Langreg = \Kleene \Langreg = \limClosure \Langreg . \]
 
-From language operators, we get language class operators in a canonical way, e.g. $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$.
+We mostly concentrate on $\ext$, $\lim$ and boolean combinations of them in the rest of this thesis.
 
 For $\ext$ and $\dext$, we can also introduce equivalent $\omega$ automata acceptance conditions (as in \cite{InfCompR101}). Let $L \subseteq \Sigma^*$ be a regular $*$-language and $\A = (Q, \Sigma, q_0, \Delta, F)$ be an automaton which accepts exactly $L$. Let $\rho$ be an infinte run in $\A$.
 \begin{itemize}
