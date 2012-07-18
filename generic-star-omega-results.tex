@@ -570,6 +570,8 @@ The only non-obvious relation is $\BC \ext \Lang = \lim \cap \dlim \Lang$. This 
 %S406.1: TODO...
 %S402: TODO...
 
+\subsection{Kleene closure}
+
 %\subsection{Kleene-star $= \BC \lim$}
 \begin{lemma}
 \label{gen:kleene-star}
@@ -603,7 +605,7 @@ Let us construct deterministic automata for $\A$ so that we can formulate 'V wil
 
 In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-determinstic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set.
 
-Example:
+\textbf{Example}:
 
 Let $U = (a+b)^*$, $V = \Set{b}$. I.e. $UV^\omega = \Set{\alpha \in \Set{a,b}^\omega}{\text{at one point in $\alpha$, there are only $b$s}}$. The non-deterministic automaton is:
 \[
