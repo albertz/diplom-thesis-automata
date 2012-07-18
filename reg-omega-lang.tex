@@ -17,11 +17,13 @@ We can \defword{concatenate} finite words with each other and also finite words 
 \subsection{The class of regular $*$-languages}
 \label{intro:reglang}
 
-A \defword{regular expression} is representing a language over an alphabet $\Sigma$. Regular expressions are defined recursively based on the ground terms $\emptyset$, $\epsilon$ and $a$ for $a \in \Sigma$ denoting the languages $\emptyset$, $\Set{\epsilon}$ and $\Set{a}$. Then, if $r$ and $s$ are regular expressions representing $R, S \subseteq \Sigma^*$, then also $r+s$ (written also as $r|s$, $r \vee s$, $r \cup s$), $r s$ (written also as $r \cdot s$) and $r^*$ are regular expressions, representing $R \cup S$, $R \cdot S$ and $R^*$. Let $\Lang^*(\text{RE})$ be the set of languages which can be represented as regular expressions.
+The class of regular $*$-languages is probably the most well-studied class of languages. In the study of formal language theorey, Stephen Cole Kleene introduced this class via \defword{regular sets} in \cite{Kleene56}.
+
+A \defword{regular expression} is representing such a regular set. It represents a language over an alphabet $\Sigma$. Regular expressions are defined recursively based on the ground terms $\emptyset$, $\epsilon$ and $a$ for $a \in \Sigma$ denoting the languages $\emptyset$, $\Set{\epsilon}$ and $\Set{a}$. Then, if $r$ and $s$ are regular expressions representing $R, S \subseteq \Sigma^*$, then also $r+s$ (written also as $r|s$, $r \vee s$, $r \cup s$), $r s$ (written also as $r \cdot s$) and $r^*$ are regular expressions, representing $R \cup S$, $R \cdot S$ and $R^*$. Let $\Lang^*(\text{RE})$ be the set of languages which can be represented as regular expressions.
 
 We extend these expressions also by $r \wedge s$ (written also as $r \cap s$) and $-r$ (written also as $\neg r$), representing the language $R \cap S$ and $-R := \Set{w \in \Sigma^*}{w \not\in R}$. Some basic result of the study of formal languages, as can be seen in e.g. \cite{FinAutLogR109}, is the equivalence of the class of these extended regular expression languages and $\Lang^*(\text{RE})$.
 
-A \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial states} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
+A \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial state} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
 
 We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, F). \]
