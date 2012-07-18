@@ -38,8 +38,8 @@ We mostly concentrate on $\ext$, $\lim$ and boolean combinations of them in the 
 
 For $\ext$ and $\dext$, we can also introduce equivalent $\omega$ automata acceptance conditions (as in \cite{InfCompR101}). Let $L \subseteq \Sigma^*$ be a regular $*$-language and $\A = (Q, \Sigma, q_0, \Delta, F)$ be an automaton which accepts exactly $L$. Let $\alpha \in \Sigma^\omega$. Then
 \begin{itemize}
-\item $\A$ \defword{E-accepts} $\alpha \ \ \ :\Leftrightarrow \ \ \ \exists \ \text{infinite run $\rho$ in $\A$ which matches $\alpha$} \colon \exists i \colon \rho(i) \in F$,
-\item $\A$ \defword{A-accepts} $\alpha \ \ \ :\Leftrightarrow \ \ \ \exists \ \text{infinite run $\rho$ in $\A$ which matches $\alpha$} \colon \forall i \colon \rho(i) \in F$.
+\item $\A$ \defword{E-accepts} $\alpha \ \ \ :\Leftrightarrow \ \ \ \exists \ \text{infinite run $\rho$ in $\A$ which matches $\alpha$} \colon \exists i \colon \rho[i] \in F$,
+\item $\A$ \defword{A-accepts} $\alpha \ \ \ :\Leftrightarrow \ \ \ \exists \ \text{infinite run $\rho$ in $\A$ which matches $\alpha$} \colon \forall i \colon \rho[i] \in F$.
 \end{itemize}
 We define
 \begin{itemize}
