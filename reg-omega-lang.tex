@@ -12,7 +12,7 @@ A subset $L \subseteq \Sigma^*$ is called a \defword{language} of finite words o
 
 A set $\Lang$ of $*$-languages is called a \defword{$*$-language class}. Likewise, a set $\Lang^\omega$ of $\omega$-languages is called a \defword{$\omega$-language class}.
 
-We can \defword{concatenate} finite words with each other and also finite words with infinite words. For languages $L_1 \subseteq \Sigma^*$, $L_2 \subseteq \Sigma^*$, $\tilde L_3 \subseteq \Sigma^\omega$, we define the concatenation $L_1 \cdot L_2 := \Set{v \cdot w}{v \in L_1, w \in L_2}$ and $L_1 \cdot \tilde L_3 := \Set{v \cdot \alpha}{v \in L_1, \alpha \in \tilde L_3}$. Exponentation of languages is defined naturally: For $L \subseteq \Sigma^*$, we define $L^0 := \Set{\epsilon}$ and $L^{i+1} := L^i \cdot L$ for all $i \in \N_0$. The union of all such sets, is called the \defword{Kleene star} operator, defined as $L^* := \cup_{i\in\N_0} L^i$. The \defword{positive Kleene star} is defined as $L^+ := \cup_{i\in\N} L^i$. The \defword{$\omega$-Kleene star} is defined by $L^\omega := \Set{w_1 \cdot w_2 \cdot w_3 \cdots}{w_i \in L, w_i \ne \epsilon}$.
+We can \defword{concatenate} finite words with each other and also finite words with infinite words. For languages $L_1 \subseteq \Sigma^*$, $L_2 \subseteq \Sigma^*$, $\tilde L_3 \subseteq \Sigma^\omega$, we define the concatenation $L_1 \cdot L_2 := \Set{v \cdot w}{v \in L_1, w \in L_2}$ and $L_1 \cdot \tilde L_3 := \Set{v \cdot \alpha}{v \in L_1, \alpha \in \tilde L_3}$. In some cases, we might leave away the concatenation dot and just write $L_1 L_2$ or $L_1 \tilde L_3$. Exponentation of languages is defined naturally: For $L \subseteq \Sigma^*$, we define $L^0 := \Set{\epsilon}$ and $L^{i+1} := L^i \cdot L$ for all $i \in \N_0$. The union of all such sets, is called the \defword{Kleene star} operator, defined as $L^* := \cup_{i\in\N_0} L^i$. The \defword{positive Kleene star} is defined as $L^+ := \cup_{i\in\N} L^i$. The \defword{$\omega$-Kleene star} is defined by $L^\omega := \Set{w_1 \cdot w_2 \cdot w_3 \cdots}{w_i \in L, w_i \ne \epsilon}$.
 
 \subsection{The class of regular $*$-languages}
 \label{intro:reglang}
@@ -21,7 +21,7 @@ A \defword{regular expression} is representing a language over an alphabet $\Sig
 
 We extend these expressions also by $r \wedge s$ (written also as $r \cap s$) and $-r$ (written also as $\neg r$), representing the language $R \cap S$ and $-R := \Set{w \in \Sigma^*}{w \not\in R}$. Some basic result of the study of formal languages, as can be seen in e.g. \cite{FinAutLogR109}, is the equivalence of the class of these extended regular expression languages and $\Lang^*(\text{RE})$.
 
-A \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma^* \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial states} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
+A \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial states} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
 
 We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, F). \]
@@ -29,12 +29,12 @@ We write:
 The automaton is \defword{deterministic} (a DFA) iff $\Delta$ is a function $Q \times \Sigma \rightarrow Q$. In that case, we often call the function $\delta$ and we write
 \[ \A = (Q, \Sigma, q_0, \delta, F). \]
 
-Two transitions $(p,a,q), (p',a',q') \in E$ are \defword{consecutive} iff $q=p'$.
+Two transitions $(p,a,q), (p',a',q') \in \Delta$ are \defword{consecutive} iff $q=p'$.
 
 A \defword{run} in the automaton $\A$ is a finite sequence of consecutive transitions, written as:
-\[ q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \dots \]
+\[ q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \]
 
-An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{accepts} a finite word $w = (a_0,a_1,\dots,a_n) \in \Sigma^*$ iff there is a run $q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \xrightarrow{a_n} q_{n+1}$ with $q_0 \in I$ und $q_{n+1} \in F$.
+An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{accepts} a finite word $w = (a_0,a_1,\dots,a_n) \in \Sigma^*$ iff there is a run $\rho := q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \xrightarrow{a_n} q_{n+1}$ with $q_{n+1} \in F$. We say that the run $\rho$ \defword{matches} the word $w$.
 
 The $*$-language $L^*(\A)$ is defined as set of all finite words which are accepted by $\A$.
 
@@ -71,7 +71,7 @@ An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{Büchi-accepts} an infi
 The language $L^\omega(\A)$ is defined as the set of all infinite words which are Büchi-accepted by  $\A$. To make clear that we use the Büchi acceptance condition, we sometimes will also write $L^\omega_\text{Büchi}(\A)$.
 
 A basic result of the study of this language class is: The set of all languages accepted by a non-deterministic Büchi automaton is exactly $\LangOreg$ (see \cite{InfCompR101} or others). %S218
-Deterministic Büchi automata are less powerful, e.g. they cannot recognise $(a+b)^* b^\omega$.
+Deterministic Büchi automata are less powerful, e.g. they cannot recognise the language $(a+b)^* b^\omega$.
 
 There are some different forms of $\omega$-automata which differ in their acceptance condition. Noteable are the \defword{Muller condition}, the \defword{Rabin condition}, the \defword{Streett condition} and the \defword{Parity condition}. With such an acceptance condition, we call it \defword{Muller automaton}, etc. The \emph{main theorem of $\omega$-automata} states:
 \begin{itemize}
@@ -101,7 +101,7 @@ I.e.
 \[ \lim \Langreg = \Set{L^\omega_\text{Büchi}(\A)}{\text{$\A$ is det. Büchi automaton}} . \]
 Thus,
 \[  \BC \lim \Langreg = \LangOreg , \]
-where $\BC$ (\defword{boolean combinations}: union, intersection, complement) is defined as a function
+where $\BC \mathcal{X}$ is defined as all \defword{boolean combinations} (union, intersection, complement) from $\mathcal{X}$. Formally: $\BC$ is defined as a function
 \[ \BC \colon \Power(\mathcal{W}) \rightarrow \Power(\mathcal{W}) \]
 where $\mathcal{W}$ is usually $\Power(\Sigma^\omega)$. Then, $\BC(\mathcal{X})$ is defined as the smallest set with
 \begin{itemize}
