@@ -23,27 +23,143 @@ A \defword{regular expression} is representing such a regular set. It represents
 
 We extend these expressions also by $r \wedge s$ (written also as $r \cap s$) and $-r$ (written also as $\neg r$), representing the language $R \cap S$ and $-R := \Set{w \in \Sigma^*}{w \not\in R}$. Some basic result of the study of formal languages, as can be seen in e.g. \cite{FinAutLogR109}, is the equivalence of the class of these extended regular expression languages and $\Lang^*(\text{RE})$.
 
-A \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$ is given by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial state} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
+Regular languages are also strongly connected to finite-state automata. These are a theoretical description of a machine having a finite number of internal states. These automata operate on a discrete set of input symbols and can change the internal state with each input symbol. Because the number of states is finite, these are strictly less powerful than Turing machines, which have an infinite number of states given by the infinite memory. S.C. Kleene proved in \cite{Kleene56} that finite automata can express exactly the class of regular languages. A first generic definition of such automata was given in \cite{FinAutRabin59}.
+
+Also defined first by \cite{FinAutRabin59} is the \defword{non-deterministic} \defword{finite-state automaton} (NFA) $\A$ over an alphabet $\Sigma$. Formally, such NFA $\A$ is defined by a finite set $Q$ of \defword{states} and a subset $\Delta \subseteq Q \times \Sigma \times Q$ of \defword{transitions}. In most cases we also have an \defword{initial state} $q_0 \in Q$ and a subset $F \subseteq Q$ of \defword{final states}.
 
 We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, F). \]
 
-The automaton is \defword{deterministic} (a DFA) iff $\Delta$ is a function $Q \times \Sigma \rightarrow Q$. In that case, we often call the function $\delta$ and we write
+A common way to draw such automaton is via a transition graph.
+\begin{simpleexample}
+\label{reg:nfa-example-1}
+Let $\Sigma := \Set{a,b}$, $Q := \Set{0,1,2,3}$, $q_0 := 0$,
+\[ \Delta := \Set{ (0,a,1), (1,a,1), (1,b,1), (1,b,2), (2,b,3) } \]
+and $F := \Set{3}$. Then we can draw $\A := (Q,\Sigma,q_0,\Delta,F)$ as:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (0)              {$0$};
+    \node[state] (1) [right of=0] {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state,double] (3) [right of=2] {$3$};
+
+    \path[->]
+    (0) +(-1.5,0) edge (0)
+    (0) edge node {$a$} (1)
+    (1) edge [loop above] node {$a,b$} ()
+    (1) edge node {$b$} (2)
+    (2) edge node {$b$} (3)
+    ;
+  \end{tikzpicture}
+\]
+\end{simpleexample}
+
+The automaton is \defword{deterministic} (a DFA) iff $\Delta$ is a subset of a function $Q \times \Sigma \rightarrow Q$. I.e., for every state $q \in Q$ and every $a \in \Sigma$, the following state is determined by $\Delta$ or not defined. In that case, we often call the partly-defined function $\delta$ and we write
 \[ \A = (Q, \Sigma, q_0, \delta, F). \]
+
+\begin{simpleexample}
+\label{reg:dfa-example-1}
+The following deterministic automaton is in some way (as defined later) equivalent to the non-deterministic automaton from \cref{reg:nfa-example-1}:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (0)              {$0$};
+    \node[state] (1) [right of=0] {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state,double] (3) [right of=2] {$3$};
+
+    \path[->]
+    (0) +(-1.5,0) edge (0)
+    (0) edge node {$a$} (1)
+    (1) edge [loop above] node {$a$} ()
+    (1) edge [bend left] node {$b$} (2)
+    (2) edge node {$a$} (1)
+    (2) edge node {$b$} (3)
+    (3) edge [bend left] node {$a$} (1)
+    ;
+  \end{tikzpicture}
+\]
+\end{simpleexample}
+
+Note that in many cases, as also in \cref{reg:dfa-example-1}, $\delta$ is only a strict subset of a function, i.e. it is not defined on the whole set $Q \times \Sigma$. We call $\A$ \defword{complete}, if $\Delta$/$\delta$ is defined everywhere, i.e. for every state and input symbol, there is a transition defined. If it is not, we can easily extend $\A$ by an additional state, as can be seen in the following example:
+\begin{simpleexample}
+\label{reg:dfa-example-2}
+The automaton from \cref{reg:dfa-example-1} is not complete. This is a complete version of the same automaton:
+\[
+  \begin{tikzpicture}[%
+    >=stealth,
+	shorten >=1pt,
+	node distance=2cm,
+    auto,
+  ]
+    \node[state] (0)              {$0$};
+    \node[state] (1) [right of=0] {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state,double] (3) [right of=2] {$3$};
+    \node[state] (4) [below of=0] {$4$};
+
+    \path[->]
+    (0) +(-1.5,0) edge (0)
+    (0) edge node {$a$} (1)
+    (0) edge node {$b$} (4)
+    (4) edge [loop right] node {$a,b$} ()
+    (1) edge [loop above] node {$a$} ()
+    (1) edge [bend left] node {$b$} (2)
+    (2) edge node {$a$} (1)
+    (2) edge node {$b$} (3)
+    (3) edge [bend left] node {$a$} (1)
+    ;
+  \end{tikzpicture}
+\]
+\end{simpleexample}
+
+Note that we also sometimes have multiple initial states, in which case the automaton is also non-deterministic. Also, in the non-deterministic case, the transition can actual be $\Delta \subseteq Q \times \Sigma^* \times Q$. However, such more generic automaton can be reduced to the definition given here as can be seen in the literature.
 
 Two transitions $(p,a,q), (p',a',q') \in \Delta$ are \defword{consecutive} iff $q=p'$.
 
 A \defword{run} in the automaton $\A$ is a finite sequence of consecutive transitions, written as:
 \[ q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \]
 
-An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{accepts} a finite word $w = (a_0,a_1,\dots,a_n) \in \Sigma^*$ iff there is a run $\rho := q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \xrightarrow{a_n} q_{n+1}$ with $q_{n+1} \in F$. We say that the run $\rho$ \defword{matches} the word $w$.
+An automaton $\A = (Q, \Sigma, q_0, \Delta, F)$ \defword{accepts} a finite word $w = (a_0,a_1,\dots,a_n) \in \Sigma^*$ iff there is a run $\rho := q_0 \xrightarrow{a_0} q_1 \xrightarrow{a_1} q_2 \cdots \xrightarrow{a_n} q_{n+1}$ with $q_{n+1} \in F$. We say that the run $\rho$ \defword{matches} the word $w$. We say that the run is an \defword{accepting run}.
 
 The $*$-language $L^*(\A)$ is defined as set of all finite words which are accepted by $\A$.
 
-The set of $*$-languages accepted by a NFA is called $\Lang^*(\text{NFA})$. Likewise, $\Lang^*(\text{DFA})$ is the set of $*$-languages accepted by a DFA. A basic result (see for example \cite{FinAutLogR109} or \cite{InfWordsR110}) is
-\[ \Lang^*(\text{DFA}) = \Lang^*(\text{NFA}) = \Lang^*(\text{RE}) . \]
+\begin{simpleexample}
+Let $\Sigma = \Set{a,b}$. Let $\A_1 = (Q_1,\Sigma,0,\Delta_1,F_1)$ be the automaton from \cref{reg:nfa-example-1}, $\A_2 = (Q_2,\Sigma,0,\delta_2,F_2)$ be the automaton from \cref{reg:dfa-example-1} and $\A_3 = (Q_3,\Sigma,0,\delta_3,F_3)$ be the automaton from \cref{reg:dfa-example-2}.
 
-This class of $*$-languages is called the class of \defword{regular $*$-languages}. We name it $\Langreg$ from now on.
+For the finite word $w_1 := aabb \in \Sigma^*$, there are three possible runs in $\A_1$:
+\begin{enumerate}
+\item $0 \xrightarrow{a} 1 \xrightarrow{a} 1 \xrightarrow{b} 1 \xrightarrow{b} 1$
+\item $0 \xrightarrow{a} 1 \xrightarrow{a} 1 \xrightarrow{b} 1 \xrightarrow{b} 2$
+\item $0 \xrightarrow{a} 1 \xrightarrow{a} 1 \xrightarrow{b} 2 \xrightarrow{b} 3$
+\end{enumerate}
+The third run is an accepting run because $3 \in F_1$. The other two runs are not accepting. Because there is an accepting run, $w_1 \in L^*(\A_1)$.
+
+In $\A_2$ and $\A_3$, $w_1$ has the deterministic run $0 \xrightarrow{a} 1 \xrightarrow{a} 1 \xrightarrow{b} 2 \xrightarrow{b} 3$. Thus, $w_1 \in L^*(\A_2)$ and $w_1 \in L^*(\A_3)$.
+
+The word $w_2 := aa \in \Sigma^*$ has the only run $0 \xrightarrow{a} 1 \xrightarrow{a} 1$ in $\A_1$, $\A_2$ and $\A_3$. Thus, $w_2 \not\in L^*(\A_1) \cup L^*(\A_2) \cup L^*(\A_3)$.
+
+The word $w_3 := ba \in \Sigma^*$ has no run at all in $\A_1$ and $\A_2$. This demonstrates that $\A_1$ and $\A_2$ are not complete. Thus, $w_2 \not\in L^*(\A_1) \cup L^*(\A_2)$. However, it has the run $0 \xrightarrow{b} 4 \xrightarrow{a} 4$ in $\A_3$. This run doesn't end in an accepting state and there aren't any other runs because $\A_3$ is deterministic, thus $w_3 \not\in L^*(\A_3)$.
+
+We can see that all automata $\A_1$, $\A_2$ and $\A_3$ accept exactly the same words, i.e. the same language. In that sense, they are equivalent.
+
+Informally, they all accept the language of words which start with $a$ and end with $bb$.
+\end{simpleexample}
+
+The class of $*$-languages accepted by a NFA is called $\Lang^*(\text{NFA})$. Likewise, $\Lang^*(\text{DFA})$ is the set of $*$-languages accepted by a DFA. A basic result (see for example \cite{FinAutLogR109} or \cite{InfWordsR110}) is
+\[ \Lang^*(\text{DFA}) = \Lang^*(\text{NFA}) = \Lang^*(\text{RE}) . \]
+Historically, S.C. Kleene proved in \cite{Kleene56} that $\Lang^*(\text{DFA}) = \Lang^*(\text{RE}) $ and it was shown in \cite{FinAutRabin59} by M. O. Rabin and D. Scott that $\Lang^*(\text{DFA}) = \Lang^*(\text{NFA})$.
+
+This class of $*$-languages is called the class of \defword{regular $*$-languages}. We call it $\Langreg$ from now on.
 
 
 
