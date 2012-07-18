@@ -716,7 +716,7 @@ If a language class $\Lang(R)$ is defined as finite union of equivalence classes
 \end{itemize}
 then we can construct a canonical deterministic automaton $\A_R$ which has $S_R := \Sigma^* / R$ as states, $\left<\epsilon\right>_R$ is the initial state and the transitions are according to concatenation. Call this an $R$-automaton.
 
-The LT, LTT and PT language classes have the above properties and thus such related canonical automaton.
+The $\LT_n$, $\LTT^k_r$ and $\PT_n$ language classes have the above properties and thus such related canonical automaton.
 
 The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
 \[ \Lang^*(R) = \Set{L^*(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
@@ -796,7 +796,7 @@ In the rest of this section, we show some equalities:
 \item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
 \end{itemize}
 
-We will see that all those equations hold for all $R$, i.e. also for $\Lang(\mathrm{LT}_n)$, $\Lang(\mathrm{LTT}^k_n)$ and $\Lang(\PT_n)$.
+We will see that all those equations hold for all $R$, i.e. also for $\Lang(\LT_n)$, $\Lang(\LTT^k_r)$ and $\Lang(\PT_n)$.
 
 Note that we still don't necessarily have $\ext \Lang(R) \subseteq \lim \Lang(R)$. The \cref{gen:example:ext<->lim} also applies here.
 
