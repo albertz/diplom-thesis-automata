@@ -2,7 +2,7 @@
 
 \subsection{Language Operators: Transformation of $*$-languages to $\omega$-languages}
 
-We already introduced $\lim$. We can define a family of language operators, partly also derived from the study of $\LangOreg$. Some of these operators operate on a single language and not on the class. Let $\Lang$ be a $*$-language class. Let $L \in \Lang$.
+We already introduced $\lim$ in \cref{reg:omega:vialangop}. We can define a family of language operators, partly also derived from the study of $\LangOreg$. Some of these operators operate on a single language and not on the class. Let $\Lang$ be a $*$-language class. Let $L \in \Lang$.
 
 We define the following operators on languages, i.e. $\Power(\Sigma^*) \rightarrow \Power(\Sigma^\omega)$:
 \begin{enumerate}
@@ -26,7 +26,7 @@ Note that we sometimes combine those operators via union or intersection, e.g. $
 \item $\BC \lim \Lang = \BC (\lim (\Lang))$
 \end{enumerate}
 
-In addition, from historical reasons, we also have the following other language class operators:
+In addition, from historical reasons (compare with the definition and alternative characterizations of $\LangOreg$ in \cref{reg-omega-lang}), we also have the following other language class operators:
 \begin{enumerate}
 \item $\displaystyle \Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0}$
 \item $\displaystyle \limClosure(\Lang) := \Set{\bigcup_{i=1}^n U_i \cdot \lim V_i}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0}$

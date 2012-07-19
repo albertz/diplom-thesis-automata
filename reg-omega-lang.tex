@@ -177,7 +177,7 @@ This class of $*$-languages is called the class of \defword{regular $*$-language
 The class of regular $\omega$-languages can be defined in many different ways. We will use one common definition and show some equivalent descriptions.
 \[ \LangOreg := \Set{ \bigcup_{i=1}^n\ U_i \cdot V_i^\omega }{ U_i, V_i \in \Langreg, n \in \N_0 } \]
 
-This is also called the \defword{$\omega$-Kleene closure}.
+This is also called the \defword{$\omega$-Kleene closure} of regular languages.
 
 \subsubsection{$\omega$ regular expressions}
 
@@ -217,6 +217,7 @@ We write:
 \[ \A = (Q, \Sigma, q_0, \Delta, \F) . \]
 
 \subsubsection{Language operators}
+\label{reg:omega:vialangop}
 
 Büchi acceptance is closely connected to the language operator
 \[ \lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \existsinf n \colon \alpha[0,n] \in L } . \]
