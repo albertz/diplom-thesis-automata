@@ -404,13 +404,13 @@ The \defword{Staiger-Wagner class} of $\Langreg$ is $\BC \ext \Langreg = \lim \c
 A \defword{Staiger-Wagner automaton} (also called \defword{weak Muller automaton}) is of the same form $\A = (Q,\Sigma,q_0,\delta,\F)$ with acceptance component $\F \subseteq 2^Q$ like a Muller automaton with the acceptance condition that a run $\rho$ in $\A$ is accepting if and only if $\Occ(\rho) := \Set{q \in Q}{\text{$q$ occurs in $\rho$}} \in \F$.  (\cite[Def.61, p.43]{InfCompR101})
 \end{mydef}
 
-\begin{theorem}
+\begin{theorem}[Staiger and Wagner]
 \label{thm:staiger-wagner}
 %S405:
 We see that the class of Staigner-Wagner-recognized languages is exactly the class $\BC \ext \Langreg$ and also $\lim \cap \dlim \Langreg$. And thus:
 \[ \BC \ext \Langreg = \lim \cap \dlim \Langreg . \]
 \begin{proof}
-See \cite[Theorem 63+64, p.44]{InfCompR101}.
+See \cite[Theorem 63+64, p.44]{InfCompR101} or the original publication \cite{StaigerW74}.
 \end{proof}
 \end{theorem}
 
