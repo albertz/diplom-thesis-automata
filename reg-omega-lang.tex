@@ -4,7 +4,7 @@
 \subsection{Preliminaries}
 We introduce some common terminology used in this thesis.
 
-The set of natural numbers $1,2,3,\dots$ is denoted by $\N$, likewise $0,1,2,3,\dots$ by $\N_0$. $\Power(M)$ is the set of all subsets of $M$, sometimes also written as $2^M$, defined as $\Set{S}{S \subseteq M}$. $-M$ denotes all elements which are not in $M$, defined as $\Set{x}{x \not\in M}$ (the superset of $M$ is determined by the context). Given two functions $\operatorname{f} \colon X \rightarrow Y$, $\operatorname{g} \colon Y \rightarrow Z$, we often leave away parentheses and write $\operatorname{g} \operatorname{f} x$ instead of $\operatorname{g}(\operatorname{f}(x))$ as long as there is no ambiguity. $\exists n \colon P(n)$, $\forall n \colon P(n)$, $\exists^\omega n \colon P(n)$ are short for "there exists $n$ such that $P(n)$", "for all $n$, it holds $P(n)$" and "there exists infinitely many $n$ such that $P(n)$" respectively, where $P(n)$ is some statements about $n$.
+The set of natural numbers $1,2,3,\dots$ is denoted by $\N$, likewise $0,1,2,3,\dots$ by $\N_0$. $\Power(M)$ is the set of all subsets of $M$, sometimes also written as $2^M$, defined as $\Set{S}{S \subseteq M}$. $-M$ denotes all elements which are not in $M$, defined as $\Set{x}{x \not\in M}$ (the superset of $M$ is determined by the context). Given two functions $\operatorname{f} \colon X \rightarrow Y$, $\operatorname{g} \colon Y \rightarrow Z$, we often leave away parentheses and write $\operatorname{g} \operatorname{f} x$ instead of $\operatorname{g}(\operatorname{f}(x))$ as long as there is no ambiguity. $\exists n \colon P(n)$, $\forall n \colon P(n)$, $\exists^\omega n \colon P(n)$ are short for "there exists $n$ such that $P(n)$", "for all $n$, it holds $P(n)$" and "there exists infinitely many $n$ with $P(n)$" respectively, where $P(n)$ is some statements about $n$. If the domain of $n$ is not specified, the biggest domain is assumed where $P(n)$ makes sense, which is usually $\N_0$.
 
 An \defword{alphabet} is a finite set of \defword{symbols}. We usually denote an alphabet by $\Sigma$ and its elements by $a, b, c, \dots$. A finite sequence of elements in $\Sigma$ is also called a \defword{finite word}, often named $u, v, w, \dots$. The set of such words, including the \defword{empty word} $\epsilon$, is denoted by $\Sigma^*$. Likewise, $\Sigma^+$ is the set of non-empty words. Infinite sequences over $\Sigma$ are called \defword{infinite words}, often named $\alpha, \beta$. The set of such infinite words is denoted by $\Sigma^\omega$.
 
@@ -159,6 +159,8 @@ The word $w_3 := ba \in \Sigma^*$ has no run at all in $\A_1$ and $\A_2$. This d
 We can see that all automata $\A_1$, $\A_2$ and $\A_3$ accept exactly the same words, i.e. the same language. In that sense, they are equivalent.
 
 Informally, they all accept the language of words which start with $a$ and end with $bb$.
+
+A representing regular expression is $a(a+b)^*bb$.
 \end{simpleexample}
 
 The class of $*$-languages accepted by a NFA is called $\Lang^*(\text{NFA})$. Likewise, $\Lang^*(\text{DFA})$ is the set of $*$-languages accepted by a DFA. A basic result (see for example \cite{FinAutLogR109} or \cite{InfWordsR110}) is
