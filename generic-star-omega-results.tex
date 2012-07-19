@@ -304,7 +304,8 @@ Let $A,B \in \Lang$. Then we have $\ext(A\cup B) = \ext(A) \cup \ext(B)$ and $\e
 We present some common examples which would separate $\ext\cup\dext \Lang$ from $\BC \ext \Lang$ and similarily $\lim\cup\dlim \Lang$ from $\BC \lim \Lang$.
 
 \begin{example}
-Let $\Set{a,b} \subseteq \Sigma$. Define $L_a := \Sigma^*a$, $L_b := \Sigma^*b$. Let $L_a,L_b \in \Lang$. Let $\Lang$ be closed under negation. Then
+\label{gen:example:extBCextSeparate}
+Let $\Set{a,b,c} \subseteq \Sigma$. Define $L_a := \Sigma^*a$, $L_b := \Sigma^*b$. Let $L_a,L_b \in \Lang$. Let $\Lang$ be closed under negation. Then
 \[ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang , \]
 \[ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
 \begin{proof}
@@ -390,6 +391,8 @@ The lemma could be generalized even more by using a generic $M$-non-invariant la
 \begin{mydef}
 The $L_a \in \Lang$ from \cref{gen:extInBCext}, i.e. $\Set{b,c}$-invariant with non-invariant alphabet set $\Set{a}$, is called \defword{$\Lang$-$\ext$-$\dext$-separating} if $\ext L_a \not\in \dext \Langreg$. $L_a$ is called \defword{$\Lang$-$\lim$-$\dlim$-separating} if $\lim L_a \not\in \dlim \Langreg$.
 \end{mydef}
+
+Note that \cref{gen:extInBCext} required the alphabet $\Sigma$ to have at least 3 symbols. The proof doesn't work if it has only two symbols. Consider the \cref{gen:example:extBCextSeparate} with $L_a := \Sigma^*a$, $L_b := \Sigma^*b$. If we only have $\Sigma=\Set{a,b}$, we would have $-\ext L_b = a^\omega \subseteq \ext L_a$. I.e. we would not get the separation in this case.
 
 \
 
