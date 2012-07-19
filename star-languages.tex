@@ -334,7 +334,8 @@ I.e. we also have
 
 \label{lang:posPT}
 \defword{Positive piece-wise testable languages} are defined as
-\[ \Lang(\mathtext{pos-PT}) := \operatorname{pos-BC} \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} . \]
+\[ \Lang(\posPT) := \posBC \bigcup_{n\in\N_0,a_i \in \Sigma} \Set{\Sigma^* a_1 \Sigma^* a_2 \Sigma^* \cdots\Sigma^* a_n \Sigma^*} , \]
+where $\posBC$ is defined like $\BC$ except the negation.
 
 For positive piece-wise testable (pos-PT) languages, we get the same result on the $\BC \ext$ and $\BC \lim$ relation.
 %\subsection{positive piece-wise testable}
@@ -344,7 +345,7 @@ For positive piece-wise testable (pos-PT) languages, we get the same result on t
 %S101:
 \begin{theorem}
 \label{thm.ext.lim.posPT}
-\[ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) \]
+\[ \BC \ext \Lang^* (\posPT) = \BC \lim \Lang^* (\posPT) \]
 \begin{proof}
 $\subseteq$: Exactly like the proof for \cref{thm.PT} except that we leave out the negated part.
 
@@ -357,14 +358,14 @@ We note that we cannot make good reasonings about $\dext$ and $\dlim$ because we
 \[ \neg\lim \Lang := \Set{-\lim L}{L \in \Lang} . \]
 When using $\neg\ext$ and $\neg\lim$ instead of $\dext$ and $\dlim$, we get the extended result
 \[ \BC \ext \Lang(\mathtext{pos-PT}) =
-\lim \cap \neg\lim \Lang(\mathtext{pos-PT}) =
-\lim \cup \neg\lim \Lang(\mathtext{pos-PT}) =
-\BC \lim \Lang(\mathtext{pos-PT}) .\]
+\lim \cap \neg\lim \Lang(\posPT) =
+\lim \cup \neg\lim \Lang(\posPT) =
+\BC \lim \Lang(\posPT) .\]
 
-Also, the $L_a$ from above is also in $\Lang(\mathtext{pos-PT})$. When using $\neg\ext$, we don't need the negation closure to use \cref{gen:extInBCext}. Thus, we have
-\[ \ext \cap \neg\ext \Lang(\PT) \subsetneqq
-\ext \cup \neg\ext \Lang(\PT) \subsetneqq
-\BC \ext \Lang(\PT) . \]
+Also, the $L_a$ from above is also in $\Lang(\posPT)$. When using $\neg\ext$, we don't need the negation closure to use \cref{gen:extInBCext}. Thus, we have
+\[ \ext \cap \neg\ext \Lang(\posPT) \subsetneqq
+\ext \cup \neg\ext \Lang(\posPT) \subsetneqq
+\BC \ext \Lang(\posPT) . \]
 
 We also have a relation between pos-PT and PT.
 
