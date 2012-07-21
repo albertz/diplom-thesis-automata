@@ -87,6 +87,13 @@ We will formulate some properties of interest in a general form for a $*$-langua
 Let $L,A,B \in \Lang$. Then there are the following properties on $\Lang$:
 \begin{enumerate}
 \item[1.] \defword{Closure under suffix-independence}: $L \cdot \Sigma^* \in \Lang$
+
+We call $L$ \defword{suffix-independent} iff $L = L \Sigma^*$. However, we are mostly interested in the language class closure.
+
+For language classes defined via subsets of regular expressions, we often can directly check wether we have this closure property. It means that we can add "$\cdot\Sigma^*$" at the end of a regular expression and we will stay in the same language class. E.g. for the starfree languages (as defined in \cref{lang:starfree}), this is the case.
+
+However, this closure is a very strong property as we will see later (e.g. in \cref{gen:R-suffix-indep->single-state-loops}). An example of a simple language class which is not closed under suffix-independence is given in \cref{gen:example:non-suffixindep-closure}.
+
 \item[2a.] \defword{Closure under union}: $A \cup B \in \Lang$
 \item[2b.] \defword{Closure under intersection}: $A \cap B \in \Lang$
 \item[3.] \defword{Closure under complementation/negation}: $- L \in \Lang$
@@ -152,6 +159,7 @@ For $L \in \Lang$, we have $\ext L = L \Sigma^\omega = \lim (L \Sigma^*) = \dlim
 
 However, there is no equivalence. Closure under suffix-independence is a very strong property as can be seen in \cref{gen:R-suffix-indep->single-state-loops}.
 \begin{example}
+\label{gen:example:non-suffixindep-closure}
 There is a $*$-language class $\Lang$ with $\ext \Lang \subseteq \lim \Lang$ which is not closed under suffix-independence.
 \begin{proof}
 Consider the transition graph $\A = (Q,\Sigma,q_0,\delta)$:
