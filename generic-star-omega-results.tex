@@ -100,12 +100,12 @@ However, this closure is a very strong property as we will see later (e.g. in \c
 
 \item[4.]
 \defword{Closure under change of final states}:
+Let $\A_L = (Q,\Sigma,q_0,\delta,F_L)$ be the minimal deterministic automaton for $L$, i.e. with $L^*(\A_L) = L$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
+
 %S303.1:
-In some proofs, e.g. in \cref{gen:staiger-wagner} or \cref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the acceptance component. If there is a way to stay in the language class, the class is called to be \defword{closed under change of final states}. Formally:
+In some proofs, e.g. in \cref{gen:staiger-wagner} or \cref{gen:kleene-star}, we have an automaton based on some language of the language class and we do some modifications on it, e.g. we modify the acceptance component.
 
-There is a deterministic automaton $\A = (Q,\Sigma,q_0,\delta,F)$ with $L^*(\A) = L$ such that for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
-
-For $\Langreg$, this property holds obviously.
+For $\Langreg$, this closure property holds obviously. For other language classes, it is much less clear. However, we will see a whole class of language classes where this closure property holds, namely the congruence-based language classes as defined in \cref{gen:R}. Also, when we have some structure property on the transition graph independent from the final state set for all languages in a class, in many cases it holds that changing the final states keeps the structure property and thus we have the closure under change of final states. An example where we have this is the class of starfree languages (defined in \cref{lang:starfree}) where each minimal deterministic automata is counter-free (see \cref{lang:starfree:closurefinalstates}).
 
 %S303.1.a:
 Note that we cannot just take any automaton. For $\Lang^*(\mathtext{starfree})$ (see \cref{lang:starfree}) and the automaton below, it does not hold:
@@ -134,14 +134,11 @@ Note that we cannot just take any automaton. For $\Lang^*(\mathtext{starfree})$ 
   
 This is a deterministic automaton for the language $\Set{a} \in \Lang^*(\mathtext{starfree})$. If you make $B$ also a final state, we get the language $a + b(bb)^* \not\in \Lang^*(\mathtext{starfree})$.
 
-%S303.1: TODO: weniger ...
-
 \item[5.] \defword{Closure under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$. ($\sigma$ on words is defined canonically.)
 
 If $L = L_\sigma$ for all permutations $\sigma$, we call $L$ \defword{alphabet permutation invariant}.
 
 \end{enumerate}
-
 
 \subsection{Classification for arbitrary language classes}
 

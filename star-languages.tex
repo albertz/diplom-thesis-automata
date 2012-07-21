@@ -45,6 +45,16 @@ In \cite[Theorem 4.10]{LangAutLogicR102}, we can see that
 %In \cite[Theorem 3.2]{CombR107}, we see that
 %\[  \Lang^\omega(\Set{}) ... \]
 
+In \cite{CounterFreeMcNaughton}, the structure of automata accepting starfree languages was studied. The result was that a language $L$ is starfree exactly iff the minimal deterministic automaton for $L$ is counter-free as defined in the following.
+
+\begin{mydef}
+Let $\A = (Q,\Sigma,q_0,\delta,F)$ be an automaton. A state-sequence $s \in Q^{\ge 2}$ with $s[i] \ne s[j]$ for $i \ne j$ is a \defword{counter} iff there is a $w \in \Sigma^*$ such that
+\[ \delta(s[i], w) = s[i+1] \ \ \ \forall i < \left| s \right| , \]
+\[ \delta(s[\left| s \right|], w) = s[0] . \]
+
+If $\A$ has no counter, it is is \defword{counter-free}.
+\end{mydef}
+
 First, we start with some specific study on this language class.
 
 %S210:
@@ -107,14 +117,14 @@ $\Set{a} \in \Lang$. $a \Sigma^* \in \Lang$, thus $a\Sigma^\omega = \ext(\Set{a}
 $\Lang^*(\mathtext{starfree})$ is obviously \emph{closed under negation, suffix-independence, union and alphabet permutation}.
 
 \begin{lemma}
+\label{lang:starfree:closurefinalstates}
 $\Lang^*(\mathtext{starfree})$ is \emph{closed under change of final states}.
 \begin{proof}
-%For every starfree language, we 
-TODO...
+Let $L \in \Lang^*(\mathtext{starfree})$ and let $\A_L$ be the minimal deterministic automaton accepting $L$. Then $\A_L$ is counterfree. Any change of final states of $\A_L$ keeps the counterfree property.
 \end{proof}
 \end{lemma}
 
-$L_a := \Sigma^* a \in \Lang$ is a $\ext$-$\dext$-separating and $\lim$-$\dlim$-separating language.
+$L_a := \Sigma^* a \in \Lang$ is an $\ext$-$\dext$-separating and $\lim$-$\dlim$-separating language.
 
 Thus, with \cref{gen:main-theorem-inclusions}, for $\Lang := \Lang(\mathtext{starfree})$, we get
 \[ \ext \cap \dext \Lang \subsetneqq
