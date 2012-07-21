@@ -53,6 +53,8 @@ and we have the equalities
 \end{itemize}
 Note that $\A$ can be both deterministic or non-deterministic for this property (see \cref{gen:e-determinism}).
 
+In a similar way, the $\lim$ operator is equivalent to the Büchi acceptance condition on deterministic automata. Here the determinism matters --- non-deterministic Büchi automata are strictly more powerful. For the $\dlim$ operator, we can also introduce an equivalent automata acceptance condition: An automaton $\A = (Q,\Sigma,q_0,\Delta,F)$ \defword{co-Büchi-accepts} an infinite word $\alpha \in \Sigma^\omega$ iff there is a matching infinite run $\rho \in Q^\omega$ such that $\exists N \colon \forall n \ge N \colon \rho[n] \in F$.
+
 The relations between the E-acceptance / the $\ext$ operator or the A-acceptance / the $\dext$ operator with Büchi / $\lim$ or co-Büchi / $\dlim$ are inspired historically from \cite{Landweber69}. Landweber originally introduced the 1,1',2,2',3-acceptance conditions which are equivalent to the E,A,Büchi,co-Büchi and Muller acceptance conditions.
 
 \
