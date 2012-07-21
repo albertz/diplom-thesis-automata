@@ -530,6 +530,8 @@ and
 \BC \lim \Lang . \]
 
 % main
+\begin{samepage}
+\begin{mdframed}
 \begin{theorem}
 \label{gen:main-theorem-inclusions}
 Let $\Lang$ be closed under suffix-independence, negation, union, change of final states and alphabet permutation.
@@ -544,6 +546,9 @@ Then we have
 If there is a $\Lang$-$\ext$-$\dext$-separating language $L_a$, the inclusion in (1) and (2) are strict.
 
 If there is a $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusion in (4) and (5) are strict.
+\end{theorem}
+\end{mdframed}
+\end{samepage}
 
 \begin{proof}
 (1)-strictness follows with the existence of $L_a$. \\
@@ -552,7 +557,6 @@ If there is a $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusion i
 (4)-strictness follows with the existance of $L'_a$. \\
 (5)-strictness follows with \emph{closure under negation and alphabet permutation}, $L'_a$ and \cref{gen:extInBCext}.
 \end{proof}
-\end{theorem}
 
 Closure under suffix-independence is a very strong property, as can be seen in \cref{gen:R-suffix-indep->single-state-loops}. Note that we only needed this property in \cref{gen:main-theorem-inclusions} for the $\BC \ext \Lang = \lim \cap \dlim \Lang$ equality. However, without this equality, we don't have an easy connection between $\ext \Lang$ and $\lim \Lang$. We can have $\ext \Lang \supseteq \lim \Lang$ as can be seen in \cref{lang:finite} for $\Lang(\mathtext{finite})$. Or ...
 \cref{gen:example:ext<->lim}
