@@ -767,7 +767,9 @@ With this preparation, we get some obvious results:
 \label{gen:R:closurelemma}
 $\Lang(R)$ is closed under negation, union, intersection and change of final states.
 \begin{proof}
-This all follows directly from manipulations on final states of the canonical $R$-automata via negation, union, intersection or general change of final states.
+The closure under negation, union, intersection follows directly from negation, union and intersection of the final state set in $R$-automata.
+
+For any language $L \in \Lang(R)$, the minimal deterministic automaton $\A_L$ is a subset of an $R$-automaton. Thus, any change of final states can be transfered to the $R$-automaton and we stay in the language class. I.e. $\Lang(R)$ is closed under change of final states.
 \end{proof}
 \end{lemma}
 
