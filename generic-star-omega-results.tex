@@ -1372,12 +1372,18 @@ Analogously to $\Lang(R)$, for a congruence relation $\tilde R \subseteq \Sigma^
 \[ \Lang^\omega(\tilde R) := \Set{\tilde L \subseteq \Sigma^\omega}{\text{$\tilde L$ is finite union of $\tilde R$-equivalence-classes}} . \]
 \end{mydef}
 
-For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$.
+For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. E.g. we can use the $\dlim$ or $\lim$ operators on $R$, i.e.
+\[ (\alpha,\beta) \in \dlim R \ \ \ \Leftrightarrow \ \ \ \exists N \colon \forall n \ge N \colon (\alpha[0,n],\beta[0,n]) \in R \]
+and
+\[ (\alpha,\beta) \in \lim R \ \ \ \Leftrightarrow \ \ \ \exists^\infty n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
+Considering $\ext R$ is not really interesting because $(\epsilon,\epsilon) \in R$, thus $\ext R = (\Sigma \times \Sigma)^\omega$. $\dext R$ basically means that two infinite words are $\dext(R)$-equivalent if they have exactly the same run in the $R$-automata.
 
-E.g., consider the $n$-locally testable languages $\Lang(\LT_n)$ (defined in \cref{lang:LT}). Two words $u,v \in \Sigma^*$ are $n$-locally testable equivalent if they have the same left-factors of len $< n$, the same factors of len $n$ and the same right factors of len $< n$. If we leave away the right factors, we can apply this definition also for words in $\Sigma^\omega$.
+Anoter extension of interest might be:
+\[ (\alpha, \beta) \in \Sigma^\omega \times \Sigma^\omega , \exists^\infty(n,m)\in\N\colon(\alpha[0,n],\beta[0,m])\in R \]
 
-For now, we mainly study $\dext R$, i.e.
-\[ (\alpha,\beta) \in \dext R \ \ \ \Leftrightarrow \ \ \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
+E.g., consider the $n$-locally testable languages $\Lang(\LT_n)$ (defined in \cref{lang:LT}). Two words $u,v \in \Sigma^*$ are $n$-locally testable equivalent if they have the same left-factors of len $< n$, the same factors of len $n$ and the same right factors of len $< n$. If we leave away the right factors, we can apply this definition also for words in $\Sigma^\omega$. Call this the $\mathtext{prefix-LT}_n$ congruence relation.
+
+
 
 
 \begin{lemma}
