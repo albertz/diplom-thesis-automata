@@ -165,9 +165,9 @@ A representing regular expression is $a(a+b)^*bb$.
 
 The class of $*$-languages accepted by a NFA is called $\Lang^*(\text{NFA})$. Likewise, $\Lang^*(\text{DFA})$ is the set of $*$-languages accepted by a DFA. A basic result (see for example \cite{FinAutLogR109} or \cite{InfWordsR110}) is
 \[ \Lang^*(\text{DFA}) = \Lang^*(\text{NFA}) = \Lang^*(\text{RE}) . \]
-Historically, S.C. Kleene proved in \cite{Kleene56} that $\Lang^*(\text{DFA}) = \Lang^*(\text{RE}) $ and it was shown in \cite{FinAutRabin59} by M. O. Rabin and D. Scott that $\Lang^*(\text{DFA}) = \Lang^*(\text{NFA})$.
-
 This class of $*$-languages is called the class of \defword{regular $*$-languages}. We call it $\Langreg$ from now on.
+
+Historically, S.C. Kleene proved in \cite{Kleene56} that $\Lang^*(\text{DFA}) = \Lang^*(\text{RE}) $ and it was shown in \cite{FinAutRabin59} by M. O. Rabin and D. Scott that $\Lang^*(\text{DFA}) = \Lang^*(\text{NFA})$. They also gave an effective procedure to turn a NFA into a DFA, namely the well-known powerset construction. In \cite{DFAMinMoore56}, it was shown that there is an (up to isomorphism) minimal DFA for a language and an algorithm to construct it. This property is nice and powerful because we have a canonical minimal DFA for a given regular language. As we mostly deal with subsets of $\Langreg$ in the rest of this thesis, this minimal DFA is useful in some proofs or definitions as we will see later.
 
 
 
