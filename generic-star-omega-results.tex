@@ -23,35 +23,66 @@ Let $L,A,B \in \Lang$.
 \item $\ext L = \dlim(L \cdot \Sigma^*)$ %S303, S305.4
 \item $- \lim(-L) = \dlim(L)$
 \item $\dlim L \subseteq \lim L$
-\item $\lim A \cup \lim B = \lim(A \cup B)$ %S305.4
-\item $\dlim A \cup \dlim B \subseteq \dlim(A \cup B)$ \newline %S305.4
+\item $\ext A \cup \ext B = \ext(A \cup B)$
+\item $\dext A \cup \dext B \subseteq \dext(A \cup B)$ \\
 There is no equality, i.e. `$\supseteq$` does not hold in general.
+\item $\ext A \cap \ext B \supseteq \ext (A \cap B)$ \\
+There is no equality, i.e. `$\subseteq$` does not hold in general.
+\item $\lim A \cup \lim B = \lim(A \cup B)$ %S305.4
+\item $\dlim A \cup \dlim B \subseteq \dlim(A \cup B)$ \\ %S305.4
+There is no equality, i.e. `$\supseteq$` does not hold in general.
+\item $\lim A \cap \lim B \supseteq \lim(A \cap B)$ \\
+There is no equality, i.e. `$\subseteq$` does not hold in general.
 \end{enumerate}
 \begin{proof}
 \begin{enumerate}
 \item[1.-5.] They all follow directly from the definition.
-\item[6.] %S305.4
+\setcounter{enumi}{5}
+\item
+\begin{align*}
+& \alpha \in \ext A \cup \ext B \\
+\Leftrightarrow \ & \exists n \colon \alpha[0,n] \in A \ \vee \ \exists n \colon \alpha[0,n] \in B \\
+\Leftrightarrow \ & \exists n \colon \alpha[0,n] \in A \cup B \\
+\Leftrightarrow \ & \alpha \in \ext A \cup B
+\end{align*}
+\item
+\begin{align*}
+& \alpha \in \dext A \cup \dext B \\
+\Leftrightarrow \ & \forall n \colon \alpha[0,n] \in A \ \vee \ 
+\forall n \colon \alpha[0,n] \in B \\
+\Rightarrow \ & \forall n \colon \alpha[0,n] \in A \cup B \\
+\Leftrightarrow \ & \alpha \in \dext (A \cup B)
+\end{align*}
+
+Consider the languages $A := (aa)^*$, $B := (aa)^*a$. Then,
+\[ \dext(A \cup B) = \dext(a^*) = a^\omega \ne \emptyset = \emptyset \cup \emptyset = \dext A \cup \dext B . \]
+\item That is just (\addtocounter{enumi}{-1}\arabic{enumi}\addtocounter{enumi}{+1}) negated.
+\item %S305.4
 \begin{align*}
 & \alpha \in \lim A \cup \lim B \\
 \Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \ \vee \ \existsinf n \colon \alpha[0,n] \in B \\
 \Leftrightarrow \ & \existsinf n \colon \alpha[0,n] \in A \cup B \\
 \Leftrightarrow \ & \alpha \in \lim A \cup B
 \end{align*}
-\item[7.] %S305.4
+
+\item %S305.4
 \begin{align*}
 & \alpha \in \dlim A \cup \dlim B \\
 \Leftrightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \ \vee \ 
 \exists N \colon \forall n \ge N \colon \alpha[0,n] \in B \\
-\Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B
+\Rightarrow \ & \exists N \colon \forall n \ge N \colon \alpha[0,n] \in A \cup B \\
+\Leftrightarrow \ & \alpha \in \dlim (A \cup B)
 \end{align*}
 
 Consider the languages $A := (aa)^*$, $B := (aa)^*a$. Then,
 \[ \dlim(A \cup B) = \dlim(a^*) = a^\omega \ne \emptyset = \emptyset \cup \emptyset = \dlim A \cup \dlim B . \]
+
+\item That is just (\addtocounter{enumi}{-1}\arabic{enumi}\addtocounter{enumi}{+1}) negated.
 \end{enumerate}
 \end{proof}
 \end{lemma}
 
-For $\omega$ automata, we already know that non-determinism can be more powerful than determinism (see \cref{reg-omega-lang}): The class of non-deterministic Büchi automata can accept clearly more languages than the class of determinstic Büchi automata. E.g. $L^\omega := (a+b)^* b^\omega \in \LangOreg$ cannot be recognised by deterministic Büchi automata, i.e. $L^\omega \not\in \lim \Langreg$.
+For $\omega$ automata, we already know that non-determinism can be more powerful than determinism (see \cref{reg-omega-lang}): The class of non-deterministic Büchi automata can accept clearly more languages than the class of determinstic Büchi automata. E.g. $L_\omega := (a+b)^* b^\omega \in \LangOreg$ cannot be recognised by deterministic Büchi automata, i.e. $L_\omega \not\in \lim \Langreg$.
 
 Luckily, for E- and A-acceptance, this is not the case as we see below. This matches the intuition that E/A-acceptance doesn't really tell something about infinitary properties of words but Büchi/Muller does. And when talking about finite words, we already know that non-deterministic and deterministic automata are equaly powerful (see \cref{intro:reglang}).
 
@@ -294,17 +325,18 @@ Because of the negation closure, we have
 
 %\subsection{union, intersection}
 %S303:
-\begin{lemma}
-\begin{itemize}
-\item
-$\Lang$ closed under union $\Rightarrow \bigcup \ext \Lang \subseteq \ext \Lang$.
-\item
-$\Lang$ closed under intersection $\Rightarrow \bigcap \ext \Lang \subseteq \ext \Lang$.
-\end{itemize}
-\begin{proof}
-Let $A,B \in \Lang$. Then we have $\ext(A\cup B) = \ext(A) \cup \ext(B)$ and $\ext(A\cap B) = \ext(A) \cap \ext(B)$.
-\end{proof}
-\end{lemma}
+%\begin{lemma}
+%\begin{itemize}
+%\item
+%$\Lang$ closed under union $\Rightarrow \bigcup \ext \Lang \subseteq \ext \Lang$.
+%\item
+%$\Lang$ closed under intersection $\Rightarrow \bigcap \ext \Lang \subseteq \ext \Lang$.
+%\end{itemize}
+%\begin{proof}
+%Let $A,B \in \Lang$. Then we have $\ext(A\cup B) = \ext(A) \cup \ext(B)$.
+% and $\ext(A\cap B) = \ext(A) \cap \ext(B)$. % no, we don't have that...
+%\end{proof}
+%\end{lemma}
 
 We present some common examples which would separate $\ext\cup\dext \Lang$ from $\BC \ext \Lang$ and similarily $\lim\cup\dlim \Lang$ from $\BC \lim \Lang$.
 
@@ -752,14 +784,6 @@ $R$-Muller-automata and
 \[ \Lang^\omega_{\text{Muller}} (\A_R) := \Set{L^\omega_\text{Muller}(\A_R(\F))}{\F \subseteq 2^{S_R}} . \]
 \end{mydef}
 
-%S307.1
-\begin{mydef}
-Analogously to $\Lang(R)$, for a congruence relation $\tilde R \subseteq \Sigma^\omega \times \Sigma^\omega$, define the $\omega$-language-class
-\[ \Lang^\omega(\tilde R) := \Set{\tilde L \subseteq \Sigma^\omega}{\text{$\tilde L$ is finite union of $\tilde R$-equivalence-classes}} . \]
-\end{mydef}
-
-For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$. For now, we mainly study $\dext R$, i.e.
-\[ (\alpha,\beta) \in \dext R \ \ \ \Leftrightarrow \ \ \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
 
 \subsubsection{Classification}
 
@@ -872,17 +896,6 @@ Any $L^\omega \in \BC \lim \Lang(R)$ can be described by $\BC 2^{S_R}$. $2^{2^{S
 \end{proof}
 \end{lemma}
 
-\begin{lemma}
-%\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
-%S307.4,S307.5
-\label{gen:Romega=BCextR}
-\[ \Lang^\omega(\dext R) = \BC \ext \Lang(R) \]
-\begin{proof}
-We want to compare the equivalence classes $\Sigma^\omega / \dext(R)$ with $\Sigma^* / R$.
-
-TODO...
-\end{proof}
-\end{lemma}
 
 When we compare the outer $\ext \Langreg$ (inside $\BC \lim \Langreg$, i.e. all regular $\omega$-languages) which is clearly a superset of $\ext \Lang$ and the inner whole class $\BC \lim \Lang$, a natural question is wether $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$. This is the case for $\Lang(R)$ as shown below.
 
@@ -1349,3 +1362,34 @@ Thus, every loop has only a single state.
 \end{lemma}
 
 Thus, if $\Lang(R)$ is closed under suffix-independence, we can directly apply \cref{gen:R-staiger-wagner} and we get $\lim \cap \dlim \Lang(R) = \BC \ext \Lang(R)$. However, as we have also seen in \cref{gen:R-suffix-indep->single-state-loops}, this seems like a very strong propery.
+
+
+\subsubsection{Congruence relations on $\Sigma^\omega$}
+
+%S307.1
+\begin{mydef}
+Analogously to $\Lang(R)$, for a congruence relation $\tilde R \subseteq \Sigma^\omega \times \Sigma^\omega$, define the $\omega$-language-class
+\[ \Lang^\omega(\tilde R) := \Set{\tilde L \subseteq \Sigma^\omega}{\text{$\tilde L$ is finite union of $\tilde R$-equivalence-classes}} . \]
+\end{mydef}
+
+For a relation $R$ on $\Sigma^*$, there are various ways to construct a relation on $\Sigma^\omega$.
+
+E.g., consider the $n$-locally testable languages $\Lang(\LT_n)$ (defined in \cref{lang:LT}). Two words $u,v \in \Sigma^*$ are $n$-locally testable equivalent if they have the same left-factors of len $< n$, the same factors of len $n$ and the same right factors of len $< n$. If we leave away the right factors, we can apply this definition also for words in $\Sigma^\omega$.
+
+For now, we mainly study $\dext R$, i.e.
+\[ (\alpha,\beta) \in \dext R \ \ \ \Leftrightarrow \ \ \ \forall n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
+
+
+\begin{lemma}
+%\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
+%S307.4,S307.5
+\label{gen:Romega=BCextR}
+\[ \Lang^\omega(\dext R) = \BC \ext \Lang(R) \]
+\begin{proof}
+We want to compare the equivalence classes $\Sigma^\omega / \dext(R)$ with $\Sigma^* / R$.
+
+TODO...
+\end{proof}
+\end{lemma}
+
+
