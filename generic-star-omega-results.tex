@@ -734,21 +734,23 @@ Given the \emph{closure under change of final states}, we have $L_E \in \Lang$. 
 %S306.3:
 \begin{lemma}
 Let $\Lang$ be closed under change of final states. Then
-\[ \BC \lim \Lang \subseteq \Kleene \Lang . \]
+\[ \lim \Lang \subseteq \Kleene \Lang . \]
 \begin{proof}
-Let $\A$ be a deterministic Büchi automaton for some language $\tilde L = L^\omega_{\text{Büchi}}(\A) \in \Lang$ with final states $F$.
+Let $\A$ be a minimal deterministic automaton with final states $F$ such that $L^*(\A) \in \Lang$. Define $\tilde L := L^\omega_{\text{Büchi}}(\A)$.
 
-For all finite states $q \in F$: If $q$ is not part of a strongly connected component (SCC), we can ignore it. Let $S$ be the SCC where $q \in S$. Then the set of all $\alpha \in \Sigma^\omega$ which are infinitely often in $q$ can be described as $U_q \cdot V_q^\omega$, where $U_q$ is the set of words so that we arrive in $q$ and $V_q$ is the set of words so that we get from $q$ to $q$. Both sets are obviously regular and because of the \emph{closure of change of final states}, we have $U_q V_q^* \in \Lang$.
+For all finite states $q \in F$: If $q$ is not part of a strongly connected component (SCC), we can ignore it. Let $S$ be the SCC where $q \in S$. Then the set of all $\alpha \in \Sigma^\omega$ which are infinitely often in $q$ can be described as $U_q \cdot V_q^\omega$, where $U_q$ is the set of words so that we arrive in $q$ and $V_q$ is the set of words so that we get from $q$ to $q$. Both sets are obviously regular and because of the \emph{closure of change of final states} (by letting $q$ be the only final state), we have $U_q V_q^* \in \Lang$.
 
 Thus,
 \[ \tilde L = L^\omega_{\text{Büchi}}(\A) = \bigcup_{q \in F} U_q V_q^\omega . \]
-
-Obviously, the Kleene-Closure is closed under union.
-
-TODO: Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
+%
+%Obviously, $\Kleene \Lang$ is closed under union.
+%
+%Show that Kleene-Closure is closed under negation. (S306.5) (Follows with non-det Büchi complementation but a more generic proof might be useful.)
+%Let's show that Kleene-Closure is closed under negation: Let $\tilde L \in \Kleene \Lang$. With \cref{gen:kleene-star}, we have that $\tilde L \in \BC \lim \Lang$.
 \end{proof}
 \end{lemma}
 
+Open at this point is the stronger inclusion $\BC \lim \Lang \subseteq \Kleene \Lang$.
 
 \subsection{Congruence based language classes}
 \label{gen:R}
