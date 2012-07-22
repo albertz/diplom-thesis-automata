@@ -838,7 +838,6 @@ In the rest of this section, we show some equalities:
 \item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\cref{gen:lang_omega_e})
 \item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\cref{gen:lang_omega_buechi})
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\cref{gen:lang_omega_muller})
-\item $\Lang^\omega(\dext R) = \BC \ext \Lang(R)$ (\cref{gen:Romega=BCextR})
 \item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
 \end{itemize}
 
@@ -1378,24 +1377,44 @@ and
 \[ (\alpha,\beta) \in \lim R \ \ \ \Leftrightarrow \ \ \ \exists^\infty n \colon (\alpha[0,n],\beta[0,n]) \in R . \]
 Considering $\ext R$ is not really interesting because $(\epsilon,\epsilon) \in R$, thus $\ext R = (\Sigma \times \Sigma)^\omega$. $\dext R$ basically means that two infinite words are $\dext(R)$-equivalent if they have exactly the same run in the $R$-automata.
 
-Anoter extension of interest might be:
-\[ (\alpha, \beta) \in \Sigma^\omega \times \Sigma^\omega , \exists^\infty(n,m)\in\N\colon(\alpha[0,n],\beta[0,m])\in R \]
+Other extensions of interest might be
+\[ (\alpha,\beta) \in R_{\operatorname{inf-sub}} \ \ \ :\Leftrightarrow \ \ \ \exists^\infty n \colon \exists^\infty m \ge n \colon (\alpha[0,n],\beta[0,m]) \in R \]
+or
+\begin{alignat*}{3}
+(\alpha,\beta) \in R_{\operatorname{inf}} \ \ \ & :\Leftrightarrow \ \ \ && \Set{\left<w\right>_R}{w \in \Sigma^*, \exists^\infty n \colon (w,\alpha[0,n]) \in R} \\
+&& = & \Set{\left<w\right>_R}{w \in \Sigma^*, \exists^\infty n \colon (w,\beta[0,n]) \in R} .
+\end{alignat*}
+In other words, $(\alpha,\beta) \in R_{\operatorname{inf}}$ if the infinitely often visited states by $\alpha$ and $\beta$ in the $R$-automaton are the same.
 
-E.g., consider the $n$-locally testable languages $\Lang(\LT_n)$ (defined in \cref{lang:LT}). Two words $u,v \in \Sigma^*$ are $n$-locally testable equivalent if they have the same left-factors of len $< n$, the same factors of len $n$ and the same right factors of len $< n$. If we leave away the right factors, we can apply this definition also for words in $\Sigma^\omega$. Call this the $\mathtext{prefix-LT}_n$ congruence relation.
+Thus, we have
+\[ \Lang^\omega(R_{\operatorname{inf}}) = \BC \lim \Lang(R) . \]
 
+%Taken even further:
+Let's consider the $n$-locally testable languages $\Lang(\LT_n)$ (defined in \cref{lang:LT}). Two words $u,v \in \Sigma^*$ are $n$-locally testable equivalent if they have the same left-factors of len $< n$, the same factors of len $n$ and the same right factors of len $< n$. If we leave away the right factors, we can apply this definition also for words in $\Sigma^\omega$. Call this the $\mathtext{prefix-LT}_n$ congruence relation.
 
+Inspired by this, we introduce another extension:
+\begin{alignat*}{3}
+(\alpha,\beta) \in R_{\operatorname{ex}} \ \ \ & :\Leftrightarrow \ \ \ \exists n \colon \forall m \ge n \colon && \exists v \in \Sigma^* \colon (\alpha[0,n] \cdot v,\beta[0,m]) \in R , \\
+&&  & \exists w \in \Sigma^* \colon (\beta[0,m] \cdot w,\alpha[0,n]) \in R .
+\end{alignat*}
+In other words, $\alpha$ and $\beta$ eventually end up in the same SCC in the $R$-automata.
 
+Then we have
+\[ \Lang^\omega(\mathtext{prefix-LT}_n) = \Lang^\omega((\LT_n)_{\operatorname{ex}}) . \]
 
-\begin{lemma}
+Many relations can be studied here, such as any of the $\omega$-$R$ extensions and their related $\omega$-language class, e.g.
+\[ \Lang^\omega(\lim R), \; \Lang^\omega(\dlim R), \; \Lang^\omega(R_{\operatorname{inf}}), \ \Lang^\omega(R_{\operatorname{ex}}), \; \dots \]
+with the usual $*$-language class extensions as studied in the rest of this chapter, e.g.
+\[ \BC \ext \Lang(R), \; \BC \lim \Lang(R) . \]
+We leave this open for now.
+
+%\begin{lemma}
 %\subsection{$\Lang^\omega(R^\omega) = \BC \ext \Lang(R)$}
 %S307.4,S307.5
-\label{gen:Romega=BCextR}
-\[ \Lang^\omega(\dext R) = \BC \ext \Lang(R) \]
-\begin{proof}
-We want to compare the equivalence classes $\Sigma^\omega / \dext(R)$ with $\Sigma^* / R$.
-
-TODO...
-\end{proof}
-\end{lemma}
-
+%\[ \Lang^\omega(\dext R) = \BC \ext \Lang(R) \]
+%\begin{proof}
+%We want to compare the equivalence classes $\Sigma^\omega / \dext(R)$ with $\Sigma^* / R$.
+%TODO...
+%\end{proof}
+%\end{lemma}
 
