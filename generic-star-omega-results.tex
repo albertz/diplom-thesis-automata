@@ -507,7 +507,7 @@ Then we have
 
 Thus,
 \[ \tilde L \in \BC \ext \Langreg . \]
-Given the \emph{closure under change of final states}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$, i.e.
+We can minimize the automaton $\Ax$ and keep the proven properties. Then, given the \emph{closure under change of final states}, we have $L^*(\A^E_S), L^*(\A^E_{S_+}) \in \Lang$, i.e.
 \[ \tilde L \in \BC \ext \Lang . \]
 \end{proof}
 \end{theorem}
@@ -532,10 +532,13 @@ $\tilde L_a \cup \tilde L_b = \lim L_{a1} \cup \lim L_{b1} = \lim L_{a1} \cup L_
 The $\dlim\Lang$ case is harder.
 %S305.5: language theoretical proof: TODO
 %S305.6:
-Let $\A_a$, $\A_b$ be deterministic automaton, so that $L^\omega_{\text{Büchi}}(\A_a) = L^\omega_{\text{co-Büchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{Büchi}}(\A_b) = L^\omega_{\text{co-Büchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$. Then we have $L^\omega_{\text{Büchi}}(\Ax) = L^\omega_{\text{co-Büchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
+Let $\A_a$, $\A_b$ be minimal deterministic automaton, so that $L^\omega_{\text{Büchi}}(\A_a) = L^\omega_{\text{co-Büchi}}(\A_a) = \tilde L_a$, $L^\omega_{\text{Büchi}}(\A_b) = L^\omega_{\text{co-Büchi}}(\A_b) = \tilde L_b$. Look at the product automaton $\A_a \times \A_b =: \Ax$ which accepts if either $\A_a$ or $\A_b$ accepts.
+Then we have $L^\omega_{\text{Büchi}}(\Ax) = L^\omega_{\text{co-Büchi}}(\Ax) = \tilde L_a \cup \tilde L_b$.
 
 Thus,
 \[ \tilde L_a \cup \tilde L_b \in \dlim \Langreg . \]
+
+%Because of the closure under change of final states, we can assume that $L^*(\A_a),L^*(\A_b) \in \Lang$. Then, also $\Ax$ is minimal and we also have $L^*(\Ax) \in \Lang$.
 
 Again, given the \emph{closure under change of final states}, we have $L^*(\Ax) \in \Lang$.
 \end{enumerate}
