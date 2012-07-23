@@ -663,6 +663,7 @@ In this section, we have seen some generic cases where we get the expected inclu
 
 
 \subsection{Kleene closure}
+\label{gen:section:kleene}
 
 The $\Kleene$ language class operator is a bit disconnected from the study so far on $\ext$ and $\lim$. For the class of regular $*$-languages, we have the equality
 \[ \Kleene \Langreg = \BC \lim \Langreg \]
@@ -670,10 +671,12 @@ as it was shown in \cref{reg-omega-lang}.
 
 We will now study this relation for arbitrary language classes $\Lang$.
 
+We will see that we need a somewhat stronger closure property than what we had earlier.
+
 %\subsection{Kleene-star $= \BC \lim$}
 \begin{lemma}
 \label{gen:kleene-star}
-Let $\Lang$ be closed under change of final states. Then
+Let $\Lang$ be closed under change of final states for all deterministic simplified automata. Then
 \[ \Kleene \Lang \subseteq \BC \lim \Lang . \]
 
 \begin{proof}
@@ -769,8 +772,8 @@ When we mark the final states as in the original non-deterministic automata, no 
 Together, we get $UV^\omega$, i.e.:
 \[ \lim UV^* \cap \dlim L_E = UV^\omega \]
 
-Given the \emph{closure under change of final states}, we have $L_E \in \Lang$. Then, it follows
-\[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \in \Lang} = \Kleene \Lang \subseteq \BC \lim \Lang . \]
+Given the \emph{closure under change of final states for all deterministic simplified automata}, we have $L_E \in \Lang$. Then, it follows
+\[ \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i,V_i \subseteq \Sigma^*, U_i\cdot V_i^* \in \Lang} = \Kleene \Lang \subseteq \BC \lim \Lang . \]
 \end{proof}
 \end{lemma}
 
@@ -796,6 +799,9 @@ Thus,
 \end{lemma}
 
 Open at this point is the stronger inclusion $\BC \lim \Lang \subseteq \Kleene \Lang$.
+
+We see that the relation between $\BC \lim \Lang$ and $\Kleene \Lang$ is not so obvious for arbritary $*$-language classes.
+
 
 \subsection{Congruence based language classes}
 \label{gen:R}
