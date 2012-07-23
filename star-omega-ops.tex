@@ -77,31 +77,32 @@ Considering $\mathcal{R} := \Langreg$, we get the following language diagram:
 % \node at (0,0) {\textbf{(0,0)}};
 
 %% Horizontal bar
-\draw[very thick] (10,0) -- (-10,0);
+\draw[very thick] (8.5,0) -- (-8.5,0);
 
 % BC lim
-\draw (-9.5,0) parabola bend (0,11) (9.5,0);
-\node at (0,9) {BC lim};
+\draw (-8,0) -- (-8,9);
+\draw (-8,9) .. controls (-8,15) and (8,15) .. (8,9);
+\draw (8,0) -- (8,9);
+\node at (0,10) {BC lim};
 
 % lim
-\draw (-9,0) parabola bend (-3,8) (9,0);
-\node[rotate=20] at (-3,7) {lim};
+\draw (-8,8) parabola bend (-3,8.5) (8,5);
+\node[rotate=10] at (-5,7.7) {lim};
 
 % dual-lim
-\draw (-9,0) parabola bend (3,8) (9,0);
-\node[rotate=-20] at (3,7) {dual-lim};
+\draw (-8,5) parabola bend (3,8.5) (8,8);
+\node[rotate=-10] at (5,7.7) {dual-lim};
 
 % BC ext
-%\draw (-6.5,0) parabola bend (0,6) (6.5,0);
-\node at (0,5) {BC ext};
+\node at (0,6) {BC ext};
 
 % ext
-\draw (-6,0) parabola bend (-2,4) (6,0);
-\node[rotate=20] at (-2,3.5) {ext};
+\draw (-8,4) parabola bend (-2,4.5) (8,1);
+\node[rotate=10] at (-5,3.7) {ext};
 
 % dual-ext
-\draw (-6,0) parabola bend (2,4) (6,0);
-\node[rotate=-20] at (2,3.5) {dual-ext};
+\draw (-8,1) parabola bend (2,4.5) (8,4);
+\node[rotate=-10] at (5,3.7) {dual-ext};
 
 \end{tikzpicture}
 
