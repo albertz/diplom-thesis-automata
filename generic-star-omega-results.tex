@@ -704,7 +704,7 @@ Then we have $L^\omega_{\text{Büchi}}(\A) = U \cdot V^\omega$.
 
 Let us construct deterministic automata for $\A$ so that we can formulate 'V will be visited and not be left anymore' and 'finite states of the V-related automaton will be visited infinitely often' (or '$UV^*$ will be visited infinitely often').
 
-In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-determinstic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set.
+In a constructed automaton, we must be able to tell wether we are in $U$ or we deterministically have been in $U$ the previous state. In a state power set construction, we can tell wether we are deterministically in $U$ or not. If we are non-deterministic and we may be in both $U$ or $V$ and we get an input symbol which determines that we have been in $U$, we might not be able to tell from the following power set.
 
 \textbf{Example}:
 
@@ -800,7 +800,7 @@ Thus,
 
 Open at this point is the stronger inclusion $\BC \lim \Lang \subseteq \Kleene \Lang$.
 
-We see that the relation between $\BC \lim \Lang$ and $\Kleene \Lang$ is not so obvious for arbritary $*$-language classes.
+We see that the relation between $\BC \lim \Lang$ and $\Kleene \Lang$ is not so obvious for arbitrary $*$-language classes.
 
 
 \subsection{Congruence based language classes}
@@ -814,7 +814,7 @@ We define $\Lang(R)$ for an equivalence relation $R\subseteq\Sigma^* \times \Sig
 \[ \Lang^*(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
 \end{mydef}
 
-Examples of such language classes are $n$-locally testable ($\LT_n$, \cref{lang:LT}), $k,r$-locally threshold testable ($\LTT_r^k$, \cref{lang:LTT}) or $n$-piece-wise testable ($\PT_n$, \cref{lang:PT}) languages. The exact definition is given in their related section. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
+Examples of such language classes are $n$-locally testable ($\LT_n$, \cref{lang:LT}), $k,r$-locally threshold testable ($\LTT_r^k$, \cref{lang:LTT}) or $n$-piecewise testable ($\PT_n$, \cref{lang:PT}) languages. The exact definition is given in their related section. At their definition, the word-relation basically tells wether a local test / piece-wise test can see a difference between two words.
 
 %S307
 If a language class $\Lang(R)$ is defined as finite union of equivalence classes of a relation $R \subseteq \Sigma^* \times \Sigma^*$ and
@@ -826,7 +826,7 @@ then we can construct a canonical deterministic automaton $\A_R$ which has $S_R 
 
 The $\LT_n$, $\LTT^k_r$ and $\PT_n$ language classes have the above properties and thus such related canonical automaton.
 
-The set of all such $R$-automata, varying in the final state set, is isomprophic to $\Lang(R)$. We have
+The set of all such $R$-automata, varying in the final state set, is isomorphic to $\Lang(R)$. We have
 \[ \Lang^*(R) = \Set{L^*(\A_R(F))}{F \subseteq S_R} =: \Lang^*(\A_R) . \]
 
 Obviously, by construction, such language classes are all \emph{closed under change of final states}. Obviously, $\Lang^*(R)$ is also closed under \emph{negation, union and intersection} (via negating, merging or intersecting the final state set of related automata). \emph{Closure under suffix-independence} doesn't directly follow from this --- we see some counter example later.
@@ -850,7 +850,7 @@ $\Lang(R)$ is closed under negation, union, intersection and change of final sta
 \begin{proof}
 The closure under negation, union, intersection follows directly from negation, union and intersection of the final state set in $R$-automata.
 
-For any language $L \in \Lang(R)$, the minimal deterministic automaton $\A_L$ is a subset of an $R$-automaton. Thus, any change of final states can be transfered to the $R$-automaton and we stay in the language class. I.e. $\Lang(R)$ is closed under change of final states.
+For any language $L \in \Lang(R)$, the minimal deterministic automaton $\A_L$ is a subset of an $R$-automaton. Thus, any change of final states can be transferred to the $R$-automaton and we stay in the language class. I.e. $\Lang(R)$ is closed under change of final states.
 \end{proof}
 \end{lemma}
 
