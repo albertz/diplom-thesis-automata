@@ -1250,15 +1250,18 @@ We showed that for all SCC of the $R$-automata. Thus we have shown the claimed e
 \end{proof}
 \end{lemma}
 
-Thus, we get the final result
+Thus, we get the final result: \\
+
+\begin{mdframed}
 \begin{theorem}
 \label{gen:postfix-loop-det=limAndBclim}
 $\Lang(R)$ is not \emph{postfix-loop-deterministic} exactly if and only if
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\end{theorem}
+\end{mdframed}
 \begin{proof}
 \Cref{gen:postfixloopdet->BclimAndLreg=lim} and \cref{gen:postfixloopdet<-BclimAndLreg=lim}.
 \end{proof}
-\end{theorem}
 
 Note this is almost equivalent to the dual case:
 \begin{lemma}
@@ -1366,10 +1369,14 @@ Every possible loop in this $R$-automaton can be expressed by an A-$R$-automaton
 
 
 %\subsection{$\lim \Lang(R) \cap \dlim \Lang(R) = \BC \ext \Lang(R)$}
+\begin{mdframed}
 \begin{theorem}
 \label{gen:R-staiger-wagner}
 Let $\Lang(R)$ be not \emph{postfix-loop-deterministic}. And let $\BC \ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Then
 \[ \lim \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
+\end{theorem}
+\end{mdframed}
+
 \begin{proof}
 Because $\Lang(R)$ is closed under change of final states, we can apply \cref{gen:staiger-wagner:limInExt} and have
 \[ \lim \cap \dlim \Lang(R) \subseteq \BC \ext \Lang(R) .\]
@@ -1389,7 +1396,6 @@ Thus, we have
 \[ \BC \ext \Lang(R) \subseteq \BC \lim \Lang(R) \cap \BC \ext \Langreg = \lim \cap \dlim \Lang(R). \]
 This gives us the equality.
 \end{proof}
-\end{theorem}
 
 Another remark:
 \begin{lemma}
