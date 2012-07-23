@@ -5,7 +5,7 @@
 %...
 In \cref{chapter:regOmegaLangs}, we already showed many results for the different $\omega$-language classes constructed based on $\Langreg$. Mainly, those are the strict inclusions as shown in the diagram in \cref{regomega-diagram}.
 
-In \cref{general-results}, we found some general conditions on abritrary $*$-language classes $\Lang$ under which the inclusion diagram stays the same. We also gave other conditions on $\Lang$ under which the diagram becomes different or other properties change.
+In \cref{general-results}, we found some general conditions on arbitrary $*$-language classes $\Lang$ under which the inclusion diagram stays the same. We also gave other conditions on $\Lang$ under which the diagram becomes different or other properties change.
 
 We will now study some concrete well-known $*$-language classes and try to apply the results from \cref{general-results} as well as study some properties individually.
 
@@ -137,7 +137,7 @@ Thus, with \cref{gen:main-theorem-inclusions}, for $\Lang := \Lang(\mathtext{sta
 
 \subsection{Languages of dot-depth-$n$}
 \label{lang:dotdepth}
-When we consider the concatination-depth of the construction of starfree languages, we get a hierarchy. The concationation-depth is also called the \defword{dot-depth}.
+When we consider the concatenation-depth of the construction of starfree languages, we get a hierarchy. The concatenation-depth is also called the \defword{dot-depth}.
 
 %S21: def
 For any $n \in \N_0, r \in \N$, define recursively the set $\mathcal{B}_{n,r}$ of \emph{dot-depth $n$ languages with products of length $\le r$}:
@@ -382,7 +382,7 @@ We also have a relation between pos-PT and PT.
 \[ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) \]
 
 \begin{proof}
-In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{PT})$ we actually proved $\BC \lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{pos-PT})$. Similiarly we also proved $\BC \ext \Lang^* (\mathtext{PT}) \subseteq \BC \lim \Lang^* (\mathtext{pos-PT})$.
+In the proof of $\lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{PT})$ we actually proved $\BC \lim \Lang^*(\mathtext{PT}) \subseteq \BC \ext \Lang^* (\mathtext{pos-PT})$. Similarly we also proved $\BC \ext \Lang^* (\mathtext{PT}) \subseteq \BC \lim \Lang^* (\mathtext{pos-PT})$.
 
 With \cref{thm.PT} and \cref{thm.ext.lim.posPT} we get the claimed equality.
 \end{proof}
@@ -457,7 +457,7 @@ And we have two loops
 \[ P_1 : \left< wa \right> \xrightarrow{a} \left< wa \right> \]
 and
 \[ P_2 : \left< wb \right> \xrightarrow{b} \left< wb \right> , \]
-where $P_1,P_2 \subseteq S$, $P_1 \ne P_2$ and $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$. I.e. $\Lang(\LT_2)$ is postfix-loop-deterministic and not infinty-postfix-independent.
+where $P_1,P_2 \subseteq S$, $P_1 \ne P_2$ and $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$. I.e. $\Lang(\LT_2)$ is postfix-loop-deterministic and not infinity-postfix-independent.
 This can be extended in a similar way for any $n > 2$.
 \end{proof}
 \end{lemma}
@@ -466,7 +466,7 @@ We cannot apply \cref{gen:bcLimLReg-and-limL}.  But by \cref{gen:postfix-loop-de
 \[ \BC \lim \Lang(\LT_n) \cap \lim \Langreg \supsetneqq \lim \Lang(\LT_n) . \]
 Unfortunately, we cannot argue directly about $\Lang(\LT)$ with this result.
 
-For $LT_1$, it looks different. The right-factors of len $<1$ don't tell anything anymore about a word. Thus, $\Lang(\LT_1)$ is not postfix-loop-deterministic. I.e., by \cref{gen:bcLimLReg-and-limL}, we have
+For $LT_1$, it looks different. The right-factors of length $<1$ don't tell anything anymore about a word. Thus, $\Lang(\LT_1)$ is not postfix-loop-deterministic. I.e., by \cref{gen:bcLimLReg-and-limL}, we have
 \[ \BC \lim \Lang(\LT_1) \cap \lim \Langreg = \lim \Lang(\LT_1) . \]
 
 %\emph{postfix-loop-deterministic} (\cref{gen:def:postfix-loop-deterministic})
@@ -516,7 +516,7 @@ In \cite[IV.3.4]{FinAutLogR109}, we see that
 \begin{theorem}
 \[ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) \]
 \begin{proof}
-From \cite[Theorem 4.8]{LangAutLogicR102}, we know that each formular in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
+From \cite[Theorem 4.8]{LangAutLogicR102}, we know that each formula in FO[+1] is equivalent (for both finite and infinite words) to a boolean combination of statements ``sphere $\sigma \in \Sigma^+$ occurs $\geq n$ times''. That statement can be expressed by a sentence of the form
 \[ \psi := \exists \overline{x_1} \dotsb \exists \overline{x_n} \varphi(\overline{x_1}, \dotsb, \overline{x_n}) \]
 where each $\overline{x_i}$ is a $\abs{\sigma}$-tuple of variables and the formula $\varphi$ states:
 \[
@@ -528,7 +528,7 @@ For $\psi$, we have:
 \[ \alpha \models \psi \Leftrightarrow \exists n \colon \alpha[0,n] \models \psi \ \ \text{for all } \alpha \in \Sigma^\omega , \]
 i.e.
 \[ L^\omega(\psi) = \ext L^*(\psi) . \]
-Any formular in FO[+1] can be expressed as a boolean combination of $\psi$-like formular. With
+Any formula in FO[+1] can be expressed as a boolean combination of $\psi$-like formula. With
 \begin{align*}
 & L^\omega(\neg \psi) = \neg L^\omega(\psi) \\
 & L^\omega(\psi_1 \wedge \psi_2) = L^\omega(\psi_1) \cap L^\omega(\psi_2) \\
