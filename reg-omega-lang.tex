@@ -246,7 +246,25 @@ Another classification is
 \subsubsection{Logic on infinite words}
 % TODO: more
 %(S218,S411,R107)
-Let $L_2(\Sigma)$ be the set of formulas $\operatorname{MSO}(<)$ over $\Sigma$. The interpretation of such formulas over infinite words is straight-forward. In \cite[Theorem 3.1]{CombR107}, we can see that
+Let $L_2(\Sigma)$ be the set of formulas $\operatorname{MSO}(<)$ over $\Sigma$. Such formulas are constructed via the building blocks in a natural way:
+\begin{itemize}
+\item $\exists M \subseteq X$, $\forall M \subseteq X$: quantifiers over sets (monadic second order)
+\item $\exists n \in X$, $\forall n \in X$: quantifiers over elements (first order)
+\item $n \in M$: inclusion of element in set
+\item $Q_a n$: at position $n$, there is letter $a \in \Sigma$
+\item $n = m$: equality
+\item $n < m$: the less relation
+\item $\neg$, $\vee$, $\wedge$: combinations of such formulas
+\end{itemize}
+Then, a word $w \in \Sigma^*$ satisfies the formular $\phi$ when we set $X = \Set{0,1,2,\dots,\left|w\right|-1}$ and $Q_a n := (w[n] = a)$ and the formular evaluates to a true sentence. If that is the case, we write
+\[ w \models \phi , \]
+otherwise
+\[ w \not\models \phi . \]
+The interpretation of such formulas over infinite words is straight-forward: A word $\alpha \in \Sigma^\omega$ satisfies $\phi$ when we set $X = \N_0$ and $Q_a n := (\alpha[n] = a)$ and the formular evaluates to a true sentence.
+
+See \cite{FinAutLogR109} for more details.
+
+In \cite[Theorem 3.1]{CombR107} or \cite{FinAutLogR109}, we can see that
 \[ \LangOreg = \Set{A \subseteq \Sigma^\omega}{A \text{ definable in } L_2(\Sigma)} . \]
 % in R107, similar/same thing for Langreg
 % In \cite[]{FinAutLogR109}, SOM[+1]
