@@ -1292,6 +1292,10 @@ Then we also have
 \end{proof}
 \end{lemma}
 
+Interesting would also be the more generic case
+\[ \BC \lim \Lang \cap \lim \Power(\Sigma^*) = \lim \Lang .\]
+In both \cref{gen:postfixloopdet->BclimAndLreg=lim} and \cref{gen:postfixloopdet<-BclimAndLreg=lim}, we esp. needed regular languages in the proof, so we cannot easily generalize from there.
+
 %Infinity-postfix-independence gives us another nice property:
 %\begin{lemma}
 %\label{gen:inf-postfix-indep->extInLim}
@@ -1308,6 +1312,8 @@ Then we also have
 %\[ L^\omega_E(\A) = L^\omega_\text{Büchi}(\A(F')) . \]
 %\end{proof}
 %\end{lemma}
+
+\
 
 Now, we want to formulate another proof of the generalized Staiger-Wagner equality for $\Lang(R)$, i.e. $\lim \cap \dlim \Lang(R) = \BC \ext \Lang(R)$ in \cref{gen:R-staiger-wagner}. When using the non-postfix-loop-determinism, we can apply the previous results. We will see that we still need the inclusion $\BC \ext \Lang(R) \subseteq \BC \lim \Lang(R)$.
 
