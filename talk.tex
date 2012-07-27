@@ -82,7 +82,7 @@ Or boolean combinations:
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Diagram}
+\begin{frame}{$\Langreg$ inclusion diagram}
 \begin{center}
 \begin{tikzpicture}
 \pgftransformscale{.50}
@@ -127,34 +127,27 @@ Or boolean combinations:
 
 \begin{frame}[<+->]{Questions}
 \begin{itemize}
-\item instead of regular $*$-languages, look at other $*$-language classes, e.g. FO$[<]$ (starfree), FO[+1], \PT, positive \PT, ...
+\item instead of the class of regular $*$-languages, look at other $*$-language classes, e.g. starfree, $\LT$, $\PT$, or any arbitrary $*$-language class $\Lang$
 \item does it result in the same relations as in the diagram? are the enclosures strict?
+\end{itemize}
+\
+
+My Diplom thesis:
+\begin{itemize}
+\item Chapter 3: general results on arbitrary $\Lang$, given some introduced properties on $\Lang$
+\item Chapter 4: concrete $*$-language classes
 \end{itemize}
 \end{frame}
 
-\begin{frame}[<+->]{Some results}
+\begin{frame}[<+->]{Concrete results}
 \begin{enumerate}
 \item $ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) $
 \item $ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) $
 \item $ \Lang^\omega (\mathrm{FO[<]}) = \BC \lim \Lang^*(\mathrm{FO[<]}) $
 \item $ \BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} )  $
 \item $ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT) $
-\item $ \BC \ext \Lang^* (\mathtext{pos-PT}) = \BC \lim \Lang^* (\mathtext{pos-PT}) $
-\item $ \BC \ext \Lang^*(\mathtext{pos-PT}) = \BC \ext \Lang^* (\mathtext{PT}) $
-\end{enumerate}
-\end{frame}
-
-\begin{frame}[<+->]{More general results}
-\begin{enumerate}
-\item
-$\forall L \in \Lang \colon L \cdot \Sigma^* \in \Lang \linebreak
-\Rightarrow \ext(\Lang^*) \subset \lim(\Lang^*)$
-
-\item
-$\exists \tilde{L} \in \lim \Lang, \tilde{L} \neq \Sigma^\omega, \forall n \colon \tilde{L}[0,n] = \Sigma^n \linebreak
-\Rightarrow \tilde{L} \notin \BC \ext (\Lang) \linebreak
-\Rightarrow \BC \ext (\Lang) \neq \BC \lim (\Lang)$
-
+\item $ \BC \ext \Lang^* (\posPT) = \BC \lim \Lang^* (\posPT) $
+\item $ \BC \ext \Lang^*(\posPT) = \BC \ext \Lang^* (\PT) $
 \end{enumerate}
 \end{frame}
 
