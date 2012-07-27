@@ -1,36 +1,37 @@
 %\documentclass[a4paper,10pt]{article}
 %\documentclass{beamer}
-\documentclass[handout]{beamer}
+% \documentclass[a4,notes]{seminar}
+\documentclass[handout,notheorems,noamsthm]{beamer}
 
+% Beamer already defines lemma, definition, etc. -> use notheorems
 % http://www2.informatik.hu-berlin.de/~mischulz/beamer.html
 
-\usepackage[ngerman]{babel}
 \usepackage[utf8x]{inputenc}
-\usepackage{amsmath,amsfonts,amssymb}
-\usepackage{tikz}
+\usepackage{palatino} %Schriftart
 
-%\usepackage[mathletters]{ucs}
-%\usepackage[ps2pdf,a4paper,colorlinks]{hyperref}
+%\usepackage{titlesec}
 %\usepackage[fleqn]{amsmath}
-%\usepackage{amsthm}
-%\usepackage{amstext}
-
+\usepackage{amsthm}
+\usepackage{amstext}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{xparse}
-\usepackage[display]{texpower}
-\usepackage{fixseminar}
+\usepackage{url}
+\usepackage{cleveref}
+\usepackage{mdframed}
+\usepackage{tikz}
+
 
 \include{texdefs}
 
 % for PDF
 \subject{a structure theory for Omega-languages}
-\keywords{Omega, language}
+%\keywords{Omega, language}
 
 \title[Kurzform]{Language Operations and a Structure Theory of $\omega$-Languages}
 %\subtitle[Kurzform]{Untertitel}
-\author[A. Zeyer]{Albert Zeyer}
-\institute[i7 RWTH]{Lehrstuhl für Informatik 7}
+%\author[A. Zeyer]{Albert Zeyer}
+%\institute[i7 RWTH]{Lehrstuhl für Informatik 7}
 \date{\today}
 %\logo{\pgfimage[width=2cm,height=2cm]{hulogo}}
 %\titlegraphic{\includegraphics[width=2cm,height=2cm]{hulogo}}
