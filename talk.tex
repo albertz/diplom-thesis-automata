@@ -1,9 +1,12 @@
 %\documentclass[a4paper,10pt]{article}
 %\documentclass{beamer}
 % \documentclass[a4,notes]{seminar}
-\documentclass[handout,notheorems,noamsthm]{beamer}
+\documentclass[
+	handout,
+	notheorems,noamsthm]{beamer}
 
 % Beamer already defines lemma, definition, etc. -> use notheorems
+% ftp://ftp.mpi-sb.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/beamer/doc/beameruserguide.pdf
 % http://www2.informatik.hu-berlin.de/~mischulz/beamer.html
 
 \usepackage[utf8x]{inputenc}
@@ -47,26 +50,42 @@
 %	[pausesections]
 %}
 
-\begin{frame}[<+->]{Introduction}
-\begin{itemize}
-\item consider regular $*$-languages
+\begin{frame}[<+->]{Introduction: $\Power(\Sigma^*) \rightarrow \Power(\Sigma^*)$}
+We have the common $\Power(\Sigma^*) \rightarrow \Power(\Sigma^*)$ language operators:
 
-\item look at $\Lang^* \rightarrow \Lang^\omega$ language operators like lim, ext, BC of them, etc.
 \begin{enumerate}
 \item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
-\item $\overline{\ext}(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
+\item $\dext(L) := \Set{\alpha \in \Sigma^\omega}{ \forall n \colon \alpha[0,n] \in L}$
 \item $\lim(L) := \Set{ \alpha \in \Sigma^\omega }{ \forall N \colon \exists n > N \colon \alpha[0,n] \in L } = \Set{ \alpha \in \Sigma^\omega }{ \exists^\omega n \colon \alpha[0,n] \in L }$
-\item $\overline{\lim}(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$
-\item Kleene-Closure of $\K$: $\bigcup_{i=1}^n U_i \cdot V_i^\omega$, $U_i, V_i \in \K$
+\item $\dlim(L) := \Set{ \alpha \in \Sigma^\omega }{ \exists N \colon \forall n > N \colon \alpha[0,n] \in L }$
+%\item Kleene-Closure of $\K$: $\bigcup_{i=1}^n U_i \cdot V_i^\omega$, $U_i, V_i \in \K$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[<+->]{Introduction: $\Power(\Power(\Sigma^*)) \rightarrow \Power(\Power(\Sigma^*))$}
+From these, define language class operators:
+
+\begin{enumerate}
+\item $\ext(\Lang) := \Set{\lim L}{L \in \Lang}$
+\item $\dext(\Lang) := \Set{\dext L}{L \in \Lang}$
+\item $\lim(\Lang) := \Set{\lim L}{L \in \Lang}$
+\item $\dlim(\Lang) := \Set{\dlim L}{L \in \Lang}$
 \end{enumerate}
 
-\item compare the resulting $\omega$-languages
-\end{itemize}
+We combine these operators via union or intersection, e.g.
+\[ \ext \cup \dext \Lang := \ext \Lang \cup \dext \Lang . \] 
+
+Or boolean combinations:
+\begin{enumerate}
+\item $\BC \ext \Lang = \BC (\ext (\Lang))$
+\item $\BC \lim \Lang = \BC (\lim (\Lang))$
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{Diagram}
+\begin{center}
 \begin{tikzpicture}
-\pgftransformscale{.55}
+\pgftransformscale{.50}
 
 % http://www.texample.net/tikz/examples/complexity-classes/
 
@@ -75,34 +94,35 @@
 % \node at (0,0) {\textbf{(0,0)}};
 
 %% Horizontal bar
-\draw[very thick] (10,0) -- (-10,0);
+\draw[very thick] (8.5,0) -- (-8.5,0);
 
 % BC lim
-\draw (-9.5,0) parabola bend (0,11) (9.5,0);
-\node at (0,9) {BC lim};
+\draw (-8,0) -- (-8,9);
+\draw (-8,9) .. controls (-8,15) and (8,15) .. (8,9);
+\draw (8,0) -- (8,9);
+\node at (0,10) {BC lim};
 
 % lim
-\draw (-9,0) parabola bend (-3,8) (9,0);
-\node[rotate=20] at (-3,7) {lim};
+\draw (-8,8) parabola bend (-3,8.5) (8,5);
+\node[rotate=10] at (-5,7.7) {lim};
 
 % dual-lim
-\draw (-9,0) parabola bend (3,8) (9,0);
-\node[rotate=-20] at (3,7) {dual-lim};
+\draw (-8,5) parabola bend (3,8.5) (8,8);
+\node[rotate=-10] at (5,7.7) {dual-lim};
 
 % BC ext
-%\draw (-6.5,0) parabola bend (0,6) (6.5,0);
-\node at (0,5) {BC ext};
+\node at (0,6) {BC ext};
 
 % ext
-\draw (-6,0) parabola bend (-2,4) (6,0);
-\node[rotate=20] at (-2,3.5) {ext};
+\draw (-8,4) parabola bend (-2,4.5) (8,1);
+\node[rotate=10] at (-5,3.7) {ext};
 
 % dual-ext
-\draw (-6,0) parabola bend (2,4) (6,0);
-\node[rotate=-20] at (2,3.5) {dual-ext};
+\draw (-8,1) parabola bend (2,4.5) (8,4);
+\node[rotate=-10] at (5,3.7) {dual-ext};
 
 \end{tikzpicture}
-
+\end{center}
 \end{frame}
 
 \begin{frame}[<+->]{Questions}
