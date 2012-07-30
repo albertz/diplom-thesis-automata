@@ -220,7 +220,11 @@ With $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusions in (4) an
 \end{itemize}
 \end{frame}
 
-\begin{frame}[<+->]{General results: congruence based classes}
+\begin{frame}[<+->]{Congruence based classes}
+Motivation: $\Lang(\LT_n)$ or $\Lang(\PT_n)$
+
+\
+
 Let $R\subseteq\Sigma^* \times \Sigma^*$ be a congruence relation.
 \[ \Lang^*(R) := \Set{L \subseteq \Sigma^*}{L \text{ is finite union of $R$-equivalence-classes}} . \]
 There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We call it the $R$-automaton.
@@ -241,12 +245,12 @@ There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We
 
 \begin{frame}[<+->]{General results: $\BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R)$}
 \begin{itemize}
-\item
-\textbf{Definition 3.35.} $\Lang$ is \defword{infinity-postfix-independent}. \\
-\textbf{Lemma 3.36.} $\Lang(R)$ is \emph{infinity-postfix-independent} $\Leftrightarrow$ every SCC $Q$ in the $R$-automata has exactly one looping subset, i.e. $Q$ itself is the only loop in $Q$.
-\item \textbf{Lemma 3.39} $\Lang(R)$ \emph{infinity-postfix-independent}. Then
-\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
-(But $\not\Leftarrow$. Example 3.37 and 3.40.)
+%\item
+%\textbf{Definition 3.35.} $\Lang$ is \defword{infinity-postfix-independent}. \\
+%\textbf{Lemma 3.36.} $\Lang(R)$ is \emph{infinity-postfix-independent} $\Leftrightarrow$ every SCC $Q$ in the $R$-automata has exactly one looping subset, i.e. $Q$ itself is the only loop in $Q$.
+%\item \textbf{Lemma 3.39} $\Lang(R)$ \emph{infinity-postfix-independent}. Then
+%\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+%(But $\not\Leftarrow$. Example 3.37 and 3.40.)
 \item \textbf{Definition 3.41.} If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}.
 \item \textbf{Theorem 3.44.} $\Lang(R)$ is not \emph{postfix-loop-deterministic} $\Leftrightarrow$
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
