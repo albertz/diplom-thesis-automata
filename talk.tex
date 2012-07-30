@@ -50,8 +50,8 @@
 %	[pausesections]
 %}
 
-\begin{frame}[<+->]{Introduction: $\Power(\Sigma^*) \rightarrow \Power(\Sigma^*)$}
-We have the common $\Power(\Sigma^*) \rightarrow \Power(\Sigma^*)$ language operators:
+\begin{frame}[<+->]{Introduction: $\Power(\Sigma^*) \rightarrow \Power(\Sigma^\omega)$}
+We have the standard $\Power(\Sigma^*) \rightarrow \Power(\Sigma^\omega)$ language operators:
 
 \begin{enumerate}
 \item $\ext(L) := \Set{\alpha \in \Sigma^\omega}{ \exists n \colon \alpha[0,n] \in L} = L \cdot \Sigma^\omega$
@@ -72,14 +72,15 @@ From these, define language class operators:
 \item $\dlim(\Lang) := \Set{\dlim L}{L \in \Lang}$
 \end{enumerate}
 
-We combine these operators via union or intersection, e.g.
-\[ \ext \cup \dext \Lang := \ext \Lang \cup \dext \Lang . \] 
-
-Or boolean combinations:
+Boolean combinations:
 \begin{enumerate}
 \item $\BC \ext \Lang = \BC (\ext (\Lang))$
 \item $\BC \lim \Lang = \BC (\lim (\Lang))$
 \end{enumerate}
+
+%We combine these operators via union or intersection, e.g.
+%\[ \ext \cup \dext \Lang := \ext \Lang \cup \dext \Lang . \] 
+
 \end{frame}
 
 \begin{frame}{$\Langreg$ inclusion diagram}
@@ -127,12 +128,12 @@ Or boolean combinations:
 
 \begin{frame}[<+->]{Questions}
 \begin{itemize}
-\item instead of the class of regular $*$-languages, look at other $*$-language classes, e.g. starfree, $\LT$, $\PT$, or any arbitrary $*$-language class $\Lang$
-\item does it result in the same relations as in the diagram? are the enclosures strict?
+\item Instead of the class of regular $*$-languages, look at other $*$-language classes, e.g. starfree, $\LT$, $\PT$, or any arbitrary $*$-language class $\Lang$.
+\item For what $\Lang$ do we get the same relations as in the diagram? Are the inclusions still strict?
 \end{itemize}
 \
 
-My Diplom thesis:
+My diploma thesis:
 \begin{itemize}
 \item Chapter 3: general results on arbitrary $\Lang$, given some introduced properties on $\Lang$
 \item Chapter 4: concrete $*$-language classes
@@ -140,37 +141,40 @@ My Diplom thesis:
 \end{frame}
 
 \begin{frame}[<+->]{Properties on $\Lang$}
-Let $L,A,B \in \Lang$.
 \begin{enumerate}
-\item \defword{Closure under suffix-independence}: $L \cdot \Sigma^* \in \Lang$
-\item \defword{Closure under union, intersection}: $A \cup B \in \Lang$, $A \cap B \in \Lang$
-\item \defword{Closure under negation}: $-L \in \Lang$
-\item \defword{Closure under change of final states}:
-Let $\A_L = (Q,\Sigma,q_0,\delta,F_L)$ be the minimal deterministic automaton for $L$, i.e. with $L^*(\A_L) = L$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
-\item \defword{Closure under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
+\item \defword{$\Lang$ closed under suffix-independence}: $L \in \Lang \Rightarrow L \cdot \Sigma^* \in \Lang$
+\item \defword{$\Lang$ closed under union, intersection}
+\item \defword{$\Lang$ closed under negation}
+\item \defword{$\Lang$ closed under change of final states}:
+Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^*(\A) \in \Lang$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
+\item \defword{$\Lang$ closed under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$ and $L \in \Lang$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[<+->]{General results}
+\begin{frame}[<+->]{General results: $\ext \subseteq \lim$}
 \begin{itemize}
-\item Lemma 3.3: Closure under suffix-independence $\Rightarrow$ \\
-$\ext \Lang \subseteq \lim \cap \dlim \Lang$ (but $\not\Leftarrow$)
-\item Lemma 3.8: Closure under suffix-independence and negation $\Rightarrow$ \\
-$\ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang$
+\item Lemma 3.3: $\Lang$ closed under suffix-independence $\Rightarrow$
+\[ \ext \Lang \subseteq \lim \cap \dlim \Lang \]
+(but $\not\Leftarrow$, Example 3.4)
+\item Lemma 3.8: $\Lang$ closed under suffix-independence and negation $\Rightarrow$
+\[ \ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang \]
 \end{itemize}
-
-\
-
-Separating language for $\ext \cup \dext \subsetneqq \BC \ext$, $\lim \cup \dlim \subsetneqq \BC \lim$: \\
-$\Sigma := \Set{a,b,c}$, $L_a := \Sigma^* a$, $L_b := \Sigma^* b$. \\
-$\tilde L_1 := \ext L_a \cap -\ext L_b$, $\tilde L_2 := \lim L_a \cap -\lim L_b$. \\
-$\tilde L_1 \not\in \ext \cup \dext \Lang$ but $\tilde L_1 \in \BC \ext \Lang$. \\
-$\tilde L_2 \not\in \lim \cup \dlim \Lang$ but $\tilde L_2 \in \BC \lim \Lang$.
-
-More general:
 \end{frame}
 
-\begin{frame}[<+->]{General results}
+\begin{frame}[<+->]{$\ext \cup \dext \Langreg \subsetneqq \BC \ext \Langreg$}
+We have
+\[ \ext \cup \dext \Lang := (\ext \Lang) \cup (\dext \Lang) \subsetneqq \BC \ext \Lang \]
+for $\Lang = \Langreg$.
+
+Separating languages: Let $\Sigma := \Set{a,b,c}$.
+\[ L_a := \Sigma^* a \in \Lang, \ \ \ L_b := \Sigma^* b \in \Lang, \]
+\[ \tilde L_1 := \ext L_a \cap -\ext L_b, \ \ \ \tilde L_2 := \lim L_a \cap -\lim L_b . \]
+Then
+\[ \tilde L_1 \not\in \ext \cup \dext \Lang \ \ \text{ but } \ \ \tilde L_1 \in \BC \ext \Lang , \]
+\[ \tilde L_2 \not\in \lim \cup \dlim \Lang \ \ \text{ but } \ \ \tilde L_2 \in \BC \lim \Lang . \]
+\end{frame}
+
+\begin{frame}[<+->]{General results: $\ext \cup \dext \subsetneqq \BC \ext$}
 \textbf{Definition 3.12.} A language $L \subseteq \Sigma^* \cup \Sigma^\omega$ is called \defword{$M$-invariant} for $M \subseteq\Sigma$ iff for all $w \in \Sigma^* \cup \Sigma^\omega$,
 \[ w \in L \ \ \ \Leftrightarrow \ \ \  w |_M \in L , \]
 where $w|_M$ is the word $w$ with all letters from $M$ removed.
