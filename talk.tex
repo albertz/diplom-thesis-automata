@@ -139,6 +139,84 @@ My Diplom thesis:
 \end{itemize}
 \end{frame}
 
+\begin{frame}[<+->]{Properties on $\Lang$}
+Let $L,A,B \in \Lang$.
+\begin{enumerate}
+\item \defword{Closure under suffix-independence}: $L \cdot \Sigma^* \in \Lang$
+\item \defword{Closure under union, intersection}: $A \cup B \in \Lang$, $A \cap B \in \Lang$
+\item \defword{Closure under negation}: $-L \in \Lang$
+\item \defword{Closure under change of final states}:
+Let $\A_L = (Q,\Sigma,q_0,\delta,F_L)$ be the minimal deterministic automaton for $L$, i.e. with $L^*(\A_L) = L$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
+\item \defword{Closure under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[<+->]{General results}
+\begin{itemize}
+\item Lemma 3.3: Closure under suffix-independence $\Rightarrow$ \\
+$\ext \Lang \subseteq \lim \cap \dlim \Lang$ (but $\not\Leftarrow$)
+\item Lemma 3.8: Closure under suffix-independence and negation $\Rightarrow$ \\
+$\ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang$
+\end{itemize}
+
+\
+
+Separating language for $\ext \cup \dext \subsetneqq \BC \ext$, $\lim \cup \dlim \subsetneqq \BC \lim$: \\
+$\Sigma := \Set{a,b,c}$, $L_a := \Sigma^* a$, $L_b := \Sigma^* b$. \\
+$\tilde L_1 := \ext L_a \cap -\ext L_b$, $\tilde L_2 := \lim L_a \cap -\lim L_b$. \\
+$\tilde L_1 \not\in \ext \cup \dext \Lang$ but $\tilde L_1 \in \BC \ext \Lang$. \\
+$\tilde L_2 \not\in \lim \cup \dlim \Lang$ but $\tilde L_2 \in \BC \lim \Lang$.
+
+More general:
+\end{frame}
+
+\begin{frame}[<+->]{General results}
+\textbf{Definition 3.12.} A language $L \subseteq \Sigma^* \cup \Sigma^\omega$ is called \defword{$M$-invariant} for $M \subseteq\Sigma$ iff for all $w \in \Sigma^* \cup \Sigma^\omega$,
+\[ w \in L \ \ \ \Leftrightarrow \ \ \  w |_M \in L , \]
+where $w|_M$ is the word $w$ with all letters from $M$ removed.
+
+There is always exactly one \defword{maximum invariant alphabet set $M_m \subseteq \Sigma$ of $L$} such that $L$ is $M_m$-invariant. Then call $\Sigma-M_m$ the \defword{non-invariant alphabet set of $L$}.
+
+\
+
+\textbf{Theorem 3.15.} Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L_a \in \Lang$. Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L_a$} and let $L_a$ be \emph{$\Set{b,c}$-invariant}. Then
+\[ \ext L_a \not\in \dext \Langreg \ \ \ \Rightarrow \ \ \ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang \]
+and
+\[ \lim L_a \not\in \dlim \Langreg \ \ \ \Rightarrow \ \ \ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
+\end{frame}
+
+\begin{frame}[<+->]{General results}
+\begin{itemize}
+\item \textbf{Theorem 3.19.} (Staiger-Wagner 1) $\Lang$ closed under change of final states. Then
+\[ \lim \cap \dlim \Lang \subseteq \BC \ext \Lang . \]
+\item \textbf{Theorem 3.20.} (Staiger-Wagner 2) $\Lang$ closed under suffix-independence, negation, union and change of final states. Then
+\[ \BC \ext \Lang \subseteq \lim \cap \dlim \Lang . \]
+\item \textbf{Theorem 3.22.} $\Lang$ closed under suffix-independence, negation, union, change of final states and alphabet permutation.
+Then we have
+\begin{align*}
+& \ext \cap \dext \Lang \stackrel{(1.)}\subseteq
+\ext \cup \dext \Lang \stackrel{(2.)}\subseteq
+\BC \ext \Lang \stackrel{(3.)}= \\
+& \lim \cap \dlim \Lang \stackrel{(4.)}\subseteq
+\lim \cup \dlim \Lang \stackrel{(5.)}\subseteq
+\BC \lim \Lang .
+\end{align*}
+With $\Lang$-$\ext$-$\dext$-separating language $L_a$, the inclusions in (1) and (2) are strict.
+With $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusions in (4) and (5) are strict.\end{itemize}
+\end{frame}
+
+\begin{frame}[<+->]{General results: Kleene closure}
+\[ \Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0} \]
+
+\begin{itemize}
+\item \textbf{Lemma 3.24.} $\Lang$ closed under change of final states for all deterministic simplified automata. Then
+\[ \Kleene \Lang \subseteq \BC \lim \Lang . \]
+(The closure of final states here is stronger.) (The idea in the proof can probably be generalized into a general non-deterministic Büchi to deterministic Muller automaton conversion.)
+\item \textbf{Lemma 3.25.} $\Lang$ closed under change of final states. Then
+\[ \lim \Lang \subseteq \Kleene \Lang . \]
+\end{itemize}
+\end{frame}
+
 \begin{frame}[<+->]{Concrete results}
 \begin{enumerate}
 \item $ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) $
