@@ -359,9 +359,11 @@ This example can be generalized a bit. We first introduce $M$-invariance on a la
 
 \begin{mydef}
 A language $L \subseteq \Sigma^*$ is called \defword{$M$-invariant} for $M \subseteq\Sigma$ iff for all $w_1,w_2 \in \Sigma^*$, $a \in M$,
-\[ w_1 a w_2 \in L \ \ \ \Rightarrow \ \ \  w_1 a^* w_2 \subseteq L . \]
-
-There is always exactly one \defword{maximum invariant alphabet set $M_{max} \subseteq \Sigma$ of $L$} such that $L$ is $M_{max}$-invariant. Then call $\Sigma-M_{max}$ the \defword{non-invariant alphabet set of $L$}.
+\[ w_1 a w_2 \in L \ \ \ \Rightarrow \ \ \  w_1 M^* w_2 \subseteq L . \]
+%
+%There is always exactly one \defword{maximum invariant alphabet set $M_{max} \subseteq \Sigma$ of $L$} such that $L$ is $M_{max}$-invariant. Then call $\Sigma-M_{max}$ the \defword{non-invariant alphabet set of $L$}.
+%
+A language $L \subseteq \Sigma^*$ is called $M$-\defword{relevant} iff $L$ is not $M$-invariant and $\Sigma^* a \Sigma^* \cap L \ne \emptyset$ for every $a \in M$.
 \end{mydef}
 
 \begin{mydef}
@@ -378,25 +380,29 @@ Let $L \subseteq \Sigma^*$ and let $L$ be $\Set{a,b} \subseteq \Sigma$ invariant
 and
 \[ \lim L \not\in \dlim \Langreg \ \ \ \Rightarrow \ \ \ \lim L|_{\Sigma-\Set{a}} \not\in \dlim \Langreg . \]
 \begin{proof}
-In any automata for $L$ (no matter if $L$, $\ext L$, $\dext L$, $\lim L$ or $\dlim L$), we can assume without restriction that $a,b$ never changes the state and is everywhere accepted. I.e. we always have the transition set $T := \Set{(q, \Set{a,b}) \mapsto q}{\text{for all states $q$}}$. If we restrict $L$ on $\Sigma-\Set{a}$, those are all exactly the same automata with the only difference that the transition set becomes $T|_{\Sigma-\Set{a}} = \Set{(q, \Set{b}) \mapsto q}{\text{for all states $q$}}$. I.e. the set of possible automata we are interested about is isomorphic in both cases. Thus, saying that there doesn't exist some kind of automata is independent from wether we say it for $L$ or $L|_{\Sigma-\Set{a}}$.
+In any minimal deterministic automata $\A = (Q,\Sigma,q_0,\delta,F)$ for $L$ (no matter if $L$, $\ext L$, $\dext L$, $\lim L$ or $\dlim L$), we can assume without restriction that $a,b$ never changes the state. Looking at all $a,b$-transitions in the graph, we have the transition set
+\[ T := \Set{(q, \Set{a,b}) \mapsto q}{\text{for all states $q$ with $q \xrightarrow{b} q$}} \subseteq \delta . \]
+If we restrict $L$ on $\Sigma-\Set{a}$, those are all exactly the same automata with the only difference that the transition set becomes
+\[ T|_{\Sigma-\Set{a}} = \Set{(q, \Set{b}) \mapsto q}{\text{for all states $q$ with $q \xrightarrow{b} q$}} . \]
+I.e. the set of possible automata we are interested about is isomorphic in both cases. Thus, saying that there doesn't exist some kind of automata is independent from wether we say it for $L$ or $L|_{\Sigma-\Set{a}}$.
 \end{proof}
 \end{lemma}
 
 %\subsection{$op \cup \overline{op} \subsetneqq \BC op$}
 \begin{theorem}
 \label{gen:extInBCext}
-Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let there be $L_a \in \Lang$. Let $\Set{a}$ be the \emph{non-invariant alphabet set of $L_a$} and let $L_a$ be \emph{$\Set{b,c}$-invariant}. Then
+Let $\Lang$ be closed under negation and under alphabet permutation. Let $\Set{a,b,c} \subseteq \Sigma$. Let $L_a \in \Lang$ be \emph{$\Set{a}$-relevant} and \emph{$\Set{b,c}$-invariant}. Then
 \[ \ext L_a \not\in \dext \Langreg \ \ \ \Rightarrow \ \ \ \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang \]
 and
 \[ \lim L_a \not\in \dlim \Langreg \ \ \ \Rightarrow \ \ \ \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang . \]
 \begin{proof}
 \def\op{\operatorname{op}}
 \def\dop{\operatorname{\overline{op}}}
-Let $\op$ be either $\ext$ or $\lim$ and let $\dop$ be the dual version of the operator ($\dext$ or $\dlim$). Assume that $\op L_a \not\in \op \Langreg$.
+Let $\op$ be either $\ext$ or $\lim$ and let $\dop$ be the dual version of the operator ($\dext$ or $\dlim$). Assume that $\op L_a \not\in \dop \Langreg$.
 
 The inclusion follows from \cref{gen:opinBCop}.
 
-Define $\tilde L_a := \op L_a$. Define the alphabet permutation $\sigma := \Set{a \mapsto b, b \mapsto a}$. $L_a$ is an alphabet permutation non-invariant language because $\sigma(L) \neq L$. Define $L_b := \sigma(L_a)$. Because of the alphabet permutation closure, $L_b \in \Lang$ and $\tilde L_b := \op L_b \not\in \dop \Langreg$. I.e., $-\tilde L_b = \dop (-L_b) \not\in \op \Langreg$. Also, $L_b$ is $\Set{a,c}$-invariant and $\Set{b}$ is the non-invariant alphabet set of $L_b$.
+Define $\tilde L_a := \op L_a$. Define the alphabet permutation $\sigma := \Set{a \mapsto b, b \mapsto a}$. $L_a$ is an alphabet permutation non-invariant language because $\sigma(L_a) \neq L_a$. Define $L_b := \sigma(L_a)$. Because of the alphabet permutation closure, $L_b \in \Lang$ and $\tilde L_b := \op L_b \not\in \dop \Langreg$. I.e., $-\tilde L_b = \dop (-L_b) \not\in \op \Langreg$. Also, $L_b$ is $\Set{a,c}$-invariant and $\Set{b}$-relevant.
 
 Then,
 \[ L_\omega := \tilde L_a \cap -\tilde L_b \in \BC \op \Lang . \]
