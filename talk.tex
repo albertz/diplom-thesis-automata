@@ -158,20 +158,28 @@ Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^
 (but $\not\Leftarrow$, Example 3.4)
 \item Lemma 3.8: $\Lang$ closed under suffix-independence and negation $\Rightarrow$
 \[ \ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang \]
+\item $\Lang(\mathtext{starfree})$ is closed under suffix-independence and negation
 \end{itemize}
 \end{frame}
 
 \begin{frame}[<+->]{$\ext \cup \dext \Langreg \subsetneqq \BC \ext \Langreg$}
+\begin{itemize}
+\item
 We have
 \[ \ext \cup \dext \Lang := (\ext \Lang) \cup (\dext \Lang) \subsetneqq \BC \ext \Lang \]
 for $\Lang = \Langreg$.
 
+\item
 Separating languages: Let $\Sigma := \Set{a,b,c}$.
 \[ L_a := \Sigma^* a \in \Lang, \ \ \ L_b := \Sigma^* b \in \Lang, \]
 \[ \tilde L_1 := \ext L_a \cap -\ext L_b, \ \ \ \tilde L_2 := \lim L_a \cap -\lim L_b . \]
 Then
 \[ \tilde L_1 \not\in \ext \cup \dext \Lang \ \ \text{ but } \ \ \tilde L_1 \in \BC \ext \Lang , \]
 \[ \tilde L_2 \not\in \lim \cup \dlim \Lang \ \ \text{ but } \ \ \tilde L_2 \in \BC \lim \Lang . \]
+
+\item
+$L_a,L_b \in \Lang(\mathtext{starfree})$
+\end{itemize}
 \end{frame}
 
 \begin{frame}[<+->]{General results: $\ext \cup \dext \subsetneqq \BC \ext$}
@@ -254,6 +262,8 @@ There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We
 \item \textbf{Definition 3.41.} If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}.
 \item \textbf{Theorem 3.44.} $\Lang(R)$ is not \emph{postfix-loop-deterministic} $\Leftrightarrow$
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
+\item $\Lang(\PT_n)$ for all $n$ and $\Lang(\LT_1)$ are not postfix-loop-deterministic
+\item $\Lang(\LT_n)$ for $n \ge 2$ is postfix-loop-deterministic
 \end{itemize}
 \end{frame}
 
@@ -266,54 +276,54 @@ There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We
 \end{itemize}
 \end{frame}
 
-\begin{frame}[<+->]{Concrete results}
-$\Lang(\mathtext{starfree})$:
-\begin{itemize}
-\item Theorem 4.3. $\Lang^\omega (\mathrm{FO[<]}) = \BC \lim \Lang^*(\mathrm{FO[<]})$
-\item Theorem 4.4. $\BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} )$
-\item Lemma 4.5. $\Lang^*(\mathtext{starfree})$ closed under change of final states.
-\end{itemize}
-$\Lang(\mathtext{dot-depth-$n$})$:
-\begin{itemize}
-\item $\ext \cap \dext \Lang \subsetneqq
-\ext \cup \dext \Lang \subsetneqq
-\BC \ext \Lang$ ,
-$ \lim \cap \dlim \Lang \subsetneqq
-\lim \cup \dlim \Lang \subsetneqq
-\BC \lim \Lang $ .
-\item Lemma 4.6. $\Lang(\mathtext{dot-depth-$0$})$ closed under change of final states and we have
-$ \ext \Lang(\mathtext{dot-depth-$0$}) = \dext \Lang(\mathtext{dot-depth-$0$}) $,
-$ \lim \Lang(\mathtext{dot-depth-$0$}) = \dlim \Lang(\mathtext{dot-depth-$0$}) $. 
-\item Lemma 4.7. $ \BC \ext \Lang(\mathtext{dot-depth-$0$}) = \lim \cap \dlim \Lang(\mathtext{dot-depth-$0$}) $
-\end{itemize}
-\end{frame}
+%\begin{frame}[<+->]{Concrete results}
+%$\Lang(\mathtext{starfree})$:
+%\begin{itemize}
+%\item Theorem 4.3. $\Lang^\omega (\mathrm{FO[<]}) = \BC \lim \Lang^*(\mathrm{FO[<]})$
+%\item Theorem 4.4. $\BC \ext \Lang^*( \mathrm{FO[<]} ) \subsetneqq \BC \lim \Lang^* ( \mathrm{FO[<]} )$
+%\item Lemma 4.5. $\Lang^*(\mathtext{starfree})$ closed under change of final states.
+%\end{itemize}
+%$\Lang(\mathtext{dot-depth-$n$})$:
+%\begin{itemize}
+%\item $\ext \cap \dext \Lang \subsetneqq
+%\ext \cup \dext \Lang \subsetneqq
+%\BC \ext \Lang$ ,
+%$ \lim \cap \dlim \Lang \subsetneqq
+%\lim \cup \dlim \Lang \subsetneqq
+%\BC \lim \Lang $ .
+%\item Lemma 4.6. $\Lang(\mathtext{dot-depth-$0$})$ closed under change of final states and we have
+%$ \ext \Lang(\mathtext{dot-depth-$0$}) = \dext \Lang(\mathtext{dot-depth-$0$}) $,
+%$ \lim \Lang(\mathtext{dot-depth-$0$}) = \dlim \Lang(\mathtext{dot-depth-$0$}) $. 
+%\item Lemma 4.7. $ \BC \ext \Lang(\mathtext{dot-depth-$0$}) = \lim \cap \dlim \Lang(\mathtext{dot-depth-$0$}) $
+%\end{itemize}
+%\end{frame}
 
-\begin{frame}[<+->]{Concrete results}
-$\Lang(\PT)$:
-\begin{itemize}
-\item Theorem 4.9. $ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) $
-\item Lemma 4.10. $\Lang(\PT_n)$ closed under suffix-independence.
-\item For $\Lang = \Lang(\PT_n)$ and $\Lang(\PT)$: $ \ext \cap \dext \Lang \subsetneqq
-\ext \cup \dext \Lang \subsetneqq
-\BC \ext \Lang =
-\lim \cap \dlim \Lang =
-\lim \cup \dlim \Lang =
-\BC \lim \Lang $
-\item Theorem 4.11. $\BC \ext \Lang^* (\posPT) = \BC \lim \Lang^* (\posPT)$
-\item Lemma 4.12. $\BC \ext \Lang^*(\posPT) = \BC \ext \Lang^* (\PT)$
-\end{itemize}
-$\Lang(\LT)$:
-\begin{itemize}
-\item Theorem 4.13. $ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT) $
-\item Lemma 4.14. $\Lang(\LT_n)$ is \emph{postfix-loop-deterministic} and not \emph{infinity-postfix-independent} for $n \ge 2$.
-\item $\BC \lim \Lang(\LT_n) \cap \lim \Langreg \supsetneqq \lim \Lang(\LT_n)$ for $n \ge 2$
-\item $\BC \lim \Lang(\LT_1) \cap \lim \Langreg = \lim \Lang(\LT_1)$
-\end{itemize}
-$\Lang(\LTT)$:
-\begin{itemize}
-\item Theorem 4.15. $ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) $
-\end{itemize}
-\end{frame}
+%\begin{frame}[<+->]{Concrete results}
+%$\Lang(\PT)$:
+%\begin{itemize}
+%\item Theorem 4.9. $ \BC \ext \Lang^* (\PT) = \BC \lim \Lang^* (\PT) $
+%\item Lemma 4.10. $\Lang(\PT_n)$ closed under suffix-independence.
+%\item For $\Lang = \Lang(\PT_n)$ and $\Lang(\PT)$: $ \ext \cap \dext \Lang \subsetneqq
+%\ext \cup \dext \Lang \subsetneqq
+%\BC \ext \Lang =
+%\lim \cap \dlim \Lang =
+%\lim \cup \dlim \Lang =
+%\BC \lim \Lang $
+%\item Theorem 4.11. $\BC \ext \Lang^* (\posPT) = \BC \lim \Lang^* (\posPT)$
+%\item Lemma 4.12. $\BC \ext \Lang^*(\posPT) = \BC \ext \Lang^* (\PT)$
+%\end{itemize}
+%$\Lang(\LT)$:
+%\begin{itemize}
+%\item Theorem 4.13. $ \BC \ext \Lang^* (\LT) \subsetneqq \BC \lim \Lang^*(\LT) $
+%\item Lemma 4.14. $\Lang(\LT_n)$ is \emph{postfix-loop-deterministic} and not \emph{infinity-postfix-independent} for $n \ge 2$.
+%\item $\BC \lim \Lang(\LT_n) \cap \lim \Langreg \supsetneqq \lim \Lang(\LT_n)$ for $n \ge 2$
+%\item $\BC \lim \Lang(\LT_1) \cap \lim \Langreg = \lim \Lang(\LT_1)$
+%\end{itemize}
+%$\Lang(\LTT)$:
+%\begin{itemize}
+%\item Theorem 4.15. $ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) $
+%\end{itemize}
+%\end{frame}
 
 \begin{frame}[<+->]{Conclusion}
 \begin{itemize}
