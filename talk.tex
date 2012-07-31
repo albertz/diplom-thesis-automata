@@ -216,15 +216,21 @@ With $\Lang$-$\ext$-$\dext$-separating language $L_a$, the inclusions in (1) and
 With $\Lang$-$\lim$-$\dlim$-separating language $L'_a$, the inclusions in (4) and (5) are strict.\end{itemize}
 \end{frame}
 
-\begin{frame}[<+->]{General results: Kleene closure}
-\[ \Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0} \]
+\begin{frame}[<+->]{Kleene closure}
+\[ \Kleene'(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0} \]
 
 \begin{itemize}
-\item \textbf{Lemma 3.24.} $\Lang$ closed under change of final states for all deterministic simplified automata. Then
-\[ \Kleene \Lang \subseteq \BC \lim \Lang . \]
-(The closure of final states here is stronger.) (The idea in the proof can probably be generalized into a general non-deterministic Büchi to deterministic Muller automaton conversion.)
+\item \textbf{Lemma 3.24.}
+\begin{itemize}
+\item Generic power-set construction based on a non-det. $U V^*$ automaton which results in a det. co-Büchi automaton for parts of $U V^\omega$.
+\item If the $*$-language given by the automata is in $\Lang$, we call $\Lang$ closed under change final states for all deterministic \emph{simplified} automata.
+\item With this, we get
+\[ \Kleene' \Lang \subseteq \BC \lim \Lang . \]
+\item The idea in the proof can probably be generalized into a general constructive non-deterministic Büchi to deterministic Muller automaton conversion.
+\end{itemize}
+
 \item \textbf{Lemma 3.25.} $\Lang$ closed under change of final states. Then
-\[ \lim \Lang \subseteq \Kleene \Lang . \]
+\[ \lim \Lang \subseteq \Kleene' \Lang . \]
 \end{itemize}
 \end{frame}
 
