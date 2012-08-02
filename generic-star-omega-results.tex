@@ -1351,9 +1351,9 @@ Let $\Sigma = \Set{a,b}$. Consider the congruence relation $R$ defined by the tr
 \]
 The SCC $\Set{1,2}$ in the $R$-automaton (re-using the states from the transition graph above) has the loops $\Set{1,2}$. The SCC $\Set{3}$ has only itself as its loops. Thus, $\Lang(R)$ is infinity-postfix-independent and not postfix-loop-deterministic.
 
-However, $L_1 := a(\Sigma a)^* \in \Lang(R)$ (all words accepted by state $1$) but $L_1\Sigma^* = a\Sigma^* \not\in \Lang(R)$. I.e. $\Lang(R)$ is not closed under suffix-independence.
+However, $L_2 := a(\Sigma a)^* \in \Lang(R)$ (all words accepted by state $2$) but $L_2\Sigma^* = a\Sigma^* \not\in \Lang(R)$. I.e. $\Lang(R)$ is not closed under suffix-independence.
 
-Esp. $\ext L_1 = a \Sigma^\omega \not\in \BC \lim \Lang(R)$.
+Esp. $\ext L_2 = a \Sigma^\omega \not\in \BC \lim \Lang(R)$.
 
 Every possible loop in this $R$-automaton can be expressed by an A-$R$-automaton. Thus, in this example, we even have
 \[ \BC \lim \Lang(R) \subsetneqq \BC \ext \Lang(R) . \]
