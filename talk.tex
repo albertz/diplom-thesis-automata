@@ -143,7 +143,8 @@ My diploma thesis:
 \begin{frame}[<+->]{Properties on $\Lang$}
 \begin{enumerate}
 \item \defword{$\Lang$ closed under suffix-independence}: $L \in \Lang \Rightarrow L \cdot \Sigma^* \in \Lang$ \\
-Examples: $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ (Lemma 4.10)
+Examples: $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ (Lemma 4.10), $\Lang(\LT)$ \\
+Counter examples: $\Lang(\mathtext{finite})$, $\Lang(\mathtext{endwise})$, Example 3.4, Example 3.9
 \item \defword{$\Lang$ closed under union, intersection}
 \item \defword{$\Lang$ closed under negation}
 \item \defword{$\Lang$ closed under change of final states}:
@@ -163,7 +164,7 @@ Examples: $\Langreg$, $\Lang(\LT_n)$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\PT)$
 \end{itemize}
 Examples:
 \begin{itemize}
-\item $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ are closed under suffix-independence and negation
+\item $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$, $\Lang(\LT)$ are closed under suffix-independence and negation
 \end{itemize}
 \end{frame}
 
@@ -341,7 +342,16 @@ Examples:
 %\end{frame}
 
 \begin{frame}[<+->]{Concrete results}
-For $\Lang := \Lang(\mathtext{starfree})$, we get
+For $\Lang := \Lang(\mathtext{starfree})$, via Theorem 3.22, we get
+\begin{align*}
+& \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang = \\
+& \lim \cap \dlim \Lang \subsetneqq
+\lim \cup \dlim \Lang \subsetneqq
+\BC \lim \Lang .
+\end{align*}
+For $\Lang := \Lang(\LT)$, via Theorem 3.22, we get
 \begin{align*}
 & \ext \cap \dext \Lang \subsetneqq
 \ext \cup \dext \Lang \subsetneqq
