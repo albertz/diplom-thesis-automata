@@ -165,6 +165,7 @@ Examples: $\Langreg$, $\Lang(\LT_n)$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\PT)$
 Examples:
 \begin{itemize}
 \item $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\LTT)$ are closed under suffix-independence and negation
+\item Counter examples are $\Lang(\mathtext{finite})$ or somewhat artificial (Example 3.9)
 \end{itemize}
 \end{frame}
 
@@ -180,8 +181,12 @@ Separating languages: Let $\Sigma := \Set{a,b,c}$.
 \[ L_a := \Sigma^* a \in \Lang, \ \ \ L_b := \Sigma^* b \in \Lang, \]
 \[ \tilde L_1 := \ext L_a \cap -\ext L_b, \ \ \ \tilde L_2 := \lim L_a \cap -\lim L_b . \]
 Then
-\[ \tilde L_1 \not\in \ext \cup \dext \Lang \ \ \text{ but } \ \ \tilde L_1 \in \BC \ext \Lang , \]
-\[ \tilde L_2 \not\in \lim \cup \dlim \Lang \ \ \text{ but } \ \ \tilde L_2 \in \BC \lim \Lang . \]
+\begin{align*}
+& \tilde L_1 \not\in \ext \cup \dext \Lang \ \ \text{ but } \ \ \tilde L_1 \in \BC \ext \Lang \\ 
+& \ \ \ \Rightarrow \ext \cap \dext \Lang \subsetneqq \ext \cup \dext \Lang \subsetneqq \BC \ext \Lang , \\
+& \tilde L_2 \not\in \lim \cup \dlim \Lang \ \ \text{ but } \ \ \tilde L_2 \in \BC \lim \Lang \\
+& \ \ \ \Rightarrow \lim \cap \dlim \Lang \subsetneqq \lim \cup \dlim \Lang \subsetneqq \BC \lim \Lang .
+\end{align*}
 
 \item
 $L_a,L_b \in \Lang(\mathtext{starfree})$
