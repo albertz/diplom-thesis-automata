@@ -142,12 +142,14 @@ My diploma thesis:
 
 \begin{frame}[<+->]{Properties on $\Lang$}
 \begin{enumerate}
-\item \defword{$\Lang$ closed under suffix-independence}: $L \in \Lang \Rightarrow L \cdot \Sigma^* \in \Lang$
+\item \defword{$\Lang$ closed under suffix-independence}: $L \in \Lang \Rightarrow L \cdot \Sigma^* \in \Lang$ \\
+Examples: $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ (Lemma 4.10)
 \item \defword{$\Lang$ closed under union, intersection}
 \item \defword{$\Lang$ closed under negation}
 \item \defword{$\Lang$ closed under change of final states}:
-Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^*(\A) \in \Lang$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$.
-\item \defword{$\Lang$ closed under alphabet permutation}: For all permutations $\sigma : \Sigma \rightarrow \Sigma$ and $L \in \Lang$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
+Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^*(\A) \in \Lang$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$. \\
+Examples: $\Langreg$, $\Lang(\LT_n)$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\PT)$, $\Lang(\mathtext{starfree})$ (Lemma 4.5)
+\item \defword{$\Lang$ closed under alphabet permutation}: For all permutations $\sigma \colon \Sigma \rightarrow \Sigma$ and $L \in \Lang$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
 \end{enumerate}
 \end{frame}
 
@@ -158,7 +160,10 @@ Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^
 (but $\not\Leftarrow$, Example 3.4)
 \item Lemma 3.8: $\Lang$ closed under suffix-independence and negation $\Rightarrow$
 \[ \ext \cup \dext \Lang \subseteq \lim \cap \dlim \Lang \]
-\item $\Lang(\mathtext{starfree})$ is closed under suffix-independence and negation
+\end{itemize}
+Examples:
+\begin{itemize}
+\item $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ are closed under suffix-independence and negation
 \end{itemize}
 \end{frame}
 
@@ -258,18 +263,21 @@ There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We
 
 \begin{frame}[<+->]{General results: $\BC \lim \Lang(R)$ in $\LangOreg$}
 \begin{itemize}
-\item \textbf{Lemma 3.33.} $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$
+\item \textbf{Lemma 3.33.} $\BC \lim \Lang(R) \cap \ext \Langreg \subseteq \ext \Lang(R)$
 %\item
 %\textbf{Definition 3.35.} $\Lang$ is \defword{infinity-postfix-independent}. \\
 %\textbf{Lemma 3.36.} $\Lang(R)$ is \emph{infinity-postfix-independent} $\Leftrightarrow$ every SCC $Q$ in the $R$-automata has exactly one looping subset, i.e. $Q$ itself is the only loop in $Q$.
 %\item \textbf{Lemma 3.39} $\Lang(R)$ \emph{infinity-postfix-independent}. Then
 %\[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
 %(But $\not\Leftarrow$. Example 3.37 and 3.40.)
-\item \textbf{Definition 3.41.} If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}.
+\item \textbf{Definition 3.41.} If there is a SCC $Q \subseteq S_R$ including two loops $P_1,P_2 \subseteq Q$, $P_1 \neq P_2$ with $P_1 \not\subseteq P_2$, $P_2 \not\subseteq P_1$, then call $\Lang(R)$ \defword{postfix-loop-deterministic}. \\
+Examples:
+\begin{itemize}
+\item $\Lang(\PT_n)$ for all $n$ and $\Lang(\LT_1)$ are not postfix-loop-deterministic
+\item $\Lang(\LT_n)$ for $n \ge 2$ is postfix-loop-deterministic (Lemma 4.14)
+\end{itemize}
 \item \textbf{Theorem 3.44.} $\Lang(R)$ is not \emph{postfix-loop-deterministic} $\Leftrightarrow$
 \[ \BC \lim \Lang(R) \cap \lim \Langreg = \lim \Lang(R) . \]
-\item $\Lang(\PT_n)$ for all $n$ and $\Lang(\LT_1)$ are not postfix-loop-deterministic
-\item $\Lang(\LT_n)$ for $n \ge 2$ is postfix-loop-deterministic
 \end{itemize}
 \end{frame}
 
@@ -330,6 +338,27 @@ There is a canonical deterministic automaton with states $S_R := \Sigma^*/R$. We
 %\item Theorem 4.15. $ \Lang^\omega (\mathrm{FO[+1]}) = \BC \ext \Lang^*(\mathrm{FO[+1]}) $
 %\end{itemize}
 %\end{frame}
+
+\begin{frame}[<+->]{Concrete results}
+For $\Lang := \Lang(\mathtext{starfree})$, we get
+\begin{align*}
+& \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang = \\
+& \lim \cap \dlim \Lang \subsetneqq
+\lim \cup \dlim \Lang \subsetneqq
+\BC \lim \Lang .
+\end{align*}
+For $\Lang := \Lang(\PT)$, we get
+\begin{align*}
+& \ext \cap \dext \Lang \subsetneqq
+\ext \cup \dext \Lang \subsetneqq
+\BC \ext \Lang = \\
+& \lim \cap \dlim \Lang =
+\lim \cup \dlim \Lang =
+\BC \lim \Lang .
+\end{align*}
+\end{frame}
 
 \begin{frame}[<+->]{Conclusion}
 \begin{itemize}
