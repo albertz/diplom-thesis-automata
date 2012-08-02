@@ -899,7 +899,7 @@ In the rest of this section, we show some equalities:
 \item $\Lang^\omega_E(\A_R) = \ext \Lang(R)$ (\cref{gen:lang_omega_e})
 \item $\Lang^\omega_{\text{Büchi}}(\A_R) = \lim \Lang(R)$ (\cref{gen:lang_omega_buechi})
 \item $\Lang^\omega_{\text{Muller}}(\A_R) = \BC \lim \Lang(R)$ (\cref{gen:lang_omega_muller})
-\item $\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
+\item $\BC \lim \Lang(R) \cap \ext \Langreg \subseteq \ext \Lang(R)$ (\cref{gen:R-bclim-cap-ext})
 \end{itemize}
 
 We will see that all those equations hold for all $R$, i.e. also for $\Lang(\LT_n)$, $\Lang(\LTT^k_r)$ and $\Lang(\PT_n)$.
@@ -963,12 +963,10 @@ When we compare the outer $\ext \Langreg$ (inside $\BC \lim \Langreg$, i.e. all 
 %\subsection{$\BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R)$}
 %S307.6,S307.7,S307.8
 \label{gen:R-bclim-cap-ext}
-\[ \BC \lim \Lang(R) \cap \ext \Langreg = \ext \Lang(R) \]
+\[ \BC \lim \Lang(R) \cap \ext \Langreg \subseteq \ext \Lang(R) \]
 
 \begin{proof}
-We have $\ext \Lang(R) \subseteq \ext \Langreg$ and $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Thus, "$\supseteq$" is shown.
-
-Now, we show "$\subseteq$". Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Langreg$. Because $L^\omega \in \ext \Langreg$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \cref{gen:e-determinism}).
+Let $L^\omega \in \BC \lim \Lang(R) \cap \ext \Langreg$. Because $L^\omega \in \ext \Langreg$, there is an E-automaton $\A^E$ which accepts $L^\omega$. We can assume that $\A^E$ is deterministic (with \cref{gen:e-determinism}).
 
 We must find an $R$-E-automaton which accepts $L^\omega$. We will call it the $\overline{\A}^M$ E-automaton and will construct it in the following.
 
@@ -996,7 +994,9 @@ Because we did this for all final states in $\A^E$, there is no $\alpha \in L^\o
 \end{proof}
 \end{lemma}
 
-In fact, we actually have shown $\BC \lim \Lang \cap \ext \Langreg = \ext \Lang$ for any $\Lang \subseteq \Langreg$.
+In fact, we actually have shown $\BC \lim \Lang \cap \ext \Langreg \subseteq \ext \Lang$ for any $\Lang \subseteq \Langreg$.
+
+For the equality, we need $\ext \Lang(R) \subseteq \BC \lim \Lang(R)$.
 
 
 We are also interested in the equality $\BC \lim \Lang \cap \lim \Langreg = \lim \Lang$ for some $*$-language class $\Lang \subseteq \Langreg$. This is a connection between the outer $\lim \Langreg$ (inside $\BC \lim \Langreg$) which is clearly a superset of $\lim \Lang$ and the inner whole class $\BC \lim \Lang$. It turns out that this is not always the case and not as straightforward as in the $\ext$ case in \cref{gen:R-bclim-cap-ext}.
