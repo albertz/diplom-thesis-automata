@@ -143,13 +143,13 @@ My diploma thesis:
 \begin{frame}[<+->]{Properties on $\Lang$}
 \begin{enumerate}
 \item \defword{$\Lang$ closed under suffix-independence}: $L \in \Lang \Rightarrow L \cdot \Sigma^* \in \Lang$ \\
-Examples: $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ (Lemma 4.10), $\Lang(\LT)$ \\
+Examples: $\Langreg$, $\Lang(\mathtext{starfree})$, $\Lang(\PT_n)$ (Lemma 4.10), $\Lang(\LT)$, $\Lang(\LTT)$ \\
 Counter examples: $\Lang(\mathtext{finite})$, $\Lang(\mathtext{endwise})$, Example 3.4, Example 3.9
 \item \defword{$\Lang$ closed under union, intersection}
 \item \defword{$\Lang$ closed under negation}
 \item \defword{$\Lang$ closed under change of final states}:
 Let $\A = (Q,\Sigma,q_0,\delta,F)$ be a minimal deterministic automaton with $L^*(\A) \in \Lang$. Then, for all $F' \subseteq Q$, we have $L^*((Q,\Sigma,q_0,\delta,F')) \in \Lang$. \\
-Examples: $\Langreg$, $\Lang(\LT_n)$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\PT)$, $\Lang(\mathtext{starfree})$ (Lemma 4.5)
+Examples: $\Langreg$, $\Lang(\LT_n)$, $\Lang(\PT_n)$, $\Lang(\LT)$, $\Lang(\PT)$, $\Lang(\LTT)$, $\Lang(\mathtext{starfree})$ (Lemma 4.5)
 \item \defword{$\Lang$ closed under alphabet permutation}: For all permutations $\sigma \colon \Sigma \rightarrow \Sigma$ and $L \in \Lang$, we have $L_\sigma := \Set{\sigma(w)}{w \in L} \in \Lang$
 \end{enumerate}
 \end{frame}
@@ -351,7 +351,7 @@ For $\Lang := \Lang(\mathtext{starfree})$, via Theorem 3.22, we get
 \lim \cup \dlim \Lang \subsetneqq
 \BC \lim \Lang .
 \end{align*}
-For $\Lang := \Lang(\LT)$, via Theorem 3.22, we get
+For $\Lang := \Lang(\LT)$ or $\Lang := \Lang(\LTT)$, via Theorem 3.22, we get
 \begin{align*}
 & \ext \cap \dext \Lang \subsetneqq
 \ext \cup \dext \Lang \subsetneqq
