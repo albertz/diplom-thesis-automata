@@ -262,12 +262,15 @@ With $L'_a \in \Lang$ and  $\lim L'_a \not\in \dlim \Langreg$, the inclusions in
 
 \begin{frame}[<+->]{Kleene closure}
 \[ \Kleene(\Lang) := \Set{ \bigcup_{i=1}^n U_i \cdot V_i^\omega}{U_i, V_i \subseteq \Sigma^*, U_i \cdot V_i^* \in \Lang, n \in \N_0} \]
+\[ \LangOreg = \Kleene(\Langreg) = \BC \lim \Langreg \]
 
 \begin{itemize}
 \item \textbf{Lemma 3.24.}
 \begin{itemize}
 \item Generic power-set construction based on a non-det. $U V^*$ automaton which results in a det. co-Büchi automaton for parts of $U V^\omega$.
-\item If the $*$-language given by the automata is in $\Lang$, we call $\Lang$ closed under change final states for all deterministic \emph{simplified} automata.
+%\item If the $*$-language given by the automata is in $\Lang$, we call $\Lang$ closed under change final states for all
+deterministic \emph{simplified} automata.
+\item We need some special property in the proof.
 \item With this, we get
 \[ \Kleene \Lang \subseteq \BC \lim \Lang . \]
 \item The idea in the proof can probably be generalized into a general constructive non-deterministic Büchi to deterministic Muller automaton conversion.
