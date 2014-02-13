@@ -53,15 +53,15 @@
 
 \begin{frame}[<+->]{Background}
 \begin{enumerate}
-\item Notation: alphabet $\Sigma$, finite word $w \in \Sigma^*$, infinite word $\alpha \in \Sigma^\omega$.
+\item Notation: alphabet $\Sigma$, finite word $w \in \Sigma^*$, infinite word $\alpha \in \Sigma^\omega$, sub-word $\alpha[i,j] \in \Sigma^*$
 \item $*$-languages $\Power(\Sigma^*)$, $\omega$-languages $\Power(\Sigma^\omega)$
 \item Language classes: $\Power(\Power(\Sigma^*))$, $\Power(\Power(\Sigma^\omega))$
-\item Most well-known $*$-class: regular $*$-languages
+\item Most well-known $*$-class: regular $*$-languages ($\Langreg$)
 \begin{itemize}
 \item regular expressions
 \item finite-state automata: the accepted language
 \end{itemize}
-\item Most well-known $\omega$-class: regular $\omega$-languages
+\item Most well-known $\omega$-class: regular $\omega$-languages ($\LangOreg$)
 \begin{itemize}
 \item regular $\omega$ expressions
 \item Büchi-/Muller- automata
@@ -103,7 +103,7 @@ Boolean combinations:
 
 \end{frame}
 
-\begin{frame}{$\Langreg$ inclusion diagram}
+\begin{frame}{$\Lang := \Langreg$ inclusion diagram}
 \begin{center}
 \begin{tikzpicture}
 \pgftransformscale{.50}
@@ -121,28 +121,41 @@ Boolean combinations:
 \draw (-8,0) -- (-8,9);
 \draw (-8,9) .. controls (-8,15) and (8,15) .. (8,9);
 \draw (8,0) -- (8,9);
-\node at (0,10) {BC lim};
+\node at (0,11) {$\begin{matrix}
+\LangOreg \\
+= \\
+\BC \lim \Lang
+\end{matrix}$};
 
 % lim
 \draw (-8,8) parabola bend (-3,8.5) (8,5);
-\node[rotate=10] at (-5,7.7) {lim};
+\node[rotate=10] at (-5,7.7) {$\lim \Lang$};
 
 % dual-lim
 \draw (-8,5) parabola bend (3,8.5) (8,8);
-\node[rotate=-10] at (5,7.7) {dual-lim};
+\node[rotate=-10] at (5,7.7) {$\dlim \Lang$};
 
 % BC ext
-\node at (0,6) {BC ext};
+\node at (0,6) {$\begin{matrix}
+\lim \Lang \cap \dlim \Lang \\
+= \\
+\BC \ext \Lang
+\end{matrix}$};
 
 % ext
 \draw (-8,4) parabola bend (-2,4.5) (8,1);
-\node[rotate=10] at (-5,3.7) {ext};
+\node[rotate=10] at (-5,3.7) {$\ext \Lang$};
 
 % dual-ext
 \draw (-8,1) parabola bend (2,4.5) (8,4);
-\node[rotate=-10] at (5,3.7) {dual-ext};
+\node[rotate=-10] at (5,3.7) {$\dext \Lang$};
+
+% cap ext
+\node at (0,2) {$\ext \Lang \cap \dext \Lang$};
 
 \end{tikzpicture}
+
+All inclusions are strict.
 \end{center}
 \end{frame}
 
