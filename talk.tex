@@ -326,28 +326,28 @@ Examples:
 
 \begin{frame}[<+->]{General results: $\Lang(R)$: Staiger-Wagner}
 \begin{itemize}
-\item \textbf{Example 3.46.} There is $\Lang(R)$ infinity-postfix-independent and not postfix-loop-deterministic and $\ext \Lang(R) \not\subseteq \lim \Lang(R)$.
-\[
-  \begin{tikzpicture}[%
-    >=stealth,
-	shorten >=1pt,
-	node distance=2cm,
-    auto,
-  ]
-    \node[state] (1)              {$1$};
-    \node[state] (2) [right of=1] {$2$};
-    \node[state] (3) [below of=1] {$3$};
-
-    \path[->]
-    (1) +(-1.5,0) edge (1)
-    (1) edge [bend left] node {$a$} (2)
-    (2) edge [bend left] node {$a,b$} (1)
-    (1) edge [bend right] node {$b$} (3)
-    (3) edge [loop right] node {$a,b$} ()
-    ;
-  \end{tikzpicture}
-\]
-We have $\ext L_2 = a \Sigma^\omega \not\in \BC \lim \Lang(R)$.
+%\item \textbf{Example 3.46.} There is $\Lang(R)$ infinity-postfix-independent and not postfix-loop-deterministic and $\ext \Lang(R) \not\subseteq \lim \Lang(R)$.
+%\[
+%  \begin{tikzpicture}[%
+%    >=stealth,
+%	shorten >=1pt,
+%	node distance=2cm,
+%    auto,
+%  ]
+%    \node[state] (1)              {$1$};
+%    \node[state] (2) [right of=1] {$2$};
+%    \node[state] (3) [below of=1] {$3$};
+%
+%    \path[->]
+%    (1) +(-1.5,0) edge (1)
+%    (1) edge [bend left] node {$a$} (2)
+%    (2) edge [bend left] node {$a,b$} (1)
+%    (1) edge [bend right] node {$b$} (3)
+%    (3) edge [loop right] node {$a,b$} ()
+%    ;
+%  \end{tikzpicture}
+%\]
+%We have $\ext L_2 = a \Sigma^\omega \not\in \BC \lim \Lang(R)$.
 \item \textbf{Theorem 3.47.} (Staiger-Wagner) $\Lang(R)$ not postfix-loop-deterministic. $\BC \ext \Lang(R) \subseteq \BC \lim \Lang(R)$. Then
 \[ \lim \cap \dlim \Lang(R) = \BC \ext \Lang(R) \]
 Example: $\Lang(\PT_n)$
